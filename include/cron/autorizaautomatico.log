@@ -1,0 +1,245 @@
+
+
+2019-11-23 17:34:02    -              -- C O M I E N Z A ---------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6528</h1>
+
+ ___
+Renglones Pedido: <h3>1</h3>
+
+// + + + + +
+//  Comenzamos Analisis de inventarios de la sucursal
+// + + + + +
+
+
+R E N G L O N: 1          -idPedidoDetalle: 16133    -idProducto: 688    -partida: 143.00    -cantidad: 9.20    -cantidadReal: 9.20
+
+                -                -  Se crea objeto: pieza688
+                -                -  Se crea objeto: rollo1
+
+Producto: LT-60 OPAN -  LAMINA T-60 OPALIT DE 8 ONZAS POR METROS LINEAL NACIONAL STABILIT
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 0.00        Apartado: -1172.60
+   SACAR => 143.00
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 1172.6
+ ---------------->>>>>>> Listo para Asignar SI
+
+ ************ DO COMMIT ***********
+
+
+Lo que se va a guardar:   
+<br>
+ModeloBasePedidodetallecolocacion:<br>
+    - idPedidoDetalleColocacion  =  0<br>
+    - idPedidoDetalle  =  16133<br>
+    - idInventarioSucursal  =  817<br>
+    - idSucursal  =  1<br>
+    - cantidad  =  143.00<br>
+    - cantidadSurtida  =  <br>
+    - cantidadEnVale  =  <br>
+<br>
+
+Error en la insercion de registro.
+
+FIN Pedido ... ERA COMMIT PERO HUBO ER   ROR: <h1>6528</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2019-11-23 17:36:01    -              -- C O M I E N Z A ---------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6528</h1>
+
+ ___
+Renglones Pedido: <h3>1</h3>
+
+// + + + + +
+//  Comenzamos Analisis de inventarios de la sucursal
+// + + + + +
+
+
+R E N G L O N: 1          -idPedidoDetalle: 16133    -idProducto: 688    -partida: 143.00    -cantidad: 9.20    -cantidadReal: 9.20
+
+                -                -  Se crea objeto: pieza688
+                -                -  Se crea objeto: rollo1
+
+Producto: LT-60 OPAN -  LAMINA T-60 OPALIT DE 8 ONZAS POR METROS LINEAL NACIONAL STABILIT
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 0.00        Apartado: -1172.60
+   SACAR => 143.00
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 1172.6
+ ---------------->>>>>>> Listo para Asignar SI
+
+ ************ DO COMMIT ***********
+
+
+Lo que se va a guardar:   
+<br>
+ModeloBasePedidodetallecolocacion:<br>
+    - idPedidoDetalleColocacion  =  0<br>
+    - idPedidoDetalle  =  16133<br>
+    - idInventarioSucursal  =  817<br>
+    - idSucursal  =  1<br>
+    - cantidad  =  143.00<br>
+    - cantidadSurtida  =  <br>
+    - cantidadEnVale  =  <br>
+<br>
+
+Error en la insercion de registro.
+
+FIN Pedido ... ERA COMMIT PERO HUBO ER   ROR: <h1>6528</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2019-11-23 17:38:01    -              -- C O M I E N Z A ---------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6528</h1>
+
+ ___
+Renglones Pedido: <h3>1</h3>
+
+// + + + + +
+//  Comenzamos Analisis de inventarios de la sucursal
+// + + + + +
+
+
+R E N G L O N: 1          -idPedidoDetalle: 16133    -idProducto: 688    -partida: 143.00    -cantidad: 9.20    -cantidadReal: 9.20
+
+                -                -  Se crea objeto: pieza688
+                -                -  Se crea objeto: rollo1
+
+Producto: LT-60 OPAN -  LAMINA T-60 OPALIT DE 8 ONZAS POR METROS LINEAL NACIONAL STABILIT
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 0.00        Apartado: -1172.60
+   SACAR => 143.00
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 1172.6
+ ---------------->>>>>>> Listo para Asignar SI
+
+ ************ DO COMMIT ***********
+
+
+Lo que se va a guardar:   
+<br>
+ModeloBasePedidodetallecolocacion:<br>
+    - idPedidoDetalleColocacion  =  0<br>
+    - idPedidoDetalle  =  16133<br>
+    - idInventarioSucursal  =  817<br>
+    - idSucursal  =  1<br>
+    - cantidad  =  143.00<br>
+    - cantidadSurtida  =  <br>
+    - cantidadEnVale  =  <br>
+<br>
+
+Error en la insercion de registro.
+
+FIN Pedido ... ERA COMMIT PERO HUBO ER   ROR: <h1>6528</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2019-11-23 17:40:01    -              -- C O M I E N Z A ---------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6528</h1>
+
+ ___
+Renglones Pedido: <h3>1</h3>
+
+// + + + + +
+//  Comenzamos Analisis de inventarios de la sucursal
+// + + + + +
+
+
+R E N G L O N: 1          -idPedidoDetalle: 16133    -idProducto: 688    -partida: 143.00    -cantidad: 9.20    -cantidadReal: 9.20
+
+                -                -  Se crea objeto: pieza688
+                -                -  Se crea objeto: rollo1
+
+Producto: LT-60 OPAN -  LAMINA T-60 OPALIT DE 8 ONZAS POR METROS LINEAL NACIONAL STABILIT
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 0.00        Apartado: -1172.60
+   SACAR => 143.00
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 1172.6
+ ---------------->>>>>>> Listo para Asignar SI
+
+ ************ DO COMMIT ***********
+
+
+Lo que se va a guardar:   
+<br>
+ModeloBasePedidodetallecolocacion:<br>
+    - idPedidoDetalleColocacion  =  0<br>
+    - idPedidoDetalle  =  16133<br>
+    - idInventarioSucursal  =  817<br>
+    - idSucursal  =  1<br>
+    - cantidad  =  143.00<br>
+    - cantidadSurtida  =  <br>
+    - cantidadEnVale  =  <br>
+<br>
+
+Error en la insercion de registro.
+
+FIN Pedido ... ERA COMMIT PERO HUBO ER   ROR: <h1>6528</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2019-11-23 17:42:02    -              -- C O M I E N Z A ---------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6528</h1>
+
+ ___
+Renglones Pedido: <h3>1</h3>
+
+// + + + + +
+//  Comenzamos Analisis de inventarios de la sucursal
+// + + + + +
+
+
+R E N G L O N: 1          -idPedidoDetalle: 16133    -idProducto: 688    -partida: 143.00    -cantidad: 9.20    -cantidadReal: 9.20
+
+                -                -  Se crea objeto: pieza688
+                -                -  Se crea objeto: rollo1
+
+Producto: LT-60 OPAN -  LAMINA T-60 OPALIT DE 8 ONZAS POR METROS LINEAL NACIONAL STABILIT
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 0.00        Apartado: -1172.60
+   SACAR => 143.00
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 1172.6
+ ---------------->>>>>>> Listo para Asignar SI
+
+ ************ DO COMMIT ***********
+
+
+Lo que se va a guardar:   
+<br>
+ModeloBasePedidodetallecolocacion:<br>
+    - idPedidoDetalleColocacion  =  0<br>
+    - idPedidoDetalle  =  16133<br>
+    - idInventarioSucursal  =  817<br>
+    - idSucursal  =  1<br>
+    - cantidad  =  143.00<br>
+    - cantidadSurtida  =  <br>
+    - cantidadEnVale  =  <br>
+<br>
+
+Error en la insercion de registro.
+
+FIN Pedido ... ERA COMMIT PERO HUBO ER   ROR: <h1>6528</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------

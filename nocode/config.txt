@@ -1,0 +1,16 @@
+---------------------------------------------
+Wordpress lamimaya
+
+LMayaAdmin
+YD16@j@MCU
+
+Base de datos
+oudbInt_wplm1
+tabla prefijo wp1z_
+
+WordPress ha sido correctamente instalado en :
+https://lamimaya.com
+Admin URL : https://lamimaya.com/wp-admin/
+
+
+----------------------------------------------

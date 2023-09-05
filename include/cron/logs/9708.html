@@ -1,0 +1,129 @@
+  ....... 2022-03-26 08:17:00 START PEDIDO: 9708<h1>Checar Autorizacion para pedido 9708</h1><br>
+<br />
+<b>Notice</b>:  Undefined variable: myJSON in <b>C:\laragon\www\galvamex74\include\model\extend\model.pedido.inc.php</b> on line <b>3278</b><br />
+<span class='h3 text-info'> INFO => </span> Inicia proceso de Autorización automática del Pedido<br>
+Comenzando con Pedido: 9708<br>
+Cargando Pedido: 9708<br>
+		---------------------------------------------------------<br>
+		Verificando Inventarios de Cotizacion: <strong style='color: blue'>9708</strong><br>
+<br>
+		 ___<br>
+		Renglones Pedido: <span style='color: blue'>1</span><br>
+<br>
+		// + + + + +<br>
+		//  Comenzamos Analisis de inventarios<br>
+		// + + + + +<br>
+<br>
+<br>
+		R E N G L O N: 1          -idPedidoDetalle: 66622732    -idProducto: 221    -partida: 3000.00    -cantidad: 1.00    -cantidadReal: 1.00<br>
+<br>
+<br>
+		Producto: LGALVATEJA 6.10 GAL26N -  LAMINA GALVATEJA DE 6.10 MTS CAL26 NACIONAL TERNIUM<br>
+		 idRollo => 1<br>
+<br>
+		SACAR DE   I N V E N T A R I O <br>
+		   Producto Existencia: 40.00        Apartado: 0<br>
+		   SACAR => 3000.00<br>
+		    =>=>  Quitamos(Simulacro) de Inventario <br>
+		 <strong style='color: red'>**------- >  no alcanza a salir la mercancia, no se puede proceder con este Pedido</strong><br>
+<br><pre>Array
+(
+    [surteInventario] => 
+    [surteRollos] => 
+    [surteAmbos] => 
+    [soloInventario] => 1
+    [soloRollos] => 
+    [Surtir] => Array
+        (
+        )
+
+    [NoSurtir] => Array
+        (
+            [0] => Array
+                (
+                    [idPedidoDetalle] => 66622732
+                    [renglon] => 1
+                    [idProducto] => 221
+                    [tipoPrecio] => RANGO2
+                    [partida] => 3000.00
+                    [cantidad] => 1.00
+                    [cantidadReal] => 1.00
+                    [totalExplotar] => 3000.00
+                    [totalExplotado] => 3000.00
+                )
+
+        )
+
+)
+</pre>Obteniendo datos por el cliente<br>
+{"idCliente":"4","datosCliente":"Capacidad y Credito obtenidos del Cliente en si","credito":"25,000.00","capacidadPago":"40,000.00","creditoUsado":"93.62","saldomas30dias":"0.00","noPedidoscliente":21,"creditoDisponible":"24,906.38","creditoDisponibleMas20Porciento":"29,887.66","porcentajeSaldoCredito":"0.00","capacidadPagoDisponible":"39,906.38","porcentaje":"100.00","pagado":"4,058,940.00","saldoPedido":"0.00","TotalPedido":"4,058,940.00"}<br>
+Cliente Existente<br>
+Con Crédito<br>
+<span class='h3 text-info'> INFO => </span> Cliente existente, con crédito, se requiere adquisición de materiales<br>
+Necesita Surtir<br>
+<span class='h3 text-navy'>SUCCESS => </span> Criterio para liberación aprobado: En caso de requerir adquisición de materiales, que se cubra el 50% o más. Total del pedido $ 4058940.00, abonado $ 4058940 (100.00%).<br>
+Vales . . . <br>
+<h1>Checar liberación de Vales para pedido 9708</h1><br>
+<span class='h3 text-info'> INFO => </span> Inicia proceso de liberación de vales automática del Pedido<br>
+Comenzando con Pedido: 9708<br>
+Cargando Pedido: 9708<br>
+		---------------------------------------------------------<br>
+		Verificando Inventarios de Cotizacion: <strong style='color: blue'>9708</strong><br>
+<br>
+		 ___<br>
+		Renglones Pedido: <span style='color: blue'>1</span><br>
+<br>
+		// + + + + +<br>
+		//  Comenzamos Analisis de inventarios<br>
+		// + + + + +<br>
+<br>
+<br>
+		R E N G L O N: 1          -idPedidoDetalle: 66622732    -idProducto: 221    -partida: 3000.00    -cantidad: 1.00    -cantidadReal: 1.00<br>
+<br>
+<br>
+		Producto: LGALVATEJA 6.10 GAL26N -  LAMINA GALVATEJA DE 6.10 MTS CAL26 NACIONAL TERNIUM<br>
+		 idRollo => 1<br>
+<br>
+		SACAR DE   I N V E N T A R I O <br>
+		   Producto Existencia: 40.00        Apartado: 0<br>
+		   SACAR => 3000.00<br>
+		    =>=>  Quitamos(Simulacro) de Inventario <br>
+		 <strong style='color: red'>**------- >  no alcanza a salir la mercancia, no se puede proceder con este Pedido</strong><br>
+<br><pre>Array
+(
+    [surteInventario] => 
+    [surteRollos] => 
+    [surteAmbos] => 
+    [soloInventario] => 1
+    [soloRollos] => 
+    [Surtir] => Array
+        (
+        )
+
+    [NoSurtir] => Array
+        (
+            [0] => Array
+                (
+                    [idPedidoDetalle] => 66622732
+                    [renglon] => 1
+                    [idProducto] => 221
+                    [tipoPrecio] => RANGO2
+                    [partida] => 3000.00
+                    [cantidad] => 1.00
+                    [cantidadReal] => 1.00
+                    [totalExplotar] => 3000.00
+                    [totalExplotado] => 3000.00
+                )
+
+        )
+
+)
+</pre>Obteniendo datos por el cliente<br>
+{"idCliente":"4","datosCliente":"Capacidad y Credito obtenidos del Cliente en si","credito":"25,000.00","capacidadPago":"40,000.00","creditoUsado":"93.62","saldomas30dias":"0.00","nopedidoscliente":21,"creditoUsadoEntregados":"0.00","creditoDisponible":"24,906.38","creditoDisponibleEntregados":"25,000.00","capacidadPagoDisponible":"40,000.00","porcentajeSaldoCredito":"-16,135.76","porcentaje":"100.00","pagado":"4,058,940.00","saldoPedido":"0.00","TotalPedido":"4,058,940.00"}<br>
+Cliente Existente<br>
+Con Crédito<br>
+<span class='h3 text-info'> INFO => </span> Cliente existente, con crédito, se requiere adquisición de materiales<br>
+Necesita Surtir<br>
+<span class='h3 text-navy'>SUCCESS => </span> Criterio para liberación aprobado: En caso de requerir adquisición de materiales, cubrir el saldo restante. Total del pedido $ 4058940.00, saldo $ 0.00.<br>
+<br>
+  ....... 2022-03-26 08:17:00 END PEDIDO: 9708

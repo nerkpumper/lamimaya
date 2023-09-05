@@ -1,0 +1,735 @@
+
+
+2019-12-15 02:33:09    -              -- C O M I E N Z A ---------------------------------------------
+
+ Calibre: 18  2 pies: 5.98  3 pies: 8.97  4 pies: 11.96
+ Calibre: 20  2 pies: 4.54  3 pies: 6.8  4 pies: 9.07
+ Calibre: 22  2 pies: 3.81  3 pies: 5.71  4 pies: 7.61
+ Calibre: 24  2 pies: 2.71  3 pies: 4.07  4 pies: 5.42
+ Calibre: 26  2 pies: 2.32  3 pies: 3.52  4 pies: 4.63
+ Calibre: 28  2 pies: 1.98  3 pies: 2.97  4 pies: 3.96
+ Calibre: 30  2 pies: 1.63  3 pies: 2.44  4 pies: 3.26
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>849</h1>
+
+R E N G L O N : 1        -idPedidoDetalle: 2266    -idProducto: 220    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LLISA RPP264NTER -  LAMINA PINTRO POLIESTER CAL 20 4 X 10 TERNIUM 
+idRollo => 25
+
+SACAR DE   R O L L O     SE CALCULAN    K I L O S 
+ Existencia: -11991.98        Apartado: 657.84
+Notice: Undefined offset: 400 in C:\xampp\htdocs\appgalvamex\galvamexrepo\include\cron\explosion.cron.php on line 457
+
+  Calibre: 26 Pies: 400  KG = 
+   SACAR DE CALIBRE 26 4.00PIES => 0
+    =>=>  Quitamos de Rollo 
+R E N G L O N : 2        -idPedidoDetalle: 2267    -idProducto: 437    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 0.46
+
+Producto: LLISA RPP264NTERG33 -  dsdsdsds
+idRollo => 25
+
+SACAR DE   R O L L O     SE CALCULAN    K I L O S 
+ Existencia: -11991.98        Apartado: 657.84
+Notice: Undefined offset: 400 in C:\xampp\htdocs\appgalvamex\galvamexrepo\include\cron\explosion.cron.php on line 457
+
+  Calibre: 26 Pies: 400  KG = 
+   SACAR DE CALIBRE 26 4.00PIES => 0
+    =>=>  Quitamos de Rollo 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 1          -idPedidoDetalle: 2266    -idProducto: 220    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+                -                -  Se crea objeto: pieza220
+                -                -  Se crea objeto: rollo25
+
+Producto: LLISA RPP264NTER -  LAMINA PINTRO POLIESTER CAL 20 4 X 10 TERNIUM 
+ idRollo => 25
+
+SACAR DE    R O L L O
+ Existencia: -11991.98        Apartado: 657.84
+   SACAR DE CALIBRE 26 => 4.63
+    =>=>  Quitamos de Rollo BB
+ --- --- => DeDondeSacars: -12649.82
+ ------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+R E N G L O N: 2          -idPedidoDetalle: 2267    -idProducto: 437    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 0.46
+
+                -                -  Se crea objeto: pieza437
+
+Producto: LLISA RPP264NTERG33 -  dsdsdsds
+ idRollo => 25
+
+SACAR DE    R O L L O
+ Existencia: -11991.98        Apartado: 657.84
+   SACAR DE CALIBRE 26 => 2.13
+    =>=>  Quitamos de Rollo BB
+ --- --- => DeDondeSacars: -12649.82
+ ------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>849</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>901</h1>
+
+R E N G L O N : 2        -idPedidoDetalle: 2354    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 3        -idPedidoDetalle: 2355    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 4        -idPedidoDetalle: 2356    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 5        -idPedidoDetalle: 2357    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 6        -idPedidoDetalle: 2358    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 7        -idPedidoDetalle: 2359    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 8        -idPedidoDetalle: 2360    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 9        -idPedidoDetalle: 2361    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 10        -idPedidoDetalle: 2362    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 11        -idPedidoDetalle: 2363    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 12        -idPedidoDetalle: 2364    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 13        -idPedidoDetalle: 2365    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 14        -idPedidoDetalle: 2366    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 15        -idPedidoDetalle: 2367    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 16        -idPedidoDetalle: 2368    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 17        -idPedidoDetalle: 2369    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 18        -idPedidoDetalle: 2370    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 19        -idPedidoDetalle: 2371    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 20        -idPedidoDetalle: 2372    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 21        -idPedidoDetalle: 2373    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 22        -idPedidoDetalle: 2374    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 23        -idPedidoDetalle: 2375    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 24        -idPedidoDetalle: 2376    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 25        -idPedidoDetalle: 2377    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 26        -idPedidoDetalle: 2378    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 27        -idPedidoDetalle: 2379    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 28        -idPedidoDetalle: 2380    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 29        -idPedidoDetalle: 2381    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 30        -idPedidoDetalle: 2382    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 31        -idPedidoDetalle: 2383    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 32        -idPedidoDetalle: 2384    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 33        -idPedidoDetalle: 2385    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 34        -idPedidoDetalle: 2386    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 35        -idPedidoDetalle: 2387    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 36        -idPedidoDetalle: 2388    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 37        -idPedidoDetalle: 2389    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+idRollo => 2
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 2          -idPedidoDetalle: 2354    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+                -                -  Se crea objeto: pieza435
+                -                -  Se crea objeto: rollo2
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 4.00        Apartado: 17
+   SACAR => 1.00
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: -13
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+R E N G L O N: 3          -idPedidoDetalle: 2355    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 4          -idPedidoDetalle: 2356    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 5          -idPedidoDetalle: 2357    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 6          -idPedidoDetalle: 2358    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 7          -idPedidoDetalle: 2359    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 8          -idPedidoDetalle: 2360    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 9          -idPedidoDetalle: 2361    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 10          -idPedidoDetalle: 2362    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 11          -idPedidoDetalle: 2363    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 12          -idPedidoDetalle: 2364    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 13          -idPedidoDetalle: 2365    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 14          -idPedidoDetalle: 2366    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 15          -idPedidoDetalle: 2367    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 16          -idPedidoDetalle: 2368    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 17          -idPedidoDetalle: 2369    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 18          -idPedidoDetalle: 2370    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 19          -idPedidoDetalle: 2371    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 20          -idPedidoDetalle: 2372    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 21          -idPedidoDetalle: 2373    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 22          -idPedidoDetalle: 2374    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 23          -idPedidoDetalle: 2375    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 24          -idPedidoDetalle: 2376    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 25          -idPedidoDetalle: 2377    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 26          -idPedidoDetalle: 2378    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 27          -idPedidoDetalle: 2379    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 28          -idPedidoDetalle: 2380    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 29          -idPedidoDetalle: 2381    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 30          -idPedidoDetalle: 2382    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 31          -idPedidoDetalle: 2383    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 32          -idPedidoDetalle: 2384    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 33          -idPedidoDetalle: 2385    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 34          -idPedidoDetalle: 2386    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 35          -idPedidoDetalle: 2387    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 36          -idPedidoDetalle: 2388    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 37          -idPedidoDetalle: 2389    -idProducto: 435    -partida: 1.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+
+Producto: LR-101 3.05 RPS264NTERG33 -  LAMINA R-101 3.05 MTS PINTRO SULTANA CAL 26
+ idRollo => 2
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>901</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>961</h1>
+
+R E N G L O N : 1        -idPedidoDetalle: 2472    -idProducto: 382    -partida: 1.00    -cantidad: 1500.00    -cantidadReal: 1500.00
+
+Producto: LR-101  RGA244NTERG37 -  LAMINA GALVANIZADA CAL 24 DE 4 PIES TERNIUM GRADO 37
+idRollo => 31
+
+SACAR DE   R O L L O     SE CALCULAN    K I L O S 
+ Existencia: 3604.00        Apartado: 747.96
+Notice: Undefined offset: 400 in C:\xampp\htdocs\appgalvamex\galvamexrepo\include\cron\explosion.cron.php on line 457
+
+  Calibre: 24 Pies: 400  KG = 
+   SACAR DE CALIBRE 24 4.00PIES => 0
+    =>=>  Quitamos de Rollo 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 1          -idPedidoDetalle: 2472    -idProducto: 382    -partida: 1.00    -cantidad: 1500.00    -cantidadReal: 1500.00
+
+                -                -  Se crea objeto: pieza382
+                -                -  Se crea objeto: rollo31
+
+Producto: LR-101  RGA244NTERG37 -  LAMINA GALVANIZADA CAL 24 DE 4 PIES TERNIUM GRADO 37
+ idRollo => 31
+
+SACAR DE    R O L L O
+ Existencia: 3604.00        Apartado: 747.96
+   SACAR DE CALIBRE 24 => 8130.00
+    =>=>  Quitamos de Rollo BB
+ --- --- => DeDondeSacars: 2856.04
+ ------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>961</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------

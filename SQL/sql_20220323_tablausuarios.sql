@@ -1,0 +1,1 @@
+ALTER TABLE `usuario` ADD `cobracomision` ENUM('SI','NO') NOT NULL DEFAULT 'NO' AFTER `rangoComisiones`; 

@@ -1,0 +1,1 @@
+DROP TRIGGER IF EXISTS `cliente_BEFORE_INSERT`;CREATE TRIGGER `cliente_BEFORE_INSERT` BEFORE INSERT ON `cliente` FOR EACH ROW BEGIN IF NEW.idUsuarioPromotor = 4 OR NEW.idUsuarioPromotor = 11 THEN SET NEW.idUsuarioPromotor = 1; END IF; SET NEW.capacidadPago = 0; SET NEW.idPromotorAnterior = NEW.idUsuarioPromotor; END 

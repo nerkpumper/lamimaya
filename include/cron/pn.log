@@ -1,0 +1,48 @@
+enviandoResultado: 
+
+ModeloBasePushnotifica:
+    - idPushNotifica  =  978
+    - idProvoca  =  2
+    - idPara  =  2
+    - tipo  =  2
+    - tema  =  Pedido 1007 AUTORIZADO Automï¿½tico
+    - contenido  =  El pedido 1007 ha sido Autorizado de manera automï¿½tica para su producciï¿½n.
+    - acepta  =  SINRESPUESTA
+    - refint  =  0
+    - refstr  =  
+    - fecha  =  2020-01-23 00:22:13
+    - enviado  =  NO
+
+
+enviandoResultado: 
+
+ModeloBasePushnotifica:
+    - idPushNotifica  =  981
+    - idProvoca  =  2
+    - idPara  =  2
+    - tipo  =  2
+    - tema  =  Pedido 1014 PRODUCCIï¿½N
+    - contenido  =  El pedido 1014 ha entrado a producciï¿½n.
+    - acepta  =  SINRESPUESTA
+    - refint  =  0
+    - refstr  =  
+    - fecha  =  2020-01-23 00:25:11
+    - enviado  =  NO
+
+
+enviando
+
+ModeloBasePushnotifica:
+    - idPushNotifica  =  982
+    - idProvoca  =  2
+    - idPara  =  15
+    - tipo  =  2
+    - tema  =  Pedido 1014 PRODUCCIï¿½N
+    - contenido  =  El pedido 1014 ha entrado a producciï¿½n.
+    - acepta  =  SINRESPUESTA
+    - refint  =  0
+    - refstr  =  
+    - fecha  =  2020-01-23 00:25:12
+    - enviado  =  NO
+
+

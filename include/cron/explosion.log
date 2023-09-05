@@ -1,0 +1,1280 @@
+
+
+2019-11-23 17:33:01    -              -- C O M I E N Z A ---------------------------------------------
+
+ Calibre: 18  2 pies: 5.98  3 pies: 8.97  4 pies: 11.96
+ Calibre: 20  2 pies: 4.54  3 pies: 6.8  4 pies: 9.07
+ Calibre: 22  2 pies: 3.81  3 pies: 5.71  4 pies: 7.61
+ Calibre: 24  2 pies: 2.71  3 pies: 4.07  4 pies: 5.42
+ Calibre: 26  2 pies: 2.32  3 pies: 3.52  4 pies: 4.63
+ Calibre: 28  2 pies: 1.98  3 pies: 2.97  4 pies: 3.96
+ Calibre: 30  2 pies: 1.63  3 pies: 2.44  4 pies: 3.26
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6284</h1>
+
+R E N G L O N : 4        -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 5        -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 6        -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 4          -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+                -                -  Se crea objeto: pieza567
+                -                -  Se crea objeto: rollo1
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.40
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 0
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+R E N G L O N: 5          -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 6          -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6284</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6570</h1>
+
+R E N G L O N : 2        -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: IND-0812-RD -  Chirlato 1/2
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 2          -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+                -                -  Se crea objeto: pieza475
+
+Producto: IND-0812-RD -  Chirlato 1/2
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000.00
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 1550
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6570</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2019-11-23 17:34:02    -              -- C O M I E N Z A ---------------------------------------------
+
+ Calibre: 18  2 pies: 5.98  3 pies: 8.97  4 pies: 11.96
+ Calibre: 20  2 pies: 4.54  3 pies: 6.8  4 pies: 9.07
+ Calibre: 22  2 pies: 3.81  3 pies: 5.71  4 pies: 7.61
+ Calibre: 24  2 pies: 2.71  3 pies: 4.07  4 pies: 5.42
+ Calibre: 26  2 pies: 2.32  3 pies: 3.52  4 pies: 4.63
+ Calibre: 28  2 pies: 1.98  3 pies: 2.97  4 pies: 3.96
+ Calibre: 30  2 pies: 1.63  3 pies: 2.44  4 pies: 3.26
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6284</h1>
+
+R E N G L O N : 4        -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 5        -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 6        -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 4          -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+                -                -  Se crea objeto: pieza567
+                -                -  Se crea objeto: rollo1
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.40
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 0
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+R E N G L O N: 5          -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 6          -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6284</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6570</h1>
+
+R E N G L O N : 2        -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: IND-0812-RD -  Chirlato 1/2
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 2          -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+                -                -  Se crea objeto: pieza475
+
+Producto: IND-0812-RD -  Chirlato 1/2
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000.00
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 1550
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6570</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2019-11-23 17:35:01    -              -- C O M I E N Z A ---------------------------------------------
+
+ Calibre: 18  2 pies: 5.98  3 pies: 8.97  4 pies: 11.96
+ Calibre: 20  2 pies: 4.54  3 pies: 6.8  4 pies: 9.07
+ Calibre: 22  2 pies: 3.81  3 pies: 5.71  4 pies: 7.61
+ Calibre: 24  2 pies: 2.71  3 pies: 4.07  4 pies: 5.42
+ Calibre: 26  2 pies: 2.32  3 pies: 3.52  4 pies: 4.63
+ Calibre: 28  2 pies: 1.98  3 pies: 2.97  4 pies: 3.96
+ Calibre: 30  2 pies: 1.63  3 pies: 2.44  4 pies: 3.26
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6284</h1>
+
+R E N G L O N : 4        -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 5        -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 6        -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 4          -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+                -                -  Se crea objeto: pieza567
+                -                -  Se crea objeto: rollo1
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.40
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 0
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+R E N G L O N: 5          -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 6          -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6284</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6570</h1>
+
+R E N G L O N : 2        -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: IND-0812-RD -  Chirlato 1/2
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 2          -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+                -                -  Se crea objeto: pieza475
+
+Producto: IND-0812-RD -  Chirlato 1/2
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000.00
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 1550
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6570</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2019-11-23 17:36:01    -              -- C O M I E N Z A ---------------------------------------------
+
+ Calibre: 18  2 pies: 5.98  3 pies: 8.97  4 pies: 11.96
+ Calibre: 20  2 pies: 4.54  3 pies: 6.8  4 pies: 9.07
+ Calibre: 22  2 pies: 3.81  3 pies: 5.71  4 pies: 7.61
+ Calibre: 24  2 pies: 2.71  3 pies: 4.07  4 pies: 5.42
+ Calibre: 26  2 pies: 2.32  3 pies: 3.52  4 pies: 4.63
+ Calibre: 28  2 pies: 1.98  3 pies: 2.97  4 pies: 3.96
+ Calibre: 30  2 pies: 1.63  3 pies: 2.44  4 pies: 3.26
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6284</h1>
+
+R E N G L O N : 4        -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 5        -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 6        -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 4          -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+                -                -  Se crea objeto: pieza567
+                -                -  Se crea objeto: rollo1
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.40
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 0
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+R E N G L O N: 5          -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 6          -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6284</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6570</h1>
+
+R E N G L O N : 2        -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: IND-0812-RD -  Chirlato 1/2
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 2          -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+                -                -  Se crea objeto: pieza475
+
+Producto: IND-0812-RD -  Chirlato 1/2
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000.00
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 1550
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6570</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2019-11-23 17:37:02    -              -- C O M I E N Z A ---------------------------------------------
+
+ Calibre: 18  2 pies: 5.98  3 pies: 8.97  4 pies: 11.96
+ Calibre: 20  2 pies: 4.54  3 pies: 6.8  4 pies: 9.07
+ Calibre: 22  2 pies: 3.81  3 pies: 5.71  4 pies: 7.61
+ Calibre: 24  2 pies: 2.71  3 pies: 4.07  4 pies: 5.42
+ Calibre: 26  2 pies: 2.32  3 pies: 3.52  4 pies: 4.63
+ Calibre: 28  2 pies: 1.98  3 pies: 2.97  4 pies: 3.96
+ Calibre: 30  2 pies: 1.63  3 pies: 2.44  4 pies: 3.26
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6284</h1>
+
+R E N G L O N : 4        -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 5        -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 6        -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 4          -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+                -                -  Se crea objeto: pieza567
+                -                -  Se crea objeto: rollo1
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.40
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 0
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+R E N G L O N: 5          -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 6          -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6284</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6570</h1>
+
+R E N G L O N : 2        -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: IND-0812-RD -  Chirlato 1/2
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 2          -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+                -                -  Se crea objeto: pieza475
+
+Producto: IND-0812-RD -  Chirlato 1/2
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000.00
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 1550
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6570</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2019-11-23 17:38:01    -              -- C O M I E N Z A ---------------------------------------------
+
+ Calibre: 18  2 pies: 5.98  3 pies: 8.97  4 pies: 11.96
+ Calibre: 20  2 pies: 4.54  3 pies: 6.8  4 pies: 9.07
+ Calibre: 22  2 pies: 3.81  3 pies: 5.71  4 pies: 7.61
+ Calibre: 24  2 pies: 2.71  3 pies: 4.07  4 pies: 5.42
+ Calibre: 26  2 pies: 2.32  3 pies: 3.52  4 pies: 4.63
+ Calibre: 28  2 pies: 1.98  3 pies: 2.97  4 pies: 3.96
+ Calibre: 30  2 pies: 1.63  3 pies: 2.44  4 pies: 3.26
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6284</h1>
+
+R E N G L O N : 4        -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 5        -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 6        -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 4          -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+                -                -  Se crea objeto: pieza567
+                -                -  Se crea objeto: rollo1
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.40
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 0
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+R E N G L O N: 5          -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 6          -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6284</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6570</h1>
+
+R E N G L O N : 2        -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: IND-0812-RD -  Chirlato 1/2
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 2          -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+                -                -  Se crea objeto: pieza475
+
+Producto: IND-0812-RD -  Chirlato 1/2
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000.00
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 1550
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6570</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2019-11-23 17:39:02    -              -- C O M I E N Z A ---------------------------------------------
+
+ Calibre: 18  2 pies: 5.98  3 pies: 8.97  4 pies: 11.96
+ Calibre: 20  2 pies: 4.54  3 pies: 6.8  4 pies: 9.07
+ Calibre: 22  2 pies: 3.81  3 pies: 5.71  4 pies: 7.61
+ Calibre: 24  2 pies: 2.71  3 pies: 4.07  4 pies: 5.42
+ Calibre: 26  2 pies: 2.32  3 pies: 3.52  4 pies: 4.63
+ Calibre: 28  2 pies: 1.98  3 pies: 2.97  4 pies: 3.96
+ Calibre: 30  2 pies: 1.63  3 pies: 2.44  4 pies: 3.26
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6284</h1>
+
+R E N G L O N : 4        -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 5        -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 6        -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 4          -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+                -                -  Se crea objeto: pieza567
+                -                -  Se crea objeto: rollo1
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.40
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 0
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+R E N G L O N: 5          -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 6          -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6284</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6570</h1>
+
+R E N G L O N : 2        -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: IND-0812-RD -  Chirlato 1/2
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 2          -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+                -                -  Se crea objeto: pieza475
+
+Producto: IND-0812-RD -  Chirlato 1/2
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000.00
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 1550
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6570</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2019-11-23 17:40:01    -              -- C O M I E N Z A ---------------------------------------------
+
+ Calibre: 18  2 pies: 5.98  3 pies: 8.97  4 pies: 11.96
+ Calibre: 20  2 pies: 4.54  3 pies: 6.8  4 pies: 9.07
+ Calibre: 22  2 pies: 3.81  3 pies: 5.71  4 pies: 7.61
+ Calibre: 24  2 pies: 2.71  3 pies: 4.07  4 pies: 5.42
+ Calibre: 26  2 pies: 2.32  3 pies: 3.52  4 pies: 4.63
+ Calibre: 28  2 pies: 1.98  3 pies: 2.97  4 pies: 3.96
+ Calibre: 30  2 pies: 1.63  3 pies: 2.44  4 pies: 3.26
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6284</h1>
+
+R E N G L O N : 4        -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 5        -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 6        -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 4          -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+                -                -  Se crea objeto: pieza567
+                -                -  Se crea objeto: rollo1
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.40
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 0
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+R E N G L O N: 5          -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 6          -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6284</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6570</h1>
+
+R E N G L O N : 2        -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: IND-0812-RD -  Chirlato 1/2
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 2          -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+                -                -  Se crea objeto: pieza475
+
+Producto: IND-0812-RD -  Chirlato 1/2
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000.00
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 1550
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6570</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2019-11-23 17:41:01    -              -- C O M I E N Z A ---------------------------------------------
+
+ Calibre: 18  2 pies: 5.98  3 pies: 8.97  4 pies: 11.96
+ Calibre: 20  2 pies: 4.54  3 pies: 6.8  4 pies: 9.07
+ Calibre: 22  2 pies: 3.81  3 pies: 5.71  4 pies: 7.61
+ Calibre: 24  2 pies: 2.71  3 pies: 4.07  4 pies: 5.42
+ Calibre: 26  2 pies: 2.32  3 pies: 3.52  4 pies: 4.63
+ Calibre: 28  2 pies: 1.98  3 pies: 2.97  4 pies: 3.96
+ Calibre: 30  2 pies: 1.63  3 pies: 2.44  4 pies: 3.26
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6284</h1>
+
+R E N G L O N : 4        -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 5        -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 6        -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 4          -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+                -                -  Se crea objeto: pieza567
+                -                -  Se crea objeto: rollo1
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.40
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 0
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+R E N G L O N: 5          -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 6          -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6284</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6570</h1>
+
+R E N G L O N : 2        -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: IND-0812-RD -  Chirlato 1/2
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 2          -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+                -                -  Se crea objeto: pieza475
+
+Producto: IND-0812-RD -  Chirlato 1/2
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000.00
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 1550
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6570</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2019-11-23 17:42:02    -              -- C O M I E N Z A ---------------------------------------------
+
+ Calibre: 18  2 pies: 5.98  3 pies: 8.97  4 pies: 11.96
+ Calibre: 20  2 pies: 4.54  3 pies: 6.8  4 pies: 9.07
+ Calibre: 22  2 pies: 3.81  3 pies: 5.71  4 pies: 7.61
+ Calibre: 24  2 pies: 2.71  3 pies: 4.07  4 pies: 5.42
+ Calibre: 26  2 pies: 2.32  3 pies: 3.52  4 pies: 4.63
+ Calibre: 28  2 pies: 1.98  3 pies: 2.97  4 pies: 3.96
+ Calibre: 30  2 pies: 1.63  3 pies: 2.44  4 pies: 3.26
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6284</h1>
+
+R E N G L O N : 4        -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 5        -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28.4
+    =>=>  Quitamos de Inventario 
+R E N G L O N : 6        -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 28
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 4          -idPedidoDetalle: 15464    -idProducto: 567    -partida: 4.00    -cantidad: 8.10    -cantidadReal: 8.10
+
+                -                -  Se crea objeto: pieza567
+                -                -  Se crea objeto: rollo1
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 0.00        Apartado: 0
+   SACAR => 32.40
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 0
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+R E N G L O N: 5          -idPedidoDetalle: 15465    -idProducto: 567    -partida: 4.00    -cantidad: 7.10    -cantidadReal: 7.10
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+R E N G L O N: 6          -idPedidoDetalle: 15466    -idProducto: 567    -partida: 4.00    -cantidad: 7.00    -cantidadReal: 7.00
+
+
+Producto: LR-101 POLN -  LAMINA R-101 TIZACRIL POLIESTER METRO LINEAL
+ idRollo => 1
+   --////////////////>  PRODUCTO NEGADO, otro pedido ya no alcanz� a surtirse, no se verifica producto
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6284</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+INICIO Pedido: <h1>6570</h1>
+
+R E N G L O N : 2        -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+Producto: IND-0812-RD -  Chirlato 1/2
+idRollo => 1
+
+MERCANCIA SE SACA DE   I N V E N T A R I O
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000
+    =>=>  Quitamos de Inventario 
+
+// + + + + +
+//  Comenzamos Explosion
+// + + + + +
+
+
+R E N G L O N: 2          -idPedidoDetalle: 16250    -idProducto: 475    -partida: 2000.00    -cantidad: 1.00    -cantidadReal: 1.00
+
+                -                -  Se crea objeto: pieza475
+
+Producto: IND-0812-RD -  Chirlato 1/2
+ idRollo => 1
+
+SACAR DE   I N V E N T A R I O 
+   Producto Existencia: 3550.00        Apartado: 2000
+   SACAR => 2000.00
+    =>=>  Quitamos de Inventario 
+ --- --- => DeDondeSacar: 1550
+ **------- >  no alcanza a salir la mercanc�a, no se puede proceder con este Pedido
+   }}}}}}}}}}}}}}}}}}      Se Negar� Producto para futura Explosi�n
+
+ - - - - - R O L L B A C K  - - - - -
+ - - - - - BUENO YA NO ES ROLLBACK  - - - - -
+
+
+ - Explotado SI, pero sin Exito -
+
+FIN Pedido: <h1>6570</h1>
+---------------------------------------------------------------------------------------------------------------------------------------------

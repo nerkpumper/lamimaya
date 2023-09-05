@@ -1,0 +1,1 @@
+ALTER TABLE `usuario` ADD `capturaPedido` ENUM('SI','NO') NOT NULL DEFAULT 'NO' AFTER `cobracomision`; 

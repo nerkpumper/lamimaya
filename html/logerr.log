@@ -1,0 +1,231 @@
+30 08 2021 16:08:45 [ln189][SELECT pedido.id_usuario_capturado, usuario.nombre, SUM(pedido.total)as total, (SELECT SUM(total) FROM `pedido` where fecha_capturado >= curdate() and pedido.estado <> 'CANCELADO')as totalDia, COUNT(idPedido)numPedidos, COUNT(DISTINCT(idCliente))numClientes FROM pedido INNER JOIN usuario on pedido.id_usuario_capturado = usuario.idUsuario WHERE fecha_capturado >= curdate() and pedido.estado <> 'CANCELADO' GROUP BY usuario.nombre ORDER BY total desc][Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'galvamex08.pedido.id_usuario_capturado' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by]
+30 08 2021 16:08:50 [ln189][select distinct tipoprecio, desarrollo from precioxdobles order by idPrecioXDobles;][Expression #1 of ORDER BY clause is not in SELECT list, references column 'galvamex08.precioxdobles.idPrecioXDobles' which is not in SELECT list; this is incompatible with DISTINCT]
+30 08 2021 16:08:47 [ln189][select distinct tipoprecio, desarrollo from precioxdobles order by idPrecioXDobles;][Expression #1 of ORDER BY clause is not in SELECT list, references column 'galvamex08.precioxdobles.idPrecioXDobles' which is not in SELECT list; this is incompatible with DISTINCT]
+30 08 2021 16:08:56 [ln189][select distinct tipoprecio, desarrollo from precioxdobles order by idPrecioXDobles;][Expression #1 of ORDER BY clause is not in SELECT list, references column 'galvamex08.precioxdobles.idPrecioXDobles' which is not in SELECT list; this is incompatible with DISTINCT]
+30 08 2021 16:08:17 [ln189][select distinct tipoprecio, desarrollo from precioxdobles order by idPrecioXDobles;][Expression #1 of ORDER BY clause is not in SELECT list, references column 'galvamex08.precioxdobles.idPrecioXDobles' which is not in SELECT list; this is incompatible with DISTINCT]
+<<<<<<< HEAD
+26 09 2021 12:09:33 [ModeloBasePedido:ln61][SELECT pd.idPedido, pd.idPedidoDetalle, pd.renglon as detRenglon,
+						 pd.idProducto as detIdProducto,
+						 vp.codigo as proCodigo, vp.longitud as proLongitud, vp.idTipoProducto as proIdTipoProducto,
+					     vp.tipoProducto as proTipoProducto, vp.shortTipoProducto as proShortTipoProducto,
+						 vp.idAplicacion as proIdAplicacion, vp.aplicacion as proAplicacion, vp.idMaterial as proIdMaterial,
+					     vp.material as proMaterial,						 
+						 vp.idRollo as proIdRollo, vp.rolloCodigo, vp.rolloIdMaterial, vp.rolloMaterial, vp.rolloShortMaterial, vp.rolloIdProveedor, vp.rolloProveedor, vp.rolloShortProveedor,
+						 vp.rolloCalibre, vp.rolloPies, vp.rolloDescripcion,
+						 vp.idUnidad as proIdUnidad, vp.unidad as proUnidad, vp.shortUnidad as proShortUnidad, vp.calibre as proCalibre, vp.descauto as proDescripcion,
+						 vp.existencia as proExistencia, vp.tipoPrecio as proTipoPrecio, vp.isRango as proIsRango, vp.isRollo as proIsRollo, vp.estado as proEstado,
+                         pd.idRolloBase molIdRollo, vrmol.codigo rolloMolduraCodigo, vrmol.descauto rolloMolduraDesc,
+						 pd.tipoPrecio as detTipoPrecio, pd.partida as detPartida, pd.cantidad as detCantidad, pd.cantidadReal as detCantidadReal, pd.desarrollo as detDesarrollo,
+						 pd.dobleces as detDobleces, pd.precioUnitario as detPrecioUnitario, pd.total as detTotal,
+					     pd.listo_para_producir, pd.despachado,
+                         pd.totalExplotar, pd.totalExplotado, pd.explotadoReal,
+                         pd.fecha_despachado, pd.id_usuario_despachado, IFNULL(despachado.nombre,'') as despachadoNombre, IFNULL(despachado.apellidoPaterno,'') as despachadoAPaterno, IFNULL(despachado.apellidoMaterno,'') as despachadoAMaterno,
+                         pd.molLaminasATomar, pd.molIsScrap, pd.molTotalcmScrap, pd.molDescMaquila,
+                         isPedidodetalleParcial(pd.idPedidoDetalle) isParcial,
+                         pdc.idPedidoDetalleColocacion, pdc.idinventariosucursal colocaIdInventarioSucursal, s.idSucursal, s.nombre sucursalNombre, 
+   						 pdc.cantidad colocaCantidad, pdc.cantidadsurtida colocaCantidadSurtida, invsuc.existencia sucursalExistencia, invsuc.apartado sucursalApartado
+					FROM pedidodetalle as pd
+					INNER JOIN viewproductos as vp
+					   ON vp.idProducto = pd.idProducto
+			        LEFT JOIN viewrollos as vrmol
+					   ON vrmol.idRollo = pd.idRolloBase
+					LEFT JOIN usuario as despachado
+					   ON despachado.idUsuario = pd.id_usuario_despachado
+                    INNER JOIN pedidodetallecolocacion pdc 
+                       ON pd.idpedidodetalle = pdc.idpedidodetalle
+					INNER JOIN sucursal s 
+                       ON pdc.idsucursal = s.idsucursal
+                     INNER  join inventariosucursal invsuc 
+                       ON pd.idproducto = invsuc.idproducto   
+                      AND invsuc.idSucursal =                    
+					WHERE pd.idPedidoDetalle = 66622629 AND pdc.idSucursal =  ][You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE pd.idPedidoDetalle = 66622629 AND pdc.idSucursal =' at line 35]
+26 09 2021 12:09:33 [ln189][SELECT fecha_movimiento, remisionrollo.norollo, cantidad, observaciones FROM invzmovrollo inner join remisionrollo on remisionrollo.idremisionrollo = invzmovrollo.idremisionrollo WHERE idPedidoDetalle =  AND movimiento = 'SALIDA' AND salidaDespacho = 'SI' ][You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND movimiento = 'SALIDA' AND salidaDespacho = 'SI'' at line 1]
+=======
+28 09 2021 17:09:36 [ln189][SELECT cotizacion.idCotizacion, cotizacion.idCliente, cotizacion.total,
+										getSaldoReciboDineroTotalAmparar(cotizacion.idCliente, DATE_FORMAT(cotizacion.fecha_capturado, '%Y-%m-%d'))  saldoaamparar,
+										DATEDIFF(CURDATE(), cotizacion.fecha_capturado) AS days,                                         
+				                       cotizacion.fecha_capturado, cotizacion.recogeentrega, cotizacion.id_usuario_autorizaimpresion,
+									   concat(c.nombre, ' ' ,c.apellidos) as nombreCliente,
+									   concat(u.nombre, ' ' ,u.apellidoPaterno, ' ', u.apellidoMaterno) as nombrePromotor,
+									   cotizacion.rangoCliente
+				           FROM cotizacion  INNER JOIN cliente as c ON c.idCliente = cotizacion.idCliente 
+						    INNER JOIN usuario as u ON u.idUsuario = cotizacion.id_usuario_capturado	
+						   WHERE  LIMIT(10)  ORDER BY cotizacion.idCotizacion asc][You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT(10)  ORDER BY cotizacion.idCotizacion asc' at line 10]
+28 09 2021 17:09:12 [ln189][SELECT cotizacion.idCotizacion, cotizacion.idCliente, cotizacion.total,
+										getSaldoReciboDineroTotalAmparar(cotizacion.idCliente, DATE_FORMAT(cotizacion.fecha_capturado, '%Y-%m-%d'))  saldoaamparar,
+										DATEDIFF(CURDATE(), cotizacion.fecha_capturado) AS days,                                         
+				                       cotizacion.fecha_capturado, cotizacion.recogeentrega, cotizacion.id_usuario_autorizaimpresion,
+									   concat(c.nombre, ' ' ,c.apellidos) as nombreCliente,
+									   concat(u.nombre, ' ' ,u.apellidoPaterno, ' ', u.apellidoMaterno) as nombrePromotor,
+									   cotizacion.rangoCliente
+				           FROM cotizacion  INNER JOIN cliente as c ON c.idCliente = cotizacion.idCliente 
+						    INNER JOIN usuario as u ON u.idUsuario = cotizacion.id_usuario_capturado	
+						   ORDER BY cotizacion.idCotizacion asc  LIMIT(10) ][You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(10)' at line 10]
+>>>>>>> jurrutia-fix-cotizaciones-list
+31 10 2021 11:10:02 [ln189][0  ORDER BY idPedido desc][You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0  ORDER BY idPedido desc' at line 1]
+31 10 2021 11:10:04 [ln189][0  ORDER BY idPedido desc][You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0  ORDER BY idPedido desc' at line 1]
+31 10 2021 11:10:41 [ln189][0][You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0' at line 1]
+31 10 2021 11:10:43 [ln189][0][You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0' at line 1]
+31 10 2021 18:10:54 [INSERT INTO pushnotifica (idProvoca,
+				                                              idPara,
+				                                              tipo,
+				                                              tema,
+				                                              contenido,
+				                                              acepta,
+				                                              refint,
+				                                              refstr,
+				                                              fecha,
+				                                              enviado)
+						VALUES('2',
+				               '2',
+				               '1',
+				               'Sucursal con Efectivo para retirar',
+				               'La Sucursal TORRES LANDA cuenta con la cantidad de $26246.83 en Efectivo. Es sugerible para esta cantidad pasar a realizar un corte de caja.',
+				               'SINRESPUESTA',
+				               '0',
+				               '',
+				               '0000-00-00 00:00:00',
+				               'SI')][Incorrect datetime value: '0000-00-00 00:00:00' for column 'fecha' at row 1][ModeloBasePushnotifica::Insertar]
+31 10 2021 18:10:54 [INSERT INTO pushnotifica (idProvoca,
+				                                              idPara,
+				                                              tipo,
+				                                              tema,
+				                                              contenido,
+				                                              acepta,
+				                                              refint,
+				                                              refstr,
+				                                              fecha,
+				                                              enviado)
+						VALUES('2',
+				               '6',
+				               '1',
+				               'Sucursal con Efectivo para retirar',
+				               'La Sucursal TORRES LANDA cuenta con la cantidad de $26246.83 en Efectivo. Es sugerible para esta cantidad pasar a realizar un corte de caja.',
+				               'SINRESPUESTA',
+				               '0',
+				               '',
+				               '0000-00-00 00:00:00',
+				               'SI')][Incorrect datetime value: '0000-00-00 00:00:00' for column 'fecha' at row 1][ModeloBasePushnotifica::Insertar]
+01 11 2021 01:11:00 [ln189][SELECT COUNT(*) cuantos 
+						FROM (
+							SELECT pedido.idCliente  ORDER BY idpedido DESC ) AS datos;][Unknown table 'pedido' in field list]
+01 11 2021 01:11:10 [ln189][SELECT COUNT(*) cuantos 
+						FROM (
+							SELECT pedido.idCliente  ORDER BY idpedido DESC ) AS datos;][Unknown table 'pedido' in field list]
+01 11 2021 01:11:10 [ln189][SELECT datos.*, getTotalCargosPedido(idPedido) as cargos, getTotalAbonosPedido(idPedido) as abonos, 
+						getSaldoPedido(idPedido) as saldo 
+						FROM (
+							SELECT pedido.idCliente, idPedido, fecha_capturado, pedido.estado, total, descuento, 
+											concat(cliente.nombre, ' ', cliente.apellidos) as nombreCliente, 
+											cliente.idUsuarioPromotor   ORDER BY idpedido DESC LIMIT 10 OFFSET 30) AS datos;][Unknown table 'pedido' in field list]
+01 11 2021 01:11:32 [ln189][SELECT COUNT(*) cuantos 
+						FROM (
+							SELECT pedido.idCliente  ORDER BY idpedido DESC ) AS datos;][Unknown table 'pedido' in field list]
+01 11 2021 01:11:37 [ln189][SELECT COUNT(*) cuantos 
+						FROM (
+							SELECT pedido.idCliente FROM cliente
+							INNER JOIN pedido ON cliente.idCliente = pedido.idCliente
+							WHERE idUsuarioPromotor = 10 AND saldo > 0 and estado <> 'ENTREGADO' ORDER BY idpedido DESC ) AS datos;][Column 'estado' in where clause is ambiguous]
+01 11 2021 01:11:37 [ln189][SELECT datos.*, getTotalCargosPedido(idPedido) as cargos, getTotalAbonosPedido(idPedido) as abonos, 
+						getSaldoPedido(idPedido) as saldo 
+						FROM (
+							SELECT pedido.idCliente, idPedido, fecha_capturado, pedido.estado, total, descuento, 
+											concat(cliente.nombre, ' ', cliente.apellidos) as nombreCliente, 
+											cliente.idUsuarioPromotor  FROM cliente
+							INNER JOIN pedido ON cliente.idCliente = pedido.idCliente
+							WHERE idUsuarioPromotor = 10 AND saldo > 0 and estado <> 'ENTREGADO' ORDER BY idpedido DESC LIMIT 10 OFFSET 0) AS datos;][Column 'estado' in where clause is ambiguous]
+01 11 2021 01:11:47 [ln189][SELECT COUNT(*) cuantos 
+						FROM (
+							SELECT pedido.idCliente FROM cliente
+							INNER JOIN pedido ON cliente.idCliente = pedido.idCliente
+							WHERE idUsuarioPromotor = 10 AND saldo > 0 and estado <> 'ENTREGADO' ORDER BY idpedido DESC ) AS datos;][Column 'estado' in where clause is ambiguous]
+01 11 2021 01:11:47 [ln189][SELECT datos.*, getTotalCargosPedido(idPedido) as cargos, getTotalAbonosPedido(idPedido) as abonos, 
+						getSaldoPedido(idPedido) as saldo 
+						FROM (
+							SELECT pedido.idCliente, idPedido, fecha_capturado, pedido.estado, total, descuento, 
+											concat(cliente.nombre, ' ', cliente.apellidos) as nombreCliente, 
+											cliente.idUsuarioPromotor  FROM cliente
+							INNER JOIN pedido ON cliente.idCliente = pedido.idCliente
+							WHERE idUsuarioPromotor = 10 AND saldo > 0 and estado <> 'ENTREGADO' ORDER BY idpedido DESC LIMIT 10 OFFSET 0) AS datos;][Column 'estado' in where clause is ambiguous]
+01 11 2021 01:11:50 [ln189][SELECT COUNT(*) cuantos 
+						FROM (
+							SELECT pedido.idCliente FROM cliente
+							INNER JOIN pedido ON cliente.idCliente = pedido.idCliente
+							WHERE idUsuarioPromotor = 10 AND saldo > 0 and estado = 'ENTREGADO'  ORDER BY idpedido DESC ) AS datos;][Column 'estado' in where clause is ambiguous]
+01 11 2021 01:11:50 [ln189][SELECT datos.*, getTotalCargosPedido(idPedido) as cargos, getTotalAbonosPedido(idPedido) as abonos, 
+						getSaldoPedido(idPedido) as saldo 
+						FROM (
+							SELECT pedido.idCliente, idPedido, fecha_capturado, pedido.estado, total, descuento, 
+											concat(cliente.nombre, ' ', cliente.apellidos) as nombreCliente, 
+											cliente.idUsuarioPromotor  FROM cliente
+							INNER JOIN pedido ON cliente.idCliente = pedido.idCliente
+							WHERE idUsuarioPromotor = 10 AND saldo > 0 and estado = 'ENTREGADO'  ORDER BY idpedido DESC LIMIT 10 OFFSET 0) AS datos;][Column 'estado' in where clause is ambiguous]
+01 11 2021 01:11:24 [ln189][SELECT COUNT(*) cuantos 
+						FROM (
+							SELECT pedido.idCliente FROM cliente
+							INNER JOIN pedido ON cliente.idCliente = pedido.idCliente
+							WHERE idUsuarioPromotor = 10 AND saldo > 0 and estado = 'ENTREGADO'  ORDER BY idpedido DESC ) AS datos;][Column 'estado' in where clause is ambiguous]
+01 11 2021 01:11:24 [ln189][SELECT datos.*, getTotalCargosPedido(idPedido) as cargos, getTotalAbonosPedido(idPedido) as abonos, 
+						getSaldoPedido(idPedido) as saldo 
+						FROM (
+							SELECT pedido.idCliente, idPedido, fecha_capturado, pedido.estado, total, descuento, 
+											concat(cliente.nombre, ' ', cliente.apellidos) as nombreCliente, 
+											cliente.idUsuarioPromotor  FROM cliente
+							INNER JOIN pedido ON cliente.idCliente = pedido.idCliente
+							WHERE idUsuarioPromotor = 10 AND saldo > 0 and estado = 'ENTREGADO'  ORDER BY idpedido DESC LIMIT 10 OFFSET 0) AS datos;][Column 'estado' in where clause is ambiguous]
+01 11 2021 01:11:30 [ln189][SELECT COUNT(*) cuantos 
+						FROM (
+							SELECT pedido.idCliente FROM cliente
+							INNER JOIN pedido ON cliente.idCliente = pedido.idCliente
+							WHERE idUsuarioPromotor = 10 AND saldo > 0 and estado <> 'ENTREGADO' ORDER BY idpedido DESC ) AS datos;][Column 'estado' in where clause is ambiguous]
+01 11 2021 01:11:30 [ln189][SELECT datos.*, getTotalCargosPedido(idPedido) as cargos, getTotalAbonosPedido(idPedido) as abonos, 
+						getSaldoPedido(idPedido) as saldo 
+						FROM (
+							SELECT pedido.idCliente, idPedido, fecha_capturado, pedido.estado, total, descuento, 
+											concat(cliente.nombre, ' ', cliente.apellidos) as nombreCliente, 
+											cliente.idUsuarioPromotor  FROM cliente
+							INNER JOIN pedido ON cliente.idCliente = pedido.idCliente
+							WHERE idUsuarioPromotor = 10 AND saldo > 0 and estado <> 'ENTREGADO' ORDER BY idpedido DESC LIMIT 10 OFFSET 0) AS datos;][Column 'estado' in where clause is ambiguous]
+01 11 2021 01:11:47 [ln189][SELECT COUNT(*) cuantos 
+						FROM (
+							SELECT pedido.idCliente FROM cliente
+							INNER JOIN pedido ON cliente.idCliente = pedido.idCliente
+							WHERE idUsuarioPromotor = 10 AND saldo > 0 and estado = 'ENTREGADO'  ORDER BY idpedido DESC ) AS datos;][Column 'estado' in where clause is ambiguous]
+24 11 2021 15:11:47 [ln51][][]
+24 11 2021 15:11:09 [ln51][][]
+24 11 2021 15:11:27 [ln51][][]
+24 11 2021 15:11:46 [ln51][][]
+18 01 2022 01:01:26 [ln189][SELECT pedido.idCliente, concat(c.nombre, ' ' ,c.apellidos) as nombreCliente, concat(u.nombre, ' ' ,u.apellidoPaterno, ' ' , u.apellidoMaterno) as nombrePromotor, SUM(pedido.total) total  FROM pedido INNER JOIN cliente as c ON c.idCliente = pedido.idCliente
+						 WHERE  (pedido.id_usuario_capturado = 10 OR  idUsuarioPromotor = 10 )  AND pedido.estado <> 'CANCELADO' AND date_format(pedido.fecha_capturado, '%Y-%m-%d') BETWEEN '2021-01-18' AND '2022-07-18'  GROUP BY  3 DESC  ORDER BY idPedido][Unknown column 'u.nombre' in 'field list']
+18 01 2022 01:01:49 [ln189][SELECT pedido.idCliente, concat(c.nombre, ' ' ,c.apellidos) as nombreCliente, SUM(pedido.total) total  FROM pedido INNER JOIN cliente as c ON c.idCliente = pedido.idCliente
+						 WHERE  (pedido.id_usuario_capturado = 10 OR  idUsuarioPromotor = 10 )  AND pedido.estado <> 'CANCELADO' AND date_format(pedido.fecha_capturado, '%Y-%m-%d') BETWEEN '2021-01-18' AND '2022-07-18'  GROUP BY  3 DESC  ORDER BY idPedido][Can't group on 'total']
+18 01 2022 01:01:41 [ln189][SELECT pedido.idCliente, concat(c.nombre, ' ' ,c.apellidos) as nombreCliente, SUM(pedido.total) total  FROM pedido INNER JOIN cliente as c ON c.idCliente = pedido.idCliente
+						 WHERE  (pedido.id_usuario_capturado = 10 OR  idUsuarioPromotor = 10 )  AND pedido.estado <> 'CANCELADO' AND date_format(pedido.fecha_capturado, '%Y-%m-%d') BETWEEN '2021-01-18' AND '2022-07-18'  GROUP BY  3 DESC  ORDER BY idPedido][Can't group on 'total']
+18 01 2022 01:01:36 [ln189][SELECT pedido.idCliente, concat(c.nombre, ' ' ,c.apellidos) as nombreCliente, SUM(pedido.total) total  FROM pedido INNER JOIN cliente as c ON c.idCliente = pedido.idCliente
+						 WHERE  (pedido.id_usuario_capturado = 10 OR  idUsuarioPromotor = 10 )  AND pedido.estado <> 'CANCELADO' AND date_format(pedido.fecha_capturado, '%Y-%m-%d') BETWEEN '2021-01-18' AND '2022-07-18'  GROUP BY  3 DESC  ORDER BY idPedido][Can't group on 'total']
+18 01 2022 01:01:26 [ln189][SELECT pedido.idCliente, concat(c.nombre, ' ' ,c.apellidos) as nombreCliente, SUM(pedido.total) total  FROM pedido INNER JOIN cliente as c ON c.idCliente = pedido.idCliente
+						 WHERE  (pedido.id_usuario_capturado = 10 OR  idUsuarioPromotor = 10 )  AND pedido.estado <> 'CANCELADO' AND date_format(pedido.fecha_capturado, '%Y-%m-%d') BETWEEN '2021-01-18' AND '2022-07-18'  GROUP BY  3 DESC  ORDER BY idPedido][Can't group on 'total']
+31 03 2022 12:03:34 [ln189][SELECT idConceptoComisionAnticipada,nombre,estado,fecha_creacion,idUsuarioCrea,fecha_modifica,idUsuarioModifica,fecha_baja,idUsuarioBaja FROM conceptocomisionanticipada WHERE  idConceptoComisionAnticipada > 2 ][Table 'galvamex08.conceptocomisionanticipada' doesn't exist]
+06 04 2022 13:04:10 [ln189][SELECT pedido.idPedido, pedido.idCjliente, pedido.total, pedido.estado, pedido.observacionAutoriza, pedido.explotado, pedido.explotadook, pedido.despachado, pedido.fecha_autorizado, pedidoPuedeTerminarse(pedido.idPedido) as todosValesSalida, pedidoPuedeProducirse(pedido.idPedido) as puedeProducirse, pedido.fecha_capturado, pedido.recogeentrega, concat(c.nombre, ' ' ,c.apellidos) as nombreCliente, concat(u.nombre, ' ' ,u.apellidoPaterno, ' ' , u.apellidoMaterno) as nombrePromotor, pedido.saldada, pedido.saldo,
+								pedido.id_usuario_capturado idUsuarioCaptura, c.idUsuarioPromotor   FROM pedido INNER JOIN cliente as c ON c.idCliente = pedido.idCliente
+							INNER JOIN usuario as u ON u.idUsuario = c.idUsuarioPromotor
+							 WHERE  (pedido.id_usuario_capturado = 18 or idUsuarioPromotor = 18)  AND pedido.estado not in ('CANCELADO', 'CAPTURADO')   AND date_format(pedido.fecha_capturado, '%Y-%m') = '2022-04'  ORDER BY idPedido][Unknown column 'pedido.idCjliente' in 'field list']
+06 04 2022 13:04:18 [ln189][SELECT pedido.idPedido, pedido.idCjliente, pedido.total, pedido.estado, pedido.observacionAutoriza, pedido.explotado, pedido.explotadook, pedido.despachado, pedido.fecha_autorizado, pedidoPuedeTerminarse(pedido.idPedido) as todosValesSalida, pedidoPuedeProducirse(pedido.idPedido) as puedeProducirse, pedido.fecha_capturado, pedido.recogeentrega, concat(c.nombre, ' ' ,c.apellidos) as nombreCliente, concat(u.nombre, ' ' ,u.apellidoPaterno, ' ' , u.apellidoMaterno) as nombrePromotor, pedido.saldada, pedido.saldo,
+								pedido.id_usuario_capturado idUsuarioCaptura, c.idUsuarioPromotor   FROM pedido INNER JOIN cliente as c ON c.idCliente = pedido.idCliente
+							INNER JOIN usuario as u ON u.idUsuario = c.idUsuarioPromotor
+							 WHERE  (pedido.id_usuario_capturado = 18 or idUsuarioPromotor = 18)  AND pedido.estado not in ('CANCELADO', 'CAPTURADO')   AND date_format(pedido.fecha_capturado, '%Y-%m') = '2022-03'  ORDER BY idPedido][Unknown column 'pedido.idCjliente' in 'field list']
+06 04 2022 13:04:21 [ln189][SELECT pedido.idPedido, pedido.idCjliente, pedido.total, pedido.estado, pedido.observacionAutoriza, pedido.explotado, pedido.explotadook, pedido.despachado, pedido.fecha_autorizado, pedidoPuedeTerminarse(pedido.idPedido) as todosValesSalida, pedidoPuedeProducirse(pedido.idPedido) as puedeProducirse, pedido.fecha_capturado, pedido.recogeentrega, concat(c.nombre, ' ' ,c.apellidos) as nombreCliente, concat(u.nombre, ' ' ,u.apellidoPaterno, ' ' , u.apellidoMaterno) as nombrePromotor, pedido.saldada, pedido.saldo,
+								pedido.id_usuario_capturado idUsuarioCaptura, c.idUsuarioPromotor   FROM pedido INNER JOIN cliente as c ON c.idCliente = pedido.idCliente
+							INNER JOIN usuario as u ON u.idUsuario = c.idUsuarioPromotor
+							 WHERE  (pedido.id_usuario_capturado = 18 or idUsuarioPromotor = 18)  AND pedido.estado not in ('CANCELADO', 'CAPTURADO')   AND date_format(pedido.fecha_capturado, '%Y-%m') = '2022-03'  ORDER BY idPedido][Unknown column 'pedido.idCjliente' in 'field list']
+06 04 2022 13:04:25 [ln189][SELECT pedido.idPedido, pedido.idCjliente, pedido.total, pedido.estado, pedido.observacionAutoriza, pedido.explotado, pedido.explotadook, pedido.despachado, pedido.fecha_autorizado, pedidoPuedeTerminarse(pedido.idPedido) as todosValesSalida, pedidoPuedeProducirse(pedido.idPedido) as puedeProducirse, pedido.fecha_capturado, pedido.recogeentrega, concat(c.nombre, ' ' ,c.apellidos) as nombreCliente, concat(u.nombre, ' ' ,u.apellidoPaterno, ' ' , u.apellidoMaterno) as nombrePromotor, pedido.saldada, pedido.saldo,
+								pedido.id_usuario_capturado idUsuarioCaptura, c.idUsuarioPromotor   FROM pedido INNER JOIN cliente as c ON c.idCliente = pedido.idCliente
+							INNER JOIN usuario as u ON u.idUsuario = c.idUsuarioPromotor
+							 WHERE  (pedido.id_usuario_capturado = 18 or idUsuarioPromotor = 18)  AND pedido.estado not in ('CANCELADO', 'CAPTURADO')   AND date_format(pedido.fecha_capturado, '%Y-%m') = '2022-02'  ORDER BY idPedido][Unknown column 'pedido.idCjliente' in 'field list']
+06 04 2022 13:04:28 [ln189][SELECT pedido.idPedido, pedido.idCjliente, pedido.total, pedido.estado, pedido.observacionAutoriza, pedido.explotado, pedido.explotadook, pedido.despachado, pedido.fecha_autorizado, pedidoPuedeTerminarse(pedido.idPedido) as todosValesSalida, pedidoPuedeProducirse(pedido.idPedido) as puedeProducirse, pedido.fecha_capturado, pedido.recogeentrega, concat(c.nombre, ' ' ,c.apellidos) as nombreCliente, concat(u.nombre, ' ' ,u.apellidoPaterno, ' ' , u.apellidoMaterno) as nombrePromotor, pedido.saldada, pedido.saldo,
+								pedido.id_usuario_capturado idUsuarioCaptura, c.idUsuarioPromotor   FROM pedido INNER JOIN cliente as c ON c.idCliente = pedido.idCliente
+							INNER JOIN usuario as u ON u.idUsuario = c.idUsuarioPromotor
+							 WHERE  (pedido.id_usuario_capturado = 18 or idUsuarioPromotor = 18)  AND pedido.estado not in ('CANCELADO', 'CAPTURADO')   AND date_format(pedido.fecha_capturado, '%Y-%m') = '2022-01'  ORDER BY idPedido][Unknown column 'pedido.idCjliente' in 'field list']
+06 04 2022 16:04:49 [ln216][SELECT idRegimenFiscal as value, concat(codigo,' - ',descripcion) as theoption  FROM usocfdi][Unknown column 'idRegimenFiscal' in 'field list']
+06 04 2022 17:04:36 [ln216][SELECT idRegimenFiscal as value, concat(codigo,' - ',descripcion) as theoption  FROM usocfdi][Unknown column 'idRegimenFiscal' in 'field list']
+06 04 2022 17:04:27 [ln216][SELECT idRegimenFiscal as value, concat(codigo,' - ',descripcion) as theoption  FROM usocfdi][Unknown column 'idRegimenFiscal' in 'field list']
