@@ -17,7 +17,7 @@ pipelines:
           - git config git-ftp.syncroot include/
           - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/applamimaya/include
           - git config git-ftp.syncroot deployment/prod/include/
-          - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/public_html/theapp
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/public_html/theapp
           - git config git-ftp.syncroot deployment/prod/conexion/
           - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/applamimaya/include/lib/Conexion
           - git config git-ftp.syncroot deployment/prod/constantes/
