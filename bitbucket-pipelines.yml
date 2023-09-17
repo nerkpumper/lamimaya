@@ -13,9 +13,9 @@ pipelines:
           - apt-get update
           - apt-get -qq install git-ftp
           - git config git-ftp.syncroot html/
-          - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/public_html/theapp    
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/public_html/theapp    
           - git config git-ftp.syncroot include/
-          - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/applamimaya/include
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/applamimaya/include
           - git config git-ftp.syncroot deployment/prod/include/
           - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/public_html/theapp
           - git config git-ftp.syncroot deployment/prod/conexion/
