@@ -6,5 +6,5 @@
 
 
 <div>
-	&copy; <?php echo date("Y")?> <a href="#"><span style="color:#44DD3F">Sistema Galvamex</span> by Juan Urrutia</a>
+	&copy; <?php echo date("Y")?> <a href="#"><span style="color:#44DD3F">Sistema Lamimaya</span> by Juan Urrutia</a>
 </div>

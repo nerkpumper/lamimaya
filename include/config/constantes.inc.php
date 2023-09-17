@@ -79,7 +79,7 @@
 
 
 
-	define("URL_BASE","http://localhost/galvamex74/html/");	
+	define("URL_BASE","http://localhost/lamimaya/html/");	
 
 	// define("URL_BASE","http://app.galvamex.com.mx/");
 

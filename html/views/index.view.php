@@ -14,7 +14,7 @@ $_showPageHeading = false;
 
 // 	$objSession->dumpObj();
 
-// 	$_SESSION['_objSession']=serialize($objSession);
+// 	$_SESSION['_lmobjSession']=serialize($objSession);
 $_addStyle = "<style>
 		.btn-file {
 	        position: relative;

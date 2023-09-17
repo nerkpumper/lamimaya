@@ -1,12 +1,12 @@
 <?php
 
-//  $username = 'root';
+ $username = 'root';
 
-// $password = '';
+$password = '';
 
-// $hostname = 'localhost';
+$hostname = 'localhost';
 
-// $database = 'galvamex08';
+$database = 'lamimaya';
 
 //-------------------------------
 // $username='mvtoolin';
@@ -19,14 +19,14 @@
 
 //-------------------
 
-$username='galvamex_uremote';
+// $username='galvamex_uremote';
 
-  $password='GalvaRemote#12358';
+//   $password='GalvaRemote#12358';
 
-  $hostname="67.222.140.68";
+//   $hostname="67.222.140.68";
 
-  // $database="galvamex_test";
-  $database = 'galvamex_appgalva';
+//   // $database="galvamex_test";
+//   $database = 'galvamex_appgalva';
 
 
 

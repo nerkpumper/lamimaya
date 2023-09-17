@@ -21,8 +21,8 @@
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
             <div>
-				<img alt="Galvamex" src="<?php echo URL_BASE . "img/galvalogo.jpeg";?>" style="width: 100%;">
-                <h2 class="">Acceso Galvamex</h2>
+				<img alt="Galvamex" src="<?php echo URL_BASE . "img/lamimayalogo.png";?>" style="width: 100%;">
+                <!-- <h2 class="">Lamimaya</h2> -->
 
             </div>
 <!--             <h3>Welcome to Company</h3> -->

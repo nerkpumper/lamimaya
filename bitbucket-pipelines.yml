@@ -13,30 +13,30 @@ pipelines:
           - apt-get update
           - apt-get -qq install git-ftp
           - git config git-ftp.syncroot html/
-          - git ftp push --user $GALVA_USERNAME --passwd $GALVA_PASSWORD ftp://ftp.galvamex.com/public_html/aplis    
+          - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/public_html/theapp    
           - git config git-ftp.syncroot include/
-          - git ftp push --user $GALVA_USERNAME --passwd $GALVA_PASSWORD ftp://ftp.galvamex.com/appgalvamex/include
+          - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/applamimaya/include
           - git config git-ftp.syncroot deployment/prod/include/
-          - git ftp push --user $GALVA_USERNAME --passwd $GALVA_PASSWORD ftp://ftp.galvamex.com/public_html/aplis
+          - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/public_html/theapp
           - git config git-ftp.syncroot deployment/prod/conexion/
-          - git ftp push --user $GALVA_USERNAME --passwd $GALVA_PASSWORD ftp://ftp.galvamex.com/appgalvamex/include/lib/Conexion
+          - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/applamimaya/include/lib/Conexion
           - git config git-ftp.syncroot deployment/prod/constantes/
-          - git ftp push --user $GALVA_USERNAME --passwd $GALVA_PASSWORD ftp://ftp.galvamex.com/appgalvamex/include/config
+          - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/applamimaya/include/config
           - git config git-ftp.syncroot deployment/prod/cron/
-          - git ftp push --user $GALVA_USERNAME --passwd $GALVA_PASSWORD ftp://ftp.galvamex.com/appgalvamex/include/cron            
+          - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/applamimaya/include/cron            
           
-          - git config git-ftp.syncroot html/
-          - git ftp push --user $GALVA_USERNAME --passwd $GALVA_PASSWORD ftp://ftp.galvamex.com/public_html/qagalvamex    
-          - git config git-ftp.syncroot include/
-          - git ftp push --user $GALVA_USERNAME --passwd $GALVA_PASSWORD ftp://ftp.galvamex.com/qagalvamex/include
-          - git config git-ftp.syncroot deployment/prod/include/
-          - git ftp push --user $GALVA_USERNAME --passwd $GALVA_PASSWORD ftp://ftp.galvamex.com/public_html/qagalvamex
-          - git config git-ftp.syncroot deployment/prod/conexion/
-          - git ftp push --user $GALVA_USERNAME --passwd $GALVA_PASSWORD ftp://ftp.galvamex.com/qagalvamex/include/lib/Conexion
-          - git config git-ftp.syncroot deployment/prod/constantes/
-          - git ftp push --user $GALVA_USERNAME --passwd $GALVA_PASSWORD ftp://ftp.galvamex.com/qagalvamex/include/config
-          - git config git-ftp.syncroot deployment/prod/cron/
-          - git ftp push --user $GALVA_USERNAME --passwd $GALVA_PASSWORD ftp://ftp.galvamex.com/qagalvamex/include/cron      
+          # - git config git-ftp.syncroot html/
+          # - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/public_html/qagalvamex    
+          # - git config git-ftp.syncroot include/
+          # - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/qagalvamex/include
+          # - git config git-ftp.syncroot deployment/prod/include/
+          # - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/public_html/qagalvamex
+          # - git config git-ftp.syncroot deployment/prod/conexion/
+          # - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/qagalvamex/include/lib/Conexion
+          # - git config git-ftp.syncroot deployment/prod/constantes/
+          # - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/qagalvamex/include/config
+          # - git config git-ftp.syncroot deployment/prod/cron/
+          # - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/qagalvamex/include/cron      
           
          
     develop:       
@@ -45,50 +45,16 @@ pipelines:
           - apt-get update 
           - apt-get -qq install git-ftp        
           - git config git-ftp.syncroot html/
-          - git ftp push --user $FTP_TEST_USERNAME --passwd $FTP_TEST_PASSWORD ftp://ftp.mvtooling.com/public_html/galvamextest    
+          - git ftp init --user $FTP_TEST_USERNAME --passwd $FTP_TEST_PASSWORD ftp://ftp.mvtooling.com/public_html/galvamextest    
           - git config git-ftp.syncroot include/
-          - git ftp push --user $FTP_TEST_USERNAME --passwd $FTP_TEST_PASSWORD ftp://ftp.mvtooling.com/galvamextest/include
+          - git ftp init --user $FTP_TEST_USERNAME --passwd $FTP_TEST_PASSWORD ftp://ftp.mvtooling.com/galvamextest/include
           - git config git-ftp.syncroot deployment/qa/include/
-          - git ftp push --user $FTP_TEST_USERNAME --passwd $FTP_TEST_PASSWORD ftp://ftp.mvtooling.com/public_html/galvamextest
+          - git ftp init --user $FTP_TEST_USERNAME --passwd $FTP_TEST_PASSWORD ftp://ftp.mvtooling.com/public_html/galvamextest
           - git config git-ftp.syncroot deployment/qa/conexion/
-          - git ftp push --user $FTP_TEST_USERNAME --passwd $FTP_TEST_PASSWORD ftp://ftp.mvtooling.com/galvamextest/include/lib/Conexion
+          - git ftp init --user $FTP_TEST_USERNAME --passwd $FTP_TEST_PASSWORD ftp://ftp.mvtooling.com/galvamextest/include/lib/Conexion
           - git config git-ftp.syncroot deployment/qa/constantes/
-          - git ftp push --user $FTP_TEST_USERNAME --passwd $FTP_TEST_PASSWORD ftp://ftp.mvtooling.com/galvamextest/include/config
+          - git ftp init --user $FTP_TEST_USERNAME --passwd $FTP_TEST_PASSWORD ftp://ftp.mvtooling.com/galvamextest/include/config
           - git config git-ftp.syncroot deployment/qa/cron/
-          - git ftp push --user $FTP_TEST_USERNAME --passwd $FTP_TEST_PASSWORD ftp://ftp.mvtooling.com/galvamextest/include/cron    
+          - git ftp init --user $FTP_TEST_USERNAME --passwd $FTP_TEST_PASSWORD ftp://ftp.mvtooling.com/galvamextest/include/cron    
   
-    testing:       
-    - step:        
-        script:
-          - apt-get update 
-          - apt-get -qq install git-ftp
-          - git config git-ftp.syncroot html/
-          - git ftp push --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp://ftp.nerkpumper.com/public_html/appgalva    
-          - git config git-ftp.syncroot include/
-          - git ftp push --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp://ftp.nerkpumper.com/appgalva/include
-          - git config git-ftp.syncroot deployment/qa/include/
-          - git ftp push --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp://ftp.nerkpumper.com/public_html/appgalva
-          - git config git-ftp.syncroot deployment/qa/conexion/
-          - git ftp push --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp://ftp.nerkpumper.com/appgalva/include/lib/Conexion
-          - git config git-ftp.syncroot deployment/qa/constantes/
-          - git ftp push --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp://ftp.nerkpumper.com/appgalva/include/config
-          - git config git-ftp.syncroot deployment/qa/cron/
-          - git ftp push --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp://ftp.nerkpumper.com/appgalva/include/cron
-
-    testingphp7:       
-    - step:        
-        script:
-          - apt-get update 
-          - apt-get -qq install git-ftp
-          - git config git-ftp.syncroot html/
-          - git ftp push --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp://ftp.nerkpumper.com/public_html/appgalva    
-          - git config git-ftp.syncroot include/
-          - git ftp push --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp://ftp.nerkpumper.com/appgalva/include
-          - git config git-ftp.syncroot deployment/qa/include/
-          - git ftp push --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp://ftp.nerkpumper.com/public_html/appgalva
-          - git config git-ftp.syncroot deployment/qa/conexion/
-          - git ftp push --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp://ftp.nerkpumper.com/appgalva/include/lib/Conexion
-          - git config git-ftp.syncroot deployment/qa/constantes/
-          - git ftp push --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp://ftp.nerkpumper.com/appgalva/include/config
-          - git config git-ftp.syncroot deployment/qa/cron/
-          - git ftp push --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp://ftp.nerkpumper.com/appgalva/include/cron          
+    

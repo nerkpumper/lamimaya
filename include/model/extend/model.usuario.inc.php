@@ -60,9 +60,9 @@
 			$objSession = null;
 				
 			//obtenemos objeto de Session
-			if (isset($_SESSION["_objSession"]))
+			if (isset($_SESSION["_lmobjSession"]))
 			{
-				$objSession = unserialize($_SESSION['_objSession']);
+				$objSession = unserialize($_SESSION['_lmobjSession']);
 				$objSession->__construct();
 			}
 				

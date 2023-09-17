@@ -36,7 +36,7 @@
 		}
 		if ($pass == "")
 		{
-			$r->mostrarAviso("Ingresa tu contraseña.");
+			$r->mostrarAviso("Ingresa tu contraseÃ±a.");
 			return $r;
 		}
 		
@@ -44,11 +44,11 @@
 		
 		if (login($email, $pass, $dbLink) == true)
 		{	
-			// Inicio de sesión exitosa
+			// Inicio de sesiï¿½n exitosa
 			$objSession=new ModeloUsuario($dbLink);
- 			$objSession->setIdUsuario($_SESSION['idUsuario']);
+ 			$objSession->setIdUsuario($_SESSION['idUsuariolm']);
 		
-			$_SESSION['_objSession']=serialize($objSession);			
+			$_SESSION['_lmobjSession']=serialize($objSession);			
 			$r->redirect(URL_BASE . "index",2);
 // 			$r->mostrarAviso($objSession->getSQLGetDatos());
 			

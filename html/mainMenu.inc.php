@@ -80,11 +80,11 @@
 		<ul class="nav metismenu" id="side-menu">
 			<li class="nav-header">
 				<div class="dropdown profile-element">
-					<img alt="Galvamex" src="<?php echo URL_BASE . "img/galvalogo.jpeg";?>" style="width: 100%;">
+					<img alt="Lamimaya" src="<?php echo URL_BASE . "img/lamimayalogoshort.png";?>" style="width: 100%;">
 
 				</div>
 				<div class="logo-element">
-                        <img alt="Galvamex" src="<?php echo URL_BASE . "img/galvalogo.jpeg";?>" style="width: 100%;">
+                        <img alt="Lamimaya" src="<?php echo URL_BASE . "img/lamimayalogoshort.png";?>" style="width: 100%;">
                 </div>
 			</li>
 
@@ -584,11 +584,6 @@
 				href="<?php echo URL_BASE . "miperfil";?>"><i class="fa fa-user"></i><span class="nav-label">
 						Perfil</span></a></li>
 
-
-			<a target="_blank" href='https://play.google.com/store/apps/details?id=com.nerkpumper.apps.galvamex&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'> 
- 			<img alt='Disponible en Google Play' 	style="width: 90%"
-			src='https://play.google.com/intl/en_us/badges/images/generic/es_badge_web_generic.png'/>
- 			</a> 
 
 
 

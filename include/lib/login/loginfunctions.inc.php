@@ -7,12 +7,12 @@ function sec_session_start ()
 
 	return;
 	/*
-	// Configura un nombre de sesión personalizado.
+	// Configura un nombre de sesiï¿½n personalizado.
 	$session_name = 'sec_session_id';
 	$secure = SECURE;
 
-	// Esto detiene que JavaScript sea capaz de acceder a la identificación de
-	// la sesión.
+	// Esto detiene que JavaScript sea capaz de acceder a la identificaciï¿½n de
+	// la sesiï¿½n.
 	$httponly = true;
 
 	// Obliga a las sesiones a solo utilizar cookies.
@@ -27,16 +27,16 @@ function sec_session_start ()
 	session_set_cookie_params($cookieParams["lifetime"], $cookieParams["path"],
 			$cookieParams["domain"], $secure, $httponly);
 
-	// Configura el nombre de sesión al configurado arriba.
+	// Configura el nombre de sesiï¿½n al configurado arriba.
 	session_name($session_name);
-	session_start(); // Inicia la sesión PHP.
-	session_regenerate_id(); // Regenera la sesión, borra la previa.
+	session_start(); // Inicia la sesiï¿½n PHP.
+	session_regenerate_id(); // Regenera la sesiï¿½n, borra la previa.
 	*/
 }
 
 function login ($email, $password, $mysqli)
 {
-	// Usar declaraciones preparadas significa que la inyección de SQL no será
+	// Usar declaraciones preparadas significa que la inyecciï¿½n de SQL no serï¿½
 	// posible.
 	$query="SELECT idUsuario, password,email, salt FROM usuario WHERE username ='" . mysqli_real_escape_string($mysqli,$email) . "' LIMIT 1";
 	
@@ -50,44 +50,44 @@ function login ($email, $password, $mysqli)
 		$db_password=$row['password'];  
 		$salt=$row['salt'];
 
-		// Hace el hash de la contraseña con una sal única.
+		// Hace el hash de la contraseï¿½a con una sal ï¿½nica.
 		$password = hash('sha512', $password . $salt);
 		if (mysqli_num_rows($result)==1)
 		{
-			// Si el usuario existe, revisa si la cuenta está bloqueada por
-			// muchos intentos de conexión.
+			// Si el usuario existe, revisa si la cuenta estï¿½ bloqueada por
+			// muchos intentos de conexiï¿½n.
 			
 			if (checkbrute($idUsuario, $mysqli) == true)
 			{
-				// La cuenta está bloqueada.
-				// Envía un correo electrónico al usuario que le informa que su
-				// cuenta está bloqueada.
+				// La cuenta estï¿½ bloqueada.
+				// Envï¿½a un correo electrï¿½nico al usuario que le informa que su
+				// cuenta estï¿½ bloqueada.
 				return false;
 			}
 			else
 			{
-				// Revisa que la contraseña en la base de datos coincida con la
-				// contraseña que el usuario envió.
+				// Revisa que la contraseï¿½a en la base de datos coincida con la
+				// contraseï¿½a que el usuario enviï¿½.
 
 				 
 
 				if ($db_password == $password)
 				{
-					// ¡La contraseña es correcta!
-					// Obtén el agente de usuario del usuario.
+					// ï¿½La contraseï¿½a es correcta!
+					// Obtï¿½n el agente de usuario del usuario.
 					$user_browser = $_SERVER['HTTP_USER_AGENT'];
-					// Protección XSS ya que podríamos imprimir este valor.
+					// Protecciï¿½n XSS ya que podrï¿½amos imprimir este valor.
 					$idUsuario = preg_replace("/[^0-9]+/", "", $idUsuario);
-					$_SESSION['idUsuario'] = $idUsuario;
-					// Protección XSS ya que podríamos imprimir este valor.
+					$_SESSION['idUsuariolm'] = $idUsuario;
+					// Protecciï¿½n XSS ya que podrï¿½amos imprimir este valor.
 		
 					$_SESSION['login_string'] = hash('sha512',$password . $user_browser);
-					// Inicio de sesión exitoso
+					// Inicio de sesiï¿½n exitoso
 					return true;
 				}
 				else
 				{
-					// La contraseña no es correcta.
+					// La contraseï¿½a no es correcta.
 					// Se graba este intento en la base de datos.
 					$now = time();
 
@@ -119,7 +119,7 @@ function checkbrute ($idUsuario, $mysqli)
 	// Obtiene el timestamp del tiempo actual.
 	$now = time();
 
-	// Todos los intentos de inicio de sesión se cuentan desde las 2 horas
+	// Todos los intentos de inicio de sesiï¿½n se cuentan desde las 2 horas
 	// anteriores.
 
 	$valid_attempts = $now - (2 * 60 * 60);
@@ -128,7 +128,7 @@ function checkbrute ($idUsuario, $mysqli)
 	$result=mysqli_query($mysqli, $query);
 	if ($result)
 	{
-		// Si ha habido más de 5 intentos de inicio de sesión fallidos.
+		// Si ha habido mï¿½s de 5 intentos de inicio de sesiï¿½n fallidos.
 		return mysqli_num_rows($result) > LOGIN_ATTEMPS_LIMIT;
 	}
 	//die("Error en la consulta loginfunctions inc checkbrute ln 129");
@@ -138,15 +138,15 @@ function checkbrute ($idUsuario, $mysqli)
 function login_check ($mysqli)
 {	
 	
-	// Revisa si todas las variables de sesión están configuradas.
+	// Revisa si todas las variables de sesiï¿½n estï¿½n configuradas.
 
 
 
-	if (isset($_SESSION['idUsuario'],$_SESSION['login_string']))
+	if (isset($_SESSION['idUsuariolm'],$_SESSION['login_string']))
 	{
 		//die("Aqui1");
 
-		$idUsuario = $_SESSION['idUsuario'];
+		$idUsuario = $_SESSION['idUsuariolm'];
 		$login_string = $_SESSION['login_string'];
 		
 
@@ -156,12 +156,12 @@ function login_check ($mysqli)
 		$query="SELECT password FROM  usuario  WHERE idUsuario = '" . mysqli_real_escape_string($mysqli, $idUsuario ) . "' LIMIT 1";
 				
 		$result=mysqli_query($mysqli, $query) or die("Error en consulta");
-		//die("Aquí2");
+		//die("Aquï¿½2");
 
 		if ($result)
 		{
 			
-			// Une “$user_id” al parámetro.
+			// Une ï¿½$user_idï¿½ al parï¿½metro.
 
 
 			if (mysqli_num_rows($result) == 1)
@@ -173,7 +173,7 @@ function login_check ($mysqli)
 				$login_check = hash('sha512', $password . $user_browser);
 				if ($login_check == $login_string)
 				{
-					// ¡¡Conectado!!
+					// ï¿½ï¿½Conectado!!
 					return true;
 				}
 				else

@@ -137,11 +137,11 @@ if(defined("LOGIN")&&LOGIN==1)
 
 {	
 
-	if (login_check($dbLink)&&isset($_SESSION["_objSession"]))
+	if (login_check($dbLink)&&isset($_SESSION["_lmobjSession"]))
 
 	{
 
-		$objSession = unserialize($_SESSION['_objSession']);
+		$objSession = unserialize($_SESSION['_lmobjSession']);
 
 		$objSession->__construct();		
 
@@ -180,7 +180,7 @@ else
 
 	{
 
-		if (login_check($dbLink)&&isset($_SESSION["_objSession"]))
+		if (login_check($dbLink)&&isset($_SESSION["_lmobjSession"]))
 
 		{
 
@@ -220,7 +220,7 @@ if (!Routes::moduleAllow($__FILE_NAME__))
 
 		{
 
-			$objSession = unserialize($_SESSION['_objSession']);
+			$objSession = unserialize($_SESSION['_lmobjSession']);
 
 			$objSession->__construct();
 

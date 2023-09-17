@@ -57,7 +57,7 @@ class Permisos
 	public static function getRolInBinary()
 	{
 		$rol = "000000000000000000000000";
-		
+		// return self::$rol_ROOT;
 		$rolUsuario = ModeloUsuario::getObjSession()->getIdRol();
 // 		echo "<br>getRolInBinary() :  " . $rolUsuario;
 		switch ($rolUsuario)
