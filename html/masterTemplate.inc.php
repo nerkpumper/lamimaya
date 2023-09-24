@@ -3,13 +3,13 @@
 <head>
 <!-- start: Meta -->
 <meta charset="utf-8">
-<title>Galvamex</title>
+<title>Lamimaya</title>
 <meta name="description" content="">
 <meta name="author" content="">
 <meta name="keyword" content="">
 <!-- end: Meta -->
 
-<link rel="shortcut icon" type="image/x-icon" href="<?php echo URL_BASE;?>img/galvaicon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="<?php echo URL_BASE;?>img/lamimayaicon.ico" />
 
 <!-- start: Mobile Specific -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
