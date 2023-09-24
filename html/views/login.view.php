@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Login</title>
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo URL_BASE;?>img/lamimayaicon.ico" />
+
 
     <link href="<?php echo URL_BASE;?>assets/inspinia/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo URL_BASE;?>assets/inspinia/font-awesome/css/font-awesome.css" rel="stylesheet">
