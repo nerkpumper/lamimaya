@@ -5333,3 +5333,84 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+
+
+
+
+
+
+
+
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('-- NO APLICA --','NA',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('PINTRO SULTANA','PS',now(), 2);
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('ZINTRO ALUM','ZA',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('GALVANIZADO','GA',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('TIZACRIL POLIESTER','POL',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('ACRYLIT G18','ACR',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('TERMOFON','TMF',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('PINTRO POLIESTER','PP',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('STABILIT OPALIT','OPA',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('ISOBOX','ISB',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('ISOVINILE','ISV',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('ISOCOP','ISC',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('ISOPARETE BOX','IBO',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('ISOPARETE PIANO','IPI',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('ISOPARETE PLISS�','IPL',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('TIZACRIL POLIESTER BLANCO FRIO','PBF',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('GALVATEJA','GAL',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('MULTYTECHO','MUT',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('GALVATECHO','GAT',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('ECONOTECHO','ECT',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('MULTYMURO MESA','MMM',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('LAMITEJA','TEJ',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('ISOCOP PIR FM','IPF',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('SIMPLEX POLIESTER','SPO',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('MULTYMURO PIR FM','MMP',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('HIANSA MURO PUR','HMU',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('HIANSA CUBIERTA PUR','HCU',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('ISOPARETE PIR','IPP',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('HIANSA MURO PIR','HMP',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('HIANSA CUBIERTA PIR','HCP',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('HIANSA TEJA PUR','HTP',now(), 2); 
+INSERT INTO material (nombre, clave, fecha_creacion, idUsuarioCrea) values ('HIANSA FRIGO','HFG',now(), 2); 
+
+
+INSERT INTO aplicacion (nombreAplicacion) values ('--NO APLICA--');
+INSERT INTO aplicacion (nombreAplicacion) values ('LISA');
+INSERT INTO aplicacion (nombreAplicacion) values ('OG-100');
+INSERT INTO aplicacion (nombreAplicacion) values ('R-101');
+INSERT INTO aplicacion (nombreAplicacion) values ('RN-100');
+INSERT INTO aplicacion (nombreAplicacion) values ('KR-18');
+INSERT INTO aplicacion (nombreAplicacion) values ('R-72');
+INSERT INTO aplicacion (nombreAplicacion) values ('OG-30');
+INSERT INTO aplicacion (nombreAplicacion) values ('T-81');
+INSERT INTO aplicacion (nombreAplicacion) values ('LOSACERO');
+INSERT INTO aplicacion (nombreAplicacion) values ('PANEL');
+INSERT INTO aplicacion (nombreAplicacion) values ('T-60');
+INSERT INTO aplicacion (nombreAplicacion) values ('R-86');
+INSERT INTO aplicacion (nombreAplicacion) values ('GALVATEJA');
+INSERT INTO aplicacion (nombreAplicacion) values ('T-942');
+INSERT INTO aplicacion (nombreAplicacion) values ('LAMITEJA');
+INSERT INTO aplicacion (nombreAplicacion) values ('T-941');
+INSERT INTO aplicacion (nombreAplicacion) values ('T-952');
+
+
+INSERT INTO color (nombre, clave) values ('-- NO APLICA --','');
+INSERT INTO color (nombre, clave) values ('GRIS ESTANDAR','I');
+INSERT INTO color (nombre, clave) values ('GRIS 9002','II');
+INSERT INTO color (nombre, clave) values ('ARENA','III');
+INSERT INTO color (nombre, clave) values ('ROJO JANITZIO','IV');
+INSERT INTO color (nombre, clave) values ('BLANCO/BLANCO','V');
+
+
+INSERT INTO proveedor (nombre, clave) values ('-- NO APLICA --','NA');
+INSERT INTO proveedor (nombre, clave) values ('TERNIUM','TER');
+INSERT INTO proveedor (nombre, clave) values ('TIZACRIL','TIZ');
+INSERT INTO proveedor (nombre, clave) values ('STABILIT','STA');
+INSERT INTO proveedor (nombre, clave) values ('HANWA','HAN');
+INSERT INTO proveedor (nombre, clave) values ('ISOCINDU','ISO');
+INSERT INTO proveedor (nombre, clave) values ('HIANSA','HIS');
