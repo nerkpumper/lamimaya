@@ -51,10 +51,10 @@ pipelines:
           - git config git-ftp.syncroot deployment/prod/include/
           - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/public_html/mayatest
           - git config git-ftp.syncroot deployment/prod/conexion/
-          - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/appmayatest/include/lib/Conexion
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/appmayatest/include/lib/Conexion
           - git config git-ftp.syncroot deployment/prod/constantes/
-          - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/appmayatest/include/config
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/appmayatest/include/config
           - git config git-ftp.syncroot deployment/prod/cron/
-          - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/appmayatest/include/cron            
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/appmayatest/include/cron            
           
     
