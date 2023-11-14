@@ -185,9 +185,9 @@ $_addScript = "
  				 				 				
  				<?php 
  					
- 					Form::setColsInput("l4|m4|s12|x12");
- 					Form::select("listaPrecio", "Lista Precios", $lstListaPrecio, "", "Seleccione", false, false);
- 					Form::check("isRango", "Rango de Precios", "listaPrecio == \"G\" && !esRollo && !esAccesorio && !esPieza");
+ 					//Form::setColsInput("l4|m4|s12|x12");
+ 					//Form::select("listaPrecio", "Lista Precios", $lstListaPrecio, "", "Seleccione", false, false);
+ 					//Form::check("isRango", "Rango de Precios", "listaPrecio == \"G\" && !esRollo && !esAccesorio && !esPieza");
  				?>
  					 				 				
  				<?php 
@@ -206,7 +206,7 @@ $_addScript = "
 				<?php if (Permisos::userIsThisRol(Permisos::$idROOTUSER) || Permisos::userIsThisRol(Permisos::$rol_ADMINISTRADOR)):?>
 				
 				
-					<div  class="row">
+					<div  class="row" v-if="idProducto > 0">
 						<div class="col-lg-12">
 								<h2>Precios</h2>
 							<div class="form-group">
@@ -278,7 +278,7 @@ $_addScript = "
 						</div>
 											
 					</div>
-					<div  class="row">
+					<div  class="row" v-if="idProducto > 0">
 						<div class="col-lg-12">
 								<h2>Costo</h2>
 							<div class="form-group">
@@ -315,6 +315,6 @@ $_addScript = "
 	</div>
 </div>
 
-<!-- <pre> -->
-<!-- 	{{ $data}} -->
-<!-- </pre> -->
+<pre>
+	{{ $data.rollo}}
+</pre>

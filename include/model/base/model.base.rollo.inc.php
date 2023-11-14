@@ -68,7 +68,12 @@
 		var $totalpreciovta='0.00';
 		var $totalpreciovtar2='0.00';
 		var $totalpreciovtar3='0.00';
+		var $totalpreciovtar4='0.00';
 		var $totalpreciomendez='0.00';
+		var $preciokg1='0.00';
+		var $preciokg2='0.00';
+		var $preciokg3='0.00';
+		var $preciokg4='0.00';
 		var $lastUpdate='';
 
 		var $__s=array("idRollo",
@@ -131,7 +136,12 @@
                        "totalpreciovta",
                        "totalpreciovtar2",
                        "totalpreciovtar3",
+                       "totalpreciovtar4",
                        "totalpreciomendez",
+                       "preciokg1",
+                       "preciokg2",
+                       "preciokg3",
+                       "preciokg4",
                        "lastUpdate");
 				
 		var $__ss=array();
@@ -433,9 +443,29 @@
 		{
 			$this->totalpreciovtar3=$totalpreciovtar3;
 		}
+		public function setTotalpreciovtar4($totalpreciovtar4)
+		{
+			$this->totalpreciovtar4=$totalpreciovtar4;
+		}
 		public function setTotalpreciomendez($totalpreciomendez)
 		{
 			$this->totalpreciomendez=$totalpreciomendez;
+		}
+		public function setPreciokg1($preciokg1)
+		{
+			$this->preciokg1=$preciokg1;
+		}
+		public function setPreciokg2($preciokg2)
+		{
+			$this->preciokg2=$preciokg2;
+		}
+		public function setPreciokg3($preciokg3)
+		{
+			$this->preciokg3=$preciokg3;
+		}
+		public function setPreciokg4($preciokg4)
+		{
+			$this->preciokg4=$preciokg4;
 		}
 		public function setLastUpdate($lastUpdate)
 		{
@@ -693,9 +723,29 @@
 		{
 			return $this->totalpreciovtar3;
 		}
+		public function getTotalpreciovtar4()
+		{
+			return $this->totalpreciovtar4;
+		}
 		public function getTotalpreciomendez()
 		{
 			return $this->totalpreciomendez;
+		}
+		public function getPreciogk1()
+		{
+			return $this->preciokg1;
+		}
+		public function getPreciogk2()
+		{
+			return $this->preciokg2;
+		}
+		public function getPreciogk3()
+		{
+			return $this->preciokg3;
+		}
+		public function getPreciogk4()
+		{
+			return $this->preciokg4;
 		}
 		public function getLastUpdate()
 		{
@@ -775,11 +825,14 @@
 			$this->totalpreciovta='0.00';
 			$this->totalpreciovtar2='0.00';
 			$this->totalpreciovtar3='0.00';
+			$this->totalpreciovtar4='0.00';
 			$this->totalpreciomendez='0.00';
+			$this->preciokg1='0.00';
+			$this->preciokg2='0.00';
+			$this->preciokg3='0.00';
+			$this->preciokg4='0.00';
 			$this->lastUpdate='';
 		}
-
-		
 
 		
 		protected function Insertar()
@@ -845,7 +898,12 @@
 				                                              totalpreciovta,
 				                                              totalpreciovtar2,
 				                                              totalpreciovtar3,
+				                                              totalpreciovtar4,
 				                                              totalpreciomendez,
+				                                              preciokg1,
+				                                              preciokg2,
+				                                              preciokg3,
+				                                              preciokg4,
 				                                              lastUpdate)
 						VALUES('" . mysqli_real_escape_string($this->dbLink,$this->codigo) . "',
 				               '" . mysqli_real_escape_string($this->dbLink,$this->rollo_material_idMaterial) . "',
@@ -906,7 +964,12 @@
 				               '" . mysqli_real_escape_string($this->dbLink,$this->totalpreciovta) . "',
 				               '" . mysqli_real_escape_string($this->dbLink,$this->totalpreciovtar2) . "',
 				               '" . mysqli_real_escape_string($this->dbLink,$this->totalpreciovtar3) . "',
+				               '" . mysqli_real_escape_string($this->dbLink,$this->totalpreciovtar4) . "',
 				               '" . mysqli_real_escape_string($this->dbLink,$this->totalpreciomendez) . "',
+				               '" . mysqli_real_escape_string($this->dbLink,$this->preciokg1) . "',
+				               '" . mysqli_real_escape_string($this->dbLink,$this->preciokg2) . "',
+				               '" . mysqli_real_escape_string($this->dbLink,$this->preciokg3) . "',
+				               '" . mysqli_real_escape_string($this->dbLink,$this->preciokg4) . "',
 				               " . mysqli_real_escape_string($this->dbLink,"now()") . ")";
 				$result=mysqli_query($this->dbLink,$SQL);
 				if(!$result)
@@ -986,7 +1049,12 @@
 	                                              totalpreciovta='" . mysqli_real_escape_string($this->dbLink,$this->totalpreciovta) . "',
 	                                              totalpreciovtar2='" . mysqli_real_escape_string($this->dbLink,$this->totalpreciovtar2) . "',
 	                                              totalpreciovtar3='" . mysqli_real_escape_string($this->dbLink,$this->totalpreciovtar3) . "',
+	                                              totalpreciovtar4='" . mysqli_real_escape_string($this->dbLink,$this->totalpreciovtar4) . "',
 	                                              totalpreciomendez='" . mysqli_real_escape_string($this->dbLink,$this->totalpreciomendez) . "',
+	                                              preciokg1='" . mysqli_real_escape_string($this->dbLink,$this->preciokg1) . "',
+	                                              preciokg2='" . mysqli_real_escape_string($this->dbLink,$this->preciokg2) . "',
+	                                              preciokg3='" . mysqli_real_escape_string($this->dbLink,$this->preciokg3) . "',
+	                                              preciokg4='" . mysqli_real_escape_string($this->dbLink,$this->preciokg4) . "',
 	                                              lastUpdate='" . mysqli_real_escape_string($this->dbLink,$this->lastUpdate) . "'
 					WHERE idRollo=" . $this->idRollo;
 				
@@ -1089,7 +1157,12 @@
 						totalpreciovta,
 						totalpreciovtar2,
 						totalpreciovtar3,
+						totalpreciovtar4,
 						totalpreciomendez,
+						preciokg1,
+						preciokg2,
+						preciokg3,
+						preciokg4,
 						lastUpdate
 					FROM " . $this->__tableName . " 
 					WHERE idRollo=" . mysqli_real_escape_string($this->dbLink,$this->idRollo);

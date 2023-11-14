@@ -13,7 +13,6 @@ $_lugar = LUGAR_PRODUCTOS_ROLLO;
 				<h5>Rollos <small>{{ accionModulo }}</small></h5>				
 			</div>
 			<div class="ibox-content">
-		
 																				
 				<?php
 					
@@ -49,6 +48,130 @@ $_lugar = LUGAR_PRODUCTOS_ROLLO;
 					Form::textarea("descripcion", "Descripci&oacute;n", "4", "", "250", true);
 					
 					Form::textarea("observaciones", "Observaciones", "4", "", "250", true);
+
+				?>
+				<div  class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<h2>Precios Metro Lineal</h2>
+						<div class="form-group">
+							<label class="col-lg-2 col-md-2 col-sm-12 col-xs-12 control-label">Precio 1</label>
+							<label v-else class="col-lg-2 col-md-2 col-sm-12 col-xs-12 control-label">Precio</label>
+							<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+								
+								<div class="input-group">
+									<span class="input-group-addon">$</span> <input type="text" v-model="precio1"
+										oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+										maxlength="8"
+										class="form-control text-right">
+										
+								</div>
+								<span  class="help-block m-b-lg">{{ rangoPrecio1 }}</span>
+								
+							</div>
+							<div >
+								<label class="col-lg-2 col-md-2 col-sm-12 col-xs-12 control-label">Precio 2</label>
+								<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+									
+									<div class="input-group ">
+										<span class="input-group-addon">$</span> <input type="text" v-model="precio2"
+											oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+											maxlength="8"
+											class="form-control  text-right">
+									</div>
+									<span class="help-block m-b-lg">{{ rangoPrecio2 }}</span>
+									
+								</div>
+								<label class="col-lg-2 col-md-2 col-sm-12 col-xs-12 control-label">Precio 3</label>
+								<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+									
+									<div class="input-group ">
+										<span class="input-group-addon">$</span> <input type="text" v-model="precio3"
+											oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+											maxlength="8"
+											class="form-control  text-right">
+									</div>
+									<span class="help-block m-b-lg">{{ rangoPrecio3 }}</span>
+									
+								</div>
+								<label class="col-lg-2 col-md-2 col-sm-12 col-xs-12 control-label">Precio 4</label>
+								<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+									
+									<div class="input-group ">
+										<span class="input-group-addon">$</span> <input type="text" v-model="precio4"
+											oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+											maxlength="8"
+											class="form-control  text-right">
+									</div>
+									<span class="help-block m-b-lg">{{ rangoPrecio4 }}</span>
+									
+								</div>
+								
+							</div>
+						</div>
+					</div>
+										
+				</div>
+				<div  class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<h2>Precios KG</h2>
+						<div class="form-group">
+							<label class="col-lg-2 col-md-2 col-sm-12 col-xs-12 control-label">Precio 1</label>
+							<label v-else class="col-lg-2 col-md-2 col-sm-12 col-xs-12 control-label">Precio</label>
+							<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+								
+								<div class="input-group">
+									<span class="input-group-addon">$</span> <input type="text" v-model="preciokg1"
+										oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+										maxlength="8"
+										class="form-control text-right">
+										
+								</div>
+								<span  class="help-block m-b-lg">{{ rangoPrecio1 }}</span>
+								
+							</div>
+							<div >
+								<label class="col-lg-2 col-md-2 col-sm-12 col-xs-12 control-label">Precio 2</label>
+								<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+									
+									<div class="input-group ">
+										<span class="input-group-addon">$</span> <input type="text" v-model="preciokg2"
+											oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+											maxlength="8"
+											class="form-control  text-right">
+									</div>
+									<span class="help-block m-b-lg">{{ rangoPrecio2 }}</span>
+									
+								</div>
+								<label class="col-lg-2 col-md-2 col-sm-12 col-xs-12 control-label">Precio 3</label>
+								<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+									
+									<div class="input-group ">
+										<span class="input-group-addon">$</span> <input type="text" v-model="preciokg3"
+											oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+											maxlength="8"
+											class="form-control  text-right">
+									</div>
+									<span class="help-block m-b-lg">{{ rangoPrecio3 }}</span>
+									
+								</div>
+								<label class="col-lg-2 col-md-2 col-sm-12 col-xs-12 control-label">Precio 4</label>
+								<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+									
+									<div class="input-group ">
+										<span class="input-group-addon">$</span> <input type="text" v-model="preciokg4"
+											oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+											maxlength="8"
+											class="form-control  text-right">
+									</div>
+									<span class="help-block m-b-lg">{{ rangoPrecio4 }}</span>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+										
+				</div>
+				<?php
 										
 					//Form::buttonPrimary("Guardar", "guardarRollo", "showSave");
 					Form::buttonPrimary("Guardar", "guardarRollo");
@@ -60,4 +183,6 @@ $_lugar = LUGAR_PRODUCTOS_ROLLO;
 	</div>
 </div>
 
-<!-- <pre>	{{ $data}}</pre> -->
+
+
+<pre>	{{ $data}}</pre>
