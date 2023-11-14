@@ -5414,3 +5414,307 @@ INSERT INTO proveedor (nombre, clave) values ('STABILIT','STA');
 INSERT INTO proveedor (nombre, clave) values ('HANWA','HAN');
 INSERT INTO proveedor (nombre, clave) values ('ISOCINDU','ISO');
 INSERT INTO proveedor (nombre, clave) values ('HIANSA','HIS');
+
+
+INSERT INTO tipoproducto (nombre, clave, estado, fecha_creacion, idUsuarioCrea) VALUES ('LÁMINA', 'L', 'ACTIVO', NOW(), 2);
+INSERT INTO tipoproducto (nombre, clave, estado, fecha_creacion, idUsuarioCrea) VALUES ('CANALÓN', 'C', 'ACTIVO', NOW(), 2);
+INSERT INTO tipoproducto (nombre, clave, estado, fecha_creacion, idUsuarioCrea) VALUES ('MOLDURA', 'M', 'ACTIVO', NOW(), 2);
+INSERT INTO tipoproducto (nombre, clave, estado, fecha_creacion, idUsuarioCrea) VALUES ('ACCESORIO', 'AC', 'ACTIVO', NOW(), 2);
+INSERT INTO tipoproducto (nombre, clave, estado, fecha_creacion, idUsuarioCrea) VALUES ('ROLLO', 'R', 'ACTIVO', NOW(), 2);
+
+INSERT INTO unidad (clave, descripcion) VALUES ('ML', 'METRO LINEAL');
+INSERT INTO unidad (clave, descripcion) VALUES ('M2', 'METRO CUADRADO');
+INSERT INTO unidad (clave, descripcion) VALUES ('KG', 'KILOGRAMO');
+INSERT INTO unidad (clave, descripcion) VALUES ('PZA', 'PIEZA');
+
+---------------------------------------------------------------------------------
+
+
+ALTER TABLE `lamimaya`.`rollo` 
+ADD COLUMN `preciokg1` DECIMAL(9,2) NULL DEFAULT '0.00' AFTER `totalpreciomendez`,
+ADD COLUMN `preciokg2` DECIMAL(9,2) NULL DEFAULT '0.00' AFTER `preciokg1`,
+ADD COLUMN `preciokg3` DECIMAL(9,2) NULL DEFAULT '0.00' AFTER `preciokg2`,
+ADD COLUMN `preciokg4` DECIMAL(9,2) NULL DEFAULT '0.00' AFTER `preciokg3`;
+
+
+DROP TRIGGER IF EXISTS `lamimaya`.`rollo_BEFORE_UPDATE`;
+
+DELIMITER $$
+USE `lamimaya`$$
+CREATE DEFINER=`root`@`localhost` TRIGGER `rollo_BEFORE_UPDATE` BEFORE UPDATE ON `rollo` FOR EACH ROW BEGIN
+    
+	IF OLD.totalpreciovta  <> NEW.totalpreciovta OR 
+       OLD.totalpreciovtar2 <> NEW.totalpreciovtar2 OR 
+       OLD.totalpreciovtar3 <> NEW.totalpreciovtar3 OR
+       OLD.totalpreciovtar4 <> NEW.totalpreciovtar4 OR
+	   OLD.preciokg1 <> NEW.preciokg1 OR
+       OLD.preciokg2 <> NEW.preciokg2 OR
+       OLD.preciokg3 <> NEW.preciokg3 OR
+       OLD.preciokg4 <> NEW.preciokg4 OR
+       OLD.totalpreciomendez <> NEW.totalpreciomendez OR
+       OLD.pesocu <> NEW.pesocu THEN
+	   
+		SET NEW.lastUpdate = NOW();
+		
+		UPDATE configuracion SET rolloprodlastupdate = NOW() WHERE idConfiguracion = 1;
+		
+	END IF;
+	
+
+END$$
+DELIMITER ;
+
+
+DROP TRIGGER IF EXISTS `lamimaya`.`rollo_AFTER_UPDATE`;
+
+DELIMITER $$
+USE `lamimaya`$$
+CREATE DEFINER=`root`@`localhost` TRIGGER `rollo_AFTER_UPDATE` AFTER UPDATE ON `rollo` FOR EACH ROW BEGIN
+	DECLARE vp1 DOUBLE;
+    DECLARE vp2 DOUBLE;
+	DECLARE vp3 DOUBLE;
+    DECLARE vp4 DOUBLE;
+    DECLARE vpm DOUBLE;
+    DECLARE vcu DOUBLE;
+	IF (OLD.totalpreciovta  <> NEW.totalpreciovta OR 
+       OLD.totalpreciovtar2 <> NEW.totalpreciovtar2 OR 
+       OLD.totalpreciovtar3 <> NEW.totalpreciovtar3 OR
+       OLD.totalpreciovtar4 <> NEW.totalpreciovtar4 OR       
+       OLD.totalpreciomendez <> NEW.totalpreciomendez OR
+       OLD.pesocu <> NEW.pesocu) AND NEW.idRollo > 1 THEN
+       SET vp1 = NEW.totalpreciovta;
+       SET vp2 = NEW.totalpreciovtar2;
+       SET vp3 = NEW.totalpreciovtar3;
+       SET vp4 = NEW.totalpreciovtar4;
+       SET vpm = NEW.totalpreciomendez;
+       SET vcu = NEW.pesocu;
+       UPDATE producto 
+          SET precio1 = vp1 * mlpieza, 
+              precio2 = vp2 * mlpieza, 
+              precio3 = vp3 * mlpieza,
+              precio4 = vp4 * mlpieza,
+              preciomendez = vpm * mlpieza
+ 	    WHERE producto_rollo_idrollo = NEW.idRollo
+	      AND producto_unidad_idunidad = 4 and isRollo = '0' AND isSegunda = 'NO';
+	   UPDATE producto 
+          SET precio1 = vp1,
+              precio2 = vp2,
+              precio3 = vp3,
+              precio4 = vp4,
+              preciomendez = vpm              
+		WHERE producto_rollo_idrollo = NEW.idRollo
+          AND producto_unidad_idunidad = 1 and isRollo = '0' AND isSegunda = 'NO';
+		UPDATE producto 
+          SET precio1 = (vp1*.85) * mlpieza, 
+              precio2 = (vp1*.85) * mlpieza, 
+              precio3 = (vp1*.85) * mlpieza,
+              precio4 = (vp1*.85) * mlpieza,
+              preciomendez = (vp1*.85) * mlpieza
+ 	    WHERE producto_rollo_idrollo = NEW.idRollo
+	      AND producto_unidad_idunidad = 4 and isRollo = '0' AND isSegunda = 'SI';
+	   UPDATE producto 
+          SET precio1 = (vp1*.85),
+              precio2 = (vp1*.85),
+              precio3 = (vp1*.85),
+              precio4 = (vp1*.85),
+              preciomendez = (vp1*.85)              
+		WHERE producto_rollo_idrollo = NEW.idRollo
+          AND producto_unidad_idunidad = 1 and isRollo = '0' AND isSegunda = 'SI';
+	END IF;
+    
+    IF (OLD.preciokg1 <> NEW.preciokg1 OR
+       OLD.preciokg2 <> NEW.preciokg2 OR
+       OLD.preciokg3 <> NEW.preciokg3 OR
+       OLD.preciokg4 <> NEW.preciokg4) AND NEW.idRollo > 1 THEN
+       SET vp1 = NEW.preciokg1;
+       SET vp2 = NEW.preciokg2;
+       SET vp3 = NEW.preciokg3;
+       SET vp4 = NEW.preciokg4;
+       
+	   UPDATE producto 
+          SET precio1 = vp1,
+              precio2 = vp2,
+              precio3 = vp3,
+              precio4 = vp4
+		WHERE producto_rollo_idrollo = NEW.idRollo
+          AND producto_unidad_idunidad = 3 
+          AND producto_tipoproducto_idtipoproducto = 5
+          AND isRollo = '0' ;
+		
+	END IF;
+END$$
+DELIMITER ;
+
+
+
+DROP TRIGGER IF EXISTS `lamimaya`.`producto_BEFORE_INSERT`;
+
+DELIMITER $$
+USE `lamimaya`$$
+CREATE DEFINER=`root`@`localhost` TRIGGER `producto_BEFORE_INSERT` BEFORE INSERT ON `producto` FOR EACH ROW BEGIN
+    DECLARE vp1 DOUBLE;
+    DECLARE vp2 DOUBLE;
+    DECLARE vp3 DOUBLE;
+    DECLARE vp4 DOUBLE;
+    DECLARE vpm DOUBLE;
+    DECLARE vcu DOUBLE;
+    DECLARE vpkg DOUBLE;
+	IF NEW.producto_rollo_idrollo > 1 THEN
+		IF NEW.tipoprecio = 'G' AND NEW.isRollo = '0' THEN        
+			SELECT totalpreciovta, totalpreciovtar2, totalpreciovtar3, totalpreciovtar4, totalpreciomendez, pesocu, pesokgmt 
+					INTO vp1, vp2, vp3, vp4, vpm, vcu, vpkg
+              FROM rollo 
+			 WHERE idrollo = NEW.producto_rollo_idrollo;
+			IF NEW.producto_unidad_idunidad = 4 THEN
+				SET NEW.precio1 = vp1 * NEW.mlpieza;
+				SET NEW.precio2 = vp2 * NEW.mlpieza;
+				SET NEW.precio3 = vp3 * NEW.mlpieza;
+                SET NEW.precio4 = vp4 * NEW.mlpieza;
+				SET NEW.preciomendez = vpm * NEW.mlpieza;
+				SET NEW.costo =  vcu * vpkg * NEW.mlpieza;
+				
+                IF NEW.isSegunda = 'SI' THEN
+					SET NEW.precio1 = (vp1 * NEW.mlpieza)*.85;                        
+					SET NEW.precio2 = (vp1 * NEW.mlpieza)*.85;
+					SET NEW.precio3 = (vp1 * NEW.mlpieza)*.85;
+					SET NEW.precio4 = (vp1 * NEW.mlpieza)*.85;
+					SET NEW.preciomendez = (vp1 * NEW.mlpieza)*.85;
+					SET NEW.costo =  vcu * vpkg * NEW.mlpieza; 
+				END IF;                			
+			ELSE
+				SET NEW.precio1 = vp1;                    
+				IF NEW.isRango = '1' THEN               
+					SET NEW.precio2 = vp2;
+					SET NEW.precio3 = vp3;
+                    SET NEW.precio4 = vp4;
+					SET NEW.preciomendez = vpm;
+					SET NEW.costo =  vcu * vpkg;
+				END IF;
+			
+				IF NEW.isSegunda = 'SI' THEN
+					SET NEW.precio1 = vp1*.85;                        
+					SET NEW.precio2 = vp1*.85;
+					SET NEW.precio3 = vp1*.85;
+                    SET NEW.precio4 = vp1*.85;
+					SET NEW.preciomendez = (vp1 * NEW.mlpieza)*.85;
+					SET NEW.costo =  vcu * vpkg * NEW.mlpieza; 
+				END IF;
+			END IF;			
+        
+			IF NEW.tipoRango = '' THEN
+				SET NEW.tipoRango = 'A';
+			END IF;
+		END IF;
+        
+        IF NEW.isRollo = '1' THEN        			 
+			IF NEW.producto_tipoproducto_idtipoproducto = 5 THEN
+				SELECT preciokg1, preciokg2, preciokg3, preciokg4
+						INTO vp1, vp2, vp3, vp4
+				  FROM rollo 
+				 WHERE idrollo = NEW.producto_rollo_idrollo;
+				 
+				SET NEW.precio1 = vp1;
+				SET NEW.precio2 = vp2;
+				SET NEW.precio3 = vp3;
+                SET NEW.precio4 = vp4;
+				
+				-- SET NEW.costo =  vcu * vpkg * NEW.mlpieza;
+				
+                
+				SET NEW.precio1 = vp1;                        
+				SET NEW.precio2 = vp2;
+				SET NEW.precio3 = vp3;
+				SET NEW.precio4 = vp4;
+				
+				-- SET NEW.costo =  vcu * vpkg * NEW.mlpieza; 				
+				
+			
+			END IF;			
+        
+		END IF;
+    END IF;
+	SET NEW.lastUpdate = NOW();
+
+END$$
+DELIMITER ;
+
+
+DROP TRIGGER IF EXISTS `lamimaya`.`rollo_AFTER_UPDATE`;
+
+DELIMITER $$
+USE `lamimaya`$$
+CREATE DEFINER=`root`@`localhost` TRIGGER `rollo_AFTER_UPDATE` AFTER UPDATE ON `rollo` FOR EACH ROW BEGIN
+	DECLARE vp1 DOUBLE;
+    DECLARE vp2 DOUBLE;
+	DECLARE vp3 DOUBLE;
+    DECLARE vp4 DOUBLE;
+    DECLARE vpm DOUBLE;
+    DECLARE vcu DOUBLE;
+	IF (OLD.totalpreciovta  <> NEW.totalpreciovta OR 
+       OLD.totalpreciovtar2 <> NEW.totalpreciovtar2 OR 
+       OLD.totalpreciovtar3 <> NEW.totalpreciovtar3 OR
+       OLD.totalpreciovtar4 <> NEW.totalpreciovtar4 OR       
+       OLD.totalpreciomendez <> NEW.totalpreciomendez OR
+       OLD.pesocu <> NEW.pesocu) AND NEW.idRollo > 1 THEN
+       SET vp1 = NEW.totalpreciovta;
+       SET vp2 = NEW.totalpreciovtar2;
+       SET vp3 = NEW.totalpreciovtar3;
+       SET vp4 = NEW.totalpreciovtar4;
+       SET vpm = NEW.totalpreciomendez;
+       SET vcu = NEW.pesocu;
+       UPDATE producto 
+          SET precio1 = vp1 * mlpieza, 
+              precio2 = vp2 * mlpieza, 
+              precio3 = vp3 * mlpieza,
+              precio4 = vp4 * mlpieza,
+              preciomendez = vpm * mlpieza
+ 	    WHERE producto_rollo_idrollo = NEW.idRollo
+	      AND producto_unidad_idunidad = 4 and isRollo = '0' AND isSegunda = 'NO';
+	   UPDATE producto 
+          SET precio1 = vp1,
+              precio2 = vp2,
+              precio3 = vp3,
+              precio4 = vp4,
+              preciomendez = vpm              
+		WHERE producto_rollo_idrollo = NEW.idRollo
+          AND producto_unidad_idunidad = 1 and isRollo = '0' AND isSegunda = 'NO';
+		UPDATE producto 
+          SET precio1 = (vp1*.85) * mlpieza, 
+              precio2 = (vp1*.85) * mlpieza, 
+              precio3 = (vp1*.85) * mlpieza,
+              precio4 = (vp1*.85) * mlpieza,
+              preciomendez = (vp1*.85) * mlpieza
+ 	    WHERE producto_rollo_idrollo = NEW.idRollo
+	      AND producto_unidad_idunidad = 4 and isRollo = '0' AND isSegunda = 'SI';
+	   UPDATE producto 
+          SET precio1 = (vp1*.85),
+              precio2 = (vp1*.85),
+              precio3 = (vp1*.85),
+              precio4 = (vp1*.85),
+              preciomendez = (vp1*.85)              
+		WHERE producto_rollo_idrollo = NEW.idRollo
+          AND producto_unidad_idunidad = 1 and isRollo = '0' AND isSegunda = 'SI';
+	END IF;
+    
+    IF (OLD.preciokg1 <> NEW.preciokg1 OR
+       OLD.preciokg2 <> NEW.preciokg2 OR
+       OLD.preciokg3 <> NEW.preciokg3 OR
+       OLD.preciokg4 <> NEW.preciokg4) AND NEW.idRollo > 1 THEN
+       SET vp1 = NEW.preciokg1;
+       SET vp2 = NEW.preciokg2;
+       SET vp3 = NEW.preciokg3;
+       SET vp4 = NEW.preciokg4;
+       
+	   UPDATE producto 
+          SET precio1 = vp1,
+              precio2 = vp2,
+              precio3 = vp3,
+              precio4 = vp4
+		WHERE producto_rollo_idrollo = NEW.idRollo
+          AND producto_unidad_idunidad = 3 
+          AND producto_tipoproducto_idtipoproducto = 5
+          AND isRollo = '1' ;
+		
+	END IF;
+END$$
+DELIMITER ;

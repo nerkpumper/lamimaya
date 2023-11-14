@@ -26,7 +26,7 @@
 // 	$debug = ob_get_clean();
 // 	$r->mostrarMsgs($debug);
 
-	function guardarRollo($idRollo, $codigo, $idMaterial, $calibre, $pies, $origen, $idProveedor, $idColor, $grado, $descripcion, $observaciones)
+	function guardarRollo($idRollo, $codigo, $idMaterial, $calibre, $pies, $origen, $idProveedor, $idColor, $grado, $descripcion, $observaciones, $precio1, $precio2, $precio3, $precio4, $preciokg1, $preciokg2, $preciokg3, $preciokg4)
 	{
 		$r = new xajaxResponse();
 		$rollo = new ModeloRollo();
@@ -64,6 +64,15 @@
 		$rollo->setPies($pies);
 		$rollo->setOrigen($origen);
 		$rollo->setRollo_proveedor_idProveedor($idProveedor);
+		$rollo->setTotalpreciovta($precio1);
+		$rollo->setTotalpreciovtar2($precio2);
+		$rollo->setTotalpreciovtar3($precio3);
+		$rollo->setTotalpreciovtar4($precio4);
+		
+		$rollo->setPreciokg1($preciokg1);
+		$rollo->setPreciokg2($preciokg2);
+		$rollo->setPreciokg3($preciokg3);
+		$rollo->setPreciokg4($preciokg4);
 
 		$rollo->setRollo_color_idColor($idColor);
 		$rollo->setGrado($grado);
@@ -99,8 +108,7 @@
 		$r = new xajaxResponse();
 
 		$rollo= new ModeloRollo();
-
-
+		$color = new ModeloColor();
 
 		if ($idRollo <= 0)
 		{
@@ -121,6 +129,8 @@
 
 		$rollo->getDatosReferencia();
 
+		$color->setIdColor($rollo->getRollo_color_idColor());
+
 
 
 		$desc=str_replace(chr(13),'', $rollo->getDescripcion());
@@ -131,14 +141,17 @@
 		$obs=str_replace('<br />','\n', $obs);
 		$obs=str_replace(chr(10),'', $obs);
 
-// 		$r->saSuccess("todo bien"); return $r;
+		// $r->saSuccess($rollo->getPies()); return $r;
 		//$r->mostrarExito($val);
 
 		$r->script("
-					app.sucCodigo = '".utf8_encode("El c�digo ya es correcto y no debe cambiar")."';
+					app.sucCodigo = '"."El código ya es correcto y no debe cambiar"."';
 					app.material = '" . $rollo->getRollo_material_idMaterial() . "=>" . $rollo->Material->getClave() . "';
 					app.calibre = '" . $rollo->getCalibre() . "';
-			 		app.pies = '" . $rollo->getPies() . "';
+					app.origen = '" . $rollo->getOrigen() . "';
+					app.color = '" . $rollo->getRollo_color_idColor()."=>".$color->getClave() . "';
+					app.grado = '" . $rollo->getGrado() . "';
+			 		app.pies = '" . str_replace(".00","",$rollo->getPies()) . "';
 			 		app.proveedor = '" . $rollo->getRollo_proveedor_idProveedor() . "=>" . $rollo->Proveedor->getClave() . "';
                     app.codigo = '" . $rollo->getCodigo() . "';
 					app.descripcion = '" . $desc . "';
