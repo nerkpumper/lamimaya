@@ -64,11 +64,11 @@ $_addScript = "
 
 ?>
 
-<?php if (Permisos::userIsThisRol(Permisos::$rol_ROOT) || Permisos::userIsThisRol(Permisos::$rol_ADMINISTRADOR) || Permisos::userIsThisRol(Permisos::$rol_CXCVIEW)): ?>
+<?php if (false && Permisos::userIsThisRol(Permisos::$rol_ROOT) || Permisos::userIsThisRol(Permisos::$rol_ADMINISTRADOR) || Permisos::userIsThisRol(Permisos::$rol_CXCVIEW)): ?>
 
 
 <div class="wrapper wrapper-content">
-<?php else: ?>
+<?php else: return;?>
 
 	<div class="row">
 		<div class="col-lg-4">

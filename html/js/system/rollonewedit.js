@@ -34,6 +34,25 @@ var app = new Vue({
 		errObservaciones: '',
 		
 		errGrado: '',
+
+		precio1: 0,
+		precio2: 0,
+		precio3: 0,
+		precio4: 0,
+		preciokg1: 0,
+		preciokg2: 0,
+		preciokg3: 0,
+		preciokg4: 0,
+		precioMendez: 0,
+		precioRangoMendez: 0,
+		costo: 0,
+		
+		
+		rangoPrecio1: 'Rango 1',
+		rangoPrecio2: 'Rango 2',
+		rangoPrecio3: 'Rango 3',
+		rangoPrecio4: 'Rango 4',
+		rangoPrecioMendez: 'Rango Mendez',
 		
        
 		accionModulo: 'Nuevo'
@@ -172,7 +191,16 @@ var app = new Vue({
 						           this.idColor,
 						           this.grado,
 						           this.descripcion,
-						           this.observaciones);
+						           this.observaciones,
+								   this.precio1,
+						           this.precio2,
+						           this.precio3,
+								   this.precio4,
+								   this.preciokg1,
+						           this.preciokg2,
+						           this.preciokg3,
+								   this.preciokg
+								   );
 			}
 			
 			
