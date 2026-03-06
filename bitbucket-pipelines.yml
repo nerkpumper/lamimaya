@@ -1,0 +1,60 @@
+# This is a sample build configuration for PHP.
+# Check our guides at https://confluence.atlassian.com/x/e8YWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: ubuntu
+
+pipelines:
+  branches: 
+    master:       
+    - step:        
+        script:
+          - apt-get update
+          - apt-get -qq install git-ftp
+          - git config git-ftp.syncroot html/
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/public_html/theapp    
+          - git config git-ftp.syncroot include/
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/applamimaya/include
+          - git config git-ftp.syncroot deployment/prod/include/
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/public_html/theapp
+          - git config git-ftp.syncroot deployment/prod/conexion/
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/applamimaya/include/lib/Conexion
+          - git config git-ftp.syncroot deployment/prod/constantes/
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/applamimaya/include/config
+          - git config git-ftp.syncroot deployment/prod/cron/
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/applamimaya/include/cron            
+
+          # - git config git-ftp.syncroot html/
+          # - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/public_html/mayatest    
+          # - git config git-ftp.syncroot include/
+          # - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/appmayatest/include
+          # - git config git-ftp.syncroot deployment/prod/include/
+          # - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/public_html/mayatest
+          # - git config git-ftp.syncroot deployment/prod/conexion/
+          # - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/appmayatest/include/lib/Conexion
+          # - git config git-ftp.syncroot deployment/prod/constantes/
+          # - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/appmayatest/include/config
+          # - git config git-ftp.syncroot deployment/prod/cron/
+          # - git ftp init --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/appmayatest/include/cron            
+          
+         
+    develop:       
+    - step:        
+        script: 
+          - apt-get update 
+          - apt-get -qq install git-ftp        
+          - git config git-ftp.syncroot html/
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/public_html/mayatest    
+          - git config git-ftp.syncroot include/
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/appmayatest/include
+          - git config git-ftp.syncroot deployment/prod/include/
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/public_html/mayatest
+          - git config git-ftp.syncroot deployment/prod/conexion/
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/appmayatest/include/lib/Conexion
+          - git config git-ftp.syncroot deployment/prod/constantes/
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/appmayatest/include/config
+          - git config git-ftp.syncroot deployment/prod/cron/
+          - git ftp push --user $LAMIMAYA_USERNAME --passwd $LAMIMAYA_PASSWORD ftp://ftp.lamimaya.com/appmayatest/include/cron            
+          
+    
