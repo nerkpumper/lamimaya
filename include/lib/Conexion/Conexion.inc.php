@@ -2,11 +2,11 @@
 
  $username = 'root';
 
-$password = '';
+$password = 'mayaroot123';
 
-$hostname = 'localhost';
+$hostname = 'db';
 
-$database = 'lamimaya';
+$database = 'mayamaria';
 
 //-------------------------------
 // $username='mvtoolin';
@@ -43,7 +43,6 @@ $database = 'lamimaya';
   //   $hostname="67.222.140.68";
 
   // $database = 'galvamex_appgalva';
-
 
 
 $dbLink= mysqli_connect($hostname, $username, $password)

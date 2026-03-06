@@ -24,7 +24,7 @@
 // 	$debug = ob_get_clean();
 // 	$r->mostrarMsgs($debug);
 
-	function guardarUsuario($idUsuario, $username, $email, $nombre, $apaterno, $amaterno, $estatus, $idRol, $password = "", $tipoComision, $cobraComision)
+	function guardarUsuario($idUsuario, $username, $email, $nombre, $apaterno, $amaterno, $estatus, $idRol, $password = "", $tipoComision = null, $cobraComision = null)
 	{
 		global $_NOW_;
 		global $objSession;

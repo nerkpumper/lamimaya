@@ -372,8 +372,9 @@ class xajaxArgumentManager
 			$this->aArgs = $_GET['xjxargs'];
 		}
 		
-		if (1 == get_magic_quotes_gpc())
-			array_walk($this->aArgs, array(&$this, 'argumentStripSlashes'));
+		// get_magic_quotes_gpc() was removed in PHP 7.4 - magic quotes are always off now
+		// if (1 == get_magic_quotes_gpc())
+		//	array_walk($this->aArgs, array(&$this, 'argumentStripSlashes'));
 		
 		array_walk($this->aArgs, array(&$this, 'argumentDecodeXML'));
 	}
