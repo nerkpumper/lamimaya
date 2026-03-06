@@ -3,9 +3,7 @@ include/cron/configinclude.cron.php
 include/config/constantes.inc.php
 html/configinclude.inc.php
 html/api/apiconfiginclude.inc.php
-bitbucket-pipelines.yml
 include/cron/*.l*
-bitbucket-pipelines.yml
 include/logs/*.log
 Compras/*.*
 include/model/base/resp/*.*
