@@ -1,8 +1,3 @@
-include/lib/Conexion/Conexion.inc.php
-include/cron/configinclude.cron.php
-include/config/constantes.inc.php
-html/configinclude.inc.php
-html/api/apiconfiginclude.inc.php
 include/cron/*.l*
 include/logs/*.log
 Compras/*.*
