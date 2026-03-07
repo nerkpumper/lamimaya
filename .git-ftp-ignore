@@ -1,0 +1,11 @@
+# Archivos de configuración - solo se suben desde deployment/prod/
+include/lib/Conexion/Conexion.inc.php
+include/config/constantes.inc.php
+include/cron/configinclude.cron.php
+html/configinclude.inc.php
+html/api/apiconfiginclude.inc.php
+
+# Archivos temporales y logs
+include/cron/*.log
+include/logs/*.log
+.DS_Store
