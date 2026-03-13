@@ -116,7 +116,7 @@ class NotificationManager
 
     }
 
-    public static function WA_EstatusPedido($idList, $idPedido = 0, $status, $txtAutomatico = "")
+    public static function WA_EstatusPedido($idList, $idPedido = 0, $status = "", $txtAutomatico = "")
     {
         global $objSession;
         $user = $objSession->getNombre()." ".$objSession->getApellidoPaterno()." ".$objSession->getApellidoMaterno();
@@ -212,7 +212,7 @@ class NotificationManager
         }
     }
 
-    public static function WA_PedidoAsignado($idList, $idPedido = 0, $sucursales)
+    public static function WA_PedidoAsignado($idList, $idPedido = 0, $sucursales = "")
     {
         global $objSession;
         $user = $objSession->getNombre()." ".$objSession->getApellidoPaterno()." ".$objSession->getApellidoMaterno();
