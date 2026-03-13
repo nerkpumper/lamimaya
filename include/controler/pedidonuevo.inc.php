@@ -2063,7 +2063,7 @@
 	$xajax->registerFunction("lp");
 	
 
-	function levantarPedido($idClienteSeleccionado, $subtotalPedido, $ivaPedido, $descuentoPedido, $totalPedido, $tipoPrecioGalvamex ,$detalle, $recogeRecibe, $sucursalPreferencia, $strPersona, $strDireccion, $strNumero, $strColonia, $strCiudad, $fechaEntrega, $horaEntrega, $fechaAbierta, $pedidoExpress, $tipoPedido, $porDescuento, $maxDescuentoIndividual, $descuentoIndividual, $observacionPedido, $totalOtrosCargos, $otrosCargos, $molCostoDobles, $molCostoCorte, $buenfintipopago, $fechaEntregaPorDefinir, $tipoObra, $isCotizacion = false, $idCotizacion = 0, $clienteTipoRangoSeleccionado, $getRangosString = "", $pasarAPedidoLaCotizacion = false, $previoAPasarPedidoACotizacion = false, $utilizarReciboDinero = false, $RDAmparaCotizacion = false, $RDATomar = 0, $idClienteDatosFacturacion)
+	function levantarPedido($idClienteSeleccionado, $subtotalPedido, $ivaPedido, $descuentoPedido, $totalPedido, $tipoPrecioGalvamex ,$detalle, $recogeRecibe, $sucursalPreferencia, $strPersona, $strDireccion, $strNumero, $strColonia, $strCiudad, $fechaEntrega, $horaEntrega, $fechaAbierta, $pedidoExpress, $tipoPedido, $porDescuento, $maxDescuentoIndividual, $descuentoIndividual, $observacionPedido, $totalOtrosCargos, $otrosCargos, $molCostoDobles, $molCostoCorte, $buenfintipopago, $fechaEntregaPorDefinir, $tipoObra, $isCotizacion = false, $idCotizacion = 0, $clienteTipoRangoSeleccionado = 0, $getRangosString = "", $pasarAPedidoLaCotizacion = false, $previoAPasarPedidoACotizacion = false, $utilizarReciboDinero = false, $RDAmparaCotizacion = false, $RDATomar = 0, $idClienteDatosFacturacion = 0)
 	{
 		global $objSession;
 		$r = new xajaxResponse();
