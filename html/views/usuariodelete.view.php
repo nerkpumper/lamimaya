@@ -28,7 +28,7 @@ $_lugar = LUGAR_ADMINISTRACION_USUARIO;
 					Form::label("apellidoMaterno", "A. Materno");
 					
 				
-					Form::buttonDanger("Eliminar", "eliminarUsuario", "push-left");
+					Form::buttonDanger("Eliminar", "eliminarUsuario", "", "push-left");
 								
 				?>	
 				
