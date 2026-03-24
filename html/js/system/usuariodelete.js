@@ -9,9 +9,10 @@ var app = new Vue({
 		apellidoPaterno: '',
 		apellidoMaterno: ''
 	},
-	created: function () {
+	mounted: function () {
 		if (typeof param1 !== 'undefined') {
-			this.idUsuario = param1;				  
+			this.idUsuario = param1;		
+			console.log("Vamos a cargar usuario ", this.idUsuario);		  
 			xajax_cargarUsuario(this.idUsuario);
 		}
 		else
