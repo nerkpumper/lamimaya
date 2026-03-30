@@ -265,7 +265,7 @@
 		else
 		{
 			
-			$r->script("saError(\"Ha ocurrido un error. " . utf8_encode($cotizacion->getStrError())."\");");
+			$r->script("saError(\"Ha ocurrido un error. " . mb_convert_encoding($cotizacion->getStrError(, 'UTF-8', 'ISO-8859-1'))."\");");
 		}
 	
 		return $r;
@@ -301,7 +301,7 @@ function actualizarRangoCliente($idCotizacion, $rango)
 		}
 		else
 		{
-			$r->script("saError(Ha ocurrido un error. " . utf8_encode($cotizacion->getStrError()).");");
+			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($cotizacion->getStrError(, 'UTF-8', 'ISO-8859-1')).");");
 		}
 	
 		return $r;

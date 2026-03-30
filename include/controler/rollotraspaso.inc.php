@@ -55,7 +55,7 @@ function cargarNoRemisiones($noRollo)
     }
     else
     {
-        $r->script("app.msgError = '".utf8_encode("No se encontr� informaci�n del Numero de Rollo solicitado.") ."';");
+        $r->script("app.msgError = '".mb_convert_encoding("No se encontr� informaci�n del Numero de Rollo solicitado.", 'UTF-8', 'ISO-8859-1') ."';");
     }
 
     return $r;

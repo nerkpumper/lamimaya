@@ -320,7 +320,7 @@ class PDF extends PDFNerk
 					$desc = mb_strtoupper($desc);
 					$desc = str_replace("--NO APLICA--", "", $desc);
 					$desc = str_replace("-- NO APLICA --", "", $desc);
-					$desc = utf8_decode($desc);
+					$desc = mb_convert_encoding($desc, 'ISO-8859-1', 'UTF-8');
 						
 					$this->putText(29, $desc);
 						

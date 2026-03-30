@@ -73,19 +73,19 @@ function normaliza ($cadena){
 	$originales  = 'ÃƒÂ ,ÃƒÂ¡,ÃƒÂ¢,ÃƒÂ£,ÃƒÂ¤,ÃƒÂ§,ÃƒÂ¨,ÃƒÂ©,ÃƒÂª,ÃƒÂ«,ÃƒÂ¬,ÃƒÂ­,ÃƒÂ®,ÃƒÂ¯,ÃƒÂ±,ÃƒÂ²,ÃƒÂ³,ÃƒÂ´,ÃƒÂµ,ÃƒÂ¶,ÃƒÂ¹,ÃƒÂº,ÃƒÂ»,ÃƒÂ¼,ÃƒÂ½,ÃƒÂ¿,Ãƒâ‚¬,Ãƒï¿½,Ãƒâ€š,ÃƒÆ’,Ãƒâ€ž,Ãƒâ€¡,ÃƒË†,Ãƒâ€°,ÃƒÅ ,Ãƒâ€¹,ÃƒÅ’,Ãƒï¿½,ÃƒÅ½,Ãƒï¿½,Ãƒâ€˜,Ãƒâ€™,Ãƒâ€œ,Ãƒâ€�,Ãƒâ€¢,Ãƒâ€“,Ãƒâ„¢,ÃƒÅ¡,Ãƒâ€º,ÃƒÅ“,Ãƒï¿½';
 	$modificadas = 'a,a,a,a,a,c,e,e,e,e,i,i,i,i,n,o,o,o,o,o,u,u,u,u,y,y,A,A,A,A,A,C,E,E,E,E,I,I,I,I,N,O,O,O,O,O,U,U,U,U,Y';
 
-	$cadena = utf8_decode($cadena);
-	$cadena = strtr($cadena, utf8_decode($originales), $modificadas);
+	$cadena = mb_convert_encoding($cadena, 'ISO-8859-1', 'UTF-8');
+	$cadena = strtr($cadena, mb_convert_encoding($originales, 'ISO-8859-1', 'UTF-8'), $modificadas);
 	$cadena = strtolower($cadena);
 
 	//$tofind = array('ÃƒÂ ','ÃƒÂ¡','ÃƒÂ¢','ÃƒÂ£','ÃƒÂ¤', 'ÃƒÂ§', 'ÃƒÂ¨','ÃƒÂ©','ÃƒÂª','ÃƒÂ«', 'ÃƒÂ¬','ÃƒÂ­','ÃƒÂ®','ÃƒÂ¯', 'ÃƒÂ±', 'ÃƒÂ²','ÃƒÂ³','ÃƒÂ´','ÃƒÂµ','ÃƒÂ¶', 'ÃƒÂ¹','ÃƒÂº','ÃƒÂ»','ÃƒÂ¼', 'ÃƒÂ½','ÃƒÂ¿', 'Ãƒâ‚¬','Ãƒï¿½','Ãƒâ€š','ÃƒÆ’','Ãƒâ€ž', 'Ãƒâ€¡', 'ÃƒË†','Ãƒâ€°','ÃƒÅ ','Ãƒâ€¹', 'ÃƒÅ’','Ãƒï¿½','ÃƒÅ½','Ãƒï¿½', 'Ãƒâ€˜', 'Ãƒâ€™','Ãƒâ€œ','Ãƒâ€�','Ãƒâ€¢','Ãƒâ€“', 'Ãƒâ„¢','ÃƒÅ¡','Ãƒâ€º','ÃƒÅ“', 'Ãƒï¿½');
 	//$replac = array('a','a','a','a','a', 'c', 'e','e','e','e', 'i','i','i','i', 'n', 'o','o','o','o','o', 'u','u','u','u', 'y','y', 'A','A','A','A','A', 'C', 'E','E','E','E', 'I','I','I','I', 'N', 'O','O','O','O','O', 'U','U','U','U', 'Y');
 	//return(strtr($cadena,$tofind,$replac));
 
-	//  	$cadena = utf8_decode($cadena);
-	//  	$cadena = strtr($cadena, utf8_decode($tofind), $toreplac);
+	//  	$cadena = mb_convert_encoding($cadena, 'ISO-8859-1', 'UTF-8');
+	//  	$cadena = strtr($cadena, mb_convert_encoding($tofind, 'ISO-8859-1', 'UTF-8'), $toreplac);
 	//  	$cadena = strtolower($cadena);
 	return $cadena;
-	//return utf8_encode($cadena);
+	//return mb_convert_encoding($cadena, 'UTF-8', 'ISO-8859-1');
 }
 
 if (PHP_SAPI == 'cli')
@@ -172,7 +172,7 @@ if (PHP_SAPI == 'cli')
 	// //         		    ->setCellValue('A'.$i,  $fila['alumno'])
 	// // 		            ->setCellValue('B'.$i,  $fila['username'])
 	// //         		    ->setCellValue('C'.$i,  $fila['estatus'])
-	// //             		->setCellValue('D'.$i, utf8_encode($fila['email']));
+	// //             		->setCellValue('D'.$i, mb_convert_encoding($fila['email'], 'UTF-8', 'ISO-8859-1'));
 	// // 					$i++;
 	// // 		}
 

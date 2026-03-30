@@ -116,19 +116,19 @@
 		$msg = "";		
 		if ($marca == "SINLEER")
 		{
-			$msg = utf8_encode("El mensaje ha sido marcado como No Leído");
+			$msg = mb_convert_encoding("El mensaje ha sido marcado como No Leído", 'UTF-8', 'ISO-8859-1');
 			$notificacion->setLeidoNO();
 			$notificacion->setBorrarNO();
 		}
 		else if($marca	 == "LEIDA" )
 		{
-			$msg = utf8_encode("El mensaje ha sido marcado como Leído");
+			$msg = mb_convert_encoding("El mensaje ha sido marcado como Leído", 'UTF-8', 'ISO-8859-1');
 			$notificacion->setLeidoSI();
 			$notificacion->setBorrarNO();
 		}
 		else
 		{			
-			$msg = utf8_encode("El mensaje será borrado poseriormente");
+			$msg = mb_convert_encoding("El mensaje será borrado poseriormente", 'UTF-8', 'ISO-8859-1');
 // 			$r->mostrarAviso("a borrar: ".$index); return $r;
 			$notificacion->setBorrarSI();
 		}

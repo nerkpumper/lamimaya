@@ -653,7 +653,7 @@ foreach($ctes as $cte)
                         <table class='main' width='100%' cellpadding='0' cellspacing='0'>
                             <tr>
                                 <td style='background: #1ab394; font-size: 16px;    color: #fff;    font-weight: 500;    padding: 20px;    text-align: center;    border-radius: 3px 3px 0 0;'>
-                                    PLAN PROTECCION PARA ". utf8_decode($pdf->__cliente)."
+                                    PLAN PROTECCION PARA ". mb_convert_encoding($pdf->__cliente, 'ISO-8859-1', 'UTF-8')."
                                 </td>
                             </tr>
                             <tr>

@@ -234,7 +234,7 @@ function cargarVentasVSCobranzaAnual($anio)
 
                 var index = $('#chartAnio').data('highchartsChart');
                 chart = Highcharts.charts[index];
-				 chart.setTitle({text: '".utf8_encode("Ventas vs cobranza Galvamex ").$anio."'});  
+				 chart.setTitle({text: '".mb_convert_encoding("Ventas vs cobranza Galvamex ", 'UTF-8', 'ISO-8859-1').$anio."'});  
         
                 chart.xAxis[0].setCategories([]);
                 chart.xAxis[0].setCategories([".$categorias."]);
@@ -425,7 +425,7 @@ function cargarVentasVSCobranzaAnualByPromotor($anio)
         
                 var index = $('#chartvevsco').data('highchartsChart');
                 chart = Highcharts.charts[index];
-				chart.setTitle({text: '".utf8_encode("Ventas vs cobranza por promotor Galvamex ").$anio."'});  
+				chart.setTitle({text: '".mb_convert_encoding("Ventas vs cobranza por promotor Galvamex ", 'UTF-8', 'ISO-8859-1').$anio."'});  
         
                 chart.xAxis[0].setCategories([]);
                 chart.xAxis[0].setCategories([".$categorias."]);

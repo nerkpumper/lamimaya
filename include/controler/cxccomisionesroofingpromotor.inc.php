@@ -598,7 +598,7 @@
 			$cxccomision->setIdConceptoGasto(1);
 			$cxccomision->setDateAndUser("creacion");
 			$cxccomision->setMonto($totalAPagar);
-			$cxccomision->setObservacion(utf8_encode("CORTE COMISI�N, MONTO GENERADO"));
+			$cxccomision->setObservacion(mb_convert_encoding("CORTE COMISI�N, MONTO GENERADO", 'UTF-8', 'ISO-8859-1'));
 			$cxccomision->setIdCorteComisionRoofing($cc->getIdCorteComisionRoofing());
 			
 			$cxccomision->Guardar();
@@ -619,7 +619,7 @@
 			$cxccomision->setIdConceptoGasto(1);
 			$cxccomision->setDateAndUser("creacion");
 			$cxccomision->setMonto($incentivo);
-			$cxccomision->setObservacion(utf8_encode("INCENTIVO DE COMISI�N"));
+			$cxccomision->setObservacion(mb_convert_encoding("INCENTIVO DE COMISI�N", 'UTF-8', 'ISO-8859-1'));
 			$cxccomision->setIdCorteComisionRoofing($cc->getIdCorteComisionRoofing());
 			
 			$cxccomision->Guardar();
@@ -640,7 +640,7 @@
 			    $cxcarrastrar->setIdConceptoGasto(1);
 			    $cxcarrastrar->setDateAndUser("creacion");
 			    $cxcarrastrar->setMonto($netoAPagar * -1);
-			    $cxcarrastrar->setObservacion(utf8_encode("CORTE COMISI�N ANTERIOR NEGATIVO"));
+			    $cxcarrastrar->setObservacion(mb_convert_encoding("CORTE COMISI�N ANTERIOR NEGATIVO", 'UTF-8', 'ISO-8859-1'));
 			    
 			    $cxcarrastrar->Guardar();
 			    

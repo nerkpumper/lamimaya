@@ -499,7 +499,7 @@ class PDF extends PDFNerk
   			    
   			    
   		  			    
-  		  			    // $this->putText(31.5, utf8_encode($desc));
+  		  			    // $this->putText(31.5, mb_convert_encoding($desc, 'UTF-8', 'ISO-8859-1'));
   		  			    
   		  			 
   		  			    
@@ -536,11 +536,11 @@ $tr->setIdTransferenciaStock($idTransferencia);
 // $pdf->__sucursales = $pedido->getValeSalidaDato("sucursalNombre");
 
 // $pdf->__idPedido = $pedido->getValeSalidaDato("idPedido");
-// $pdf->__nombre =utf8_decode(mb_strtoupper($pedido->getValeSalidaDato("cteNombre") . " " . $pedido->getValeSalidaDato("cteApellidos")));
-// $pdf->__fecha = utf8_decode(mb_strtoupper($pedido->getValeSalidaDato("fecha_capturado")));
-// $pdf->__domicilio = utf8_decode(mb_strtoupper($pedido->getValeSalidaDato("cteDomicilio1") . " " . $pedido->getValeSalidaDato("cteDomicilio2") . " " . $pedido->getValeSalidaDato("cteNumero") . " " . $pedido->getValeSalidaDato("cteColonia")));
-// $pdf->__ciudad = utf8_decode(mb_strtoupper($pedido->getValeSalidaDato("cteCiudad")));
-// $pdf->__rfc = utf8_decode(mb_strtoupper($pedido->getValeSalidaDato("cteRfc")));
+// $pdf->__nombre =mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("cteNombre", 'ISO-8859-1', 'UTF-8') . " " . $pedido->getValeSalidaDato("cteApellidos")));
+// $pdf->__fecha = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("fecha_capturado", 'ISO-8859-1', 'UTF-8')));
+// $pdf->__domicilio = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("cteDomicilio1", 'ISO-8859-1', 'UTF-8') . " " . $pedido->getValeSalidaDato("cteDomicilio2") . " " . $pedido->getValeSalidaDato("cteNumero") . " " . $pedido->getValeSalidaDato("cteColonia")));
+// $pdf->__ciudad = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("cteCiudad", 'ISO-8859-1', 'UTF-8')));
+// $pdf->__rfc = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("cteRfc", 'ISO-8859-1', 'UTF-8')));
 // $pdf->__telefono = $pedido->getValeSalidaDato("cteTelefonos");
 // $pdf->__totalTexto = "";
 // $pdf->__conceptoAnticipo = "";
@@ -557,11 +557,11 @@ $tr->setIdTransferenciaStock($idTransferencia);
 // $pdf->__agente = $pedido->getValeSalidaDato("promoNombre") . " " . $pedido->getValeSalidaDato("promoAPaterno") . " " . $pedido->getValeSalidaDato("promoAMaterno");
 // $pdf->__agenteVendedor = $pedido->getValeSalidaDato("vendeNombre") . " " . $pedido->getValeSalidaDato("vendeAPaterno") . " " . $pedido->getValeSalidaDato("vendeAMaterno");
 
-// $pdf->_recibePersona = utf8_decode(mb_strtoupper($pedido->getValeSalidaDato("personaEntrega")));
-// $pdf->_recibeDomicilio = utf8_decode(mb_strtoupper($pedido->getValeSalidaDato("domicilioEntrega")));
-// $pdf->_recibeNumero = utf8_decode(mb_strtoupper( $pedido->getValeSalidaDato("numeroEntrega")));
-// $pdf->_recibeColonia = utf8_decode(mb_strtoupper($pedido->getValeSalidaDato("coloniaEntrega")));
-// $pdf->_recibeCiudad =utf8_decode(mb_strtoupper( $pedido->getValeSalidaDato("ciudadEntrega")));
+// $pdf->_recibePersona = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("personaEntrega", 'ISO-8859-1', 'UTF-8')));
+// $pdf->_recibeDomicilio = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("domicilioEntrega", 'ISO-8859-1', 'UTF-8')));
+// $pdf->_recibeNumero = mb_convert_encoding(mb_strtoupper( $pedido->getValeSalidaDato("numeroEntrega", 'ISO-8859-1', 'UTF-8')));
+// $pdf->_recibeColonia = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("coloniaEntrega", 'ISO-8859-1', 'UTF-8')));
+// $pdf->_recibeCiudad =mb_convert_encoding(mb_strtoupper( $pedido->getValeSalidaDato("ciudadEntrega", 'ISO-8859-1', 'UTF-8')));
 
 // $pdf->_observacionPedido = $pedido->getValeSalidaDato("observacionCaptura");
 
@@ -605,7 +605,7 @@ $pdf->__folio = $idTransferencia;
 $pdf->_totalHojas = ceil(count($lst) / $pdf->_rowsByHoja);
 
 $pdf->__nombre =(mb_strtoupper($lst[0]["crea"]));
-$pdf->__fecha = utf8_decode(mb_strtoupper($lst[0]["fecha"]));
+$pdf->__fecha = mb_convert_encoding(mb_strtoupper($lst[0]["fecha"], 'ISO-8859-1', 'UTF-8'));
 
 $pdf->__sucursalOrigen = mb_strtoupper($lst[0]["origen"]);
 $pdf->__sucursalDestino = mb_strtoupper($lst[0]["destino"]);

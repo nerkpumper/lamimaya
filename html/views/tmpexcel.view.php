@@ -11,10 +11,10 @@ function salir()
 function normaliza ($cadena){
 	$originales  = 'Ã€Ã�Ã‚ÃƒÃ„Ã…Ã†Ã‡ÃˆÃ‰ÃŠÃ‹ÃŒÃ�ÃŽÃ�Ã�Ã‘Ã’Ã“Ã”Ã•Ã–Ã˜Ã™ÃšÃ›ÃœÃ�ÃžÃŸÃ Ã¡Ã¢Ã£Ã¤Ã¥Ã¦Ã§Ã¨Ã©ÃªÃ«Ã¬Ã­Ã®Ã¯Ã°Ã±Ã²Ã³Ã´ÃµÃ¶Ã¸Ã¹ÃºÃ»Ã½Ã½Ã¾Ã¿Å”Å•ï¿½';
 	$modificadas = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRro';
-	$cadena = utf8_decode($cadena);
-	$cadena = strtr($cadena, utf8_decode($originales), $modificadas);
+	$cadena = mb_convert_encoding($cadena, 'ISO-8859-1', 'UTF-8');
+	$cadena = strtr($cadena, mb_convert_encoding($originales, 'ISO-8859-1', 'UTF-8'), $modificadas);
 	$cadena = strtolower($cadena);
-	return utf8_encode($cadena);
+	return mb_convert_encoding($cadena, 'UTF-8', 'ISO-8859-1');
 }
 
 
@@ -43,7 +43,7 @@ if ($rollo->getIdRollo() == 0)
 }
 
 $claveRollo = $rollo->getCodigo();
-$descripcionRollo = str_replace("<br />", " ", normaliza (utf8_decode(($rollo->getDescripcion()))));
+$descripcionRollo = str_replace("<br />", " ", normaliza (mb_convert_encoding(($rollo->getDescripcion(, 'ISO-8859-1', 'UTF-8')))));
 //$descripcionRollo = $rollo->getDescripcion();
 //echo $descripcionRollo;
 //exit;				
@@ -119,7 +119,7 @@ $objPHPExcel->setActiveSheetIndex(0)
 //         		    ->setCellValue('A'.$i,  $fila['alumno'])
 // 		            ->setCellValue('B'.$i,  $fila['username'])
 //         		    ->setCellValue('C'.$i,  $fila['estatus'])
-//             		->setCellValue('D'.$i, utf8_encode($fila['email']));
+//             		->setCellValue('D'.$i, mb_convert_encoding($fila['email'], 'UTF-8', 'ISO-8859-1'));
 // 					$i++;
 // 		}
 		

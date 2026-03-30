@@ -1,4 +1,6 @@
 <?php
+// Iniciar output buffering para evitar problemas con xajax
+ob_start();
 
 // echo "bien en index.php Linea " . __LINE__; return;
 

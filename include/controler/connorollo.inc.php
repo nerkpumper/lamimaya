@@ -60,7 +60,7 @@
 		}
 		else
 		{
-			$r->script("app.msgError = '".utf8_encode("No se encontró información del Numero de Rollo solicitado.") ."';");
+			$r->script("app.msgError = '".mb_convert_encoding("No se encontró información del Numero de Rollo solicitado.", 'UTF-8', 'ISO-8859-1') ."';");
 		}
 		
 		

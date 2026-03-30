@@ -469,7 +469,7 @@ INNER JOIN sucursal ON valesalidadetalle.idSucursalDespachado = sucursal.idSucur
 		
 		if ($vale->getError())
 		{
-			$errores .=utf8_encode("Ocurri� un error al intentar generar el Vale de Salida\n");
+			$errores .=mb_convert_encoding("Ocurri� un error al intentar generar el Vale de Salida\n", 'UTF-8', 'ISO-8859-1');
 			$blnCommit = false;
 		}
 
@@ -487,7 +487,7 @@ INNER JOIN sucursal ON valesalidadetalle.idSucursalDespachado = sucursal.idSucur
 					
 					if ($vsd->getIdValeSalidaDetalle() <= 0)
 					{
-						$errores .=utf8_encode("Ocurri� un error al intentar generar el Vale de Salida");
+						$errores .=mb_convert_encoding("Ocurri� un error al intentar generar el Vale de Salida", 'UTF-8', 'ISO-8859-1');
 						$blnCommit = false;
 						break;
 					}
@@ -498,7 +498,7 @@ INNER JOIN sucursal ON valesalidadetalle.idSucursalDespachado = sucursal.idSucur
 					
 					if ($vsd->getError())
 					{
-						$errores .= utf8_encode("Ocurri� un error al intentar actualizar informaci�n de Vale Salida [".$item["idValeSalidaDetalle"]."]\n");
+						$errores .= mb_convert_encoding("Ocurri� un error al intentar actualizar informaci�n de Vale Salida [".$item["idValeSalidaDetalle"]."]\n", 'UTF-8', 'ISO-8859-1');
 						$blnCommit = false;
 					}
 					
@@ -511,7 +511,7 @@ INNER JOIN sucursal ON valesalidadetalle.idSucursalDespachado = sucursal.idSucur
 					    
 					    if ($vale->getError())
 					    {
-					        $errores .= utf8_encode("Ocurri� un error al intentar actualizar informaci�n de Vale Salida [".$item["idValeSalidaDetalle"]."]\n");
+					        $errores .= mb_convert_encoding("Ocurri� un error al intentar actualizar informaci�n de Vale Salida [".$item["idValeSalidaDetalle"]."]\n", 'UTF-8', 'ISO-8859-1');
 					        $blnCommit = false;
 					    }
 					    

@@ -33,13 +33,13 @@
 				
 		if ($material->existeField("nombre", $nombre, $idMaterial))
 		{
-			$r->script("app.errNombre = \"". utf8_encode("Este nombre de material ya está siendo utilizado. Debe especificar uno diferente.") . "\"; ");
+			$r->script("app.errNombre = \"". mb_convert_encoding("Este nombre de material ya está siendo utilizado. Debe especificar uno diferente.", 'UTF-8', 'ISO-8859-1') . "\"; ");
 			$regresar = true;
 		}
 		
 		if ($material->existeField("clave", $clave, $idMaterial))
 		{
-			$r->script("app.errClave = \"". utf8_encode("Esta clave de material ya está siendo utilizada. Debe especificar una diferente.") ."\"; ");
+			$r->script("app.errClave = \"". mb_convert_encoding("Esta clave de material ya está siendo utilizada. Debe especificar una diferente.", 'UTF-8', 'ISO-8859-1') ."\"; ");
 			$regresar = true;
 		}
 		

@@ -414,7 +414,7 @@
 	        if ($cliente->existeField("email", $facEmail, $idCliente))
 	        {
 	           
-	            $r->script("app.errFacEmail = \"". utf8_encode("Este email ya esta siendo utilizado. Debe especificar uno diferente.") ."\"; ");
+	            $r->script("app.errFacEmail = \"". mb_convert_encoding("Este email ya esta siendo utilizado. Debe especificar uno diferente.", 'UTF-8', 'ISO-8859-1') ."\"; ");
 	            $regresar = true;
 	        }
 	    }

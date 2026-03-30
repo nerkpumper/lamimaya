@@ -142,28 +142,28 @@
 					
 					$desc = mb_strtoupper($desc);
 					$desc = str_replace("--NO APLICA--", "", $desc);
-// 					$desc = utf8_decode($desc);
+// 					$desc = mb_convert_encoding($desc, 'ISO-8859-1', 'UTF-8');
 
 // 			$pedidoDetalle .= "this.pedidoDetalle.push({
-// 								idPedidoDetalle: ".utf8_decode($row["idPedidoDetalle"]).",
-// 								codigo: \"".utf8_decode($row["proCodigo"])."\",
+// 								idPedidoDetalle: ".mb_convert_encoding($row["idPedidoDetalle"], 'ISO-8859-1', 'UTF-8').",
+// 								codigo: \"".mb_convert_encoding($row["proCodigo"], 'ISO-8859-1', 'UTF-8')."\",
 // 								fullName: \"".$desc."\",
-// 								partida: ".utf8_decode($row["detPartida"]).",
-// 								listoDespachar: \"".utf8_decode($row["listo_para_producir"])."\",
-// 								despachado: \"".utf8_decode($row["despachado"])."\"
+// 								partida: ".mb_convert_encoding($row["detPartida"], 'ISO-8859-1', 'UTF-8').",
+// 								listoDespachar: \"".mb_convert_encoding($row["listo_para_producir"], 'ISO-8859-1', 'UTF-8')."\",
+// 								despachado: \"".mb_convert_encoding($row["despachado"], 'ISO-8859-1', 'UTF-8')."\"
 // 							});";
 
 					$pedidoDetalle .= "app.pedidoDetalle.push({
-								idPedidoDetalle: ".utf8_decode($row["idPedidoDetalle"]).",
+								idPedidoDetalle: ".mb_convert_encoding($row["idPedidoDetalle"], 'ISO-8859-1', 'UTF-8').",
                                 idrollo: ".$row["proIdRollo"].",
-								codigo: \"".utf8_decode($row["proCodigo"])."\",
-								shortTipoProducto: \"".utf8_decode($row["proShortTipoProducto"])."\",
+								codigo: \"".mb_convert_encoding($row["proCodigo"], 'ISO-8859-1', 'UTF-8')."\",
+								shortTipoProducto: \"".mb_convert_encoding($row["proShortTipoProducto"], 'ISO-8859-1', 'UTF-8')."\",
 								fullName: \"".$desc."\",
-								unidad: \"".utf8_decode($row["proUnidad"])."\",
-								shortUnidad: \"".utf8_decode($row["proShortUnidad"])."\",
-								partida: ".utf8_decode($row["detPartida"]).",
-								listoDespachar: \"".utf8_decode($row["listo_para_producir"])."\",
-								despachado: \"".utf8_decode($row["despachado"])."\",
+								unidad: \"".mb_convert_encoding($row["proUnidad"], 'ISO-8859-1', 'UTF-8')."\",
+								shortUnidad: \"".mb_convert_encoding($row["proShortUnidad"], 'ISO-8859-1', 'UTF-8')."\",
+								partida: ".mb_convert_encoding($row["detPartida"], 'ISO-8859-1', 'UTF-8').",
+								listoDespachar: \"".mb_convert_encoding($row["listo_para_producir"], 'ISO-8859-1', 'UTF-8')."\",
+								despachado: \"".mb_convert_encoding($row["despachado"], 'ISO-8859-1', 'UTF-8')."\",
 								despachando: false
 							});";
 
@@ -1030,7 +1030,7 @@
 	    $inv->setMovimientoSALIDA();
 	    $inv->setSalidaDespachoSI();
 	    $inv->setCantidad($cantidad);
-	    $inv->setObservaciones(utf8_encode("Láminas tomadas para desarrollar ".$noMolduras." Molduras"));
+	    $inv->setObservaciones(mb_convert_encoding("Láminas tomadas para desarrollar ".$noMolduras." Molduras", 'UTF-8', 'ISO-8859-1'));
 	    $inv->setIdPedidoDetalle($idPedidoDetalle);
 	    $inv->setDateAndUser("movimiento");
 	    $inv->setIdRemisionRollo($idRemisionRollo);
@@ -1048,7 +1048,7 @@
 	        $invMol->setMovimientoSALIDA();
 	        $invMol->setSalidaDespachoSI();
 	        $invMol->setCantidad($noMolduras);
-	        $invMol->setObservaciones(utf8_encode("Surtido de Pedido Molduras (de Lámina)"));
+	        $invMol->setObservaciones(mb_convert_encoding("Surtido de Pedido Molduras (de Lámina, 'UTF-8', 'ISO-8859-1')"));
 	        $invMol->setIdPedidoDetalle($idPedidoDetalle);
 	        $invMol->setDateAndUser("movimiento");
 	        $invMol->setIdRemisionRollo(0);

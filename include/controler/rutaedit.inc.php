@@ -33,7 +33,7 @@
 				
 		if ($ruta->existeField("nombre", $nombre, $idRuta))
 		{
-			$r->script("app.errNombre = \"". utf8_encode("Este nombre de ruta ya está siendo utilizado. Debe especificar uno diferente.") . "\"; ");
+			$r->script("app.errNombre = \"". mb_convert_encoding("Este nombre de ruta ya está siendo utilizado. Debe especificar uno diferente.", 'UTF-8', 'ISO-8859-1') . "\"; ");
 			$regresar = true;
 		}
 		

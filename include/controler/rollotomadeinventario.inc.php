@@ -125,7 +125,7 @@
 				{
 					$blnHayRepetidos = true;
 					$blnListoParaGuardar = false;
-					$strLabelRepetidos .= "app.ingresos[" . $key . "].estatusLabel = \"<span class='label label-warning'>" . utf8_encode("N�mero de rollo repetido en lista.") . "</span>\";";
+					$strLabelRepetidos .= "app.ingresos[" . $key . "].estatusLabel = \"<span class='label label-warning'>" . mb_convert_encoding("N�mero de rollo repetido en lista.", 'UTF-8', 'ISO-8859-1') . "</span>\";";
 				}	
 			} 			
 		}
@@ -142,7 +142,7 @@
 			{
 				$blnHayRepetidos = true;
 				$blnListoParaGuardar = false;
-				$strLabelRepetidos .= "app.ingresos[" . $key . "].estatusLabel = \"<span class='label label-danger'>" . utf8_encode("N�mero de rollo ya ha sido ingresado previamente.") . "</span>\";";
+				$strLabelRepetidos .= "app.ingresos[" . $key . "].estatusLabel = \"<span class='label label-danger'>" . mb_convert_encoding("N�mero de rollo ya ha sido ingresado previamente.", 'UTF-8', 'ISO-8859-1') . "</span>\";";
 			}
 		}
 		
@@ -193,7 +193,7 @@
 					    var i;
 					    for (i = 0 ; i < app.ingresos.length ; i++)
 					    {
-					         app.ingresos[i].estatusLabel = \"<span class='label label-success'>".utf8_encode("N�mero de Rollo registrado.") ."</span>\";
+					         app.ingresos[i].estatusLabel = \"<span class='label label-success'>".mb_convert_encoding("N�mero de Rollo registrado.", 'UTF-8', 'ISO-8859-1') ."</span>\";
 					    }
 					
 						window.location = URL_BASE + \"rolloremisionlastinsert/" . $idRollo . "\";

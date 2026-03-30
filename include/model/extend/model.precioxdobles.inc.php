@@ -113,7 +113,7 @@
 						foreach($datos as $k=>$v)
 						{
 							$campo="" . $k;
-							$this->$campo=( utf8_decode($v));
+							$this->$campo=( mb_convert_encoding($v, 'ISO-8859-1', 'UTF-8'));
 						}
 					}
 					return true;

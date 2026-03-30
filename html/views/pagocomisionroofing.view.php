@@ -185,10 +185,10 @@ class PDF extends PDFNerk
      
         foreach ($rsDetalle as $item)
         {
-            if (utf8_decode($item["observacion"]) == "CORTE COMISIÓN, MONTO GENERADO")
+            if (mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8') == "CORTE COMISIÓN, MONTO GENERADO")
             {
                 $this->putText(12, "COMISIÓN");
-                $this->putText(40, $item["fecha_creacion"] . ' ' . utf8_decode($item["observacion"]));
+                $this->putText(40, $item["fecha_creacion"] . ' ' . mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8'));
                 $this->putTextRight(" + " . number_format($item["monto"],2), 15);
                 
                 $this->nextRow();                
@@ -197,10 +197,10 @@ class PDF extends PDFNerk
         
 //         foreach ($rsDetalle as $item)
 //         {
-//             if (utf8_decode($item["observacion"]) == "INCENTIVO DE COMISIÓN")
+//             if (mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8') == "INCENTIVO DE COMISIÓN")
 //             {
 //                 $this->putText(12, "INCENTIVO");
-//                 $this->putText(40, $item["fecha_creacion"] . ' ' . utf8_decode($item["observacion"]));
+//                 $this->putText(40, $item["fecha_creacion"] . ' ' . mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8'));
 //                 $this->putTextRight(" + " . number_format($item["monto"],2), 15);
                 
 //                 $this->nextRow();
@@ -212,11 +212,11 @@ class PDF extends PDFNerk
         
         foreach ($rsDetalle as $item)
         {
-            if (utf8_decode($item["observacion"]) != "CORTE COMISIÓN, MONTO GENERADO" &&
-                utf8_decode($item["observacion"]) != "INCENTIVO DE COMISIÓN" )
+            if (mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8') != "CORTE COMISIÓN, MONTO GENERADO" &&
+                mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8') != "INCENTIVO DE COMISIÓN" )
             {
                 $this->putText(12, "DEDUCCIÓN");
-                $this->putText(40, $item["fecha_creacion"] . ' ' .utf8_decode($item["observacion"]));
+                $this->putText(40, $item["fecha_creacion"] . ' ' .mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8'));
                 $this->putTextRight(" - " . number_format($item["monto"],2), 15);
                 
                 $this->nextRow();
@@ -229,7 +229,7 @@ class PDF extends PDFNerk
         {
             
              $this->putText(12, $item["movimiento"]);
-             $this->putText(40, $item["fecha_movimiento"] . ' ' .utf8_decode($item["observacion"]));
+             $this->putText(40, $item["fecha_movimiento"] . ' ' .mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8'));
              $this->putTextRight(" - " . number_format($item["monto"],2), 15);
                 
              $this->nextRow();

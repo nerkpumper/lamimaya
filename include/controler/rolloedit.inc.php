@@ -35,7 +35,7 @@
 		
 		if ($rollo->existeField("codigo", $codigo, $idRollo))
 		{
-			$r->script("app.errCodigo = \"".utf8_encode("Este C�digo ya est� siendo utilizado. Se debe armar uno diferente.")."\"; ");
+			$r->script("app.errCodigo = \"".mb_convert_encoding("Este C�digo ya est� siendo utilizado. Se debe armar uno diferente.", 'UTF-8', 'ISO-8859-1')."\"; ");
 			$regresar = true;
 		}		
 		
@@ -129,7 +129,7 @@
 		//$r->mostrarExito($val);
 		
 		$r->script("			
-					app.sucCodigo = '".utf8_encode("El c�digo ya es correcto y no debe cambiar")."';
+					app.sucCodigo = '".mb_convert_encoding("El c�digo ya es correcto y no debe cambiar", 'UTF-8', 'ISO-8859-1')."';
 					app.material = '" . $rollo->getRollo_material_idMaterial() . "=>" . $rollo->Material->getClave() . "';
 					app.calibre = '" . $rollo->getCalibre() . "';
 			 		app.pies = '" . $rollo->getPies() . "';

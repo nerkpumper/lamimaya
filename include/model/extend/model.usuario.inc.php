@@ -101,7 +101,7 @@
 
 		public function getFullName()
 		{
-// 			return utf8_encode($this->getNombre() . ' ' . $this->getApellidoPaterno() . ' ' . $this->getApellidoMaterno());
+// 			return mb_convert_encoding($this->getNombre(, 'UTF-8', 'ISO-8859-1') . ' ' . $this->getApellidoPaterno() . ' ' . $this->getApellidoMaterno());
 			return $this->getNombre() . ' ' . $this->getApellidoPaterno() . ' ' . $this->getApellidoMaterno();
 		}
 

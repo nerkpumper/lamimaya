@@ -2192,7 +2192,7 @@
                     
                     if ($producto->getIdProducto() <= 0)
                     {
-                        $strErrores .= ($strErrores == "" ? "" : "<br>") . utf8_encode("No se ha podido obtener la informaci�n del Producto ".$item["fullDescripcion"].".");
+                        $strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding("No se ha podido obtener la informaci�n del Producto ".$item["fullDescripcion"].".", 'UTF-8', 'ISO-8859-1');
                         $blnDoCommit = false;
                         break;
                     }
@@ -2202,7 +2202,7 @@
                     
                     if ($existencia < $cantidadSolicitada)
                     {
-                        $strErrores .= ($strErrores == "" ? "" : "<br>") . utf8_decode("No hay suficiente Stock ( ".$existencia." ) para el Producto ".$item["fullDescripcion"].".");
+                        $strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding("No hay suficiente Stock ( ".$existencia." , 'ISO-8859-1', 'UTF-8') para el Producto ".$item["fullDescripcion"].".");
                         $blnDoCommit = false;
                         $blnStockInsuficiente = true;
                         // 					$r->mostrarAviso("commit false no sufi " .($blnDoCommit ? "docommit" : "no commit") . " " . $strErrores);
@@ -2210,7 +2210,7 @@
                         
                     }
                     
-                    // 					$strErrores .= ($strErrores == "" ? "" : "<br>") . utf8_encode($pedido->getStrError());
+                    // 					$strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($pedido->getStrError(, 'UTF-8', 'ISO-8859-1'));
                 }
                 
             }
@@ -2406,7 +2406,7 @@
 
 			if ($blnGuardarError)
 			{
-				$strErrores .= ($strErrores == "" ? "" : "<br>") . utf8_encode($strGuardarError);
+				$strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($strGuardarError, 'UTF-8', 'ISO-8859-1');
 				// 			$r->saError($pedido->getStrError());
 				$blnDoCommit = false;
 			}
@@ -2540,7 +2540,7 @@
     					if ($det->getError())
     					{
     						// 					$r->saError($det->getStrError());
-    						$strErrores .= ($strErrores == "" ? "" : "<br>") . utf8_encode($det->getStrError());
+    						$strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($det->getStrError(, 'UTF-8', 'ISO-8859-1'));
     						$blnDoCommit = false;
     						break;
     					}
@@ -2684,7 +2684,7 @@
 			            if ($cdet->getError())
 			            {
 			                // 					$r->saError($det->getStrError());
-			                $strErrores .= ($strErrores == "" ? "" : "<br>") . utf8_encode($cdet->getStrError());
+			                $strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($cdet->getStrError(, 'UTF-8', 'ISO-8859-1'));
 			                $blnDoCommit = false;
 			                break;
 			            }
@@ -2723,7 +2723,7 @@
                                 if ($ocp->getError())
                                 {
                                     // 					$r->saError($det->getStrError());
-                                    $strErrores .= ($strErrores == "" ? "" : "<br>") . utf8_encode($ocp->getStrError());
+                                    $strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($ocp->getStrError(, 'UTF-8', 'ISO-8859-1'));
                                     $blnDoCommit = false;
                                     break;
                                 }
@@ -2762,7 +2762,7 @@
                                 if ($ocp->getError())
                                 {
                                     // 					$r->saError($det->getStrError());
-                                    $strErrores .= ($strErrores == "" ? "" : "<br>") . utf8_encode($ocp->getStrError());
+                                    $strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($ocp->getStrError(, 'UTF-8', 'ISO-8859-1'));
                                     $blnDoCommit = false;
                                     break;
                                 }
@@ -3001,7 +3001,7 @@
 // 				//$r->saError($strErrores);
 				$r->script("
                             
-							app.levantarPedidoSinChecarStock(\"".utf8_encode($strErrores)."\");
+							app.levantarPedidoSinChecarStock(\"".mb_convert_encoding($strErrores, 'UTF-8', 'ISO-8859-1')."\");
 
 						");
 			}
@@ -3054,7 +3054,7 @@
 	    
 	    if ($cliente->existeField("concat(nombre,apellidos)", $nombre.$apellidos, $idCliente))
 	    {
-	        $r->script("app.errUsername = \"". utf8_encode("Al parecer este Cliente ya esta en el sistema. Favor de verificar.") ."\"; ");
+	        $r->script("app.errUsername = \"". mb_convert_encoding("Al parecer este Cliente ya esta en el sistema. Favor de verificar.", 'UTF-8', 'ISO-8859-1') ."\"; ");
 	        $regresar = true;
 	    }
 	    
@@ -3063,7 +3063,7 @@
 	    {
 	        if ($cliente->existeField("email", $email, $idCliente))
 	        {
-	            $r->script("app.errEmail = \"". utf8_encode("Este email ya esta siendo utilizado. Debe especificar uno diferente.") ."\"; ");
+	            $r->script("app.errEmail = \"". mb_convert_encoding("Este email ya esta siendo utilizado. Debe especificar uno diferente.", 'UTF-8', 'ISO-8859-1') ."\"; ");
 	            $regresar = true;
 	        }
 	    }
