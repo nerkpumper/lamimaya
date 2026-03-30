@@ -1945,7 +1945,6 @@ $_isPedidoPage = true;
 						</div>
 						<div class="col-md-3"></div>
 					</div>
-
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
 							<!-- 				<label for="default">Pick a programming language</label> -->
@@ -3503,7 +3502,10 @@ $_isPedidoPage = true;
 
 
 
-<div id="divdebug"></div>
+<div id="divdebug">
+
+	{{debug}}
+</div>
 
 <?php 
 // if (Permisos::userIsThisRol(Permisos::$idROOTUSER) && false): 
@@ -3629,8 +3631,8 @@ if (Permisos::userIsThisRol(Permisos::$idROOTUSER))
 // //     echo "<pre>{{ \$data }}</pre>";
     
     // echo "<pre>{{ \$data.otrosCargos }}</pre>";
-//  echo "<pre>{{ \$data.productos }}</pre>";
-//  echo "<pre>{{ \$data.productosNuevoFiltro }}</pre>";
+  echo "<pre>{{ \$data.productos }}</pre>";
+  echo "<pre>{{ \$data.productosNuevoFiltro }}</pre>";
 //  echo "<pre>{{ \$data.productosNuevoFiltroComercializados }}</pre>";
 //  echo "<pre>{{ \$data.productosNuevoFiltroComercializadosAgruped }}</pre>";
 //  echo "<pre>{{ \$data.productosNuevoFiltroMasVendidos }}</pre>";

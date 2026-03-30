@@ -719,7 +719,7 @@
 		}	
 		else
 		{
-			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($pedido->getStrError(, 'UTF-8', 'ISO-8859-1')).");");
+			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($pedido->getStrError(), 'UTF-8', 'ISO-8859-1')).");");
 		}
 	
 		return $r;
@@ -763,7 +763,7 @@
 		}
 		else
 		{
-			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($pedido->getStrError(, 'UTF-8', 'ISO-8859-1')).");");
+			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($pedido->getStrError(), 'UTF-8', 'ISO-8859-1')).");");
 		}
 	
 		return $r;
@@ -895,7 +895,7 @@
 		else
 		{
 			$pedido->transaccionRollback();	
-			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($pedido->getStrError(, 'UTF-8', 'ISO-8859-1')).");");
+			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($pedido->getStrError(), 'UTF-8', 'ISO-8859-1')).");");
 		}
 	
 		return $r;
@@ -936,7 +936,7 @@
 		}
 		else
 		{
-			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($pedido->getStrError(, 'UTF-8', 'ISO-8859-1')).");");
+			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($pedido->getStrError(), 'UTF-8', 'ISO-8859-1')).");");
 		}
 	
 		return $r;
@@ -980,7 +980,7 @@
 		}
 		else
 		{
-			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($pedido->getStrError(, 'UTF-8', 'ISO-8859-1')).");");
+			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($pedido->getStrError(), 'UTF-8', 'ISO-8859-1')).");");
 		}
 	
 		return $r;
@@ -1023,7 +1023,7 @@
 		}
 		else
 		{
-			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($pedido->getStrError(, 'UTF-8', 'ISO-8859-1')).");");
+			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($pedido->getStrError(), 'UTF-8', 'ISO-8859-1')).");");
 		}
 	
 		return $r;

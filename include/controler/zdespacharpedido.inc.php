@@ -1013,7 +1013,7 @@
 	    $inv->setMovimientoSALIDA();
 	    $inv->setSalidaDespachoSI();
 	    $inv->setCantidad($cantidad);
-	    $inv->setObservaciones(mb_convert_encoding("Láminas tomadas para desarrollar ".$noMolduras." Molduras", 'UTF-8', 'ISO-8859-1'));
+	    $inv->setObservaciones(mb_convert_encoding("Láminas tomadas para desarrollar ".$noMolduras." Molduras", 'UTF-8', 'ISO-8859-1');
 	    $inv->setIdPedidoDetalle($idPedidoDetalle);
 	    $inv->setDateAndUser("movimiento");
 	    $inv->setIdRemisionRollo($idRemisionRollo);

@@ -947,7 +947,7 @@
 
 				}
 
-				// 					$strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($pedido->getStrError(, 'UTF-8', 'ISO-8859-1'));
+				// 					$strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($pedido->getStrError(), 'UTF-8', 'ISO-8859-1');
 			}
 
 		}
@@ -969,7 +969,7 @@
 
 			if ($pedido->getError())
 			{
-				$strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($pedido->getStrError(, 'UTF-8', 'ISO-8859-1'));
+				$strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($pedido->getStrError(), 'UTF-8', 'ISO-8859-1');
 				// 			$r->saError($pedido->getStrError());
 				$blnDoCommit = false;
 			}
@@ -1028,7 +1028,7 @@
 
 // 						}
 
-// 						// 					$strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($pedido->getStrError(, 'UTF-8', 'ISO-8859-1'));
+// 						// 					$strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($pedido->getStrError(), 'UTF-8', 'ISO-8859-1');
 // 					}
 
 
@@ -1139,7 +1139,7 @@
 					if ($det->getError())
 					{
 						// 					$r->saError($det->getStrError());
-						$strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($det->getStrError(, 'UTF-8', 'ISO-8859-1'));
+						$strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($det->getStrError(), 'UTF-8', 'ISO-8859-1');
 						$blnDoCommit = false;
 						break;
 					}
@@ -1174,7 +1174,7 @@
                             if ($ocp->getError())
                             {
                                 // 					$r->saError($det->getStrError());
-                                $strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($ocp->getStrError(, 'UTF-8', 'ISO-8859-1'));
+                                $strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($ocp->getStrError(), 'UTF-8', 'ISO-8859-1');
                                 $blnDoCommit = false;
                                 break;
                             }

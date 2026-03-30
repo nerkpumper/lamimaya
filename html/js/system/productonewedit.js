@@ -407,6 +407,9 @@ var app = new Vue({
 			if (seguir)
 			{			
 				
+			console.log("Intentando guardar producto...");
+			console.log("medidaespecial:", this.medidaespecial);
+
 //				alert(this.idProducto +	this.codigo + this.idTipoProducto + this.idAplicacion + this.idMaterial + this.rollo +  this.calibre +  this.descripcion);
 				
 				xajax_guardarProducto(this.idProducto,

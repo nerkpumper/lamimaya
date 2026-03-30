@@ -93,7 +93,7 @@
 		}
 		else
 		{$r->mostrarAviso("todo mal"); return $r;
-			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($cliente->getStrError(, 'UTF-8', 'ISO-8859-1')).");");
+			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($cliente->getStrError(), 'UTF-8', 'ISO-8859-1')).");");
 		}
 	
 		

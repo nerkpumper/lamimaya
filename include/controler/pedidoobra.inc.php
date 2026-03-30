@@ -407,7 +407,7 @@
 	    {
 	        $r->script("
                     mdlExitWait();
-					saError(\"".mb_convert_encoding("Ha ocurrido un error. " . $rp->getStrError(, 'UTF-8', 'ISO-8859-1'))."\");
+					saError(\"".mb_convert_encoding("Ha ocurrido un error. " . $rp->getStrError(), 'UTF-8', 'ISO-8859-1'))."\");
 					");
 	    }
 	    

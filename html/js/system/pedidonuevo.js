@@ -513,7 +513,7 @@ function updateWithPromiseOut(index) {
 		
 		mounted: function () {
 			mdlShowWait();
-			mdlStatusWait("Preparando componentes");
+			//mdlStatusWait("Preparando componentes");
 			
 			var d = new Date();
 			var n = d.getTime();
@@ -591,6 +591,9 @@ function updateWithPromiseOut(index) {
 					}
 				}
 			}
+
+//  app.productos.push({ idProducto: '518', codigo: '', isMoldura: false, longitud: '6.10', mlpieza: 6.10, idTipoProducto: '1', tipoProducto: 'LÁMINA', shortTipoProducto: 'L', idAplicacion: '36', aplicacion: 'T-81', idMaterial: '23', material: 'STABILIT OPALIT', curva: '', idRollo: '1', rolloCodigo: '-- NO APLICA --', rolloIdMaterial: '1', rolloMaterial: ''-- NO APLICA --', rolloShortMaterial: ' NA', rolloIdProveedor: '1', rolloProveedor: '-- NO APLICA --', rolloShortProveedor: 'NA', rolloCalibre: '0', rolloPies: '0.00', rolloPesokiloml: 0, rolloDescripcion: ' ', idUnidad: '4', unidad: 'PIEZA', shortUnidad: 'PZA', calibre: '8', descripcion: 'LAMINA T-81 STABILIT OPALIT GRIS DE 8 ONZAS A 6.10MTS', existencia: '71.00', tipoPrecioComision: 'PRECIO', tipoPrecio: 'G', isRango: '1', tipoRango: 'B', isRollo: '0', precio1: '1912.47', precio2: '1879.95', precio3: '1848.42', precio4: '1812.67', preciomendez: '1722.27', estado: 'ACTIVO', existenciaEstimada: '71', fullDescripcion: 'LÁMINA T-81 STABILIT OPALIT CAL 8 6.10 MTS NACIONAL', fullDescripcionCode: ' - LÁMINA T-81 STABILIT OPALIT CAL 8 6.10 MTS NACIONAL', cantidad: 1, lblUnidad: '', cantUnidad: 1, cantUnidadReal: 1, dobleces: '0', precioRenglon: '0', rangoRenglon: '1', totalRenglon: '0', desarrolloI: '0', desarrolloT: '0', dobleces: '0', debug: '', kl: 0, productoCantidadDisponible: true, molPrecioLamina: 0, molMoldurasXLamina: 1, molMoldurasXLaminaTodos: 1, molLaminasCobrar: 1, molLaminasATomar: 1, molCorte: 0, molDobles: 0, molIsScrap: false, molTotalCMScrap: 0, molLongitudinal: 'L', sugerirStock: [], inventarioSucursal: [], idPedidoDetalle: 0 }); /
+//  this.productos.push({ idProducto: '518', codigo: '', isMoldura: false, longitud: '6.10', mlpieza: 6.10, idTipoProducto: '1', tipoProducto: 'LÁMINA', shortTipoProducto: 'L', idAplicacion: '36', aplicacion: 'T-81', idMaterial: '23', material: 'STABILIT OPALIT', curva: '', idRollo: '1', rolloCodigo: '-- NO APLICA --', rolloIdMaterial: '1', rolloMaterial: '-- NO APLICA --', rolloShortMaterial: ' NA', rolloIdProveedor: '1', rolloProveedor: '-- NO APLICA --', rolloShortProveedor: 'NA', rolloCalibre: '0', rolloPies: '0.00', rolloPesokiloml: 0, rolloDescripcion: ' ', idUnidad: '4', unidad: 'PIEZA', shortUnidad: 'PZA', calibre: '8', descripcion: 'LAMINA T-81 STABILIT OPALIT GRIS DE 8 ONZAS A 6.10MTS', existencia: '71.00', tipoPrecioComision: 'PRECIO', tipoPrecio: 'G', isRango: '1', tipoRango: 'B', isRollo: '0', precio1: '1912.47', precio2: '1879.95', precio3: '1848.42', precio4: '1812.67', preciomendez: '1722.27', estado: 'ACTIVO', existenciaEstimada: '71', fullDescripcion: 'LÁMINA T-81 STABILIT OPALIT CAL 8 6.10 MTS NACIONAL', fullDescripcionCode: ' - LÁMINA T-81 STABILIT OPALIT CAL 8 6.10 MTS NACIONAL', cantidad: 1, lblUnidad: '', cantUnidad: 1, cantUnidadReal: 1, dobleces: '0', precioRenglon: '0', rangoRenglon: '1', totalRenglon: '0', desarrolloI: '0', desarrolloT: '0', dobleces: '0', debug: '', kl: 0, productoCantidadDisponible: true, molPrecioLamina: 0, molMoldurasXLamina: 1, molMoldurasXLaminaTodos: 1, molLaminasCobrar: 1, molLaminasATomar: 1, molCorte: 0, molDobles: 0, molIsScrap: false, molTotalCMScrap: 0, molLongitudinal: 'L', sugerirStock: [], inventarioSucursal: [], idPedidoDetalle: 0 });
 
 		},
 		watch: {
@@ -4350,7 +4353,7 @@ function updateWithPromiseOut(index) {
 			},
 			prepararProducto: function(indexPadreDeComercializado = -1, cargarDesdeAjax = true, idProducto = 0){
 				var indexPrepareProducto = -1;
-	//			console.log("producto: " + this.productoAEnlistar);				
+				console.log("producto: " + this.productoAEnlistar);				
 				if (this.productoAEnlistar == "")
 				{
 					mostrarAviso('Debe ingresar un producto');
@@ -4365,10 +4368,10 @@ function updateWithPromiseOut(index) {
 	
 				if (idProducto > 0) this.productoAEnlistar = idProducto;
 				
-				// console.log("Checar si es un numero");				
+				 console.log("Checar si es un numero");				
 				if (!isNaN(this.productoAEnlistar))
 				{
-					// console.log("Si es un numero");
+					 console.log("Si es un numero");
 					if (this.pedidoSoloParaObra)
 					{
 						indexAux = this.productosParaFiltro.findIndex(x => x.idProducto == this.productoAEnlistar);
@@ -4452,7 +4455,8 @@ function updateWithPromiseOut(index) {
 
 								
 					if (indexListaFiltro >= 0)
-					{			
+					{		
+						this.addDebug("a ver");	
 						if (this.pedidoSoloParaObra)
 						{								
 							if (this.productosParaFiltro[indexListaFiltro].soloObra == 'NO')
@@ -4462,7 +4466,7 @@ function updateWithPromiseOut(index) {
 							}
 						}		
 						this.productoAEnlistar = this.productosParaFiltro[indexListaFiltro].idProducto;
-						
+						console.log("this.productoAEnlistar: ", this.productoAEnlistar);
 						indexPrepareProducto = this.productos.findIndex(x => x.idProducto == this.productoAEnlistar);
 						if (indexPrepareProducto >= 0)
 						{
@@ -4492,6 +4496,7 @@ function updateWithPromiseOut(index) {
 	
 						if (cargarDesdeAjax) 
 						{
+							console.log("Cargaremos desde ajax");
 							mdlShowWait();
 							xajax_cargarProductoIndividual("", this.productoAEnlistar);
 							mdlExitWait();
