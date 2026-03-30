@@ -314,7 +314,7 @@ $objPHPExcel->setActiveSheetIndex(0)
 // //         		    ->setCellValue('A'.$i,  $fila['alumno'])
 // // 		            ->setCellValue('B'.$i,  $fila['username'])
 // //         		    ->setCellValue('C'.$i,  $fila['estatus'])
-// //             		->setCellValue('D'.$i, mb_convert_encoding($fila['email'], 'UTF-8', 'ISO-8859-1'));
+// //             		->setCellValue('D'.$i, mb_convert_encoding($fila['email'], 'UTF-8', 'ISO-8859-1');
 // // 					$i++;
 // // 		}
 		

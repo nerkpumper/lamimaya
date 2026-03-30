@@ -514,7 +514,7 @@ class clsBasicCommon
     	
     	
 
-    	// echo $query;
+    	//echo $query;
 
     	$result=mysqli_query($this->dbLink,$query);
 

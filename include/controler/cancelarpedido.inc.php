@@ -655,7 +655,7 @@
 		}
 		else
 		{
-			$r->saInfo("No se pudo realizar el movimiento. " . mb_convert_encoding($errores, 'UTF-8', 'ISO-8859-1'));
+			$r->saInfo("No se pudo realizar el movimiento. " . mb_convert_encoding($errores, 'UTF-8', 'ISO-8859-1');
 			$pedido->transaccionRollback();
 // 			echo "<br><br>RollBack";
 		}

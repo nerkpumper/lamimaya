@@ -290,6 +290,9 @@
 				$rollo = new ModeloRollo();
 
 				
+				$prodDescAuto = addslashes($producto->getDescauto());
+				$prodCodigo = addslashes($producto->getCodigo());
+
 
 				if ($idProducto != $molIdProducto && $idProducto != $molIdMaquila)
 				{
@@ -339,8 +342,8 @@
 					$strListadoProductos .= "       preciomendez:  '" .$renglon->getPreciomendez() . "', ";
 					$strListadoProductos .= "		estado: '" .$producto->getEstado() . "', ";
 					$strListadoProductos .= "		existenciaEstimada: '".$producto->getExistenciaToCero()."', ";
-					$strListadoProductos .= "		fullDescripcion: '".$producto->getDescauto()."', ";
-					$strListadoProductos .= "		fullDescripcionCode: '". $producto->getCodigo(). " - " . $producto->getDescauto()."', ";	
+					$strListadoProductos .= "		fullDescripcion: '".$prodDescAuto."', ";
+					$strListadoProductos .= "		fullDescripcionCode: '".$prodCodigo." - ".$prodDescAuto."', ";	
 					
 					$strListadoProductos .= "		cantidad: ".$renglon->getPartida() .", ";
 					$strListadoProductos .= "		lblUnidad: '', ";
@@ -378,6 +381,8 @@
 					$rollo = new ModeloViewrollos();
 
 					$rollo->getView($renglon->getIdRolloBase());
+				$rolloDescAuto = addslashes($rollo->getDescauto());
+
 
 					$precioMoldura = ($renglon->getPrecioUnitario() - ($renglon->getMolPrecioDobleces() / $renglon->getPartida())  - ($renglon->getMolPrecioCorte() / $renglon->getPartida()) ) / $renglon->getCantidadReal();
 					$precioMoldura = round($precioMoldura,2);
@@ -464,8 +469,8 @@
 					$strListadoProductos .= "		preciomendez: ".$precioMoldura.", "; //this.molPrecioMetroMoldura
 					$strListadoProductos .= "		estado: 'ACTIVO', ";
 					$strListadoProductos .= "		existenciaEstimada: '0', ";
-					$strListadoProductos .= "		fullDescripcion: 'MOLDURA - ".$rollo->getIdRollo()." - ".$rollo->getDescauto()."', "; // this.molDescripcion
-					$strListadoProductos .= "		fullDescripcionCode: 'MOLDURA - ".$rollo->getIdRollo()." - ".$rollo->getDescauto()."', "; // this.molDescripcion
+					$strListadoProductos .= "		fullDescripcion: 'MOLDURA - ".$rollo->getIdRollo()." - ".$rolloDescAuto."', "; // this.molDescripcion
+					$strListadoProductos .= "		fullDescripcionCode: 'MOLDURA - ".$rollo->getIdRollo()." - ".$rolloDescAuto."', "; // this.molDescripcion
 					$strListadoProductos .= "		cantidad: '".$renglon->getPartida()."', "; //this.molCantidad
 					$strListadoProductos .= "		lblUnidad: '', ";
 					$strListadoProductos .= "		cantUnidad: ".$renglon->getCantidad().", "; //this.molCantUnidad
@@ -1049,14 +1054,13 @@
 	{
         global $objSession;
 		$r = new xajaxResponse();
-        // $r->startDebug();
+        //$r->startDebug();
 		$productos = new ModeloViewproductos();
-
-
+		
 		$productos->getAllView($objSession->getIdUsuario());
-
+		
 		$strListadoProductos = "";
-
+		
         $lstAcanalados = array();
         $strAcanalados = "app.lstAcanalados.splice(0, app.lstAcanalados.length); ";
         $lstMateriales = array();
@@ -1067,7 +1071,7 @@
         $strEspesores = "app.lstEspesores.splice(0, app.lstEspesores.length); ";
         $lstProveedores = array();
         $strProveedores = "app.lstProveedores.splice(0, app.lstProveedores.length); ";
-
+		
         $lstAcanaladosComer = array();
         $strAcanaladosComer = "app.lstAcanaladosComer.splice(0, app.lstAcanaladosComer.length); ";
         $lstMaterialesComer = array();
@@ -1080,148 +1084,150 @@
         $isLaminaMetalica = false;
         $isComercializado = false;
         
-
+		
 		for($i = 0 ; $i <count($productos->lstProductos) ; $i++)
-		{
-            $isLaminaMetalica = false;
-            $isComercializado = false;
-			if ($productos->lstProductos[$i]->getEstado() == "ACTIVO")
 			{
-
-                if ((($productos->lstProductos[$i]->getIdTipoProducto() == 1 && $productos->lstProductos[$i]->getIdRollo() > 1) || $productos->lstProductos[$i]->getIdTipoProducto() == 5) )
-                {
-                    $isLaminaMetalica = true;
-
-                    if (!isset($lstAcanalados[$productos->lstProductos[$i]->getIdAplicacion()]))
-                    {
-                        $lstAcanalados[$productos->lstProductos[$i]->getIdAplicacion()] = $productos->lstProductos[$i]->getIdAplicacion();
-                        $aca = $productos->lstProductos[$i]->getAplicacion();
-                        switch($aca)
-                        {
-                            case "--NO APLICA--":
-                                $aca = "ROLLOS";
-                                break;
-                            
-                        }
-                        $strAcanalados .= "
-                                    app.lstAcanalados.push({
-
-                                        id: '".$productos->lstProductos[$i]->getIdAplicacion()."',
-                                        value: '".$aca."',
-                                        checked: false
-
-                                    });
-                        ";
-                    }
-
-                    if (!isset($lstMateriales[$productos->lstProductos[$i]->getRolloIdMaterial()]))
-                    {
-                        $lstMateriales[$productos->lstProductos[$i]->getRolloIdMaterial()] = $productos->lstProductos[$i]->getRolloIdMaterial();
-                        $mat = $productos->lstProductos[$i]->getRolloMaterial();
-                        // switch($mat)
-                        // {
-                        //     case "2626":
-                        //         $mat = "26/26";
-                        //         break;
-                        //     case "2424":
-                        //         $mat = "24/24";
-                        //         break;
-                        //     case "2426":
-                        //         $mat = "24/26";
-                        //         break;
-                        //     case "2828":
-                        //         $mat = "28/28";
-                        //         break;
-                        // }
-                        $strMateriales .= "
-                                    app.lstMateriales.push({
-
-                                        id: '".$productos->lstProductos[$i]->getRolloIdMaterial()."',
-                                        value: '".$mat."',
-                                        checked: false
-
-                                    });
-                        ";
-                    }
-
-                    if (!isset($lstCalibres[$productos->lstProductos[$i]->getRolloCalibre()]))
-                    {
-                        $lstCalibres[$productos->lstProductos[$i]->getRolloCalibre()] = $productos->lstProductos[$i]->getRolloCalibre();
-                        $cal = $productos->lstProductos[$i]->getRolloCalibre();
-                        switch($cal)
-                        {
-                            case "2626":
-                                $cal = "26/26";
-                                break;
-                            case "2424":
-                                $cal = "24/24";
-                                break;
-                            case "2426":
-                                $cal = "24/26";
-                                break;
-                            case "2828":
-                                $cal = "28/28";
-                                break;
-                        }
-                        $strCalibres .= "
-                                    app.lstCalibres.push({
-
-                                        id: '".$productos->lstProductos[$i]->getRolloCalibre()."',
-                                        value: '".$cal."',
-                                        checked: false
-
-                                    });
-                        ";
-                    }
-
-                    if (!isset($lstProveedores[$productos->lstProductos[$i]->getRolloIdProveedor()]))
-                    {
-                        $lstProveedores[$productos->lstProductos[$i]->getRolloIdProveedor()] = $productos->lstProductos[$i]->getRolloIdProveedor();
-                        $pro = $productos->lstProductos[$i]->getRolloProveedor();
-                        // switch($pro)
-                        // {
-                        //     case "2626":
-                        //         $pro = "26/26";
-                        //         break;
-                        //     case "2424":
-                        //         $pro = "24/24";
-                        //         break;
-                        //     case "2426":
-                        //         $pro = "24/26";
-                        //         break;
-                        //     case "2828":
-                        //         $pro = "28/28";
-                        //         break;
-                        // }
-                        $strProveedores .= "
-                                    app.lstProveedores.push({
-
-                                        id: '".$productos->lstProductos[$i]->getRolloIdProveedor()."',
-                                        value: '".$pro."',
-                                        checked: false
-
-                                    });
-                        ";
-                    }
-
-                    if (!isset($lstEspesores[$productos->lstProductos[$i]->getRolloPies()]))
-                    {
-                        $lstEspesores[$productos->lstProductos[$i]->getRolloPies()] = $productos->lstProductos[$i]->getRolloPies();
-                        $espe = $productos->lstProductos[$i]->getRolloPies();
-
-                        $espe = str_replace(".00", "", $espe);
-                        // switch($espe)
-                        // {
-                        //     case "2626":
-                        //         $espe = "26/26";
-                        //         break;
-                        //     case "2424":
-                        //         $espe = "24/24";
-                        //         break;
-                        //     case "2426":
-                        //         $espe = "24/26";
-                        //         break;
-                        //     case "2828":
+				$isLaminaMetalica = false;
+				$isComercializado = false;
+				
+				if ($productos->lstProductos[$i]->getEstado() == "ACTIVO")
+					{
+						
+						if ((($productos->lstProductos[$i]->getIdTipoProducto() == 1 && $productos->lstProductos[$i]->getIdRollo() > 1) || $productos->lstProductos[$i]->getIdTipoProducto() == 5) )
+							{
+								$isLaminaMetalica = true;
+								
+								if (!isset($lstAcanalados[$productos->lstProductos[$i]->getIdAplicacion()]))
+									{
+										$lstAcanalados[$productos->lstProductos[$i]->getIdAplicacion()] = $productos->lstProductos[$i]->getIdAplicacion();
+										$aca = $productos->lstProductos[$i]->getAplicacion();
+										switch($aca)
+										{
+											case "--NO APLICA--":
+												$aca = "ROLLOS";
+												break;
+												
+											}
+											$strAcanalados .= "
+											app.lstAcanalados.push({
+												
+											id: '".$productos->lstProductos[$i]->getIdAplicacion()."',
+											value: '".$aca."',
+											checked: false
+											
+											});
+											";
+										}
+										
+										if (!isset($lstMateriales[$productos->lstProductos[$i]->getRolloIdMaterial()]))
+											{
+												$lstMateriales[$productos->lstProductos[$i]->getRolloIdMaterial()] = $productos->lstProductos[$i]->getRolloIdMaterial();
+												$mat = $productos->lstProductos[$i]->getRolloMaterial();
+												// switch($mat)
+												// {
+													//     case "2626":
+														//         $mat = "26/26";
+														//         break;
+														//     case "2424":
+															//         $mat = "24/24";
+															//         break;
+															//     case "2426":
+																//         $mat = "24/26";
+																//         break;
+																//     case "2828":
+																	//         $mat = "28/28";
+																	//         break;
+																	// }
+																	$strMateriales .= "
+																	app.lstMateriales.push({
+																		
+																	id: '".$productos->lstProductos[$i]->getRolloIdMaterial()."',
+																	value: '".$mat."',
+																	checked: false
+																	
+																	});
+																	";
+																}
+																
+																if (!isset($lstCalibres[$productos->lstProductos[$i]->getRolloCalibre()]))
+																	{
+																		$lstCalibres[$productos->lstProductos[$i]->getRolloCalibre()] = $productos->lstProductos[$i]->getRolloCalibre();
+																		$cal = $productos->lstProductos[$i]->getRolloCalibre();
+																		switch($cal)
+																		{
+																			case "2626":
+																				$cal = "26/26";
+																				break;
+																				case "2424":
+																					$cal = "24/24";
+																					break;
+																					case "2426":
+																						$cal = "24/26";
+																						break;
+																						case "2828":
+																							$cal = "28/28";
+																							break;
+																						}
+																						$strCalibres .= "
+																						app.lstCalibres.push({
+																							
+																						id: '".$productos->lstProductos[$i]->getRolloCalibre()."',
+																						value: '".$cal."',
+																						checked: false
+																						
+																						});
+																						";
+																					}
+																					
+																					if (!isset($lstProveedores[$productos->lstProductos[$i]->getRolloIdProveedor()]))
+																						{
+																							$lstProveedores[$productos->lstProductos[$i]->getRolloIdProveedor()] = $productos->lstProductos[$i]->getRolloIdProveedor();
+																							$pro = $productos->lstProductos[$i]->getRolloProveedor();
+																							// switch($pro)
+																							// {
+																								//     case "2626":
+																									//         $pro = "26/26";
+																									//         break;
+																									//     case "2424":
+																										//         $pro = "24/24";
+																										//         break;
+																										//     case "2426":
+																											//         $pro = "24/26";
+																											//         break;
+																											//     case "2828":
+																												//         $pro = "28/28";
+																												//         break;
+																												// }
+																												$strProveedores .= "
+																												app.lstProveedores.push({
+																													
+																												id: '".$productos->lstProductos[$i]->getRolloIdProveedor()."',
+																												value: '".$pro."',
+																												checked: false
+																												
+																												});
+																												";
+																											}
+																											
+																											if (!isset($lstEspesores[$productos->lstProductos[$i]->getRolloPies()]))
+																												{
+																													$lstEspesores[$productos->lstProductos[$i]->getRolloPies()] = $productos->lstProductos[$i]->getRolloPies();
+																													$espe = $productos->lstProductos[$i]->getRolloPies();
+																													
+																													$espe = str_replace(".00", "", $espe);
+																													// switch($espe)
+																													// {
+																														//     case "2626":
+																															//         $espe = "26/26";
+																															//         break;
+																															//     case "2424":
+																																//         $espe = "24/24";
+																																//         break;
+																																//     case "2426":
+																																	//         $espe = "24/26";
+																																	//         break;
+																																	//     case "2828":
+																																		
                         //         $espe = "28/28";
                         //         break;
                         // }
@@ -1365,39 +1371,42 @@
 
                 }
 
-
+				
+				$codigo = addslashes($productos->lstProductos[$i]->getCodigo());
                 
-
+				
 				$desc=str_replace(chr(13),'', $productos->lstProductos[$i]->getRolloDescripcion());
 				$desc=str_replace('<br />','\n', $desc);
 				$desc=str_replace(chr(10),'', $desc);
-
+				
 				$descProducto=str_replace(chr(13),'', $productos->lstProductos[$i]->getDescripcion());
 				$descProducto=str_replace('<br />','\n', $descProducto);
 				$descProducto=str_replace(chr(10),'', $descProducto);
-
+				$descAuto = addslashes($productos->lstProductos[$i]->getDescauto());
+				
 				$strListadoProductos .= "
-					app.productosParaFiltro.push({
-						idProducto:  '" .$productos->lstProductos[$i]->getIdProducto() . "',
-						codigo:  '" .$productos->lstProductos[$i]->getCodigo() . "',
-						
-						fullDescripcion: '".$productos->lstProductos[$i]->getDescauto()."',
-						fullDescripcionCode: '". $productos->lstProductos[$i]->getCodigo(). " - " . $productos->lstProductos[$i]->getDescauto()."',
-						precio1: ".$productos->lstProductos[$i]->getPrecio1().",
-						precio2: ".$productos->lstProductos[$i]->getPrecio2().",
-						precio3: ".$productos->lstProductos[$i]->getPrecio3().",
-						precio4: ".$productos->lstProductos[$i]->getPrecio4().",
-						preciomendez: ".$productos->lstProductos[$i]->getPreciomendez()."
-
-		             });
-
-
- 					";
-
-				// $strListadoProductos .= "
+				app.productosParaFiltro.push({
+					idProducto:  '" .$productos->lstProductos[$i]->getIdProducto() . "',
+					codigo:  '".$codigo."',
+					
+					fullDescripcion: '".$descAuto."',
+					fullDescripcionCode: '".$codigo." - ".$descAuto."',
+					precio1: ".$productos->lstProductos[$i]->getPrecio1().",
+					precio2: ".$productos->lstProductos[$i]->getPrecio2().",
+					precio3: ".$productos->lstProductos[$i]->getPrecio3().",
+					precio4: ".$productos->lstProductos[$i]->getPrecio4().",
+					preciomendez: ".$productos->lstProductos[$i]->getPreciomendez()."
+					
+					});
+					
+					
+					";
+					
+					//$r->mostrarAviso("todo bien " . __LINE__ . "  codigo " . $codigo);return $r;
+					// $strListadoProductos .= "
 				// 	app.productos.push({
 				// 		idProducto:  '" .$productos->lstProductos[$i]->getIdProducto() . "',
-				// 		codigo:  '" .$productos->lstProductos[$i]->getCodigo() . "',
+				// 		codigo:  '".$codigo."',
                 //         isMoldura: false,
 				// 		longitud:  '" .$productos->lstProductos[$i]->getLongitud() . "',
 				// 		mlpieza:  " .$productos->lstProductos[$i]->getMlpieza() . ",
@@ -1439,8 +1448,8 @@
                 //         preciomendez:  '" .$productos->lstProductos[$i]->getPreciomendez() . "',
 				// 		estado: '" .$productos->lstProductos[$i]->getEstado() . "',
 				// 		existenciaEstimada: '".$productos->lstProductos[$i]->getExistenciaToCero()."',
-				// 		fullDescripcion: '".$productos->lstProductos[$i]->getDescauto()."',
-				// 		fullDescripcionCode: '". $productos->lstProductos[$i]->getCodigo(). " - " . $productos->lstProductos[$i]->getDescauto()."',
+				// 		fullDescripcion: '".$descAuto."',
+				// 		fullDescripcionCode: '".$codigo." - ".$descAuto."',
 
                 //         favorito: '".$productos->lstProductos[$i]->getFavorito()."',
 
@@ -1480,13 +1489,13 @@
 
  				// 	";
 
-
+					
                 if ($isLaminaMetalica || $isComercializado || $productos->lstProductos[$i]->getIdTipoProducto() == 4)
                 {
                     $strListadoProductos .= "
                         app.". ($isLaminaMetalica ? 'productosNuevoFiltro' : ($isComercializado ? 'productosNuevoFiltroComercializados' : 'productosNuevoFiltroAccesorios') ) .".push({
                             idProducto:  '" .$productos->lstProductos[$i]->getIdProducto() . "',
-                            codigo:  '" .$productos->lstProductos[$i]->getCodigo() . "',
+                            codigo:  '".$codigo."',
                             
                             longitud:  '" .$productos->lstProductos[$i]->getLongitud() . "',
                             mlpieza:  " .$productos->lstProductos[$i]->getMlpieza() . ",
@@ -1518,8 +1527,8 @@
                             isRollo:  '" .$productos->lstProductos[$i]->getIsRollo() . "',
                             
                             existenciaEstimada: '".$productos->lstProductos[$i]->getExistenciaToCero()."',
-                            fullDescripcion: '".$productos->lstProductos[$i]->getDescauto()."',
-                            fullDescripcionCode: '". $productos->lstProductos[$i]->getCodigo(). " - " . $productos->lstProductos[$i]->getDescauto()."',
+                            fullDescripcion: '".$descAuto."',
+                            fullDescripcionCode: '".$codigo." - ".$descAuto."',
 
                             favorito: '".$productos->lstProductos[$i]->getFavorito()."',
                             medidaespecial: '".$productos->lstProductos[$i]->getMedidaespecial()."',
@@ -1551,10 +1560,10 @@
 
                     ";
 		}
-
-// 		$debug = ob_get_clean();
-		// $r->mostrarAviso(implode(",", $lstProveedores));
-
+// $r->mostrarAviso("todo bien " . __LINE__ );return $r;
+//  		$debug = ob_get_clean();
+// 		 $r->mostrarAviso(implode(",", $lstProveedores));
+// return;
   		$r->script($strListadoProductos );
         
         $r->script($strAcanalados);
@@ -1570,7 +1579,7 @@
         $r->script("  setTimeout(function(){ app.agruparProductosComercializados(); }, 1200);");
 
         $r->script("  setTimeout(function(){ app.cargarProductosMasVendidos(); }, 1300);");
-		// $r->mostrarAviso("cargarlistaproductos: " . __LINE__); return $r;
+		 //$r->mostrarAviso("cargarlistaproductos: " . __LINE__); return $r;
         $r->script("  setTimeout(function(){ app.cargarProductosFavoritos(); }, 1400);");
 		// $r->mostrarAviso ("Bien " . __LINE__); return $r;
 
@@ -1584,7 +1593,7 @@
 // 		$r->assign("divdebug", "innerHTML", $strListadoProductos);
 // 		$r->mostrarAviso( $strListadoProductos);
 
-// $r->mostrarAviso("Productos Cargados"); return $r;
+ //$r->mostrarAviso("Productos Cargados"); return $r;
 
         // $r->endDegug();
 		return $r;
@@ -1623,7 +1632,7 @@
                 $strListadoProductos .= "
                     app.productosNuevoFiltroMasVendidos.push({
                         idProducto:  '" .$productos->lstProductos[$i]->getIdProducto() . "',
-                        codigo:  '" .$productos->lstProductos[$i]->getCodigo() . "',
+                        codigo:  '".$codigo."',
                         
                         longitud:  '" .$productos->lstProductos[$i]->getLongitud() . "',
                         mlpieza:  " .$productos->lstProductos[$i]->getMlpieza() . ",
@@ -1658,8 +1667,8 @@
                         isRollo:  '" .$productos->lstProductos[$i]->getIsRollo() . "',
                         
                         existenciaEstimada: '".$productos->lstProductos[$i]->getExistenciaToCero()."',
-                        fullDescripcion: '".$productos->lstProductos[$i]->getDescauto()."',
-                        fullDescripcionCode: '". $productos->lstProductos[$i]->getCodigo(). " - " . $productos->lstProductos[$i]->getDescauto()."',
+                        fullDescripcion: '".$descAuto."',
+                        fullDescripcionCode: '".$codigo." - ".$descAuto."',
 
 
                         favorito: '".$productos->lstProductos[$i]->getFavorito()."',    
@@ -1717,7 +1726,7 @@
                 $strListadoProductos .= "
                     app.productosNuevoFiltroFavoritos.push({
                         idProducto:  '" .$productos->lstProductos[$i]->getIdProducto() . "',
-                        codigo:  '" .$productos->lstProductos[$i]->getCodigo() . "',
+                        codigo:  '".$codigo."',
                         
                         longitud:  '" .$productos->lstProductos[$i]->getLongitud() . "',
                         mlpieza:  " .$productos->lstProductos[$i]->getMlpieza() . ",
@@ -1752,8 +1761,8 @@
                         isRollo:  '" .$productos->lstProductos[$i]->getIsRollo() . "',
                         
                         existenciaEstimada: '".$productos->lstProductos[$i]->getExistenciaToCero()."',
-                        fullDescripcion: '".$productos->lstProductos[$i]->getDescauto()."',
-                        fullDescripcionCode: '". $productos->lstProductos[$i]->getCodigo(). " - " . $productos->lstProductos[$i]->getDescauto()."',
+                        fullDescripcion: '".$descAuto."',
+                        fullDescripcionCode: '".$codigo." - ".$descAuto."',
 
 
                         favorito: '".$productos->lstProductos[$i]->getFavorito()."',    
@@ -1853,7 +1862,7 @@
 		else
 			$productos->getViewProductoByCodigo("", $idProducto);
 
-
+		
 
 		$strListadoProductos = "";
 
@@ -1877,16 +1886,16 @@
 
 					$desc=str_replace(chr(10),'', $desc);
 
-
+					$descAuto = addslashes($productos->lstProductos[$i]->getDescauto());
 
 					$blnHayProductos = true;
 
+					
 					$strListadoProductos .= "
-
 					app.productos.push({
 
 						idProducto:  '" .$productos->lstProductos[$i]->getIdProducto() . "',
-						codigo:  '" .$productos->lstProductos[$i]->getCodigo() . "',
+						codigo:  '".$codigo."',
                         isMoldura: false,
 						longitud:  '" .$productos->lstProductos[$i]->getLongitud() . "',
 						mlpieza:  " .$productos->lstProductos[$i]->getMlpieza() . ",
@@ -1929,8 +1938,8 @@
                         preciomendez:  '" .$productos->lstProductos[$i]->getPreciomendez() . "',
 						estado: '" .$productos->lstProductos[$i]->getEstado() . "',
 						existenciaEstimada: '".$productos->lstProductos[$i]->getExistenciaToCero()."',
-						fullDescripcion: '".$productos->lstProductos[$i]->getDescauto()."',
-						fullDescripcionCode: '". $productos->lstProductos[$i]->getCodigo(). " - " . $productos->lstProductos[$i]->getDescauto()."',
+						fullDescripcion: '".$descAuto."',
+						fullDescripcionCode: '".$codigo." - ".$descAuto."',
 						cantidad: 1,
 
 						lblUnidad: '',
@@ -1981,13 +1990,14 @@
 // 					";
 
 				}
+				// $r->mostrarAviso($strListadoProductos); 
 			}
 		}
 		$r->script($strListadoProductos);
 
 		if ($blnHayProductos)
 		{
-			$r->script("app.prepararProducto(-1, false, ".$idProducto."); //ocultarMensaje();");
+			$r->script(" app.prepararProducto(-1, false, ".$idProducto."); //ocultarMensaje();");
 		}
 		else
 		{
@@ -2305,7 +2315,7 @@
                         
                     }
                     
-                    // 					$strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($pedido->getStrError(, 'UTF-8', 'ISO-8859-1'));
+                    // 					$strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($pedido->getStrError(), 'UTF-8', 'ISO-8859-1');
                 }
                 
             }
@@ -2636,7 +2646,7 @@
     					if ($det->getError())
     					{
     						// 					$r->saError($det->getStrError());
-    						$strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($det->getStrError(, 'UTF-8', 'ISO-8859-1'));
+    						$strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($det->getStrError(), 'UTF-8', 'ISO-8859-1');
     						$blnDoCommit = false;
     						break;
     					}
@@ -2781,7 +2791,7 @@
 			            if ($cdet->getError())
 			            {
 			                // 					$r->saError($det->getStrError());
-			                $strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($cdet->getStrError(, 'UTF-8', 'ISO-8859-1'));
+			                $strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($cdet->getStrError(), 'UTF-8', 'ISO-8859-1');
 			                $blnDoCommit = false;
 			                break;
 			            }
@@ -2820,7 +2830,7 @@
                                 if ($ocp->getError())
                                 {
                                     // 					$r->saError($det->getStrError());
-                                    $strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($ocp->getStrError(, 'UTF-8', 'ISO-8859-1'));
+                                    $strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($ocp->getStrError(), 'UTF-8', 'ISO-8859-1');
                                     $blnDoCommit = false;
                                     break;
                                 }
@@ -2859,7 +2869,7 @@
                                 if ($ocp->getError())
                                 {
                                     // 					$r->saError($det->getStrError());
-                                    $strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($ocp->getStrError(, 'UTF-8', 'ISO-8859-1'));
+                                    $strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding($ocp->getStrError(), 'UTF-8', 'ISO-8859-1');
                                     $blnDoCommit = false;
                                     break;
                                 }

@@ -613,7 +613,7 @@ class PDF extends PDFNerk
   		  			    
   		  			    $totalML = 0;
   		  			    
-  		  			    $this->putText(31.5, mb_convert_encoding($desc, 'UTF-8', 'ISO-8859-1'));
+  		  			    $this->putText(31.5, mb_convert_encoding($desc, 'UTF-8', 'ISO-8859-1');
   		  			    
   		  			    if ($item["proShortUnidad"] == "PZA")
   		  			    {
@@ -1139,7 +1139,7 @@ class PDF extends PDFNerk
   		  			    
   		  			    $totalML = 0;
   		  			    
-  		  			    $this->putText(31.5, mb_convert_encoding($desc, 'UTF-8', 'ISO-8859-1'));
+  		  			    $this->putText(31.5, mb_convert_encoding($desc, 'UTF-8', 'ISO-8859-1');
   		  			    
   		  			    if ($item["proShortUnidad"] == "PZA")
   		  			    {

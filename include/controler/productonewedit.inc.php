@@ -38,7 +38,7 @@
 		$producto = new ModeloProducto();
 		$isInsert = false;
 		$regresar = false;
-// 		$r->starDebug();
+ 		//$r->starDebug();
 		
 		
 		if ($idTipoProducto == 5)
@@ -164,15 +164,16 @@
 		
 // 		$r->mostrarExito("hola mundo"); return $r;
 //  		ob_start();
+
+// $r->mostrarAviso($producto->Guardar() . __LINE__); return $r;	
 		$producto->Guardar();
-//  		$debug = ob_get_clean();
-//  		$r->mostrarAviso($debug); return $r;
+  		// $debug = ob_get_clean();
+  		// $r->mostrarAviso($debug); return $r;
 		if ($producto->getError())
 		{
 			$r->saError($producto->getStrError());
 			return $r;
 		}
-				
 		if ($isInsert)
 		{
 			$r->saSuccess("El Producto " . $codigo . " se ha almacenado satisfactoriamente." );

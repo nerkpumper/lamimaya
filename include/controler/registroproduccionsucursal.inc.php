@@ -249,7 +249,7 @@
 		else
 		{
 			$r->script("
-					saError(\"".mb_convert_encoding("Ha ocurrido un error. " . $rp->getStrError(, 'UTF-8', 'ISO-8859-1'))."\");
+					saError(\"".mb_convert_encoding("Ha ocurrido un error. " . $rp->getStrError(), 'UTF-8', 'ISO-8859-1'))."\");
 					");
 		}
 	
@@ -388,7 +388,7 @@
 			$inv->setMovimientoSALIDA();
 			$inv->setSalidaDespachoNO();
 			$inv->setCantidad($totalkg);
-			$inv->setObservaciones(mb_convert_encoding("REGISTRO DE PRODUCCI�N", 'UTF-8', 'ISO-8859-1'));
+			$inv->setObservaciones(mb_convert_encoding("REGISTRO DE PRODUCCI�N", 'UTF-8', 'ISO-8859-1');
 			$inv->setIdPedidoDetalle(0);
 			$inv->setDateAndUser("movimiento");
 			$inv->setIdRegistroProduccion($idRegistroProduccion);
@@ -408,7 +408,7 @@
  				$invProducto->setMovimientoENTRADA();
  				$invProducto->setSalidaDespachoNO();
  				$invProducto->setCantidad($piezas);
- 				$invProducto->setObservaciones(mb_convert_encoding("INGRESO A STOCK POR REGISTRO DE PRODUCCI�N", 'UTF-8', 'ISO-8859-1'));
+ 				$invProducto->setObservaciones(mb_convert_encoding("INGRESO A STOCK POR REGISTRO DE PRODUCCI�N", 'UTF-8', 'ISO-8859-1');
  				$invProducto->setDateAndUser("movimiento");
  				$invProducto->setIdPedidoDetalle(0);
  				$invProducto->setIdRemisionRollo($idRemisionRollo);
@@ -905,7 +905,7 @@
 		else
 		{
 			$r->script("
-					saError(\"".mb_convert_encoding("Ha ocurrido un error. " . $rp->getStrError(, 'UTF-8', 'ISO-8859-1'))."\");
+					saError(\"".mb_convert_encoding("Ha ocurrido un error. " . $rp->getStrError(), 'UTF-8', 'ISO-8859-1'))."\");
 					");
 		}
 	
@@ -944,7 +944,7 @@
 		else
 		{
 			$r->script("
-					saError(\"".mb_convert_encoding("Ha ocurrido un error. " . $rp->getStrError(, 'UTF-8', 'ISO-8859-1'))."\");
+					saError(\"".mb_convert_encoding("Ha ocurrido un error. " . $rp->getStrError(), 'UTF-8', 'ISO-8859-1'))."\");
 					");
 		}
 	

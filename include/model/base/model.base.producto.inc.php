@@ -732,10 +732,10 @@
 	                                              costo='" . mysqli_real_escape_string($this->dbLink,$this->costo) . "',
 	                                              isSegunda='" . mysqli_real_escape_string($this->dbLink,$this->isSegunda) . "',
 	                                              lastUpdate='" . mysqli_real_escape_string($this->dbLink,$this->lastUpdate) . "',
-	                                              idProveedor='" . mysqli_real_escape_string($this->dbLink,$this->idProveedor) . "',
 	                                              resurtir='" . mysqli_real_escape_string($this->dbLink,$this->resurtir) . "'
-					WHERE idProducto=" . $this->idProducto;
-				
+												  WHERE idProducto=" . $this->idProducto;
+												  // return $SQL;
+	                                            //   idProveedor='" . mysqli_real_escape_string($this->dbLink,$this->idProveedor) . "',
 				$result=mysqli_query($this->dbLink,$SQL);
 				if(!$result)
 					return $this->setSystemError("Error en la actualizacion de registro.","[" . $SQL . "][" . mysqli_error($this->dbLink) . "][ModeloBaseProducto::Update]");
@@ -856,7 +856,7 @@
 			if($this->idProducto==0)
 				$this->Insertar();
 			else
-				$this->Actualizar();
+				 $this->Actualizar();
 			if($this->getError())
 				return false;
 			return true;

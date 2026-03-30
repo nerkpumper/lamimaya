@@ -250,7 +250,7 @@ class PDF extends PDFNerk
             if (mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8') == "CORTE COMISI�N, MONTO GENERADO")
             {
                 $this->putText(12, "COMISI�N");
-                $this->putText(40, $item["fecha_creacion"] . ' ' . mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8'));
+                $this->putText(40, $item["fecha_creacion"] . ' ' . mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8');
                 $this->putTextRight(" + " . number_format($item["monto"],2), 15);
                 
                 $this->nextRow();                
@@ -262,7 +262,7 @@ class PDF extends PDFNerk
             if (mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8') == "INCENTIVO DE COMISI�N")
             {
                 $this->putText(12, "INCENTIVO");
-                $this->putText(40, $item["fecha_creacion"] . ' ' . mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8'));
+                $this->putText(40, $item["fecha_creacion"] . ' ' . mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8');
                 $this->putTextRight(" + " . number_format($item["monto"],2), 15);
                 
                 $this->nextRow();
@@ -278,7 +278,7 @@ class PDF extends PDFNerk
                 mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8') != "INCENTIVO DE COMISI�N" )
             {
                 $this->putText(12, "DEDUCCI�N");
-                $this->putText(40, $item["fecha_creacion"] . ' ' .mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8'));
+                $this->putText(40, $item["fecha_creacion"] . ' ' .mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8');
                 $this->putTextRight(" - " . number_format($item["monto"],2), 15);
                 
                 $this->nextRow();
@@ -291,7 +291,7 @@ class PDF extends PDFNerk
         {
             
              $this->putText(12, $item["movimiento"]);
-             $this->putText(40, $item["fecha_movimiento"] . ' ' .mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8'));
+             $this->putText(40, $item["fecha_movimiento"] . ' ' .mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8');
              $this->putTextRight(" - " . number_format($item["monto"],2), 15);
                 
              $this->nextRow();
