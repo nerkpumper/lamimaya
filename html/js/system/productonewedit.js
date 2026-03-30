@@ -19,6 +19,7 @@ var app = new Vue({
 		calibre: '0',
 		descripcion: '',
 		descripcion2: '',
+		medidaespecial: '',
 		codigoAccesorio: '',
 		pies: 0,
 		origen: 'N',
@@ -77,11 +78,11 @@ var app = new Vue({
 	mounted: function () {
 		if (typeof param1 !== 'undefined') {
 			this.idProducto = param1;
-			this.accionModulo = 'Actualizar';		  
-			
-			xajax_cargarProducto(this.idProducto);					
+			this.accionModulo = 'Actualizar';
+
+			xajax_cargarProducto(this.idProducto);
 		}
-		
+
 		this.$refs.tipoProducto.focus();
 	},
 	watch: {
@@ -427,9 +428,10 @@ var app = new Vue({
 						           this.precio1,
 						           this.precio2,
 						           this.precio3,
-								   this.precio4,  
+								   this.precio4,
 						           this.precioMendez,
-						           this.costo);
+						           this.costo,
+						           this.medidaespecial);
 						           
 			}
 			

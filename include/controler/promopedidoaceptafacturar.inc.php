@@ -337,13 +337,13 @@
 		    }
 		    else
 		    {
-		        $r->script("saError(Ha ocurrido un error. " . utf8_encode($noti->getStrError()).");");
+		        $r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($noti->getStrError(, 'UTF-8', 'ISO-8859-1')).");");
 		    }		    
 			
 		}	
 		else
 		{  
-		        $r->script("saError(Ha ocurrido un error. " . utf8_encode($pedido->getStrError()).");");
+		        $r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($pedido->getStrError(, 'UTF-8', 'ISO-8859-1')).");");
 		}
 	
 // 		$r->endDegug();
@@ -388,7 +388,7 @@
 		}
 		else
 		{
-			$r->script("saError(Ha ocurrido un error. " . utf8_encode($pedido->getStrError()).");");
+			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($pedido->getStrError(, 'UTF-8', 'ISO-8859-1')).");");
 		}
 	
 		return $r;

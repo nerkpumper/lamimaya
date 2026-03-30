@@ -1875,7 +1875,7 @@ class xajaxResponse
 	}
 	public function mostrarDenegado($mensaje="")
 	{
-		// $mensaje = utf8_encode($mensaje);
+		// $mensaje = mb_convert_encoding($mensaje, 'UTF-8', 'ISO-8859-1');
 		if($mensaje=="")
 			$this->call("mostrarDenegado");
 		else
@@ -1884,7 +1884,7 @@ class xajaxResponse
 
 	public function mostrarExito($mensaje="")
 	{
-		// $mensaje = utf8_encode($mensaje);
+		// $mensaje = mb_convert_encoding($mensaje, 'UTF-8', 'ISO-8859-1');
 		if($mensaje=="")
 			$this->call("mostrarExito");
 		else
@@ -1893,7 +1893,7 @@ class xajaxResponse
 
 	public function saSuccess($mensaje="")
 	{
-		// $mensaje = utf8_encode($mensaje);
+		// $mensaje = mb_convert_encoding($mensaje, 'UTF-8', 'ISO-8859-1');
 		if($mensaje=="")
 			$this->call("saSuccess");
 			else
@@ -1908,7 +1908,7 @@ class xajaxResponse
 
 	public function saError($mensaje="")
 	{
-		// $mensaje = utf8_encode($mensaje);
+		// $mensaje = mb_convert_encoding($mensaje, 'UTF-8', 'ISO-8859-1');
 		if($mensaje=="")
 			$this->call("saError");
 			else
@@ -1917,7 +1917,7 @@ class xajaxResponse
 
 	public function saInfo($mensaje="")
 	{
-	    // $mensaje = utf8_encode($mensaje);
+	    // $mensaje = mb_convert_encoding($mensaje, 'UTF-8', 'ISO-8859-1');
 		if($mensaje=="")
 			$this->call("saInfo");
 			else

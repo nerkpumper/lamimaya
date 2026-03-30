@@ -1,12 +1,14 @@
 <?php
 
 	require FOLDER_MODEL_BASE . "model.base.producto.inc.php";
-	require_once FOLDER_MODEL. "model.tipoproducto.inc.php";	
-	require_once FOLDER_MODEL. "model.aplicacion.inc.php";	
-	require_once FOLDER_MODEL. "model.material.inc.php";	
+	require_once FOLDER_MODEL. "model.tipoproducto.inc.php";
+	require_once FOLDER_MODEL. "model.aplicacion.inc.php";
+	require_once FOLDER_MODEL. "model.material.inc.php";
 	require_once FOLDER_MODEL. "model.rollo.inc.php";
-	
 
+
+	// PHP 8.2+ requiere este atributo para permitir propiedades dinámicas
+	#[AllowDynamicProperties]
 	class ModeloProducto extends ModeloBaseProducto
 	{
 		#------------------------------------------------------------------------------------------------------#

@@ -305,7 +305,7 @@
             $desc = str_replace("CAL 0", "", $desc);
             $desc = str_replace("   ", " ", $desc);
             $desc = str_replace("  ", " ", $desc);
-//             $desc = utf8_decode($desc);
+//             $desc = mb_convert_encoding($desc, 'ISO-8859-1', 'UTF-8');
             
             if ($row["curvar"] == 'SI') {
                 $desc = $desc . " (Combar: " . $row["curvatura"] . ")";

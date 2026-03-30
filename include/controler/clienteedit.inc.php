@@ -41,7 +41,7 @@
 		
 		if ($cliente->existeField("concat(nombre,apellidos)", $nombre.$apellidos, $idCliente))
 		{
-			$r->script("app.errUsername = \"". utf8_encode("Al parecer este Cliente ya esta en el sistema. Favor de verificar.") ."\"; ");
+			$r->script("app.errUsername = \"". mb_convert_encoding("Al parecer este Cliente ya esta en el sistema. Favor de verificar.", 'UTF-8', 'ISO-8859-1') ."\"; ");
 			$regresar = true;
 		}
 
@@ -50,7 +50,7 @@
 		{
 		    if ($cliente->existeField("email", $email, $idCliente))
 		    {
-		        $r->script("app.errEmail = \"". utf8_encode("Este email ya esta siendo utilizado. Debe especificar uno diferente.") ."\"; ");
+		        $r->script("app.errEmail = \"". mb_convert_encoding("Este email ya esta siendo utilizado. Debe especificar uno diferente.", 'UTF-8', 'ISO-8859-1') ."\"; ");
 		        $regresar = true;
 		    }
 		}

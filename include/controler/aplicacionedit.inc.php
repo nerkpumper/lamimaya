@@ -33,7 +33,7 @@
 				
 		if ($aplicacion->existeField("nombreAplicacion", $nombre))
 		{
-			$r->script("app.errNombreAplicacion = \"".utf8_encode("Esta Aplicación ya está siendo utilizado. Debe especificar una diferente.")."\"; ");
+			$r->script("app.errNombreAplicacion = \"".mb_convert_encoding("Esta Aplicación ya está siendo utilizado. Debe especificar una diferente.", 'UTF-8', 'ISO-8859-1')."\"; ");
 			$regresar = true;
 		}
 		
@@ -109,7 +109,7 @@
 		}
 		
 		$r->script("
-				    app.nombreAplicacion = '" . utf8_encode($aplicacion->getNombreAplicacion()) . "';                                        
+				    app.nombreAplicacion = '" . mb_convert_encoding($aplicacion->getNombreAplicacion(, 'UTF-8', 'ISO-8859-1')) . "';                                        
 				  ");
 		
 		return $r;

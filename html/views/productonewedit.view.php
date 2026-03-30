@@ -190,14 +190,22 @@ $_addScript = "
  					//Form::check("isRango", "Rango de Precios", "listaPrecio == \"G\" && !esRollo && !esAccesorio && !esPieza");
  				?>
  					 				 				
- 				<?php 
-									
+ 				<?php
+
  					Form::row();
  					Form::setColsDefault();
  					Form::setColsLabel("l3|m12|s12|x12");
  					Form::textarea("descripcion", "Descripci&oacute;n", "4", "", "250", true);
  					Form::endRow();
 //  					Form::text("descripcion", "Descripci&oacute;n","250", true, false, "oninput=\"this.value = this.value.replace(/[^0-9.Xx]/g, '').replace(/(\XX*)\X/g, '$1');\" " . ($disableSelect ? " " : "" ) );
+
+ 					Form::row();
+ 					Form::setColsLabel("l3|m3|s12|x12");
+ 					Form::setColsInput("l3|m3|s12|x12");
+ 					Form::alignTextRight();
+ 					Form::text("medidaespecial", "Medida Especial", "18", false, false, "oninput=\"this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\\./g, '$1');\"");
+ 					Form::endRow();
+
  					Form::line();
  				?>
 

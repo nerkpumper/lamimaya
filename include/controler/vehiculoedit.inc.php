@@ -34,7 +34,7 @@
 		
 		if ($vehiculo->existeField("placas", $placa, $idVehiculo))
 		{
-			$r->script("app.errClave = \"". utf8_encode("Esta placa de vehiculo ya está siendo utilizada. Debe especificar una diferente.") ."\"; ");
+			$r->script("app.errClave = \"". mb_convert_encoding("Esta placa de vehiculo ya está siendo utilizada. Debe especificar una diferente.", 'UTF-8', 'ISO-8859-1') ."\"; ");
 			$regresar = true;
 		}
 		

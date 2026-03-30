@@ -15,19 +15,19 @@ function normaliza ($cadena){
   	$originales  = 'à,á,â,ã,ä,ç,è,é,ê,ë,ì,í,î,ï,ñ,ò,ó,ô,õ,ö,ù,ú,û,ü,ý,ÿ,À,Á,Â,Ã,Ä,Ç,È,É,Ê,Ë,Ì,Í,Î,Ï,Ñ,Ò,Ó,Ô,Õ,Ö,Ù,Ú,Û,Ü,Ý';
   	$modificadas = 'a,a,a,a,a,c,e,e,e,e,i,i,i,i,n,o,o,o,o,o,u,u,u,u,y,y,A,A,A,A,A,C,E,E,E,E,I,I,I,I,N,O,O,O,O,O,U,U,U,U,Y';
 
-  	$cadena = utf8_decode($cadena);
- 	$cadena = strtr($cadena, utf8_decode($originales), $modificadas);
+  	$cadena = mb_convert_encoding($cadena, 'ISO-8859-1', 'UTF-8');
+ 	$cadena = strtr($cadena, mb_convert_encoding($originales, 'ISO-8859-1', 'UTF-8'), $modificadas);
   	$cadena = strtolower($cadena);
 
 	//$tofind = array('à','á','â','ã','ä', 'ç', 'è','é','ê','ë', 'ì','í','î','ï', 'ñ', 'ò','ó','ô','õ','ö', 'ù','ú','û','ü', 'ý','ÿ', 'À','Á','Â','Ã','Ä', 'Ç', 'È','É','Ê','Ë', 'Ì','Í','Î','Ï', 'Ñ', 'Ò','Ó','Ô','Õ','Ö', 'Ù','Ú','Û','Ü', 'Ý');
 	//$replac = array('a','a','a','a','a', 'c', 'e','e','e','e', 'i','i','i','i', 'n', 'o','o','o','o','o', 'u','u','u','u', 'y','y', 'A','A','A','A','A', 'C', 'E','E','E','E', 'I','I','I','I', 'N', 'O','O','O','O','O', 'U','U','U','U', 'Y');
 	//return(strtr($cadena,$tofind,$replac));
 	
-	//  	$cadena = utf8_decode($cadena);
-	//  	$cadena = strtr($cadena, utf8_decode($tofind), $toreplac);
+	//  	$cadena = mb_convert_encoding($cadena, 'ISO-8859-1', 'UTF-8');
+	//  	$cadena = strtr($cadena, mb_convert_encoding($tofind, 'ISO-8859-1', 'UTF-8'), $toreplac);
 	//  	$cadena = strtolower($cadena);
 	return $cadena;
-	//return utf8_encode($cadena);
+	//return mb_convert_encoding($cadena, 'UTF-8', 'ISO-8859-1');
 }
 
 
@@ -59,7 +59,7 @@ if ($rollo->getIdRollo() == 0)
 }
 
 $claveRollo = $rollo->getCodigo();
-$descripcionRollo = str_replace("<br />", " ", normaliza (utf8_decode(($rollo->getDescripcion()))));
+$descripcionRollo = str_replace("<br />", " ", normaliza (mb_convert_encoding(($rollo->getDescripcion(, 'ISO-8859-1', 'UTF-8')))));
 //$descripcionRollo = $rollo->getDescripcion();
 //echo $descripcionRollo;
 //exit;				
@@ -139,7 +139,7 @@ $objPHPExcel->setActiveSheetIndex(0)
 //         		    ->setCellValue('A'.$i,  $fila['alumno'])
 // 		            ->setCellValue('B'.$i,  $fila['username'])
 //         		    ->setCellValue('C'.$i,  $fila['estatus'])
-//             		->setCellValue('D'.$i, utf8_encode($fila['email']));
+//             		->setCellValue('D'.$i, mb_convert_encoding($fila['email'], 'UTF-8', 'ISO-8859-1'));
 // 					$i++;
 // 		}
 		

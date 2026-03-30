@@ -56,12 +56,12 @@
 		{
 			if ($isRollo)
 			{
-				$r->script("app.errProductoRollo = \"". utf8_encode("Este Rollo ya est� siendo utilizado como Producto. Debe seleccionar uno diferente.") ."\"; ");
+				$r->script("app.errProductoRollo = \"". mb_convert_encoding("Este Rollo ya est� siendo utilizado como Producto. Debe seleccionar uno diferente.", 'UTF-8', 'ISO-8859-1') ."\"; ");
 			}
 			else 
 			{
 				
-				$r->script("app.errCodigo = \"". utf8_encode("Este C�digo ya est� siendo utilizado. Se debe armar uno diferente.") ."\"; ");
+				$r->script("app.errCodigo = \"". mb_convert_encoding("Este C�digo ya est� siendo utilizado. Se debe armar uno diferente.", 'UTF-8', 'ISO-8859-1') ."\"; ");
 			}
 			
 			$regresar = true;
@@ -194,16 +194,16 @@
 // 		$debug = ob_get_clean();
 // 		$r->mostrarAviso($debug);return $r;
 		
-		$desc=str_replace(chr(13),'', utf8_decode($producto->getDescripcion()));
+		$desc=str_replace(chr(13),'', mb_convert_encoding($producto->getDescripcion(, 'ISO-8859-1', 'UTF-8')));
 		$desc=str_replace('<br />','\n', $desc);
 		$desc=str_replace(chr(10),'', $desc);
-		$desc=utf8_encode($desc);
+		$desc=mb_convert_encoding($desc, 'UTF-8', 'ISO-8859-1');
 		
 		//$r->mostrarExito($val);
 		
 		$r->script("
 					app.isLoading = true;
-				    app.sucCodigo = '".utf8_encode("El c�digo ya es correcto y no debe cambiar")."';
+				    app.sucCodigo = '".mb_convert_encoding("El c�digo ya es correcto y no debe cambiar", 'UTF-8', 'ISO-8859-1')."';
 				    app.tipoProducto = '" . $producto->getProducto_tipoProducto_idTipoProducto() . "=>" . $producto->TipoProducto->getClave()  . "';
 				    app.aplicacion = '" . $producto->getProducto_aplicacion_idAplicacion() . "=>" . $producto->Aplicacion->getNombreAplicacion() . "';
 					app.material = '" . $producto->getProducto_material_idMaterial() . "=>" . $producto->Material->getClave() . "';

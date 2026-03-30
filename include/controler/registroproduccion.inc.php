@@ -70,7 +70,7 @@
 		}
 		else
 		{
-			$r->script("app.msgError = '".utf8_encode("No se encontró información del Numero de Rollo solicitado.") ."';");
+			$r->script("app.msgError = '".mb_convert_encoding("No se encontró información del Numero de Rollo solicitado.", 'UTF-8', 'ISO-8859-1') ."';");
 		}
 		
 		$r->script(" app.rollos.splice(0, app.rollos.length); ".$pushes);
@@ -208,7 +208,7 @@
 		if (!$rp->getError())
 		{
 			$r->script("
-					 saSuccess(\"".utf8_encode("Se ha generado el Registro de Producción exitosamente")."\");
+					 saSuccess(\"".mb_convert_encoding("Se ha generado el Registro de Producción exitosamente", 'UTF-8', 'ISO-8859-1')."\");
 					 app.idRegistroProduccion = ".$rp->getIdRegistroProduccion().";
 					
 					 xajax_cargarRegistrosProduccionTerminados(app.idRemisionRolloSeleccionado);
@@ -217,7 +217,7 @@
 		else
 		{
 			$r->script("
-					saError(\"".utf8_encode("Ha ocurrido un error. " . $rp->getStrError())."\");
+					saError(\"".mb_convert_encoding("Ha ocurrido un error. " . $rp->getStrError(, 'UTF-8', 'ISO-8859-1'))."\");
 					");
 		}
 	
@@ -353,7 +353,7 @@
 			$inv->setMovimientoSALIDA();
 			$inv->setSalidaDespachoNO();
 			$inv->setCantidad($totalkg);
-			$inv->setObservaciones(utf8_encode("REGISTRO DE PRODUCCIÓN"));
+			$inv->setObservaciones(mb_convert_encoding("REGISTRO DE PRODUCCIÓN", 'UTF-8', 'ISO-8859-1'));
 			$inv->setIdPedidoDetalle(0);
 			$inv->setDateAndUser("movimiento");
 			$inv->setIdRegistroProduccion($idRegistroProduccion);
@@ -371,7 +371,7 @@
  				$invProducto->setMovimientoENTRADA();
  				$invProducto->setSalidaDespachoNO();
  				$invProducto->setCantidad($piezas);
- 				$invProducto->setObservaciones(utf8_encode("INGRESO A STOCK POR REGISTRO DE PRODUCCIÓN"));
+ 				$invProducto->setObservaciones(mb_convert_encoding("INGRESO A STOCK POR REGISTRO DE PRODUCCIÓN", 'UTF-8', 'ISO-8859-1'));
  				$invProducto->setDateAndUser("movimiento");
  				$invProducto->setIdPedidoDetalle(0);
  				$invProducto->setIdRemisionRollo($idRemisionRollo);
@@ -597,7 +597,7 @@
 // 		$r->mostrarMsgs($pushes);
 		$r->script("
 				
-				app.pedidoCliente = \"". utf8_encode($pedido->getPedidoDato("cteNombre") . " " . $pedido->getPedidoDato("cteApellidos")) ."\";
+				app.pedidoCliente = \"". mb_convert_encoding($pedido->getPedidoDato("cteNombre", 'UTF-8', 'ISO-8859-1') . " " . $pedido->getPedidoDato("cteApellidos")) ."\";
 				
 				app.pedidoPedidoDetalle.splice(0, app.pedidoPedidoDetalle.length);
 				

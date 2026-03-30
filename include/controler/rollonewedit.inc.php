@@ -36,7 +36,7 @@
 
 		if ($rollo->existeField("codigo", $codigo, $idRollo))
 		{
-			$r->script("app.errCodigo = \"".utf8_encode("Este C�digo ya est� siendo utilizado. Se debe armar uno diferente.")."\"; ");
+			$r->script("app.errCodigo = \"".mb_convert_encoding("Este C�digo ya est� siendo utilizado. Se debe armar uno diferente.", 'UTF-8', 'ISO-8859-1')."\"; ");
 			$regresar = true;
 		}
 

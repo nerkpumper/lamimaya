@@ -294,8 +294,8 @@ class NotificationManager
     {
         global $objSession;
         
-        $titulo = utf8_encode($titulo);
-        $body = utf8_encode($body);
+        $titulo = mb_convert_encoding($titulo, 'UTF-8', 'ISO-8859-1');
+        $body = mb_convert_encoding($body, 'UTF-8', 'ISO-8859-1');
         
         $usuario = new ModeloUsuario();
         
@@ -399,13 +399,13 @@ class NotificationManager
         
         // echo "<br><br>";
 
-        // echo " titulo:" . $titulo . " <br> Titulo encode: " . utf8_encode($titulo);
+        // echo " titulo:" . $titulo . " <br> Titulo encode: " . mb_convert_encoding($titulo, 'UTF-8', 'ISO-8859-1');
         // echo "<br>";
-        // echo " body:" . $body . " <br> body encode: " . utf8_encode($body);
+        // echo " body:" . $body . " <br> body encode: " . mb_convert_encoding($body, 'UTF-8', 'ISO-8859-1');
                
 
-        // $titulo = utf8_encode($titulo);
-        // $body = utf8_encode($body);
+        // $titulo = mb_convert_encoding($titulo, 'UTF-8', 'ISO-8859-1');
+        // $body = mb_convert_encoding($body, 'UTF-8', 'ISO-8859-1');
         
         // echo "<br><br>";
 
@@ -736,8 +736,8 @@ class NotificationManager
     {
         
         
-        $titulo = utf8_encode($titulo);
-        $body = utf8_encode($body);
+        $titulo = mb_convert_encoding($titulo, 'UTF-8', 'ISO-8859-1');
+        $body = mb_convert_encoding($body, 'UTF-8', 'ISO-8859-1');
         
 //         $usuario = new ModeloUsuario();
         

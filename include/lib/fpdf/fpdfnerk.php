@@ -35,19 +35,19 @@ class PDFNerk extends FPDF
 	
 	function putText($x, $texto)
 	{
-		$texto = utf8_decode($texto);
+		$texto = mb_convert_encoding($texto, 'ISO-8859-1', 'UTF-8');
 		$this->Text($x, $this->currentY, $texto);
 	}
 	
 	function putTextRight($texto, $offsetRight = 0)
 	{
-		$texto = utf8_decode($texto);
+		$texto = mb_convert_encoding($texto, 'ISO-8859-1', 'UTF-8');
 		$this->Text($this->GetPageWidth() - $this->GetStringWidth($texto) - $offsetRight, $this->currentY, $texto);
 	}
 	
 	function putTextCenter($texto, $offsetLeft = 0)
 	{
-		$texto = utf8_decode($texto);
+		$texto = mb_convert_encoding($texto, 'ISO-8859-1', 'UTF-8');
 		$this->Text($this->getCenterPage() -($this->GetStringWidth($texto) / 2) + $offsetLeft, $this->currentY, $texto);
 	}
 	

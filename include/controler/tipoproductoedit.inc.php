@@ -33,13 +33,13 @@
 				
 		if ($tipoProcucto->existeField("nombre", $nombre, $idTipoProducto))
 		{
-			$r->script("app.errNombre = \"". utf8_encode("Este tipo de producto ya está siendo utilizado. Debe especificar uno diferente.") . "\"; ");
+			$r->script("app.errNombre = \"". mb_convert_encoding("Este tipo de producto ya está siendo utilizado. Debe especificar uno diferente.", 'UTF-8', 'ISO-8859-1') . "\"; ");
 			$regresar = true;
 		}
 		
 		if ($tipoProcucto->existeField("clave", $clave, $idTipoProducto))
 		{
-			$r->script("app.errClave = \"" . utf8_encode("Este tipo de producto ya está siendo utilizada. Debe especificar una diferente.") . "\"; ");
+			$r->script("app.errClave = \"" . mb_convert_encoding("Este tipo de producto ya está siendo utilizada. Debe especificar una diferente.", 'UTF-8', 'ISO-8859-1') . "\"; ");
 			$regresar = true;
 		}
 		
@@ -72,12 +72,12 @@
 				
 		if ($isInsert)
 		{
-			$r->saSuccess("El Tipo Producto " .utf8_decode($nombre) . " se ha almacenado satisfactoriamente." );
+			$r->saSuccess("El Tipo Producto " .mb_convert_encoding($nombre, 'ISO-8859-1', 'UTF-8') . " se ha almacenado satisfactoriamente." );
 			$r->redirect(URL_BASE . "tipoproducto",2);
 		}
 		else
 		{
-			$r->saSuccess("El Tipo Producto " . utf8_decode($nombre) . " se ha modificado satisfactoriamente." );
+			$r->saSuccess("El Tipo Producto " . mb_convert_encoding($nombre, 'ISO-8859-1', 'UTF-8') . " se ha modificado satisfactoriamente." );
 			$r->redirect(URL_BASE . "tipoproducto",2);
 		}
 		

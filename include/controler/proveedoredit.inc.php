@@ -33,13 +33,13 @@
 				
 		if ($proveedor->existeField("nombre", $nombre, $idProveedor))
 		{
-			$r->script("app.errNombre = \"". utf8_encode("Este nombre de proveedor ya está siendo utilizado. Debe especificar uno diferente.") . "\"; ");
+			$r->script("app.errNombre = \"". mb_convert_encoding("Este nombre de proveedor ya está siendo utilizado. Debe especificar uno diferente.", 'UTF-8', 'ISO-8859-1') . "\"; ");
 			$regresar = true;
 		}
 		
 		if ($proveedor->existeField("clave", $clave, $idProveedor))
 		{
-			$r->script("app.errClave = \"" .utf8_encode("Esta clave de proveedor ya está siendo utilizada. Debe especificar una diferente.") ."\"; ");
+			$r->script("app.errClave = \"" .mb_convert_encoding("Esta clave de proveedor ya está siendo utilizada. Debe especificar una diferente.", 'UTF-8', 'ISO-8859-1') ."\"; ");
 			$regresar = true;
 		}
 		
@@ -72,12 +72,12 @@
 				
 		if ($isInsert)
 		{
-			$r->saSuccess("El Proveedor " .utf8_decode($nombre) . " se ha almacenado satisfactoriamente." );
+			$r->saSuccess("El Proveedor " .mb_convert_encoding($nombre, 'ISO-8859-1', 'UTF-8') . " se ha almacenado satisfactoriamente." );
 			$r->redirect(URL_BASE . "proveedor",2);
 		}
 		else
 		{
-			$r->saSuccess("El Proveedor " .utf8_decode($nombre) . " se ha modificado satisfactoriamente." );
+			$r->saSuccess("El Proveedor " .mb_convert_encoding($nombre, 'ISO-8859-1', 'UTF-8') . " se ha modificado satisfactoriamente." );
 			$r->redirect(URL_BASE . "proveedor",2);
 		}
 		

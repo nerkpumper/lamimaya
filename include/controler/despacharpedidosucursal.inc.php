@@ -309,23 +309,23 @@
 
 					$desc = str_replace("--NO APLICA--", "", $desc);
 
-// 					$desc = utf8_decode($desc);
+// 					$desc = mb_convert_encoding($desc, 'ISO-8859-1', 'UTF-8');
 
 
 
 // 			$pedidoDetalle .= "this.pedidoDetalle.push({
 
-// 								idPedidoDetalle: ".utf8_decode($row["idPedidoDetalle"]).",
+// 								idPedidoDetalle: ".mb_convert_encoding($row["idPedidoDetalle"], 'ISO-8859-1', 'UTF-8').",
 
-// 								codigo: \"".utf8_decode($row["proCodigo"])."\",
+// 								codigo: \"".mb_convert_encoding($row["proCodigo"], 'ISO-8859-1', 'UTF-8')."\",
 
 // 								fullName: \"".$desc."\",
 
-// 								partida: ".utf8_decode($row["detPartida"]).",
+// 								partida: ".mb_convert_encoding($row["detPartida"], 'ISO-8859-1', 'UTF-8').",
 
-// 								listoDespachar: \"".utf8_decode($row["listo_para_producir"])."\",
+// 								listoDespachar: \"".mb_convert_encoding($row["listo_para_producir"], 'ISO-8859-1', 'UTF-8')."\",
 
-// 								despachado: \"".utf8_decode($row["despachado"])."\"
+// 								despachado: \"".mb_convert_encoding($row["despachado"], 'ISO-8859-1', 'UTF-8')."\"
 
 // 							});";
 
@@ -333,29 +333,29 @@
 
 					$pedidoDetalle .= "app.pedidoDetalle.push({
 
-								idPedidoDetalle: ".utf8_decode($row["idPedidoDetalle"]).",
+								idPedidoDetalle: ".mb_convert_encoding($row["idPedidoDetalle"], 'ISO-8859-1', 'UTF-8').",
 
                                 idProducto: ".$row["detIdProducto"].",
 
                                 idrollo: ".$row["proIdRollo"].",
 
-								codigo: \"".utf8_decode($row["proCodigo"])."\",
+								codigo: \"".mb_convert_encoding($row["proCodigo"], 'ISO-8859-1', 'UTF-8')."\",
 
-								shortTipoProducto: \"".utf8_decode($row["proShortTipoProducto"])."\",
+								shortTipoProducto: \"".mb_convert_encoding($row["proShortTipoProducto"], 'ISO-8859-1', 'UTF-8')."\",
 
 								fullName: \"".$desc."\",
 
-								unidad: \"".utf8_decode($row["proUnidad"])."\",
+								unidad: \"".mb_convert_encoding($row["proUnidad"], 'ISO-8859-1', 'UTF-8')."\",
 
-								shortUnidad: \"".utf8_decode($row["proShortUnidad"])."\",
+								shortUnidad: \"".mb_convert_encoding($row["proShortUnidad"], 'ISO-8859-1', 'UTF-8')."\",
 
-								partida: ".utf8_decode($row["detPartida"]).",
+								partida: ".mb_convert_encoding($row["detPartida"], 'ISO-8859-1', 'UTF-8').",
 
-                                ml: ".utf8_decode($row["detCantidadReal"]).",    
+                                ml: ".mb_convert_encoding($row["detCantidadReal"], 'ISO-8859-1', 'UTF-8').",    
 
-								listoDespachar: \"".utf8_decode($row["listo_para_producir"])."\",
+								listoDespachar: \"".mb_convert_encoding($row["listo_para_producir"], 'ISO-8859-1', 'UTF-8')."\",
 
-								despachado: \"".utf8_decode($row["despachado"])."\",
+								despachado: \"".mb_convert_encoding($row["despachado"], 'ISO-8859-1', 'UTF-8')."\",
 
 								despachando: false,
 
@@ -2156,7 +2156,7 @@
 
 	    $inv->setCantidad($cantidad);
 
-	    $inv->setObservaciones(utf8_encode("L�minas tomadas para desarrollar ".$noMolduras." Molduras"));
+	    $inv->setObservaciones(mb_convert_encoding("L�minas tomadas para desarrollar ".$noMolduras." Molduras", 'UTF-8', 'ISO-8859-1'));
 
 	    $inv->setIdPedidoDetalle($idPedidoDetalle);
 
@@ -2194,7 +2194,7 @@
 
 	        $invMol->setCantidad($noMolduras);
 
-	        $invMol->setObservaciones(utf8_encode("Surtido de Pedido Molduras (de Lámina)"));
+	        $invMol->setObservaciones(mb_convert_encoding("Surtido de Pedido Molduras (de Lámina, 'UTF-8', 'ISO-8859-1')"));
 
 	        $invMol->setIdPedidoDetalle($idPedidoDetalle);
 
@@ -2644,7 +2644,7 @@
 						$invMol->setMovimientoSALIDA();
 						$invMol->setSalidaDespachoSI();
 						$invMol->setCantidad($noMolduras);
-						$invMol->setObservaciones(utf8_encode("Surtido de Pedido Molduras (de Lámina)"));
+						$invMol->setObservaciones(mb_convert_encoding("Surtido de Pedido Molduras (de Lámina, 'UTF-8', 'ISO-8859-1')"));
 						$invMol->setIdPedidoDetalle($idPedidoDetalle);
 						$invMol->setDateAndUser("movimiento");
 						$invMol->setIdRemisionRollo(0);

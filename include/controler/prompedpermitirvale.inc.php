@@ -609,7 +609,7 @@
 	    }
 	    else
 	    {
-	        $r->script("saError(Ha ocurrido un error. " . utf8_encode($vs->getStrError()).");");
+	        $r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($vs->getStrError(, 'UTF-8', 'ISO-8859-1')).");");
 	    }
 	    
 
@@ -659,7 +659,7 @@
 	    }
 	    else
 	    {
-	        $r->script("saError(Ha ocurrido un error. " . utf8_encode($vs->getStrError()).");");
+	        $r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($vs->getStrError(, 'UTF-8', 'ISO-8859-1')).");");
 	    }
 	    
 	    

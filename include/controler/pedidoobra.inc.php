@@ -398,7 +398,7 @@
 					//alert('antes exit success');
 	                   mdlExitWait();
 //alert('despues exit success');
-                     setTimeout( function() { saSuccess(\"".utf8_encode("Se ha generado el Registro de Producci�n exitosamente")."\");}, 200);
+                     setTimeout( function() { saSuccess(\"".mb_convert_encoding("Se ha generado el Registro de Producci�n exitosamente", 'UTF-8', 'ISO-8859-1')."\");}, 200);
 				//alert('antes volver a cargar rollo');	
 					 setTimeout( function() {  app.seleccionarNoRemision(app.nrIdRemisionRollo); }, 100);
 					");
@@ -407,7 +407,7 @@
 	    {
 	        $r->script("
                     mdlExitWait();
-					saError(\"".utf8_encode("Ha ocurrido un error. " . $rp->getStrError())."\");
+					saError(\"".mb_convert_encoding("Ha ocurrido un error. " . $rp->getStrError(, 'UTF-8', 'ISO-8859-1'))."\");
 					");
 	    }
 	    

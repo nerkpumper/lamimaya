@@ -25,12 +25,12 @@
 	
 	//$xajax->de decodeUTF8InputOn();
 	
-   	// ob_start();	
+   	 //ob_start();	
 // 	echo "hola mundito";
 // 	$debug = ob_get_clean();
 // 	$r->mostrarMsgs($debug);
 		
-	function guardarProducto($idProducto, $codigo, $idTipoProducto, $idAplicacion, $idMaterial, $idRollo, $calibre, $pies, $origen, $descripcion, $longitud, $mlpieza, $unidad, $listaPrecio, $isRango, $isRollo, $precio1, $precio2, $precio3, $precio4, $precioMendez, $costo)
+	function guardarProducto($idProducto, $codigo, $idTipoProducto, $idAplicacion, $idMaterial, $idRollo, $calibre, $pies, $origen, $descripcion, $longitud, $mlpieza, $unidad, $listaPrecio, $isRango, $isRollo, $precio1, $precio2, $precio3, $precio4, $precioMendez, $costo, $medidaespecial)
 	{
 		global $objSession;
 		$r = new xajaxResponse();
@@ -64,12 +64,12 @@
 		{
 			if ($isRollo)
 			{
-				$r->script("app.errProductoRollo = \"". utf8_encode("Este Rollo ya est� siendo utilizado como Producto. Debe seleccionar uno diferente.") ."\"; ");
+				$r->script("app.errProductoRollo = \"". mb_convert_encoding("Este Rollo ya está siendo utilizado como Producto. Debe seleccionar uno diferente.", 'UTF-8', 'ISO-8859-1') ."\"; ");
 			}
-			else 
+			else
 			{
-				
-				$r->script("app.errCodigo = \"". utf8_encode("Este C�digo ya est� siendo utilizado. Se debe armar uno diferente.") ."\"; ");
+
+				$r->script("app.errCodigo = \"". mb_convert_encoding("Este Código ya está siendo utilizado. Se debe armar uno diferente.", 'UTF-8', 'ISO-8859-1') ."\"; ");
 			}
 			
 			$regresar = true;
@@ -145,6 +145,7 @@
 		
 		$producto->setLongitud($longitud);
 		$producto->setMlpieza($mlpieza);
+		$producto->setMedidaespecial($medidaespecial);
 		$producto->setTipoPrecio($listaPrecio);
 		$producto->setIsRango($isRango ? '1' : '0');
 		$producto->setIsRollo($isRollo ? '1' : '0');
@@ -231,18 +232,18 @@
 	function cargarProducto($idProducto)
 	{
 		$r = new xajaxResponse();
-		
-		$producto = new ModeloProducto();	
-		
+
+		$producto = new ModeloProducto();
+
 		if ($idProducto <= 0)
 		{
 			$r->saError("No se han podido cargar los datos del Producto.");
 			$r->redirect(URL_BASE . "producto", 2);
 			return $r;
-		}			
-		
+		}
+
 		$producto->setIdProducto($idProducto);
-		
+
 		//verifica si el rollo fue cargado
 		if ($producto->getIdProducto() <= 0)
 		{
@@ -251,31 +252,16 @@
 			return $r;
 		}
 
-		// $r->mostrarAviso("cargamos producto"); return $r;
-
-// 		echo "antes de getDatosRef";
 		$producto->getDatosReferencia();
-		
-// 		$producto->TipoProducto->dumpObj();
-// 		$producto->Aplicacion->dumpObj();
-// 		$producto->Material->dumpObj();
-// 		$producto->Rollo->dumpObj();
-		
-		
-// 		echo "despues de getDatosRef";
-// 		$debug = ob_get_clean();
-// 		$r->mostrarAviso($debug);return $r;
-		
-		$desc=str_replace(chr(13),'', utf8_decode($producto->getDescripcion()));
+
+		$desc=str_replace(chr(13),'', mb_convert_encoding($producto->getDescripcion(), 'ISO-8859-1', 'UTF-8'));
 		$desc=str_replace('<br />','\n', $desc);
 		$desc=str_replace(chr(10),'', $desc);
-		$desc=utf8_encode($desc);
-		
-		//$r->mostrarExito($val);
-		
+		$desc=mb_convert_encoding($desc, 'UTF-8', 'ISO-8859-1');
+
 		$r->script("
 					app.isLoading = true;
-				    app.sucCodigo = '".utf8_encode("El c�digo ya es correcto y no debe cambiar")."';
+				    app.sucCodigo = '".mb_convert_encoding("El código ya es correcto y no debe cambiar", 'UTF-8', 'ISO-8859-1')."';
 				    app.tipoProducto = '" . $producto->getProducto_tipoProducto_idTipoProducto() . "=>" . $producto->TipoProducto->getClave()  . "';
 				    app.aplicacion = '" . $producto->getProducto_aplicacion_idAplicacion() . "=>" . $producto->Aplicacion->getNombreAplicacion() . "';
 					app.material = '" . $producto->getProducto_material_idMaterial() . "=>" . $producto->Material->getClave() . "';
@@ -287,6 +273,7 @@
 				    app.productoRollo = " . $producto->getProducto_rollo_idRollo() . ";
 				    app.longitud = '" . $producto->getLongitud() . "';
 					app.mlpieza = '" . $producto->getMlpieza() . "';
+					app.medidaespecial = '" . $producto->getMedidaespecial() . "';
 				
 		
 					app.precio1 = '" . $producto->getPrecio1() . "';
@@ -307,14 +294,8 @@
 				    setTimeout(function() {\$('#unidad').attr('disabled', true); app.rollo = " . $producto->getProducto_rollo_idRollo() . "}, 1000);
 					setTimeout(function() { app.origen = '".$producto->getOrigen()."'; app.calibre = '" . $producto->getCalibre() . "'; app.pies = '" . $producto->getPies() . "'; }, 1200);
 				    setTimeout(function() {  xajax_setPreciosByRollo(".$producto->getProducto_rollo_idRollo().");}, 1250);
-				    
-				
-					
-                    
 				  ");
-		
-// 					$debug = ob_get_clean();
-// 					$r->mostrarExito($debug);
+
 		return $r;
 	}	
 	$xajax->registerFunction("cargarProducto");

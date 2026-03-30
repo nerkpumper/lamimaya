@@ -305,7 +305,7 @@
 		
 		if ($vale->getError())
 		{
-			$errores .=utf8_encode("Ocurriï¿½ un error al intentar generar el Vale de Salida\n");
+			$errores .=mb_convert_encoding("Ocurriï¿½ un error al intentar generar el Vale de Salida\n", 'UTF-8', 'ISO-8859-1');
 			$blnCommit = false;
 		}
 
@@ -322,7 +322,7 @@
 					
 					if ($vsd->getIdValeSalidaDetalle() <= 0)
 					{
-						$errores .=utf8_encode("Ocurrió un error al intentar generar el Vale de Salida");
+						$errores .=mb_convert_encoding("Ocurrió un error al intentar generar el Vale de Salida", 'UTF-8', 'ISO-8859-1');
 						$blnCommit = false;
 						break;
 					}
@@ -333,7 +333,7 @@
 					
 					if ($vsd->getError())
 					{
-						$errores .= utf8_encode("Ocurrió un error al intentar actualizar información de Vale Salida [".$item["idValeSalidaDetalle"]."]\n");
+						$errores .= mb_convert_encoding("Ocurrió un error al intentar actualizar información de Vale Salida [".$item["idValeSalidaDetalle"]."]\n", 'UTF-8', 'ISO-8859-1');
 						$blnCommit = false;
 					}
 					

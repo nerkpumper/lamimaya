@@ -214,7 +214,7 @@ function cargarVentaAnual($anio)
                 var index = $('#chartAnio').data('highchartsChart');
                 chart = Highcharts.charts[index];
         
-                chart.setTitle({text: '".utf8_encode("Ventas por Promotor ").$anio."'});                
+                chart.setTitle({text: '".mb_convert_encoding("Ventas por Promotor ", 'UTF-8', 'ISO-8859-1').$anio."'});                
 
                 chart.xAxis[0].setCategories([]);
                 chart.xAxis[0].setCategories([".$categorias."]);

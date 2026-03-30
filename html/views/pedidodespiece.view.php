@@ -813,11 +813,11 @@ $pdf->__folio = $idPedido;
 // $pdf->__domicilio = $pedido->getPedidoDato("cteDomicilio1") . " " . $pedido->getPedidoDato("cteDomicilio2");
 // $pdf->__ciudad = $pedido->getPedidoDato("cteCiudad");
 // $pdf->__rfc = $pedido->getPedidoDato("cteRfc");
-$pdf->__nombre =utf8_decode(mb_strtoupper($pedido->getPedidoDato("cteNombre") . " " . $pedido->getPedidoDato("cteApellidos")));
-$pdf->__fecha = utf8_decode(mb_strtoupper($pedido->getPedidoDato("fecha_capturado")));
-$pdf->__domicilio = utf8_decode(mb_strtoupper($pedido->getPedidoDato("cteDomicilio1") . " " . $pedido->getPedidoDato("cteDomicilio2") . " " . $pedido->getPedidoDato("cteNumero") . " " . $pedido->getPedidoDato("cteColonia")));
-$pdf->__ciudad = utf8_decode(mb_strtoupper($pedido->getPedidoDato("cteCiudad")));
-$pdf->__rfc = utf8_decode(mb_strtoupper($pedido->getPedidoDato("cteRfc")));
+$pdf->__nombre =mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("cteNombre", 'ISO-8859-1', 'UTF-8') . " " . $pedido->getPedidoDato("cteApellidos")));
+$pdf->__fecha = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("fecha_capturado", 'ISO-8859-1', 'UTF-8')));
+$pdf->__domicilio = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("cteDomicilio1", 'ISO-8859-1', 'UTF-8') . " " . $pedido->getPedidoDato("cteDomicilio2") . " " . $pedido->getPedidoDato("cteNumero") . " " . $pedido->getPedidoDato("cteColonia")));
+$pdf->__ciudad = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("cteCiudad", 'ISO-8859-1', 'UTF-8')));
+$pdf->__rfc = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("cteRfc", 'ISO-8859-1', 'UTF-8')));
 
 $pdf->__telefono = $pedido->getPedidoDato("cteTelefonos");
 $pdf->__totalTexto = "";
@@ -839,14 +839,14 @@ $pdf->__agente = $pedido->getPedidoDato("capturadoNombre") . " " . $pedido->getP
 // $pdf->_recibeColonia = $pedido->getPedidoDato("coloniaEntrega");
 // $pdf->_recibeCiudad = $pedido->getPedidoDato("ciudadEntrega");
 
-$pdf->_recibePersona = utf8_decode(mb_strtoupper($pedido->getPedidoDato("personaEntrega")));
-$pdf->_recibeDomicilio = utf8_decode(mb_strtoupper($pedido->getPedidoDato("domicilioEntrega")));
-$pdf->_recibeNumero = utf8_decode(mb_strtoupper( $pedido->getPedidoDato("numeroEntrega")));
-$pdf->_recibeColonia = utf8_decode(mb_strtoupper($pedido->getPedidoDato("coloniaEntrega")));
-$pdf->_recibeCiudad =utf8_decode(mb_strtoupper( $pedido->getPedidoDato("ciudadEntrega")));
+$pdf->_recibePersona = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("personaEntrega", 'ISO-8859-1', 'UTF-8')));
+$pdf->_recibeDomicilio = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("domicilioEntrega", 'ISO-8859-1', 'UTF-8')));
+$pdf->_recibeNumero = mb_convert_encoding(mb_strtoupper( $pedido->getPedidoDato("numeroEntrega", 'ISO-8859-1', 'UTF-8')));
+$pdf->_recibeColonia = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("coloniaEntrega", 'ISO-8859-1', 'UTF-8')));
+$pdf->_recibeCiudad =mb_convert_encoding(mb_strtoupper( $pedido->getPedidoDato("ciudadEntrega", 'ISO-8859-1', 'UTF-8')));
 
-$pdf->__fechaAbierta = utf8_decode(mb_strtoupper( $pedido->getPedidoDato("fechaAbierta")));
-$pdf->__pedidoExpress = utf8_decode(mb_strtoupper( $pedido->getPedidoDato("pedidoExpress")));
+$pdf->__fechaAbierta = mb_convert_encoding(mb_strtoupper( $pedido->getPedidoDato("fechaAbierta", 'ISO-8859-1', 'UTF-8')));
+$pdf->__pedidoExpress = mb_convert_encoding(mb_strtoupper( $pedido->getPedidoDato("pedidoExpress", 'ISO-8859-1', 'UTF-8')));
 
 $pdf->_observacionPedido = $pedido->getPedidoDato("observacionCaptura");
 $pdf->__estado = $pedido->getPedidoDato("estado");

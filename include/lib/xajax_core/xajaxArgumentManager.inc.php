@@ -289,30 +289,7 @@ class xajaxArgumentManager
 		else if (is_string($mArg))
 			$mArg = mb_convert_encoding($mArg, $this->sCharacterEncoding, "UTF-8");
 	}
-	
-	function argumentDecodeUTF8_utf8_decode(&$mArg)
-	{
-		if (is_array($mArg))
-		{
-			foreach (array_keys($mArg) as $sKey)
-			{
-				$sNewKey = $sKey;
-				$this->argumentDecodeUTF8_utf8_decode($sNewKey);
-				
-				if ($sNewKey != $sKey)
-				{
-					$mArg[$sNewKey] = $mArg[$sKey];
-					unset($mArg[$sKey]);
-					$sKey = $sNewKey;
-				}
-				
-				$this->argumentDecodeUTF8_utf8_decode($mArg[$sKey]);
-			}
-		}
-		else if (is_string($mArg))
-			$mArg = utf8_decode($mArg);
-	}
-	
+
 	/*
 		Constructor: xajaxArgumentManager
 		
@@ -440,13 +417,13 @@ class xajaxArgumentManager
 		if ($this->bDecodeUTF8Input)
 		{
 			$sFunction = '';
-			
+
 			if (function_exists('iconv'))
 				$sFunction = "iconv";
 			else if (function_exists('mb_convert_encoding'))
 				$sFunction = "mb_convert_encoding";
-			else if ($this->sCharacterEncoding == "ISO-8859-1")
-				$sFunction = "utf8_decode";
+			else if ($this->sCharacterEncoding == "ISO-8859-1" && function_exists('mb_convert_encoding'))
+				$sFunction = "mb_convert_encoding";
 			else {
 				$objLanguageManager =& xajaxLanguageManager::getInstance();
 				trigger_error(
