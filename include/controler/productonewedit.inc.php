@@ -159,14 +159,14 @@
 		$producto->setPrecio4($precio4);
 		$producto->setPreciomendez($precioMendez);
 		$producto->setCosto($costo);
-
 		
 		
-// 		$r->mostrarExito("hola mundo"); return $r;
-//  		ob_start();
-
-// $r->mostrarAviso($producto->Guardar() . __LINE__); return $r;	
+		// 		$r->mostrarExito("hola mundo"); return $r;
+		//  		ob_start();
+		
+		// $r->mostrarAviso($producto->Guardar() . __LINE__); return $r;	
 		$producto->Guardar();
+		//$r->mostrarExito($rr); return $r;
   		// $debug = ob_get_clean();
   		// $r->mostrarAviso($debug); return $r;
 		if ($producto->getError())
@@ -294,6 +294,7 @@
 					setTimeout(function(){app.verificaIsPieza();}, 500);
 				    setTimeout(function() {\$('#unidad').attr('disabled', true); app.rollo = " . $producto->getProducto_rollo_idRollo() . "}, 1000);
 					setTimeout(function() { app.origen = '".$producto->getOrigen()."'; app.calibre = '" . $producto->getCalibre() . "'; app.pies = '" . $producto->getPies() . "'; }, 1200);
+				    setTimeout(function() { app.idTipoProducto = " . $producto->getProducto_tipoProducto_idTipoProducto() . "; app.claveTipoProducto = '" . $producto->TipoProducto->getClave()  . "'; app.idAplicacion = " . $producto->getProducto_aplicacion_idAplicacion() . "; app.idMaterial = " . $producto->getProducto_material_idMaterial() . "; app.claveMaterial = '" . $producto->Material->getClave() . "'; }, 600);
 				    setTimeout(function() {  xajax_setPreciosByRollo(".$producto->getProducto_rollo_idRollo().");}, 1250);
 				  ");
 

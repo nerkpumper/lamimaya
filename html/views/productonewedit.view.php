@@ -142,7 +142,6 @@ $_addScript = "
 
 						<!-- 		 				<div v-show="unidad == 4"> -->
  						<div v-show="rollo == 1">
- 						
  							<?php
  							
  								Form::setColsInput("l4|m4|s12|x12");
