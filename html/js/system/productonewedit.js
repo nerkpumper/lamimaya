@@ -303,7 +303,7 @@ var app = new Vue({
 					//this.errCalibre = "Debe seleccionar un Calibre";
 				//}
 				
-				if (this.idMaterial == "0")
+				if (this.idMaterial == "0" && this.idRollo > 1)
 				{
 					seguir = false;
 					this.errMaterial = "Debe seleccionar un Material";

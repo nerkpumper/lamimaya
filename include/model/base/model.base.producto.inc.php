@@ -856,7 +856,7 @@
 			if($this->idProducto==0)
 				$this->Insertar();
 			else
-				 $this->Actualizar();
+				  $this->Actualizar();
 			if($this->getError())
 				return false;
 			return true;
