@@ -1057,7 +1057,7 @@
 	                                              preciokg4='" . mysqli_real_escape_string($this->dbLink,$this->preciokg4) . "',
 	                                              lastUpdate='" . mysqli_real_escape_string($this->dbLink,$this->lastUpdate) . "'
 					WHERE idRollo=" . $this->idRollo;
-				
+				// return $SQL;
 				$result=mysqli_query($this->dbLink,$SQL);
 				if(!$result)
 					return $this->setSystemError("Error en la actualizacion de registro.","[" . $SQL . "][" . mysqli_error($this->dbLink) . "][ModeloBaseRollo::Update]");
@@ -1204,7 +1204,7 @@
 			if($this->idRollo==0)
 				$this->Insertar();
 			else
-				$this->Actualizar();
+				 $this->Actualizar();
 			if($this->getError())
 				return false;
 			return true;

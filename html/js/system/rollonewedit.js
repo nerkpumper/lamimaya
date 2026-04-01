@@ -199,7 +199,7 @@ var app = new Vue({
 								   this.preciokg1,
 						           this.preciokg2,
 						           this.preciokg3,
-								   this.preciokg
+								   this.preciokg4
 								   );
 			}
 			

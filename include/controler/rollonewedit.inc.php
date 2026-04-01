@@ -57,7 +57,6 @@
 			$rollo->setDateAndUser("modifica");
  			//$rollo->setDateUserUpdating();
 		}
-// $r->mostrarAviso($pies);
 		$rollo->setCodigo($codigo);
 		$rollo->setRollo_material_idMaterial($idMaterial);
 		$rollo->setCalibre($calibre);
@@ -73,14 +72,15 @@
 		$rollo->setPreciokg2($preciokg2);
 		$rollo->setPreciokg3($preciokg3);
 		$rollo->setPreciokg4($preciokg4);
-
+		//$r->mostrarAviso("bien ". $preciokg4 . __LINE__); return $r;
+		
 		$rollo->setRollo_color_idColor($idColor);
 		$rollo->setGrado($grado);
-
+		
 		$rollo->setDescripcion(nl2br($descripcion));
 		$rollo->setObservaciones(nl2br($observaciones));
-		$rollo->Guardar();
-
+		 $rollo->Guardar();
+// $r->mostrarAviso($rr); return $r;
 		if ($rollo->getError())
 		{
 			$r->saError($rollo->getStrError());
@@ -109,53 +109,67 @@
 
 		$rollo= new ModeloRollo();
 		$color = new ModeloColor();
-
 		if ($idRollo <= 0)
-		{
-			$r->saError("No se han podido cargar los datos del rollo.");
-			$r->redirect(URL_BASE . "rollo", 2);
-			return $r;
-		}
-
-		$rollo->setIdRollo($idRollo);
-
-		//verifica si el rollo fue cargado
-		if ($rollo->getIdRollo() <= 0)
-		{
-			$r->saError("No se han podido cargar los datos del rollo.");
-			$r->redirect(URL_BASE . "rollo", 2);
-			return $r;
-		}
-
-		$rollo->getDatosReferencia();
-
-		$color->setIdColor($rollo->getRollo_color_idColor());
-
-
-
-		$desc=str_replace(chr(13),'', $rollo->getDescripcion());
-		$desc=str_replace('<br />','\n', $desc);
-		$desc=str_replace(chr(10),'', $desc);
-
-		$obs=str_replace(chr(13),'', $rollo->getObservaciones());
-		$obs=str_replace('<br />','\n', $obs);
-		$obs=str_replace(chr(10),'', $obs);
-
+			{
+				$r->saError("No se han podido cargar los datos del rollo.");
+				$r->redirect(URL_BASE . "rollo", 2);
+				return $r;
+			}
+			
+			$rollo->setIdRollo($idRollo);
+			
+			//verifica si el rollo fue cargado
+			if ($rollo->getIdRollo() <= 0)
+				{
+					$r->saError("No se han podido cargar los datos del rollo.");
+					$r->redirect(URL_BASE . "rollo", 2);
+					return $r;
+				}
+				
+			$rollo->getDatosReferencia();
+			
+			$color->setIdColor($rollo->getRollo_color_idColor());
+			
+			
+			
+			$desc=str_replace(chr(13),'', $rollo->getDescripcion());
+			$desc=str_replace('<br />','\n', $desc);
+			$desc=str_replace(chr(10),'', $desc);
+			
+			// $r->mostrarAviso("OK ". $rollo->getObservaciones() .  "  - ".__LINE__); return $r;
+			$obs=str_replace(chr(13),'', $rollo->getObservaciones());
+			$obs=str_replace('<br />','\n', $obs);
+			$obs=str_replace(chr(10),'', $obs);
+			
 		// $r->saSuccess($rollo->getPies()); return $r;
 		//$r->mostrarExito($val);
 
-		$r->script("
+		$r->script(" 
 					app.sucCodigo = '"."El código ya es correcto y no debe cambiar"."';
+					app.idRollo = '" . $rollo->getIdRollo() . "';
 					app.material = '" . $rollo->getRollo_material_idMaterial() . "=>" . $rollo->Material->getClave() . "';
+					app.idMaterial = '" . $rollo->getRollo_material_idMaterial() . "';
 					app.calibre = '" . $rollo->getCalibre() . "';
 					app.origen = '" . $rollo->getOrigen() . "';
 					app.color = '" . $rollo->getRollo_color_idColor()."=>".$color->getClave() . "';
+					app.idColor = '" . $rollo->getRollo_color_idColor() . "';
 					app.grado = '" . $rollo->getGrado() . "';
 			 		app.pies = '" . str_replace(".00","",$rollo->getPies()) . "';
 			 		app.proveedor = '" . $rollo->getRollo_proveedor_idProveedor() . "=>" . $rollo->Proveedor->getClave() . "';
+					app.idProveedor = '" . $rollo->getRollo_proveedor_idProveedor() . "';
                     app.codigo = '" . $rollo->getCodigo() . "';
 					app.descripcion = '" . $desc . "';
                     app.observaciones = '" . $obs . "';
+					app.precio1 = '" . $rollo->getTotalpreciovta() . "';
+					app.precio2 = '" . $rollo->getTotalpreciovtar2() . "';
+					app.precio3 = '" . $rollo->getTotalpreciovtar3() . "';
+					app.precio4 = '" . $rollo->getTotalpreciovtar4() . "';
+					app.preciokg1 = '" . $rollo->getPreciogk1() . "';
+					app.preciokg2 = '" . $rollo->getPreciogk2() . "';
+					app.preciokg3 = '" . $rollo->getPreciogk3() . "';
+					app.preciokg4 = '" . $rollo->getPreciogk4() . "';
+					app.precioMendez = '" . $rollo->getTotalpreciomendez() . "';
+					app.costo = '" . $rollo->getCostokg() . "';
 				  ");
 
 

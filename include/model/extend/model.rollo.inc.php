@@ -16,7 +16,9 @@
 		var $__primaryKey="idRollo";				
 		var $__tableName="rollo";
 		var $__tableEdit="rolloedit";
-		var $__tableDelete="rollodelete";				
+		var $__tableDelete="rollodelete";	
+		var $Material;
+		var $Proveedor;			
 
 		#------------------------------------------------------------------------------------------------------#
 		#--------------------------------------------Inicializacion--------------------------------------------#
