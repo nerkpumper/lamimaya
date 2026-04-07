@@ -735,7 +735,7 @@
 	                                              lastUpdate='" . mysqli_real_escape_string($this->dbLink,$this->lastUpdate) . "',
 	                                              resurtir='" . mysqli_real_escape_string($this->dbLink,$this->resurtir) . "'
 												  WHERE idProducto=" . $this->idProducto;
-												   return $SQL;
+												   //return $SQL;
 	                                            //   idProveedor='" . mysqli_real_escape_string($this->dbLink,$this->idProveedor) . "',
 				$result=mysqli_query($this->dbLink,$SQL);
 				if(!$result)
