@@ -111,22 +111,22 @@
 					
 // 		}
 		
-		if ($idRollo == 1 &&  $calibre == "0")
-		{
-			if ($idTipoProducto != 4)
-			{
-			    if ($idMaterial != 6 && $idMaterial != 7 && $idMaterial != 16 && $idMaterial != 17 
-			        && $idMaterial != 18 && $idMaterial != 27  && $idMaterial != 32 && $idMaterial != 33 && $idMaterial = 15)
-				{
-// 					if ($unidad != 4)
-// 					{
-						$r->mostrarAviso("Favor de ingresar Calibre");
-						return $r;
-// 					}
+// 		if ($idRollo == 1 &&  $calibre == "0")
+// 		{
+// 			if ($idTipoProducto != 4)
+// 			{
+// 			    if ($idMaterial != 6 && $idMaterial != 7 && $idMaterial != 16 && $idMaterial != 17 
+// 			        && $idMaterial != 18 && $idMaterial != 27  && $idMaterial != 32 && $idMaterial != 33 && $idMaterial = 15)
+// 				{
+// // 					if ($unidad != 4)
+// // 					{
+// 						$r->mostrarAviso("Favor de ingresar Calibre");
+// 						return $r;
+// // 					}
 					
-				}
-			}
-		}
+// 				}
+// 			}
+// 		}
 		
 // 		$r->mostrarAviso($codigo);
 		$codigo = str_replace("  ", " ", $codigo);
@@ -161,10 +161,10 @@
 		$producto->setCosto($costo);
 		
 		
-		// 		$r->mostrarExito("hola mundo"); return $r;
+		//		$r->mostrarExito("hola mundo"); return $r;
 		//  		ob_start();
 		
-		// $r->mostrarAviso($producto->Guardar() . __LINE__); return $r;	
+		//$r->mostrarAviso($producto->Guardar() . __LINE__); return $r;	
 		$producto->Guardar();
 		//$r->mostrarExito($rr); return $r;
   		// $debug = ob_get_clean();

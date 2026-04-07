@@ -675,7 +675,8 @@
 				               " . mysqli_real_escape_string($this->dbLink,"now()") . ",
 				               '" . mysqli_real_escape_string($this->dbLink,$this->idProveedor) . "',
 				               '" . mysqli_real_escape_string($this->dbLink,$this->resurtir) . "')";
-				$result=mysqli_query($this->dbLink,$SQL);
+				
+							   $result=mysqli_query($this->dbLink,$SQL);
 				if(!$result)
 					return $this->setSystemError("Error en la insercion de registro.","[" . $SQL . "][" . mysqli_error($this->dbLink) . "][ModeloBaseProducto::Insertar]");
 				
@@ -734,7 +735,7 @@
 	                                              lastUpdate='" . mysqli_real_escape_string($this->dbLink,$this->lastUpdate) . "',
 	                                              resurtir='" . mysqli_real_escape_string($this->dbLink,$this->resurtir) . "'
 												  WHERE idProducto=" . $this->idProducto;
-												  // return $SQL;
+												   return $SQL;
 	                                            //   idProveedor='" . mysqli_real_escape_string($this->dbLink,$this->idProveedor) . "',
 				$result=mysqli_query($this->dbLink,$SQL);
 				if(!$result)
@@ -854,9 +855,9 @@
 			if($this->getError())
 				return false;
 			if($this->idProducto==0)
-				$this->Insertar();
+				 $this->Insertar();
 			else
-				  $this->Actualizar();
+				 $this->Actualizar();
 			if($this->getError())
 				return false;
 			return true;

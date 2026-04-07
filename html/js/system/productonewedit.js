@@ -330,6 +330,7 @@ var app = new Vue({
 				if (!this.esPieza)
 				{		
 					this.longitud = '';
+					this.mlpieza = '0'
 				}
 				else
 				{
