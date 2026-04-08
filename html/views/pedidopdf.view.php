@@ -101,79 +101,20 @@ class PDF extends PDFNerk
 	    $this->SetDrawColor(160,120,74);
 	    $this->SetFillColor(245,236,215);
 	    
-	   // $this->putTextCenter("GALVA MEX, S.A. DE C.V.", -10);
-	    
-		// TORRES LANDA
-		$startYBranches = $this->getCurrentY();
-	    $this->SetFont('Arial','B',6);
+	    $this->SetFont('Arial','B',12);
 	    
 	    $this->nextRow();
-	    $this->putText(65, "TORRES LANDA");
-	    $this->SetFont('Arial','',5);
-		$this->nextRow(-2);
-	    $this->putText(60, "BLVD. JUAN JOSE TORRES LANDA No. 2807");
-	    
-	    $this->nextRow(-2);
-	    $this->putText(60, "COL. LAS AMALIAS C.P. 37438");
-	    
-	    $this->nextRow(-2);
-	    $this->putText(60, "TELS. (477) 778 0341 Y 778 0273");
-	    
-	    $this->nextRow(-2);
-	    $this->putText(60, "LEON, GTO. MEXICO");
+	    $this->putText(55, "LAMIMAYA");
+	    $this->SetFont('Arial','',9);
+		$this->nextRow();
+	    $this->putText(55, "C. 21 272, entre 18 Y 23");
+	    $this->nextRow();
+	    $this->putText(55, "Cd Industrial");
+	    $this->nextRow();
+	    $this->putText(55, "97255 Mérida, Yuc.");
 	    
 	    $this->SetFont('Arial','',7);
-	    
 	    $this->nextRow();
-
-		// MORELOS
-		$this->setCurrentY($startYBranches);
-	    $this->SetFont('Arial','B',6);
-	    
-	    $this->nextRow();
-	    $this->putText(110, "MORELOS");
-	    $this->SetFont('Arial','',5);
-		$this->nextRow(-2);
-	    $this->putText(105, "BLVD. JOSE MARIA MORELOS No. 2743-B");
-	    
-	    $this->nextRow(-2);
-	    $this->putText(105, "COL. SAN MIGUEL DE RENTERIA");
-	    
-	    $this->nextRow(-2);
-	    $this->putText(105, "TELS. (477) 170 2746 Y 170 2747");
-	    
-	    $this->nextRow(-2);
-	    $this->putText(105, "LEON, GTO. MEXICO");
-	    
-	    $this->SetFont('Arial','',7);
-	    
-	    // $this->nextRow();
-
-		// LAGOS
-		// $this->setCurrentY($startYBranches);
-	    $this->SetFont('Arial','B',6);
-	    
-	    $this->nextRow();
-	    $this->putText(90, "LAGOS");
-	    $this->SetFont('Arial','',5);
-		$this->nextRow(-2);
-	    $this->putText(80, "LIBRAMIENTO CARRETERA NORTE No. 3850");
-	    
-	    $this->nextRow(-2);
-	    $this->putText(80, "COL. LA LADERA");
-	    
-	    $this->nextRow(-2);
-	    $this->putText(80, "TELS. (477) 684 5981 Y (474) 287 4332");
-	    
-	    $this->nextRow(-2);
-	    $this->putText(80, "LAGOS DE MORENO, JAL. MEXICO");
-	    
-	    $this->SetFont('Arial','',7);
-	    
-	    $this->nextRow();
-
-
-	    // $this->putTextCenter($this->__sucursales, -10);
 	    
 	    $this->SetFont('Arial','B',11);
 	    

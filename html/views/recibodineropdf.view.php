@@ -73,19 +73,17 @@ class PDF extends PDFNerk
         
         $this->putTextCenter("GALVA MEX, S.A. DE C.V.", -10);
         
-        $this->SetFont('Arial','',8);
+        $this->SetFont('Arial','B',12);
         
         $this->nextRow();
-        $this->putTextCenter("BLVD. JUAN JOSE TORRES LANDA No. 2807", -10);
-        
+        $this->putText(55, "LAMIMAYA");
+        $this->SetFont('Arial','',9);
         $this->nextRow();
-        $this->putTextCenter("COL. LAS AMALIAS C.P. 37438", -10);
-        
+        $this->putText(55, "C. 21 272, entre 18 Y 23");
         $this->nextRow();
-        $this->putTextCenter("TELS. (477) 778-03-41 Y 778-02-73", -10);
-        
+        $this->putText(55, "Cd Industrial");
         $this->nextRow();
-        $this->putTextCenter("LEON, GTO. MEXICO", -10);
+        $this->putText(55, "97255 Merida, Yuc.");
         
         
         $this->SetFont('Arial','B',11);
