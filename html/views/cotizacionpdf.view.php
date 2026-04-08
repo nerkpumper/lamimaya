@@ -918,11 +918,11 @@ $pdf->AddPage();
 
 
 $pdf->__folio = $idCotizacion;
-$pdf->__nombre =mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("cteNombre", 'ISO-8859-1', 'UTF-8') . " " . $cotizacion->getPedidoDato("cteApellidos")));
-$pdf->__fecha = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("fecha_capturado", 'ISO-8859-1', 'UTF-8')));
-$pdf->__domicilio = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("cteDomicilio1", 'ISO-8859-1', 'UTF-8') . " " . $cotizacion->getPedidoDato("cteDomicilio2") . " " . $cotizacion->getPedidoDato("cteNumero") . " " . $cotizacion->getPedidoDato("cteColonia")));
-$pdf->__ciudad = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("cteCiudad", 'ISO-8859-1', 'UTF-8')));
-$pdf->__rfc = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("cteRfc", 'ISO-8859-1', 'UTF-8')));
+$pdf->__nombre = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("cteNombre") . " " . $cotizacion->getPedidoDato("cteApellidos")), 'ISO-8859-1', 'UTF-8');
+$pdf->__fecha = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("fecha_capturado")), 'ISO-8859-1', 'UTF-8');
+$pdf->__domicilio = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("cteDomicilio1") . " " . $cotizacion->getPedidoDato("cteDomicilio2") . " " . $cotizacion->getPedidoDato("cteNumero") . " " . $cotizacion->getPedidoDato("cteColonia")), 'ISO-8859-1', 'UTF-8');
+$pdf->__ciudad = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("cteCiudad")), 'ISO-8859-1', 'UTF-8');
+$pdf->__rfc = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("cteRfc")), 'ISO-8859-1', 'UTF-8');
 $pdf->__telefono = $cotizacion->getPedidoDato("cteTelefonos");
 $pdf->__totalTexto = "";
 $pdf->__conceptoAnticipo = "";
@@ -941,14 +941,14 @@ $pdf->__fechaCompromiso = $cotizacion->getPedidoDato("fechaCompromiso");
 $pdf->__agente = $cotizacion->getPedidoDato("capturadoNombre") . " " . $cotizacion->getPedidoDato("capturadoAPaterno") . " " . $cotizacion->getPedidoDato("capturadoAMaterno");
 // $pdf->__agente = $cotizacion->getPedidoDato("promoNombre") . " " . $cotizacion->getPedidoDato("promoAPaterno") . " " . $cotizacion->getPedidoDato("promoAMaterno");
 
-$pdf->_recibePersona = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("personaEntrega", 'ISO-8859-1', 'UTF-8')));
-$pdf->_recibeDomicilio = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("domicilioEntrega", 'ISO-8859-1', 'UTF-8')));
-$pdf->_recibeNumero = mb_convert_encoding(mb_strtoupper( $cotizacion->getPedidoDato("numeroEntrega", 'ISO-8859-1', 'UTF-8')));
-$pdf->_recibeColonia = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("coloniaEntrega", 'ISO-8859-1', 'UTF-8')));
-$pdf->_recibeCiudad =mb_convert_encoding(mb_strtoupper( $cotizacion->getPedidoDato("ciudadEntrega", 'ISO-8859-1', 'UTF-8')));
+$pdf->_recibePersona = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("personaEntrega")), 'ISO-8859-1', 'UTF-8');
+$pdf->_recibeDomicilio = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("domicilioEntrega")), 'ISO-8859-1', 'UTF-8');
+$pdf->_recibeNumero = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("numeroEntrega")), 'ISO-8859-1', 'UTF-8');
+$pdf->_recibeColonia = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("coloniaEntrega")), 'ISO-8859-1', 'UTF-8');
+$pdf->_recibeCiudad = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("ciudadEntrega")), 'ISO-8859-1', 'UTF-8');
 
-$pdf->__fechaAbierta = mb_convert_encoding(mb_strtoupper( $cotizacion->getPedidoDato("fechaAbierta", 'ISO-8859-1', 'UTF-8')));
-$pdf->__pedidoExpress = mb_convert_encoding(mb_strtoupper( $cotizacion->getPedidoDato("pedidoExpress", 'ISO-8859-1', 'UTF-8')));
+$pdf->__fechaAbierta = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("fechaAbierta")), 'ISO-8859-1', 'UTF-8');
+$pdf->__pedidoExpress = mb_convert_encoding(mb_strtoupper($cotizacion->getPedidoDato("pedidoExpress")), 'ISO-8859-1', 'UTF-8');
 
 $pdf->_observacionPedido = $cotizacion->getPedidoDato("observacionCaptura");
 

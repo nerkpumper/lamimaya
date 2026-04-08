@@ -13,7 +13,7 @@
 	// -------------------------------------------------------Funciones------------------------------------------------------#
 	// ----------------------------------------------------------------------------------------------------------------------#
 	
-	function obtenerTabla($pagina = 0, $paginaSize = 0, &$cuantos, $noCotizacion = "", $estatus = "0", $cliente = "")
+	function obtenerTabla(&$cuantos, $pagina = 0, $paginaSize = 0, $noCotizacion = "", $estatus = "0", $cliente = "")
 	{		
 		
 		$strHTML = "";
@@ -225,7 +225,7 @@
 	{
 		$r = new xajaxResponse();
 		$cuantos = 0;
-		$r->assign("listadoPedidos", "innerHTML", obtenerTabla($pagina, $paginaSize, $cuantos, $noCotizacion, $estatus, $cliente));
+		$r->assign("listadoPedidos", "innerHTML", obtenerTabla($cuantos,$pagina, $paginaSize, $noCotizacion, $estatus, $cliente));
 		$r->script("app.pageTotalRegs = ".$cuantos.";");
 				
 		return $r;
@@ -265,7 +265,7 @@
 		else
 		{
 			
-			$r->script("saError(\"Ha ocurrido un error. " . mb_convert_encoding($cotizacion->getStrError(), 'UTF-8', 'ISO-8859-1'))."\");");
+			$r->script("saError(\"Ha ocurrido un error. " . mb_convert_encoding($cotizacion->getStrError(), 'UTF-8', 'ISO-8859-1'))."\");";
 		}
 	
 		return $r;
@@ -301,7 +301,7 @@ function actualizarRangoCliente($idCotizacion, $rango)
 		}
 		else
 		{
-			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($cotizacion->getStrError(), 'UTF-8', 'ISO-8859-1')).");");
+			$r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($cotizacion->getStrError(), 'UTF-8', 'ISO-8859-1')).");";
 		}
 	
 		return $r;
