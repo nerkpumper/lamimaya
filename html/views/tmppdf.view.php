@@ -52,7 +52,7 @@ class PDF extends PDFNerk
 	
 	
 	
-	// Cabecera de página
+	// Cabecera de pï¿½gina
 	function Header()
 	{
 		$this->printHeader($this->yInicial);
@@ -73,9 +73,9 @@ class PDF extends PDFNerk
 		 
 		$this->setCurrentY($yInicial);
 		 
-		$this->SetTextColor(71,171,235);
-		$this->SetDrawColor(71,171,235);
-		$this->SetFillColor(224,238,254);
+		$this->SetTextColor(160,120,74);
+		$this->SetDrawColor(160,120,74);
+		$this->SetFillColor(245,236,215);
 		 
 		$this->putTextCenter("GALVA MEX, S.A. DE C.V.", -10);
 		 
@@ -183,20 +183,20 @@ class PDF extends PDFNerk
 		 
 		$this->SetFont('Arial','',8);
 		$this->nextRow(2);
-		$this->putText(15, "Agente:                                                            Recibió:                     ");
+		$this->putText(15, "Agente:                                                            Recibiï¿½:                     ");
 		$this->nextRow(-3);
 		$this->putText(25, "________________________                         ________________________");
 		
 	}
 	
-	// Pie de página
+	// Pie de pï¿½gina
 	function Footer()
 	{
-// 	    // Posición: a 1,5 cm del final
+// 	    // Posiciï¿½n: a 1,5 cm del final
 // 	    $this->SetY(-15);
 // 	    // Arial italic 8
 // 	    $this->SetFont('Arial','I',8);
-// 	    // Número de página
+// 	    // Nï¿½mero de pï¿½gina
 // 	    //$this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
 	}
 	
@@ -213,7 +213,7 @@ class PDF extends PDFNerk
 		
 		$this->setCurrentY($yInicial + 2);
 		
-		$this->SetDrawColor(73,139,235);
+		$this->SetDrawColor(200,169,110);
 		
 		if ($this->__isPedido)
 		{
@@ -240,7 +240,7 @@ class PDF extends PDFNerk
 		$this->SetFont('Arial','',8);
 		$this->setCurrentY($yInicial + 25);
 		
-		$this->SetTextColor(73,139,235);
+		$this->SetTextColor(200,169,110);
 			
 		$this->putText(25, $this->__nombre);
 		$this->putText(163, $this->__fecha);
@@ -269,7 +269,7 @@ class PDF extends PDFNerk
 		
 		$this->setCurrentY($yInicial + 53);
 		$this->SetFont('Arial','',10);
-		$this->SetTextColor(73,139,235);
+		$this->SetTextColor(200,169,110);
 		
 		foreach ($rsDetalle as $item)
 		{
@@ -330,9 +330,9 @@ class PDF extends PDFNerk
 		
 		
 		
-		$this->SetTextColor(71,171,235);
-		$this->SetDrawColor(71,171,235);
-		$this->SetFillColor(224,238,254);
+		$this->SetTextColor(160,120,74);
+		$this->SetDrawColor(160,120,74);
+		$this->SetFillColor(245,236,215);
 		
 		$this->SetFont('Arial','',8);
 		$this->setCurrentY($yInicial + 134);
@@ -345,7 +345,7 @@ class PDF extends PDFNerk
 	}
 }
 
-// Creación del objeto de la clase heredada
+// Creaciï¿½n del objeto de la clase heredada
 $pdf = new PDF();
 //$pdf->AliasNbPages();
 $pdf->AddPage();
@@ -396,7 +396,7 @@ $pdf->printDatosPedido($pedido->__rsPedidoWDetalle);
 //  $pdf->Rect(50, 40, 0.2, 80, "F");
  
  
-     //$pdf->Cell(0,10,'Imprimiendo línea número '.$i,0,1);
+     //$pdf->Cell(0,10,'Imprimiendo lï¿½nea nï¿½mero '.$i,0,1);
 // $pdf->Output('D','filename.pdf');
 
 $pdf->Output();

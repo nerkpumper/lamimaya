@@ -85,7 +85,7 @@ class PDF extends PDFNerk
 		$yInicial = $this->yInicial;
 		
 	    // Logo
-	    $this->Image('img/galvalogo.jpeg',5,$yInicial-4,50);
+	    $this->Image('img/lamimayagoldlogo.png',5,$yInicial-10,40);
 	    // Arial bold 15
 	    $this->SetFont('Arial','B',11);
 	    
@@ -96,9 +96,9 @@ class PDF extends PDFNerk
 	    
 	    $this->setCurrentY($yInicial - 5);
 	    
-	    $this->SetTextColor(71,171,235);
-	    $this->SetDrawColor(71,171,235);
-	    $this->SetFillColor(224,238,254);
+	    $this->SetTextColor(160,120,74);
+	    $this->SetDrawColor(200,169,110);
+	    $this->SetFillColor(245,236,215);
 	    
 	    //$this->putTextCenter("GALVA MEX, S.A. DE C.V.", -10);
 	    
@@ -388,9 +388,9 @@ class PDF extends PDFNerk
 	    $this->nextRow();
 	    $this->putText(10, "Nota: Una vez confirmado el pedido no hay cambios ni devoluciones.");
 		$this->nextRow();
-		$this->SetTextColor(255,0,0);
+		$this->SetTextColor(160,120,74);
 	    $this->putText(10, "**Cambio de precios sin previo aviso.**");
-		$this->SetTextColor(73,139,235);
+		$this->SetTextColor(160,120,74);
 	    
 	    if ($this->__recogeEntrega == "ENTREGA")
 	    {
@@ -427,7 +427,7 @@ class PDF extends PDFNerk
 		
 		$this->setCurrentY($yInicial + 2);
 		
-		$this->SetDrawColor(73,139,235);
+		$this->SetDrawColor(200,169,110);
 		
 		if ($this->__isPedido)
 		{
@@ -460,7 +460,7 @@ class PDF extends PDFNerk
 		$this->SetFont('Arial','',8);
 		$this->setCurrentY($yInicial + 25);
 		
-		$this->SetTextColor(73,139,235);
+		$this->SetTextColor(160,120,74);
 		 
 		$this->putText(25, $this->__nombre);
 		$this->putText(163, $this->__fecha);
@@ -486,7 +486,7 @@ class PDF extends PDFNerk
   		
   		$this->setCurrentY($yInicial + 53);
   		$this->SetFont('Arial','',10);
-  		$this->SetTextColor(73,139,235);
+  		$this->SetTextColor(160,120,74);
   		
 //   		for($iii = 0 ; $iii < 40 ; $iii++)
 //   		{
@@ -808,8 +808,8 @@ class PDF extends PDFNerk
   		$this->nextRow(3);
   		$this->putTextRight(number_format($this->__total, 2), 14.5);
   		
-  		$this->SetDrawColor(73,139,235);
-  		$this->SetTextColor(73,139,235);
+  		$this->SetDrawColor(200,169,110);
+  		$this->SetTextColor(160,120,74);
   		
   		$this->SetFont('Arial','',8);
   		

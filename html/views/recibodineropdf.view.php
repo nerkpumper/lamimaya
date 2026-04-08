@@ -67,9 +67,9 @@ class PDF extends PDFNerk
         
         $this->setCurrentY($yInicial);
         
-        $this->SetTextColor(71,171,235);
-        $this->SetDrawColor(71,171,235);
-        $this->SetFillColor(224,238,254);
+        $this->SetTextColor(160,120,74);
+        $this->SetDrawColor(160,120,74);
+        $this->SetFillColor(245,236,215);
         
         $this->putTextCenter("GALVA MEX, S.A. DE C.V.", -10);
         
@@ -101,7 +101,7 @@ class PDF extends PDFNerk
         $this->putTextCenter("No.  " . $this->idReciboDinero, 75);
         $this->nextRow();
         
-        $this->SetTextColor(71,171,235);
+        $this->SetTextColor(160,120,74);
         
         $this->SetFont('Arial','',8);
         $this->setCurrentY($yInicial + 23);
@@ -191,7 +191,7 @@ class PDF extends PDFNerk
         $yInicial = $this->yInicial;
         
         
-        $this->SetTextColor(73,139,235);
+        $this->SetTextColor(200,169,110);
 
         $this->usado = 
                 $this->monto

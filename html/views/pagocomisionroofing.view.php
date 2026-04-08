@@ -34,7 +34,7 @@ class PDF extends PDFNerk
     
     var $saldo = 0;
       
-    // Cabecera de página
+    // Cabecera de pï¿½gina
     function Header()
     {
         $yInicial = $this->yInicial;
@@ -59,9 +59,9 @@ class PDF extends PDFNerk
         
         $this->setCurrentY($yInicial);
         
-        $this->SetTextColor(71,171,235);
-        $this->SetDrawColor(71,171,235);
-        $this->SetFillColor(224,238,254);
+        $this->SetTextColor(160,120,74);
+        $this->SetDrawColor(160,120,74);
+        $this->SetFillColor(245,236,215);
         
         $this->putTextCenter("GALVA MEX, S.A. DE C.V.", -10);
         
@@ -101,7 +101,7 @@ class PDF extends PDFNerk
         $this->nextRow();
         $this->putTextCenter($this->fechaInicial.' - '.$this->fechaFinal, 65);
         
-        $this->SetTextColor(71,171,235);
+        $this->SetTextColor(160,120,74);
         
         $this->SetFont('Arial','',8);
         $this->setCurrentY($yInicial + 25);
@@ -157,14 +157,14 @@ class PDF extends PDFNerk
         
     }
     
-    // Pie de página
+    // Pie de pï¿½gina
     function Footer()
     {
-        // 	    // Posición: a 1,5 cm del final
+        // 	    // Posiciï¿½n: a 1,5 cm del final
         // 	    $this->SetY(-15);
         // 	    // Arial italic 8
         // 	    $this->SetFont('Arial','I',8);
-        // 	    // Número de página
+        // 	    // Nï¿½mero de pï¿½gina
         // 	    //$this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
     }
     
@@ -173,7 +173,7 @@ class PDF extends PDFNerk
         $yInicial = $this->yInicial;
         
         $this->SetFont('Arial','',10);
-        $this->SetTextColor(73,139,235);
+        $this->SetTextColor(200,169,110);
         
         $this->printData($yInicial, $rsDetalle, $rsPagos);
         $this->printData($yInicial + ($this->GetPageHeight()/2), $rsDetalle, $rsPagos);
@@ -185,9 +185,9 @@ class PDF extends PDFNerk
      
         foreach ($rsDetalle as $item)
         {
-            if (mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8') == "CORTE COMISIÓN, MONTO GENERADO")
+            if (mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8') == "CORTE COMISIï¿½N, MONTO GENERADO")
             {
-                $this->putText(12, "COMISIÓN");
+                $this->putText(12, "COMISIï¿½N");
                 $this->putText(40, $item["fecha_creacion"] . ' ' . mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8');
                 $this->putTextRight(" + " . number_format($item["monto"],2), 15);
                 
@@ -197,7 +197,7 @@ class PDF extends PDFNerk
         
 //         foreach ($rsDetalle as $item)
 //         {
-//             if (mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8') == "INCENTIVO DE COMISIÓN")
+//             if (mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8') == "INCENTIVO DE COMISIï¿½N")
 //             {
 //                 $this->putText(12, "INCENTIVO");
 //                 $this->putText(40, $item["fecha_creacion"] . ' ' . mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8');
@@ -212,10 +212,10 @@ class PDF extends PDFNerk
         
         foreach ($rsDetalle as $item)
         {
-            if (mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8') != "CORTE COMISIÓN, MONTO GENERADO" &&
-                mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8') != "INCENTIVO DE COMISIÓN" )
+            if (mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8') != "CORTE COMISIï¿½N, MONTO GENERADO" &&
+                mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8') != "INCENTIVO DE COMISIï¿½N" )
             {
-                $this->putText(12, "DEDUCCIÓN");
+                $this->putText(12, "DEDUCCIï¿½N");
                 $this->putText(40, $item["fecha_creacion"] . ' ' .mb_convert_encoding($item["observacion"], 'ISO-8859-1', 'UTF-8');
                 $this->putTextRight(" - " . number_format($item["monto"],2), 15);
                 
@@ -242,7 +242,7 @@ class PDF extends PDFNerk
     }
 }
 
-// Creación del objeto de la clase heredada
+// Creaciï¿½n del objeto de la clase heredada
 $pdf = new PDF("P", "mm", "Letter");
 
 if ($idCorteComision > 0)
@@ -294,6 +294,6 @@ cortecomisionroofing.pagada, u.nombre, u.apellidopaterno, u.apellidomaterno, cor
 
 
  
-//$pdf->Cell(0,10,'Imprimiendo línea número '.$i,0,1);
+//$pdf->Cell(0,10,'Imprimiendo lï¿½nea nï¿½mero '.$i,0,1);
 // $pdf->Output('D','filename.pdf');
 $pdf->Output();

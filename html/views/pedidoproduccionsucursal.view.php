@@ -150,9 +150,9 @@ class PDF extends PDFNerk
 
 	    $this->setCurrentY($yInicial);
 	    
-	    $this->SetTextColor(71,171,235);
-	    $this->SetDrawColor(71,171,235);
-	    $this->SetFillColor(224,238,254);
+	    $this->SetTextColor(160,120,74);
+	    $this->SetDrawColor(160,120,74);
+	    $this->SetFillColor(245,236,215);
 	    
 	    $this->putTextCenter("GALVA MEX, S.A. DE C.V.", -10);
 	    
@@ -394,7 +394,7 @@ class PDF extends PDFNerk
 		
 		$this->setCurrentY($yInicial + 2);
 		
-		$this->SetDrawColor(73,139,235);
+		$this->SetDrawColor(200,169,110);
 		
 // 		if ($this->__isPedido)
 // 		{
@@ -425,7 +425,7 @@ class PDF extends PDFNerk
 		$this->SetFont('Arial','',8);
 		$this->setCurrentY($yInicial + 25);
 		
-		$this->SetTextColor(73,139,235);
+		$this->SetTextColor(200,169,110);
 		 
 		$this->putText(25, $this->__nombre);
 		$this->putText(163, $this->__fecha);
@@ -462,7 +462,7 @@ class PDF extends PDFNerk
   		
   		$this->setCurrentY($yInicial + 53);
   		$this->SetFont('Arial','',10);
-  		$this->SetTextColor(73,139,235);
+  		$this->SetTextColor(200,169,110);
   		
 //   		for($iii = 0 ; $iii < 40 ; $iii++)
 //   		{
@@ -806,7 +806,7 @@ class PDF extends PDFNerk
 			$this->nextRow();
 			$this->SetTextColor(255, 0, 0);
 			$this->putText(67.5, "Tene 1 a 3 días para hacer la entrega dado que se cobró el flete.");
-			$this->SetTextColor(73,139,235);			
+			$this->SetTextColor(200,169,110);			
 		}
   		
   		if (($hoja+1)  == $this->_totalHojas)
@@ -842,8 +842,8 @@ else
 
   		
   		
-  		$this->SetDrawColor(73,139,235);
-  		$this->SetTextColor(73,139,235);
+  		$this->SetDrawColor(200,169,110);
+  		$this->SetTextColor(200,169,110);
   		
   		$this->SetFont('Arial','',8);
   		
