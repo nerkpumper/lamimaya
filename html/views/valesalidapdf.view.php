@@ -93,7 +93,7 @@ class PDF extends PDFNerk
 		$yInicial = $this->yInicial;
 		
 	    // Logo
-	    $this->Image('img/lamimayagoldlogo.png',5,$yInicial-10,40);
+	    $this->Image('img/lamimayagoldshort.png',5,$yInicial-10,30);
 	    // Arial bold 15
 	    $this->SetFont('Arial','B',11);
 	    
@@ -109,7 +109,7 @@ class PDF extends PDFNerk
 		// $this->SetFillColor(224,238,254);
 		$this->SetFillColor(125,125,125);
 	    
-	    $this->putTextCenter("GALVA MEX, S.A. DE C.V.", -10);
+	    // $this->putTextCenter("GALVA MEX, S.A. DE C.V.", -10);
 	    
 	    $this->SetFont('Arial','',8);
 	    

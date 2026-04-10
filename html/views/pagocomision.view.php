@@ -62,11 +62,11 @@ class PDF extends PDFNerk
         
         $this->setCurrentY($yInicial);
         
-        $this->SetTextColor(160,120,74);
-        $this->SetDrawColor(160,120,74);
-        $this->SetFillColor(245,236,215);
+        $this->SetTextColor(73,139,235);
+        $this->SetDrawColor(73,139,235);
+        $this->SetFillColor(224,238,254);
         
-        $this->putTextCenter("GALVA MEX, S.A. DE C.V.", -10);
+        //         $this->putTextCenter("GALVA MEX, S.A. DE C.V.", -10);
         
         $this->SetFont('Arial','B',12);
         
@@ -161,7 +161,7 @@ class PDF extends PDFNerk
 
 
         
-        $this->SetTextColor(160,120,74);
+        $this->SetTextColor(73,139,235);
         
         $this->SetFont('Arial','',8);
         $this->setCurrentY($yInicial + 25);

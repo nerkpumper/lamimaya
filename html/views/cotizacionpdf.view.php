@@ -85,7 +85,7 @@ class PDF extends PDFNerk
 		$yInicial = $this->yInicial;
 		
 	    // Logo
-	    $this->Image('img/lamimayagoldlogo.png',5,$yInicial-10,40);
+	    $this->Image('img/lamimayagoldshort.png',5,$yInicial-10,30);
 	    // Arial bold 15
 	    $this->SetFont('Arial','B',11);
 	    
@@ -96,9 +96,9 @@ class PDF extends PDFNerk
 	    
 $this->setCurrentY($yInicial - 5);
 	    
-	    $this->SetTextColor(160,120,74);
-	    $this->SetDrawColor(200,169,110);
-	    $this->SetFillColor(245,236,215);
+	    $this->SetTextColor(71,171,235);
+	    $this->SetDrawColor(73,139,235);
+	    $this->SetFillColor(224,238,254);
 	    
 	    $this->SetFont('Arial','B',12);
 	    
@@ -210,8 +210,8 @@ $this->setCurrentY($yInicial - 5);
 	    		$this->putText(10,"La salida del pedido de la planta se realiza después del pago total.");
 	    		$this->nextRow(-1);
 	    		$this->putText(10,"No nos hacemos responsables por los daños sufridos a la mercancía a consecuencia de un mal transporte, almacenaje e instalación.");
-	    		$this->nextRow(-1);
-	    		$this->putText(10,"Favor de consultar el FOLLETO GALVAMEX en la sección Manejo de Materiales para ver recomendaciones.");
+	    		// $this->nextRow(-1);
+	    		// $this->putText(10,"Favor de consultar el FOLLETO GALVAMEX en la sección Manejo de Materiales para ver recomendaciones.");
 	    	}
 	    	else
 	    	{
@@ -220,8 +220,8 @@ $this->setCurrentY($yInicial - 5);
 	    	    $this->putText(10,"La salida del pedido de la planta se realiza después del pago total.");
 	    	    $this->nextRow(-1);
 	    	    $this->putText(10,"No nos hacemos responsables por los daños sufridos a la mercancía a consecuencia de un mal transporte, almacenaje e instalación.");
-	    	    $this->nextRow(-1);
-	    	    $this->putText(10,"Favor de consultar el FOLLETO GALVAMEX en la sección Manejo de Materiales para ver recomendaciones.");
+	    	    // $this->nextRow(-1);
+	    	    // $this->putText(10,"Favor de consultar el FOLLETO GALVAMEX en la sección Manejo de Materiales para ver recomendaciones.");
 	    	}
 	    	
 	    	
@@ -332,9 +332,9 @@ $this->setCurrentY($yInicial - 5);
 	    $this->nextRow();
 	    $this->putText(10, "Nota: Una vez confirmado el pedido no hay cambios ni devoluciones.");
 		$this->nextRow();
-		$this->SetTextColor(160,120,74);
+		$this->SetTextColor(73,139,235);
 	    $this->putText(10, "**Cambio de precios sin previo aviso.**");
-		$this->SetTextColor(160,120,74);
+		$this->SetTextColor(73,139,235);
 	    
 	    if ($this->__recogeEntrega == "ENTREGA")
 	    {
@@ -371,7 +371,7 @@ $this->setCurrentY($yInicial - 5);
 		
 		$this->setCurrentY($yInicial + 2);
 		
-		$this->SetDrawColor(200,169,110);
+		$this->SetDrawColor(73,139,235);
 		
 		if ($this->__isPedido)
 		{
@@ -404,7 +404,7 @@ $this->setCurrentY($yInicial - 5);
 		$this->SetFont('Arial','',8);
 		$this->setCurrentY($yInicial + 25);
 		
-		$this->SetTextColor(160,120,74);
+		$this->SetTextColor(73,139,235);
 		 
 		$this->putText(25, $this->__nombre);
 		$this->putText(163, $this->__fecha);
@@ -430,7 +430,7 @@ $this->setCurrentY($yInicial - 5);
   		
   		$this->setCurrentY($yInicial + 53);
   		$this->SetFont('Arial','',10);
-  		$this->SetTextColor(160,120,74);
+  		$this->SetTextColor(73,139,235);
   		
 //   		for($iii = 0 ; $iii < 40 ; $iii++)
 //   		{
@@ -752,8 +752,8 @@ $this->setCurrentY($yInicial - 5);
   		$this->nextRow(3);
   		$this->putTextRight(number_format($this->__total, 2), 14.5);
   		
-  		$this->SetDrawColor(200,169,110);
-  		$this->SetTextColor(160,120,74);
+  		$this->SetDrawColor(73,139,235);
+  		$this->SetTextColor(73,139,235);
   		
   		$this->SetFont('Arial','',8);
   		

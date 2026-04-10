@@ -36,13 +36,13 @@ $database = 'mayamaria';
 // $database = 'gmqa';
 
 //---------------------------------
-  // $username = 'galvamex_uappgalva';
+  // $username = 'oubdllnt_uappmaya';
 
-  // $password = 'UserAppGalvamex#12358';
+  // $password = 'D;KXRs[];RT7GSv[';
 
-  //   $hostname="67.222.140.68";
+  //   $hostname="199.26.86.79";
 
-  // $database = 'galvamex_appgalva';
+  // $database = 'oubdllnt_appmaya';
 
 
 $dbLink= mysqli_connect($hostname, $username, $password)

@@ -104,7 +104,7 @@ class PDF extends PDFNerk
 		// $this->SetFillColor(224,238,254);
 		$this->SetFillColor(125,125,125);
 	    
-	    $this->putTextCenter("GALVA MEX, S.A. DE C.V.", -10);
+	    // $this->putTextCenter("GALVA MEX, S.A. DE C.V.", -10);
 	    
 	    $this->SetFont('Arial','',8);
 	    
