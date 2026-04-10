@@ -464,7 +464,7 @@
 	{
 		if ($param1 > 0)
 		{
-			$disableSelect = true;
+			$disableSelect = false;
 		}
 		
 	}
