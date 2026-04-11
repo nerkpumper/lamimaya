@@ -9,7 +9,7 @@ class APISucursal extends APIBase{
     public function get(){
         $idSucursal = $_GET["idSucursal"];
 
-        $query = "SELECT idSucursale, nombre, visible FROM sucursal WHERE idSucursal = " .$idSucursal;
+        $query = "SELECT idSucursal, nombre, visible FROM sucursal WHERE idSucursal = " .$idSucursal;
 
         $s = new ModeloSucursal();
 

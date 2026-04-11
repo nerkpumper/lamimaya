@@ -94,17 +94,17 @@ var app = new Vue ({
 			// 	}
 			// });
 			
-			console.log("vsmoa a sucursalapi");
-			fetch(URL_BASE + 'api/sucursal.api.php?method=get&idSucursal=' + this.idSucursal, {
+			// console.log("vsmoa a sucursalapi");
+			// fetch(URL_BASE + 'api/sucursal.api.php?method=get&idSucursal=' + this.idSucursal, {
             
-            headers: {
-                "Content-type": "application/json"
-            }})
-			.then(response => {
+            // headers: {
+            //     "Content-type": "application/json"
+            // }})
+			// .then(response => {
 			
-				console.log(response.json());
-			})
-			.then(json => console.log(json))
+			// 	console.log(response.json());
+			// })
+			// .then(json => console.log(json))
 
 			
             // if (this.idSucursal > 0)
