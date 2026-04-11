@@ -57,7 +57,6 @@ var app = new Vue ({
 
 	},
 	mounted: function(){
-		
 		this.idSucursal = _IDSUCURSAL;
 		this.getSucursal();
 		this.getLstFormaPago();
@@ -84,27 +83,28 @@ var app = new Vue ({
 		getSucursal: function(){
 			
 
-			$.ajax({
-				headers:{  				
-			"Accept":"application/json",//depends on your api
-			"Content-type":"application/x-www-form-urlencoded"//depends on your api
-				},   url:URL_BASE + 'api/sucursal.api.php?method=get&idSucursal=' + this.idSucursal,
-				success:function(response){
-					app.sucursal = response.sucursal;
-					console.log(response.sucursal);
-				}
-			});
-
-			// fetch(URL_BASE + 'api/sucursal.api.php?method=get&idSucursal=' + this.idSucursal, {
-            
-            // headers: {
-            //     "Content-type": "application/json"
-            // }})
-			// .then(response => {
+			// $.ajax({
+			// 	headers:{  				
+			// "Accept":"application/json",//depends on your api
+			// "Content-type":"application/x-www-form-urlencoded"//depends on your api
+			// 	},   url:URL_BASE + 'api/sucursal.api.php?method=get&idSucursal=' + this.idSucursal,
+			// 	success:function(response){
+			// 		app.sucursal = response.sucursal;
+			// 		console.log(response.sucursal);
+			// 	}
+			// });
 			
-			// 	console.log(response.json());
-			// })
-			// .then(json => console.log(json))
+			console.log("vsmoa a sucursalapi");
+			fetch(URL_BASE + 'api/sucursal.api.php?method=get&idSucursal=' + this.idSucursal, {
+            
+            headers: {
+                "Content-type": "application/json"
+            }})
+			.then(response => {
+			
+				console.log(response.json());
+			})
+			.then(json => console.log(json))
 
 			
             // if (this.idSucursal > 0)
