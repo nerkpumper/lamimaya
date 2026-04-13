@@ -883,4 +883,5 @@ Routes::addRoute("recibodineropdf", "masterTemplateVoid", true,
 Routes::addRoute("runcronexplosion", "masterTemplate", true, Permisos::$rol_ROOT);
 Routes::addRoute("runcronapartadosfix", "masterTemplate", true, Permisos::$rol_ROOT);
 Routes::addRoute("runcronprocesapedidos", "masterTemplate", true, Permisos::$rol_ROOT);
+Routes::addRoute("apidocs", "masterTemplate", true, Permisos::$rol_ROOT);
 Routes::addRoute("contactos", "masterTemplate", true, Permisos::$rol_ROOT);

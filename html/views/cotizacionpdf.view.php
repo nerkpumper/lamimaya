@@ -307,26 +307,34 @@ $this->setCurrentY($yInicial - 5);
 	    //leyendas lado izquierdo
 	    $this->SetFont('Arial','',8);
 	    $this->setCurrentY($yInicial + 180);
-	     
-	    $this->putText(10, "Recibimos la cantidad $");	    
-	    $this->nextRow(-3);
-	    $this->putText(41, "________________________________________________________________");
+		
+	    $this->SetFont('Arial','',10);
+	    $this->putText(10, "DATOS BANCARIOS");	    
+	    $this->SetFont('Arial','',8);
+	    $this->putText(10, "AA");	    
+	    $this->SetFont('Arial','B',8);
+	    $this->putText(40, "BB");	    
 	    
-	    $this->nextRow();	    
-	    $this->putText(10, "(");
-	    $this->putText(141, ")");
-	    $this->nextRow(-3);
-	    $this->putText(11, "___________________________________________________________________________________");
+		
+		// $this->putText(10, "Recibimos la cantidad $");	    
+	    // $this->nextRow(-3);
+	    // $this->putText(41, "________________________________________________________________");
 	    
-	    $this->nextRow();	    
-	    $this->putText(10, "Por concepto de anticipo $");
-	    $this->nextRow(-3);
-	    $this->putText(44, "______________________________________________________________");
+	    // $this->nextRow();	    
+	    // $this->putText(10, "(");
+	    // $this->putText(141, ")");
+	    // $this->nextRow(-3);
+	    // $this->putText(11, "___________________________________________________________________________________");
 	    
-	    $this->nextRow();	    
-	    $this->putText(10, "Saldo $");
-	    $this->nextRow(-3);
-	    $this->putText(21, "_____________________________________________________________________________");
+	    // $this->nextRow();	    
+	    // $this->putText(10, "Por concepto de anticipo $");
+	    // $this->nextRow(-3);
+	    // $this->putText(44, "______________________________________________________________");
+	    
+	    // $this->nextRow();	    
+	    // $this->putText(10, "Saldo $");
+	    // $this->nextRow(-3);
+	    // $this->putText(21, "_____________________________________________________________________________");
 	    
 	    $this->SetFont('Arial','B',8);
 	    $this->nextRow();

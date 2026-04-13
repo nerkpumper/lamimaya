@@ -104,7 +104,10 @@
 						<?php if (Permisos::userIsThisRol(Permisos::$idROOTUSER)):?>
 							<li ><a href="<?php echo URL_BASE . "runcronprocesapedidos";?>">Procesar Pedidos </a></li>
 						<?php endif;?>
-						
+						<?php if (Permisos::userIsThisRol(Permisos::$rol_ROOT)):?>
+							<li ><a href="<?php echo URL_BASE . "apidocs";?>"><i class="fa fa-plug"></i> Documentaci&oacute;n APIs</a></li>
+						<?php endif;?>
+
 
 					</ul>
 				</li>
