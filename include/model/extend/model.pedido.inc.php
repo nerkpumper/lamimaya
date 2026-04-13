@@ -3010,20 +3010,27 @@ p.idPedido, p.subtotal, p.iva, p.descuento, p.pordescuento, p.total, p.anticipo,
 				// $this->logDebug("nopedidoscliente: " . $nopedidoscliente);
 				
 				
-				$creditoDisponible = $credito - $creditoUsado;
-				$creditoDisponibleEntregados = $credito - $creditoUsadoEntregados;        
-				$capacidadPagoDisponibleEntregados = $capacidadPago - $creditoUsadoEntregados;
+$creditoDisponible = $credito - $creditoUsado;
+			$creditoDisponibleEntregados = $credito - $creditoUsadoEntregados;        
+			$capacidadPagoDisponibleEntregados = $capacidadPago - $creditoUsadoEntregados;
+			$creditodismas20 = $credito * 1.20;
+			$capacidadPagoDisponible = $capacidadPago - $creditoUsado;
 
-				$pagado = $pedido->getTotal() - $pedido->getSaldo();
-				$saldoPedido = $pedido->getSaldo();
-				if ($pedido->getTotal() > 0)
-				{
-					$porcentaje = $pagado * 100 / $pedido->getTotal();
-				}
-				else
-				{
-					$porcentaje = 100;
-				}
+			$pagado = $pedido->getTotal() - $pedido->getSaldo();
+			$saldoPedido = $pedido->getSaldo();
+			if ($pedido->getTotal() > 0)
+			{
+				$porcentaje = $pagado * 100 / $pedido->getTotal();
+			}
+			else
+			{
+				$porcentaje = 100;
+			}
+
+			if ($creditoDisponibleEntregados > 0)
+				$porcentajeSaldoCredito = 100 - ($pagado * 100 / $creditoDisponibleEntregados);
+			else
+				$porcentajeSaldoCredito = 100;
 
 				// $this->logDebug("creditoDisponible: " . $creditoDisponible);
 				// $this->logDebug("creditoDisponibleEntregados: " . $creditoDisponibleEntregados);
@@ -3291,6 +3298,8 @@ p.idPedido, p.subtotal, p.iva, p.descuento, p.pordescuento, p.total, p.anticipo,
 				 $creditoDisponible = $credito - $creditoUsado;
 				 $creditoDisponibleEntregados = $credito - $creditoUsadoEntregados;        
 				 $capacidadPagoDisponibleEntregados = $capacidadPago - $creditoUsadoEntregados;
+				 $creditodismas20 = $credito * 1.20;
+				 $capacidadPagoDisponible = $capacidadPago - $creditoUsado;
 				 $pagado = $pedido->getTotal() - $pedido->getSaldo();
 				 $saldoPedido = $pedido->getSaldo();
 				 if ($pedido->getTotal() > 0)
@@ -3302,11 +3311,13 @@ p.idPedido, p.subtotal, p.iva, p.descuento, p.pordescuento, p.total, p.anticipo,
 					 $porcentaje = 100;
 				 }
 
-
 				$criterioSaldoAprobado = true;
 				$opcionNoCriterioAprobado = true;
 
-				$porcentajeSaldoCredito = 100 - ($pagado * 100 / $creditoDisponibleEntregados);
+				if ($creditoDisponibleEntregados > 0)
+					$porcentajeSaldoCredito = 100 - ($pagado * 100 / $creditoDisponibleEntregados);
+				else
+					$porcentajeSaldoCredito = 100;
 	
 				$myObj = new stdClass();
 				$myObj->idCliente = $idCliente;
