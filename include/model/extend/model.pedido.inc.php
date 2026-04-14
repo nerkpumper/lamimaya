@@ -1754,7 +1754,7 @@ p.idPedido, p.subtotal, p.iva, p.descuento, p.pordescuento, p.total, p.anticipo,
 				
 				foreach ($lstPedidos as $ped)
 				{
-					PedidoTrackingManager::logInfo($ped["idPedido"], "Inicia proceso de Credito y Capacidad de Pago");
+					PedidoTrackingManager::logInfo($ped["idPedido"], 1, '{"mensaje": "Inicia proceso de Credito y Capacidad de Pago"}');
 					
 					$total = $ped["total"];
 					$saldo = $ped["saldo"];
@@ -1802,9 +1802,9 @@ p.idPedido, p.subtotal, p.iva, p.descuento, p.pordescuento, p.total, p.anticipo,
 					$this->logCliente("\t\t\t==========> Credito cubre: " . $cubreCredito . "\t\t//// Cubierto por Crédito: " .($cubiertoPorCredito ? "*SI*" : "*NO*"));
 					$this->logCliente("\t\t\t==========> Capacidad Pago cubre: " . $cubreCapacidadPago . "\t\t//// Cubierto por Capacidad Pago: " .($cubiertoPorCapacidadPago ? "*SI*" : "*NO*"));
 
-					PedidoTrackingManager::logInfo($ped["idPedido"], "Crédito cubre: " . $cubreCredito . " - Cubierto por Crédito?: " .($cubiertoPorCredito ? "*SI*" : "*NO*"));
+					PedidoTrackingManager::logInfo($ped["idPedido"], 2, '{"cubreCredito": ' . ($cubreCredito ? 'true' : 'false') . ', "cubiertoPorCredito": ' . ($cubiertoPorCredito ? 'true' : 'false') . '}');
 					
-					PedidoTrackingManager::logInfo($ped["idPedido"], "Capacidad Pago cubre: " . $cubreCapacidadPago . " - Cubierto por Capacidad Pago?: " .($cubiertoPorCapacidadPago ? "*SI*" : "*NO*"));
+					PedidoTrackingManager::logInfo($ped["idPedido"], 3, '{"cubreCapacidadPago": ' . ($cubreCapacidadPago ? 'true' : 'false') . ', "cubiertoPorCapacidadPago": ' . ($cubiertoPorCapacidadPago ? 'true' : 'false') . '}');
 					
 
 					$creditoCliente -= $cubreCredito;
@@ -1822,16 +1822,15 @@ p.idPedido, p.subtotal, p.iva, p.descuento, p.pordescuento, p.total, p.anticipo,
 						}
 						else
 						{
-							$this->logCliente("\t\t<strong style='color: green'>\t\t**** NO se analiza Pedido, debe estar capturado pues este es un proceso para autorización automática. ****</strong>");
-							PedidoTrackingManager::logWarning($ped["idPedido"], "**** NO se analiza Pedido, debe estar capturado pues este es un proceso para autorización automática. ****");
+$this->logCliente("\t\t<strong style='color: green'>\t\t**** NO se analiza Pedido, debe estar capturado pues este es un proceso para autorización automática. ****</strong>");
+							PedidoTrackingManager::logWarning($ped["idPedido"], 4, '{"mensaje": "NO se analiza Pedido, debe estar capturado"}');
 							
 						}
-
 					}
 					else
 					{
 						$this->logCliente("<strong style='color: red'>El Saldo de este Pedido no es cubierto por Capacidad de Pago o Crédito. NO se autorizará.</strong>");
-						PedidoTrackingManager::logError($ped["idPedido"], "El Saldo de este Pedido no es cubierto por Capacidad de Pago o Crédito. NO se autorizará.");
+						PedidoTrackingManager::logError($ped["idPedido"], 5, '{"mensaje": "El Saldo no es cubierto por Capacidad de Pago o Crédito"}');
 						
 					}
 
@@ -2166,7 +2165,7 @@ p.idPedido, p.subtotal, p.iva, p.descuento, p.pordescuento, p.total, p.anticipo,
 					$this->logCliente();
 		
 					$this->logCliente("\t\t\t\t <strong style='color: green'>************ EL PEDIDO PASA VALIDACIÓN PARA   A U T O R I Z A R S E  en automático ***********</strong>");
-					PedidoTrackingManager::logSuccess($idPedidoToCheck, "************ EL PEDIDO PASA VALIDACIÓN PARA   A U T O R I Z A R S E  en automático ***********");
+					PedidoTrackingManager::logSuccess($idPedidoToCheck, 10, '{"mensaje": "EL PEDIDO PASA VALIDACIÓN PARA AUTORIZARSE en automático"}');
 				
 					
 		
@@ -2201,7 +2200,7 @@ p.idPedido, p.subtotal, p.iva, p.descuento, p.pordescuento, p.total, p.anticipo,
 						if ($pedidoProcesando->getRecogeentrega() == "RECOGE")
 						{
 							$this->logCliente("\t\tSe generaran los vales en automatico");
-							PedidoTrackingManager::logSuccess($idPedidoToCheck, "Se generarán los vales en automatico");
+							PedidoTrackingManager::logSuccess($idPedidoToCheck, 11, '{"mensaje": "Se generarán los vales en automatico"}');
 							
 							$msg = "";
 							$pedidoProcesando->generarValesSalidaAutomatico($pedidoProcesando->getIdPedido(), $msg);
@@ -2914,6 +2913,7 @@ p.idPedido, p.subtotal, p.iva, p.descuento, p.pordescuento, p.total, p.anticipo,
 		{
 			$pedido = new ModeloPedido();
 			$pedido->setIdPedido ($idPedido);
+			$myJSON = '{"idPedido": ' . $idPedido . ', "simulacion": ' . ($simulacion ? 'true' : 'false') . '}';
 
 			
 			if ($simulacion || $pedido->getEstado() == "CAPTURADO")
@@ -3037,18 +3037,16 @@ $creditoDisponible = $credito - $creditoUsado;
 				// $this->logDebug("capacidadPagoDisponible: " . $capacidadPagoDisponible);
 
 
-				$criterioSaldoAprobado = true;
-				$opcionNoCriterioAprobado = true;
+$criterioSaldoAprobado = true;
+			$opcionNoCriterioAprobado = true;
 
-				$porcentajeSaldoCredito = 100 - ($pagado * 100 / $creditoDisponibleEntregados);
-
-				// $this->logDebug("creditoDisponible: " . $creditoDisponible);
-				// $this->logDebug("creditoDisponible+20%: " . $creditodismas20);
-				// $this->logDebug("capacidadPagoDisponible: " . $capacidadPagoDisponible);
+			// $this->logDebug("creditoDisponible: " . $creditoDisponible);
+			// $this->logDebug("creditoDisponibleEntregados: " . $creditoDisponibleEntregados);
+			// $this->logDebug("capacidadPagoDisponible: " . $capacidadPagoDisponible);
 
 
-				$criterioSaldoAprobado = true;
-				$opcionNoCriterioAprobado = true;
+			$criterioSaldoAprobado = true;
+			$opcionNoCriterioAprobado = true;
 
 				// $this->logDebug("porcentaje: " . $porcentaje);
 				// $this->logDebug("pagado: " . $pagado);
