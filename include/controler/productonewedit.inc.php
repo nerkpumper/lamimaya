@@ -30,7 +30,7 @@
 // 	$debug = ob_get_clean();
 // 	$r->mostrarMsgs($debug);
 		
-	function guardarProducto($idProducto, $codigo, $idTipoProducto, $idAplicacion, $idMaterial, $idRollo, $calibre, $pies, $origen, $descripcion, $longitud, $mlpieza, $unidad, $listaPrecio, $isRango, $isRollo, $precio1, $precio2, $precio3, $precio4, $precioMendez, $costo, $medidaespecial)
+	function guardarProducto($idProducto, $codigo, $idTipoProducto, $idAplicacion, $idMaterial, $idRollo, $calibre, $pies, $origen, $descripcion, $longitud, $mlpieza, $unidad, $listaPrecio, $tipoRango, $isRollo, $precio1, $precio2, $precio3, $precio4, $precioMendez, $costo, $medidaespecial)
 	{
 		global $objSession;
 		$r = new xajaxResponse();
@@ -137,7 +137,7 @@
 		$producto->setCodigo($codigo);
 		$producto->setProducto_tipoProducto_idTipoProducto($idTipoProducto);
 		$producto->setProducto_aplicacion_idAplicacion($idAplicacion);
-		$producto->setProducto_material_idMaterial($idMaterial);
+		$producto->setProducto_material_idMaterial($idMaterial == 0 ? 1 : $idMaterial);
 		$producto->setProducto_rollo_idRollo($idRollo);
 		$producto->setCalibre($calibre);
 		$producto->setPies($pies);	
@@ -146,8 +146,9 @@
 		$producto->setLongitud($longitud);
 		$producto->setMlpieza($mlpieza);
 		$producto->setMedidaespecial($medidaespecial);
-		$producto->setTipoPrecio($listaPrecio);
-		$producto->setIsRango($isRango ? '1' : '0');
+		$producto->setTipoPrecio('G'); //$listaPrecio);
+		$producto->setIsRango($tipoRango == '0' ? '0' : '1');
+		$producto->setTipoRango($tipoRango);
 		$producto->setIsRollo($isRollo ? '1' : '0');
 		$producto->setProducto_unidad_idUnidad($unidad);
 		
@@ -290,6 +291,7 @@
 				    app.unidad = " . $producto->getProducto_unidad_idUnidad() . ";
 					app.listaPrecio = '" . $producto->getTipoPrecio() . "';				 
 				    app.isRango = " . ($producto->getIsRango() == "1" ? "true" : "false") . ";
+				    app.tipoRango = '" . ($producto->getTipoRango()) . "';
 				
 					app.descripcion = '" . $desc . "';
 					setTimeout(function(){app.verificaIsPieza();}, 500);
@@ -454,6 +456,14 @@
 			array("value" => "G", "theoption" => "Galvamex" ),
 			array("value" => "I", "theoption" => "Importados" ),
 			array("value" => "T", "theoption" => "Ternium" )			
+		);
+
+	$lstListaTipoRango = array (
+			// array("value" => "", "theoption" => "- Sin Rango -" ),
+			array("value" => "A", "theoption" => "Lámina Metálica" ),
+			array("value" => "C", "theoption" => "Panel" ),
+			array("value" => "B", "theoption" => "Traslucida" ),			
+			array("value" => "R", "theoption" => "Rollo" )			
 		);
 	
 

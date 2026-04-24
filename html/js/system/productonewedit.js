@@ -34,6 +34,7 @@ var app = new Vue({
 		codeLongitud: '',
 		listaPrecio: '0',
 		isRango: false,
+		tipoRango: '0',
 		
 		precio1: 0,
 		precio2: 0,
@@ -70,6 +71,7 @@ var app = new Vue({
 		errCodigoAccesorio: '',
 		errPies: '',
 		errOrigen: '',
+		errTipoRango: '',
 		
 		
        
@@ -427,7 +429,7 @@ var app = new Vue({
 						           this.mlpieza,
 						           this.unidad,
 						           this.listaPrecio,
-						           this.isRango,
+						           this.tipoRango,
 						           this.esRollo,
 						           this.precio1,
 						           this.precio2,
@@ -459,6 +461,7 @@ var app = new Vue({
 			this.precioMendez= '0';
 			this.descripcion= '';
 			this.rolloCodigo = '';
+			this.tipoRango = '0';
 		},
 		limpiaErrores: function(){
 			this.errCodigo= '';		
@@ -475,6 +478,7 @@ var app = new Vue({
 			this.errIsRango = '';
 			this.errProductoRollo = '';
 			this.errCodigoAccesorio = '';
+			this.errTipoRango = '';
 		},
 		fnRegresarAListado: function(){
 			window.location = URL_BASE + "producto";

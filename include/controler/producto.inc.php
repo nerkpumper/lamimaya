@@ -70,8 +70,8 @@
                     codigo, REPLACE(REPLACE(calibre, '0', '-'),'2-','20') AS calibre, sucursal.nombre sucursal,
                     descauto, idUnidad, shortUnidad, IF(idUnidad = 4 OR idUnidad = 1, (inventariosucursal.existencia), '-') as existencia,IF(idUnidad = 4 OR idUnidad = 1, (inventariosucursal.apartado), '-') as apartado, 
                     IF(idUnidad = 4 OR idUnidad = 1, IF ((inventariosucursal.existencia - inventariosucursal.apartado) >= 0 , (inventariosucursal.existencia - inventariosucursal.apartado), 0), '-') as disponible ",
-	    "inner join inventariosucursal on inventariosucursal.idproducto = viewproductos.idproducto
-inner join sucursal on sucursal.idsucursal = inventariosucursal.idsucursal",
+	    "left join inventariosucursal on inventariosucursal.idproducto = viewproductos.idproducto
+left join sucursal on sucursal.idsucursal = inventariosucursal.idsucursal",
 	    " estado = 'ACTIVO'",
 	    " idProducto");
 	
@@ -82,15 +82,16 @@ inner join sucursal on sucursal.idsucursal = inventariosucursal.idsucursal",
 	
 	
 	
-// 	echo $producto->getAllQUERY("idProducto, tp.nombre as tipoproducto, ml.nombreAplicacion, m.nombre as material, REPLACE(r.codigo, '-- NO APLICA --', '-') as rollo, producto.codigo, REPLACE(producto.calibre, '0', '-') AS calibre, producto.descripcion, producto.producto_unidad_idUnidad, IF(producto.producto_unidad_idUnidad = 4, producto.existencia, '-') as exisPoducto, u.clave as shortUnidad, apartado, (existencia - apartadoReal) as existenciaReal ", 
-// 			        " inner join tipoproducto as tp on tp.idTipoProducto = producto_tipoProducto_idTipoProducto
-// 			          inner join aplicacion as ml on ml.idAplicacion = producto_aplicacion_idAplicacion
-// 			          inner join material as m on m.idMaterial = producto_material_idMaterial 
-// 			          inner join rollo as r on r.idRollo = producto_rollo_idRollo 
-// 			          inner join unidad as u on u.idUnidad = producto_unidad_idUnidad",
-// 					" producto.estado = 'ACTIVO'");
+// 	echo $producto->getAllQUERY("viewproductos.idProducto, idRollo, tipoProducto, aplicacion, material,   
+//                     REPLACE(rollocodigo, '-- NO APLICA --', '-') as rollo, 
+//                     codigo, REPLACE(REPLACE(calibre, '0', '-'),'2-','20') AS calibre, sucursal.nombre sucursal,
+//                     descauto, idUnidad, shortUnidad, IF(idUnidad = 4 OR idUnidad = 1, (inventariosucursal.existencia), '-') as existencia,IF(idUnidad = 4 OR idUnidad = 1, (inventariosucursal.apartado), '-') as apartado, 
+//                     IF(idUnidad = 4 OR idUnidad = 1, IF ((inventariosucursal.existencia - inventariosucursal.apartado) >= 0 , (inventariosucursal.existencia - inventariosucursal.apartado), 0), '-') as disponible ",
+// 	    "left join inventariosucursal on inventariosucursal.idproducto = viewproductos.idproducto
+// left join sucursal on sucursal.idsucursal = inventariosucursal.idsucursal",
+// 	    " estado = 'ACTIVO'",
+// 	    " idProducto");
 	
-
 	
 	//$lst = $producto->getAll("idRollo, codigo, m.nombre as  material, calibre, pies, descripcion", "inner join material as m on m.idMaterial = rollo_material_idMaterial ");
 	

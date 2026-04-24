@@ -105,6 +105,11 @@ $_addScript = "
  					
  					Form::select("unidad", "Unidad", $lstUnidades, "0", "", false, $disableSelect);
  				?>
+				
+ 				<?php 
+ 					
+ 					Form::select("tipoRango", "Tipo Rango", $lstListaTipoRango, "0", "", false, $disableSelect);
+ 				?>
  				
  				<div v-if="!esRollo && !esAccesorio">
  					<div v-if="esPieza">
