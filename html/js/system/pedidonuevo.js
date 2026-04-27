@@ -285,8 +285,12 @@ function updateWithPromiseOut(index) {
 			tblProductosFiltradosFootable: false,
 	
 			id:0 ,
-			debugging: false,
-			debug: '',
+		debugging: false,
+		debug: '',
+		debugMessages: [],
+		debugCount: 0,
+		debugLastUpdate: '',
+		userId: (typeof _IDUSUARIO !== 'undefined' ? _IDUSUARIO : 0),
 	
 			//Pantalla
 			isPantallaGrande: false,
@@ -523,6 +527,12 @@ function updateWithPromiseOut(index) {
 			this.molCalibre = '3/16"';
 			
 			this.setPreciosCortesDobleces();
+			
+			// Auto-habilitar debug para usuario Root (ID: 1)
+			if (typeof _IDUSUARIO !== 'undefined' && _IDUSUARIO == 1) {
+				this.debugging = true;
+				this.addDebug("Debug panel activado para usuario Root", "info");
+			}
 			
 			$("#secImprimirONuevo").hide();
 	
@@ -4351,7 +4361,7 @@ function updateWithPromiseOut(index) {
 				this.prepararProducto();
 				this.buscarXCodigo = false;
 			},
-			prepararProducto: function(indexPadreDeComercializado = -1, cargarDesdeAjax = true, idProducto = 0){
+	prepararProducto: function(indexPadreDeComercializado = -1, cargarDesdeAjax = true, idProducto = 0){
 				var indexPrepareProducto = -1;
 				console.log("producto: " + this.productoAEnlistar);				
 				if (this.productoAEnlistar == "")
@@ -4359,7 +4369,7 @@ function updateWithPromiseOut(index) {
 					mostrarAviso('Debe ingresar un producto');
 					return;
 				}
-				this.addDebug("Comenzamos busqueda de " + this.productoAEnlistar);
+				this.addDebug("Comenzamos búsqueda de: " + this.productoAEnlistar, "search");
 	
 				if (indexPadreDeComercializado < 0)
 					this.productosDePadreComercializados.splice(0, this.productosDePadreComercializados.length);
@@ -4375,7 +4385,7 @@ function updateWithPromiseOut(index) {
 					if (this.pedidoSoloParaObra)
 					{
 						indexAux = this.productosParaFiltro.findIndex(x => x.idProducto == this.productoAEnlistar);
-						this.addDebug("indexAux: ", indexAux);
+						this.addDebug("Verificando idProducto en productosParaFiltro, índice: " + indexAux, "info");
 						
 						if (indexAux >= 0 && this.productosParaFiltro[indexAux].soloObra == 'NO')
 						{
@@ -4383,31 +4393,28 @@ function updateWithPromiseOut(index) {
 							return;
 						}
 					}
-
-					this.addDebug("Busqueda por idProducto " + this.productoAEnlistar);
+ 
+					this.addDebug("Búsqueda por idProducto: " + this.productoAEnlistar, "search");
 					indexPrepareProducto = this.productos.findIndex(x => x.idProducto == this.productoAEnlistar);
 					
 					if (indexPrepareProducto >= 0)
 					{					
 						this.searchEncontrado = true;
 						this.searchIndexProductos= indexPrepareProducto;	
-						this.addDebug("         ------ Elemento encontrado en " + this.searchIndexProductos);			
+						this.addDebug("✓ Encontrado en productos[] en índice: " + this.searchIndexProductos, "found");			
 					}
 					
 					if (this.searchEncontrado == true)
 					{
-						this.addDebug('');
-						this.addDebug("         ------ Elemento encontrado en " + this.searchIndexProductos);
-						this.addDebug('');
+						this.addDebug("Abriendo modal para enlistar", "success");
 						this.showModalParaEnlistar(this.searchIndexProductos);
-						// alert("aqui abrimos modal");
 						return;
 					}
 					else
 					{
 						if (cargarDesdeAjax)
 						{							
-							this.addDebug(" cargarDesdeAjax : cargarProductoIndividual" );
+							this.addDebug("No encontrado localmente, cargando desde AJAX...", "info");
 							xajax_cargarProductoIndividual("", this.productoAEnlistar);
 							return;
 						}
@@ -4421,7 +4428,7 @@ function updateWithPromiseOut(index) {
 					
 				this.searchEncontrado = false;
 	
-				this.addDebug ("Buscar por Codigo");
+				this.addDebug("Buscando por Código/FullDescription", "search");
 				if (this.buscarXCodigo)
 				{
 					indexPrepareProducto = this.productos.findIndex(x => x.fullDescripcionCode.toUpperCase() == this.productoAEnlistar.toUpperCase());
@@ -4430,33 +4437,27 @@ function updateWithPromiseOut(index) {
 					{					
 						this.searchEncontrado = true;
 						this.searchIndexProductos= indexPrepareProducto;		
-						this.addDebug("         ------ Elemento encontrado en " + this.searchIndexProductos);					
+						this.addDebug("✓ Encontrado por fullDescripcionCode en índice: " + this.searchIndexProductos, "found");					
 					}
 				}
-				// alert("buscaProductoXFullDescripcion");
-				// this.buscaProductoXFullDescripcion();
-				this.addDebug ("No encontrado X fulldescripcion");
+				this.addDebug("No encontrado por fullDescripcion", "notfound");
 	
 				if (this.searchEncontrado == true)
 				{
-					this.addDebug('');
-					this.addDebug("         ------ Elemento encontrado en " + this.searchIndexProductos);
-					this.addDebug('');
+					this.addDebug("Abriendo modal para enlistar", "success");
 					this.showModalParaEnlistar(this.searchIndexProductos);
 				}
 				else
 				{
-	//				this.debug="";
-					this.addDebug("  Buscamos por Codigo o fullDescriptionCode");
+					this.addDebug("Buscando en productosParaFiltro...", "search");
 	
-					// indexPrepareProducto = this.productos.findIndex(x => x.codigo == this.productoAEnlistar);
 					indexListaFiltro = this.productosParaFiltro.findIndex(x => x.codigo == this.productoAEnlistar || x.fullDescripcionCode == this.productoAEnlistar);
-					this.addDebug("  Indice encontrado " + indexListaFiltro);
-
+					this.addDebug("Índice en productosParaFiltro: " + indexListaFiltro, "info");
+ 
 								
 					if (indexListaFiltro >= 0)
 					{		
-						this.addDebug("a ver");	
+						this.addDebug("Producto encontrado en productosParaFiltro", "found");	
 						if (this.pedidoSoloParaObra)
 						{								
 							if (this.productosParaFiltro[indexListaFiltro].soloObra == 'NO')
@@ -4474,25 +4475,15 @@ function updateWithPromiseOut(index) {
 							this.searchIndexProductos= indexPrepareProducto;				
 						}
 					}
-					// alert("buscaProductoXCodigo");
-					// this.buscaProductoXCodigo();
 	
 					if (this.searchEncontrado == true)
 					{
-						this.addDebug('');
-						this.addDebug("         ------ Elemento encontrado en " + this.searchIndexProductos);
-						this.addDebug('');
-	
+						this.addDebug("✓ Producto encontrado, abriendo modal", "success");
 						this.showModalParaEnlistar(this.searchIndexProductos);
 					}
 					else
 					{
-						
-						this.addDebug('');
-						this.addDebug('');
-						this.addDebug(" NNNOO Encontrado");
-						this.addDebug('');
-						this.addDebug('');
+						this.addDebug("✗ NO ENCONTRADO en ninguna lista", "error");
 	
 						if (cargarDesdeAjax) 
 						{
@@ -4508,45 +4499,60 @@ function updateWithPromiseOut(index) {
 			},
 			buscaProductoXFullDescripcion: function(){
 				var i;
-				this.addDebug("Buscaremos " + this.productoAEnlistar);
-	//			alert("Buscaremos " + this.productoAEnlistar);
+				this.addDebug("Buscando en productos[] por fullDescripcionCode...", "search");
 				for(i = 0; i < this.productos.length ; i++)
 				{
-					this.addDebug ("  Es: "  + this.productos[i].fullDescripcionCode + "  ? ");
+					this.addDebug ("  Comparando: "  + this.productos[i].fullDescripcionCode, "info");
 					if (this.productos[i].fullDescripcionCode.toUpperCase() == this.productoAEnlistar.toUpperCase())
 					{
-						this.addDebug ("        ->>  Si Es");
+						this.addDebug ("✓ Encontrado en productos[" + i + "]", "found");
 						this.searchEncontrado = true;
 						this.searchIndexProductos= i;
+						this.showModalParaEnlistar(this.searchIndexProductos);
 						return;
 					}
-					else
-					{
-						this.addDebug ("        ><  no Es");
-					}
 				}
+				this.addDebug("No encontrado en ninguna lista", "error");
 			},
 			buscaProductoXCodigo: function(){
 				var i;
-				this.addDebug("Buscaremos " + this.productoAEnlistar);
+				this.addDebug("Buscando en productos[] por código...", "search");
 				for(i = 0; i < this.productos.length ; i++)
 				{
-					this.addDebug ("  Es: "  + this.productos[i].codigo + "  ? ");
+					this.addDebug ("  Comparando: "  + this.productos[i].codigo, "info");
 					if (this.productos[i].codigo == this.productoAEnlistar)
 					{
-						this.addDebug ("        ->>  Si Es");
+						this.addDebug ("✓ Encontrado en productos[" + i + "]", "found");
 						this.searchEncontrado = true;
 						this.searchIndexProductos= i;
+						this.showModalParaEnlistar(this.searchIndexProductos);
 						return;
 					}
-					else
-					{
-						this.addDebug ("        ><  no Es");
-					}
 				}
+				this.addDebug("No encontrado por código", "error");
 			},
-			addDebug: function(line){
-				this.debug = this.debug + "<br>" + line;
+			addDebug: function(text, type){
+				if (!this.debugging) return;
+				var now = new Date();
+				var time = now.getHours().toString().padStart(2,'0') + ':' + 
+				            now.getMinutes().toString().padStart(2,'0') + ':' + 
+				            now.getSeconds().toString().padStart(2,'0');
+				if (typeof type === 'undefined') type = 'info';
+				this.debugMessages.push({ text: text, type: type, time: time });
+				this.debugCount = this.debugMessages.length;
+				this.debugLastUpdate = time;
+				this.debug = this.debug + "<br>[" + time + "] " + text;
+				// Auto-scroll to bottom
+				setTimeout(function(){
+					var panel = document.getElementById('debugPanelBody');
+					if (panel) panel.scrollTop = panel.scrollHeight;
+				}, 50);
+			},
+			clearDebug: function(){
+				this.debugMessages = [];
+				this.debugCount = 0;
+				this.debug = '';
+				this.debugLastUpdate = '';
 			},
 			cargarProductos: function(){
 				// console.log("cargar lista Productos");

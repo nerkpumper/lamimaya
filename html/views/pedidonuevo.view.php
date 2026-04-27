@@ -1799,7 +1799,66 @@ $_isPedidoPage = true;
 
 
 
-<div v-if="debugging" class="well" v-html="debug"></div>
+<!-- Botón flotante para activar Debug -->
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+	<button @click="debugging = !debugging" :class="debugging ? 'btn btn-lg btn-danger' : 'btn btn-lg btn-success'" style="border-radius: 50px; width: 60px; height: 60px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+		<i :class="debugging ? 'fa fa-times' : 'fa fa-bug'"></i>
+	</button>
+</div>
+
+<!-- Debug Panel - Disponible para cualquier usuario -->
+<div v-if="debugging" class="panel panel-info" style="margin-top: 20px;">
+	<div class="panel-heading" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 10px 15px;">
+		<h3 class="panel-title" style="margin: 0; font-size: 14px;">
+			<i class="fa fa-bug"></i> Debug Trace: prepararProducto
+			<span class="badge badge-light" style="margin-left: 10px; background: rgba(255,255,255,0.3);">{{ debugCount }} mensajes</span>
+			<div class="pull-right">
+				<button @click="clearDebug" class="btn btn-xs btn-default" style="margin-right: 5px;">
+					<i class="fa fa-trash"></i> Limpiar
+				</button>
+				<button @click="debugging = false" class="btn btn-xs btn-default">
+					<i class="fa fa-times"></i> Cerrar
+				</button>
+			</div>
+		</h3>
+	</div>
+	<div class="panel-body" style="max-height: 400px; overflow-y: auto; background: #1e1e1e; padding: 0;" id="debugPanelBody">
+		<table class="table table-condensed" style="margin: 0; font-family: 'Courier New', monospace; font-size: 12px;">
+			<tbody>
+				<tr v-for="(msg, idx) in debugMessages" :key="idx" 
+					:style="{ 
+						'background': idx % 2 === 0 ? '#252525' : '#1e1e1e',
+						'color': msg.type === 'error' ? '#ff6b6b' : msg.type === 'success' ? '#51cf66' : msg.type === 'warn' ? '#ffd43b' : '#d1d1d1',
+						'border-left': '3px solid ' + (msg.type === 'error' ? '#ff6b6b' : msg.type === 'success' ? '#51cf66' : msg.type === 'warn' ? '#ffd43b' : '#339af0')
+					}">
+					<td style="padding: 4px 8px; border-top: 1px solid #333; white-space: nowrap; color: #999;">
+						{{ msg.time }}
+					</td>
+					<td style="padding: 4px 8px; border-top: 1px solid #333; width: 100%;">
+						<span v-if="msg.type === 'search'" style="color: #339af0;">
+							<i class="fa fa-search"></i>
+						</span>
+						<span v-if="msg.type === 'found'" style="color: #51cf66;">
+							<i class="fa fa-check-circle"></i>
+						</span>
+						<span v-if="msg.type === 'notfound'" style="color: #ff6b6b;">
+							<i class="fa fa-times-circle"></i>
+						</span>
+						<span v-if="msg.type === 'info'" style="color: #ffd43b;">
+							<i class="fa fa-info-circle"></i>
+						</span>
+						{{ msg.text }}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="panel-footer" style="padding: 5px 10px; background: #2c2c2c; border-top: 1px solid #444;">
+		<small style="color: #888;">
+			<i class="fa fa-clock-o"></i> {{ debugLastUpdate }}
+		</small>
+	</div>
+</div>
 
 
 
@@ -3631,8 +3690,8 @@ if (Permisos::userIsThisRol(Permisos::$idROOTUSER))
 // //     echo "<pre>{{ \$data }}</pre>";
     
     // echo "<pre>{{ \$data.otrosCargos }}</pre>";
-  echo "<pre>{{ \$data.productos }}</pre>";
-  echo "<pre>{{ \$data.productosNuevoFiltro }}</pre>";
+//   echo "<pre>{{ \$data.productos }}</pre>";
+//   echo "<pre>{{ \$data.productosNuevoFiltro }}</pre>";
 //  echo "<pre>{{ \$data.productosNuevoFiltroComercializados }}</pre>";
 //  echo "<pre>{{ \$data.productosNuevoFiltroComercializadosAgruped }}</pre>";
 //  echo "<pre>{{ \$data.productosNuevoFiltroMasVendidos }}</pre>";
@@ -3653,7 +3712,7 @@ if (Permisos::userIsThisRol(Permisos::$idROOTUSER))
     // echo "<pre>{{ \$data.clientes }}</pre>";
 // 	echo "<pre>{{ \$data.piezasExistencias }}</pre>";
 	
-	 echo "<pre>{{ \$data.productos }}</pre>";
+	//  echo "<pre>{{ \$data.productos }}</pre>";
 }
 
 
