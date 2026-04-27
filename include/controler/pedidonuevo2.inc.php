@@ -1731,7 +1731,7 @@
 
 
 
-		$strListadoProductos = "";
+	$strListadoProductos = "";
 
 		$blnHayProductos = false;
 
@@ -1739,16 +1739,54 @@
 
 		$idProducto = 0;
 
-
+		// DIAGNÓSTICO: Mostrar cuántos productos se encontraron
+		$totalEncontrados = count($productos->lstProductos);
+		$r->script("setTimeout(function(){alert('DIAGNÓSTICO: Se encontraron $totalEncontrados producto(s) en lstProductos');}, 50);");
 
 		for($i = 0 ; $i <count($productos->lstProductos) ; $i++)
 
-		{
+	{
+			// DIAGNÓSTICO VISIBLE EN PANTALLA - SIEMPRE SE MUESTRA
+			$logEstado = $productos->lstProductos[$i]->getEstado();
+			$logPrecio1 = $productos->lstProductos[$i]->getPrecio1();
+			$logTipoPrecio = $productos->lstProductos[$i]->getTipoPrecio();
+			$logIdProducto = $productos->lstProductos[$i]->getIdProducto();
+			
+			$msgDebug = "PRODUCTO $logIdProducto: estado='$logEstado' precio1='$logPrecio1' tipoPrecio='$logTipoPrecio'";
+			
+			$seAgrega = false;
+			
 			if ($productos->lstProductos[$i]->getEstado() == "ACTIVO")
 			{
 				$blnEntroEnFor = true;
-				if (($productos->lstProductos [$i]->getPrecio1 () > 0 && $productos->lstProductos [$i]->getTipoPrecio () == "G") || $productos->lstProductos [$i]->getTipoPrecio () == "T" || $productos->lstProductos [$i]->getTipoPrecio () == "I")
+				
+				$condicionG = ($productos->lstProductos[$i]->getPrecio1() > 0 && $productos->lstProductos[$i]->getTipoPrecio() == "G");
+				$condicionT = ($productos->lstProductos[$i]->getTipoPrecio() == "T");
+				$condicionI = ($productos->lstProductos[$i]->getTipoPrecio() == "I");
+				
+				$msgDebug .= " | G=" . ($condicionG ? "SI" : "NO") . 
+				             " T=" . ($condicionT ? "SI" : "NO") . 
+				             " I=" . ($condicionI ? "SI" : "NO");
+				
+				if ($condicionG || $condicionT || $condicionI)
 				{
+					$seAgrega = true;
+				}
+				else
+				{
+					$msgDebug .= " => NO SE AGREGA (precio/tipo invalido)";
+				}
+			}
+			else
+			{
+				$msgDebug .= " => NO SE AGREGA (estado no es ACTIVO)";
+			}
+			
+			// Mostrar diagnóstico SIEMPRE
+			$r->script("setTimeout(function(){alert('" . str_replace("'", "\\'", $msgDebug) . "');}, " . ($i * 200) . ");");
+			
+			if ($seAgrega)
+			{
 					$desc=str_replace(chr(13),'', $productos->lstProductos[$i]->getRolloDescripcion());
 
 					$desc=str_replace('<br />','\n', $desc);

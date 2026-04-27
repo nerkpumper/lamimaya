@@ -262,6 +262,26 @@ else
     $output .= "</div>";
 }
 
+// Leer diagnósticos de cargarProductoIndividual
+$logFile = "/tmp/debug_cargarProducto.log";
+if (file_exists($logFile))
+{
+    $logContents = file_get_contents($logFile);
+    $output .= "<h4>🐛 Diagnóstico cargarProductoIndividual (pedidonuevo.inc.php):</h4>";
+    $output .= "<pre style='background:#fff3cd;padding:10px;border:1px solid #ffeaa7;overflow:auto;'>";
+    $output .= htmlspecialchars($logContents);
+    $output .= "</pre>";
+    // Limpiar el archivo después de leerlo
+    file_put_contents($logFile, "");
+}
+else
+{
+    $output .= "<h4>🐛 Diagnóstico cargarProductoIndividual:</h4>";
+    $output .= "<div style='background:#fff3cd;padding:10px;border:1px solid #ffeaa7;'>";
+    $output .= "No hay diagnósticos aún. Usa la página de pedidos para buscar un producto primero.";
+    $output .= "</div>";
+}
+
 ?>
 <!DOCTYPE html>
 <html>

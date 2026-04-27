@@ -3690,7 +3690,7 @@ if (Permisos::userIsThisRol(Permisos::$idROOTUSER))
 // //     echo "<pre>{{ \$data }}</pre>";
     
     // echo "<pre>{{ \$data.otrosCargos }}</pre>";
-//   echo "<pre>{{ \$data.productos }}</pre>";
+  echo "<pre>{{ \$data.productos }}</pre>";
 //   echo "<pre>{{ \$data.productosNuevoFiltro }}</pre>";
 //  echo "<pre>{{ \$data.productosNuevoFiltroComercializados }}</pre>";
 //  echo "<pre>{{ \$data.productosNuevoFiltroComercializadosAgruped }}</pre>";
@@ -3712,7 +3712,7 @@ if (Permisos::userIsThisRol(Permisos::$idROOTUSER))
     // echo "<pre>{{ \$data.clientes }}</pre>";
 // 	echo "<pre>{{ \$data.piezasExistencias }}</pre>";
 	
-	//  echo "<pre>{{ \$data.productos }}</pre>";
+	 echo "<pre>{{ \$data.productos }}</pre>";
 }
 
 

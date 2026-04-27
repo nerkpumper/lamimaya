@@ -1993,8 +1993,13 @@
 				// $r->mostrarAviso($strListadoProductos); 
 			}
 		}
-		$r->script($strListadoProductos);
-
+	$r->script($strListadoProductos);
+	
+		// DIAGNÓSTICO: Enviar resumen al panel Debug Trace de pedidonuevo.view.php
+		$diagResumen = "Productos encontrados: " . count($productos->lstProductos) . 
+		               " | HayProductos=$blnHayProductos | EntroEnFor=$blnEntroEnFor";
+		$r->script("if(typeof app!=='undefined' && app.debugMessages){app.debugMessages.push({time:'".date('H:i:s')."',type:'".($blnHayProductos?'success':'error')."',message:'".addslashes($diagResumen)."'});}");
+		
 		if ($blnHayProductos)
 		{
 			$r->script(" app.prepararProducto(-1, false, ".$idProducto."); //ocultarMensaje();");
