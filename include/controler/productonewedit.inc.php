@@ -152,7 +152,7 @@
 		$producto->setIsRollo($isRollo ? '1' : '0');
 		$producto->setProducto_unidad_idUnidad($unidad);
 		
-		$producto->setDescripcion(nl2br($descripcion));
+		$producto->setDescripcion($descripcion);
 		
 		$producto->setPrecio1($precio1);
 		$producto->setPrecio2($precio2);
