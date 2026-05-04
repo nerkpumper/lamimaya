@@ -304,28 +304,55 @@ class PDF extends PDFNerk
 	    
 	    
 	    //leyendas lado izquierdo
-	    $this->SetFont('Arial','',8);
-	    $this->setCurrentY($yInicial + 183);
+		$this->SetFont('Arial','',8);
+	    $this->setCurrentY($yInicial + 181);
+		
+	    $this->SetFont('Arial','',10);
+	    $this->putText(10, "DATOS BANCARIOS");	    
+	    $this->nextRow();
+		$this->SetFont('Arial','',8);
+	    $this->putText(10, "Titular de la cuenta:");
+	    $this->SetFont('Arial','B',8);
+	    $this->putText(40, "LAMI MAYA SA DE CV");	    
+	    $this->nextRow();
+		$this->SetFont('Arial','',8);
+	    $this->putText(10, "Banco:");
+	    $this->SetFont('Arial','B',8);
+	    $this->putText(40, "BBVA");	    
+	    $this->nextRow();
+		$this->SetFont('Arial','',8);
+	    $this->putText(10, "Cuenta:");
+	    $this->SetFont('Arial','B',8);
+	    $this->putText(40, "0120883735");	    
+	    $this->nextRow();
+		$this->SetFont('Arial','',8);
+	    $this->putText(10, "CLABE:");
+	    $this->SetFont('Arial','B',8);
+	    $this->putText(40, "012910001208837356");	    
+	    
+	    $this->nextRow(-1);
+	    // $this->SetFont('Arial','',8);
+	    // $this->setCurrentY($yInicial + 183);
 	     
-	    $this->putText(10, "Recibimos la cantidad $");	    
-	    $this->nextRow(-3);
-	    $this->putText(41, "________________________________________________________________");
+	    // $this->putText(10, "Recibimos la cantidad $");	    
+	    // $this->nextRow(-3);
+	    // $this->putText(41, "________________________________________________________________");
 	    
-	    $this->nextRow();	    
-	    $this->putText(10, "(");
-	    $this->putText(141, ")");
-	    $this->nextRow(-3);
-	    $this->putText(11, "___________________________________________________________________________________");
+	    // $this->nextRow();	    
+	    // $this->putText(10, "(");
+	    // $this->putText(141, ")");
+	    // $this->nextRow(-3);
+	    // $this->putText(11, "___________________________________________________________________________________");
 	    
-	    $this->nextRow();	    
-	    $this->putText(10, "Por concepto de anticipo $");
-	    $this->nextRow(-3);
-	    $this->putText(44, "______________________________________________________________");
+	    // $this->nextRow();	    
+	    // $this->putText(10, "Por concepto de anticipo $");
+	    // $this->nextRow(-3);
+	    // $this->putText(44, "______________________________________________________________");
 	    
-	    $this->nextRow();	    
-	    $this->putText(10, "Saldo $");
-	    $this->nextRow(-3);
-	    $this->putText(21, "_____________________________________________________________________________");
+	    // $this->nextRow();	    
+	    // $this->putText(10, "Saldo $");
+	    // $this->nextRow(-3);
+	    // $this->putText(21, "_____________________________________________________________________________");
 	    
 	    $this->SetFont('Arial','B',8);
 	    $this->nextRow();
