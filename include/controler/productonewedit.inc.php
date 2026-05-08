@@ -437,7 +437,8 @@
 			              
 			              array("value" => "2628", "theoption" => "26/28"),
 			              array("value" => "28", "theoption" => "28" ),
-						  array("value" => "2828", "theoption" => "28/28" )
+						  array("value" => "2828", "theoption" => "28/28" ),
+						  array("value" => "32", "theoption" => "32" )
 			            );
 	
 	$lstPies = array (						  
