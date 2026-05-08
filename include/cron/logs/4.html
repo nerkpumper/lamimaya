@@ -1,0 +1,45 @@
+<br>  ....... 2026-05-05 11:24:11 START PEDIDO: 4<br><h1>Checar Autorizacion para pedido 4</h1><br>
+<span class='h3 text-info'> INFO => </span> Inicia proceso de Autorización automática del Pedido<br>
+Comenzando con Pedido: 4<br>
+Cargando Pedido: 4<br>
+		---------------------------------------------------------<br>
+		Verificando Inventarios de Cotizacion: <strong style='color: blue'>4</strong><br>
+<br>
+		 ___<br>
+		Renglones Pedido: <span style='color: blue'>1</span><br>
+<br>
+		// + + + + +<br>
+		//  Comenzamos Analisis de inventarios<br>
+		// + + + + +<br>
+<br>
+<br>
+		R E N G L O N: 1          -idPedidoDetalle: 4    -idProducto: 589    -partida: 1.00    -cantidad: 5.00    -cantidadReal: 5.00<br>
+<br>
+<br>
+		Producto: LISOCOP ACRN -  LÁMINA ISOCOP ACRYLIT G18 NACIONAL ML<br>
+		 idRollo => 1<br>
+<br>
+		SACAR DE   I N V E N T A R I O <br>
+		   Producto Existencia: -29.60        Apartado: -64.8<br>
+		   SACAR => 1.00<br>
+		    =>=>  Quitamos(Simulacro) de Inventario <br>
+		 ---------------->>>>>>> Listo para Asignar SI<br>
+Obteniendo datos por el cliente<br>
+{"idCliente":"1","datosCliente":"Capacidad y Credito obtenidos del Cliente en si","credito":"0.00","capacidadPago":"0.00","noPedidoscliente":4,"porcentajeSaldoCredito":"100.00","porcentaje":"0.00","pagado":"0.00","saldoPedido":"42,935.65","TotalPedido":"42,935.65","diasVencido":0,"creditoDisponibleEntregados":"0","necesitaSurir":false,"capacidadPagoDisponibleEntregados":0}<br>
+Cliente Existente<br>
+Sin Crédito<br>
+<span class='h3 text-info'> INFO => </span> Cliente existente, sin crédito, no requiere adquisición de materiales<br>
+No Necesita Surtir<br>
+<span class='h3 text-warning'> WARNING => </span> El saldo de su capacidad de pago NO cobre el valor del pedido y el cliente no tiene pedidos por pagar > 7 dias<br>
+<span class='h3 text-warning'> WARNING => </span> Persona autorizada de crédito y cobranza libera pedido de forma manual, toda eventualidad fuera dela regla establecida, a criterio, tomando en cuenta importancia y comportamiento del cliente.<br>
+Vales . . . <br>
+<h1>Checar liberación de Vales para pedido 4</h1><br>
+<span class='h3 text-info'> INFO => </span> Inicia proceso de liberación de vales automática del Pedido<br>
+Obteniendo datos por el cliente<br>
+{"idCliente":"1","datosCliente":"Capacidad y Credito obtenidos del Cliente en si","credito":"0.00","capacidadPago":"0.00","creditoUsado":"556,446.02","saldomas30dias":"0.00","noPedidoscliente":4,"creditoDisponible":"-556,446.02","creditoDisponibleMas20Porciento":"0.00","porcentajeSaldoCredito":"100.00","capacidadPagoDisponible":"-556,446.02","porcentaje":"0.00","pagado":"0.00","saldoPedido":"42,935.65","TotalPedido":"42,935.65","diasVencido":0,"creditoDisponibleEntregados":"0","necesitaSurir":false,"capacidadPagoDisponibleEntregados":0}<br>
+Cliente Existente<br>
+Sin Crédito, VALE SALIDA<br>
+<span class='h3 text-warning'> WARNING => </span> criterio no aprobado el cliente tiene pedidos vencidos a mas de 7 dias o su capacidad no cobre el salde del pedido <br>
+<span class='h3 text-error'> ERROR => </span> Persona autorizada de crédito y cobranza libera pedido de forma manual, toda eventualidad fuera dela regla establecida, a criterio, tomando en cuenta importancia y comportamiento del cliente.<br>
+<br>
+<br>  ....... 2026-05-05 11:24:11 END PEDIDO: 4<br>

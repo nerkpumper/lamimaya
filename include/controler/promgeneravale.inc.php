@@ -1027,7 +1027,7 @@ LEFT JOIN viewrollos as vrmol
 	    }
 	    else
 	    {
-	        $r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($vs->getStrError(), 'UTF-8', 'ISO-8859-1')).");");
+	        $r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($vs->getStrError(), 'UTF-8', 'ISO-8859-1').");");
 	    }
 	    
 	    
@@ -1101,7 +1101,7 @@ LEFT JOIN viewrollos as vrmol
 	    }
 	    else
 	    {
-	        $r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($vs->getStrError(), 'UTF-8', 'ISO-8859-1')).");");
+	        $r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($vs->getStrError(), 'UTF-8', 'ISO-8859-1').");");
 	    }
 	    
 	    
@@ -1163,7 +1163,7 @@ LEFT JOIN viewrollos as vrmol
 	    }
 	    else
 	    {
-	        $r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($vs->getStrError(), 'UTF-8', 'ISO-8859-1')).");");
+	        $r->script("saError(Ha ocurrido un error. " . mb_convert_encoding($vs->getStrError(), 'UTF-8', 'ISO-8859-1').");");
 	    }
 	    
 	    
