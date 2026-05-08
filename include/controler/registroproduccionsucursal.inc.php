@@ -670,7 +670,7 @@
 // 		$r->mostrarMsgs($pushes);
 		$r->script("
 				
-				app.pedidoCliente = \"". mb_convert_encoding($pedido->getPedidoDato("cteNombre", 'UTF-8', 'ISO-8859-1') . " " . $pedido->getPedidoDato("cteApellidos")) ."\";
+				app.pedidoCliente = \"". mb_convert_encoding($pedido->getPedidoDato("cteNombre" ) . " " . $pedido->getPedidoDato("cteApellidos"), 'UTF-8', 'ISO-8859-1') ."\";
 				
 				app.pedidoPedidoDetalle.splice(0, app.pedidoPedidoDetalle.length);
 				
@@ -840,7 +840,7 @@
 		}
 		else
 		{
-			$r->saError("Ha ocurrido un error. " . $strErrores );
+			$r->saError("Ha ocurrido un error. " . $rp->getError() );
 // 			$r->script(" app.showButtonRegistrarRPPedido = true;");
 		}
 	
