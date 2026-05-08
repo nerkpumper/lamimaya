@@ -183,8 +183,8 @@
 // 		dettotal
 // 		listo_para_producir
 		
-		$idProductoMoldura = 386;
-		$idProductoMaquila = 394; 
+		$idProductoMoldura = 9;
+		$idProductoMaquila = 10; 
 
 		$productos = "";
 		foreach ($pedido->__rsPedidoWDetalle as $row)

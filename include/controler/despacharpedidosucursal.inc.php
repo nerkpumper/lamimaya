@@ -87,9 +87,9 @@
 
 		
 
-        $idProductoMoldura = 386;
+        $idProductoMoldura = 9;
 
-        $idProductoMaquilaMoldura = 394;
+        $idProductoMaquilaMoldura = 10;
 
 		$pedido = new ModeloPedido();
 
@@ -395,9 +395,9 @@
 
 		// $r->starDebug();
 
-		$idProductoMoldura = 386;
+		$idProductoMoldura = 9;
 
-		$idProductoMaquilaMoldura = 394;
+		$idProductoMaquilaMoldura = 10;
 
 
 
@@ -1902,7 +1902,7 @@
 
 	    $r = new xajaxResponse();
 
-	    $idProductoMoldura = 386;
+	    $idProductoMoldura = 9;
 
 	    
 
@@ -2096,7 +2096,7 @@
 
 	    $r = new xajaxResponse();
 
-	    $idProductoMoldura = 386;
+	    $idProductoMoldura = 9;
 
 	    
 
@@ -2636,7 +2636,7 @@
 					
 						$invMol = new ModeloInvzmov();
 			
-						$idProductoMoldura = 386;
+						$idProductoMoldura = 9;
 
 						$invMol->setIdProducto($idProductoMoldura);
 						$invMol->setDocumentoPEDIDO();

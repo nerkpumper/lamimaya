@@ -294,8 +294,8 @@ getTotalValeSalidaPromotor(vsp.idvalesalidapromotor) totalvalesalidapromotor
 	    
 	    $lst = $pd->getDataSet($sql);
 	    
-	    $idProductoMoldura = 386;
-	    $idProductoMaquilaMoldura = 394;
+	    $idProductoMoldura = 9;
+	    $idProductoMaquilaMoldura = 10;
 	    
 	    $idValeSalida = 0;
 	    $idPedido = 0;
@@ -467,8 +467,8 @@ LEFT JOIN viewrollos as vrmol
 	    	    
 	    $lst = $pd->getDataSet($sql);
 	    
-	    $idProductoMoldura = 386;
-	    $idProductoMaquilaMoldura = 394;
+	    $idProductoMoldura = 9;
+	    $idProductoMaquilaMoldura = 10;
 	    
 	    $pushes = "";
 	    foreach ($lst as $row)

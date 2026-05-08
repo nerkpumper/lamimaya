@@ -332,7 +332,7 @@ var app = new Vue ({
 				
 				if (sumaPiezas != this.productos[i].detPartidaAApartar)
 				{
-					if (! (this.productos[i].detIdProducto == 386 && this.productos[i].inventariosucursal.length == 0) )
+					if (! (this.productos[i].detIdProducto == 9 && this.productos[i].inventariosucursal.length == 0) )
 					{
 						this.productos[i].errInventarioSucursal = "La Cantidad que a Asignado debe ser igual a las Piezas solicitadas. Verifique.";
 						this.productos[i].apartadoValido = false;	

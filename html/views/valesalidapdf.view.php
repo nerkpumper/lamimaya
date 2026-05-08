@@ -42,8 +42,8 @@ class PDF extends PDFNerk
 	
 	var $yInicial = 10; 
 
-	var $idProductoMoldura = 386;
-	var $idProductoMaquila = 394;
+	var $idProductoMoldura = 9;
+	var $idProductoMaquila = 10;
 	
 	var $__recogeEntrega = "";
 	var $__rangoCliente = "";
@@ -563,7 +563,7 @@ class PDF extends PDFNerk
   		  			        $desc = $item["proDescAuto"];
   		  			    }
   		  			    
-  		  			    if ($item["detIdProducto"] == 386)
+  		  			    if ($item["detIdProducto"] == 9)
   		  			    {
   		  			        //   			    $desc = $item["detPartida"]." MOLDURA ". $item["rolloMolduraDesc"];
   		  			        $desc = "MOLDURA " . $item["rolloMolduraCodigo"];
@@ -579,7 +579,7 @@ class PDF extends PDFNerk
   		  		            }
   		  			    }
   		  			    
-  		  			    if ($item["detIdProducto"] == 394)
+  		  			    if ($item["detIdProducto"] == 10)
   		  			    {
   		  			        //   			    $desc = $item["detPartida"]." MOLDURA ". $item["rolloMolduraDesc"];
   		  			        $desc = "MAQUILA DE MOLDURA  " . $item["molDescMaquila"] ." " . $item["rolloMolduraCodigo"];
@@ -1089,7 +1089,7 @@ class PDF extends PDFNerk
   		  			        $desc = $item["proDescAuto"];
   		  			    }
   		  			    
-  		  			    if ($item["detIdProducto"] == 386)
+  		  			    if ($item["detIdProducto"] == 9)
   		  			    {
   		  			        //   			    $desc = $item["detPartida"]." MOLDURA ". $item["rolloMolduraDesc"];
   		  			        $desc = "MOLDURA " . $item["rolloMolduraCodigo"];
@@ -1105,7 +1105,7 @@ class PDF extends PDFNerk
   		  		            }
   		  			    }
   		  			    
-  		  			    if ($item["detIdProducto"] == 394)
+  		  			    if ($item["detIdProducto"] == 10)
   		  			    {
   		  			        //   			    $desc = $item["detPartida"]." MOLDURA ". $item["rolloMolduraDesc"];
   		  			        $desc = "MAQUILA DE MOLDURA  " . $item["molDescMaquila"] ." " . $item["rolloMolduraCodigo"];
