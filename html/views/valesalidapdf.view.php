@@ -3,7 +3,6 @@ require_once FOLDER_INCLUDE . 'lib/fpdf/fpdfnerk.php';
 require_once FOLDER_MODEL. "model.pedido.inc.php";
 require_once FOLDER_MODEL. "model.valesalida.inc.php";
 
-
 // cliente MDM 137
 
 
@@ -613,7 +612,7 @@ class PDF extends PDFNerk
   		  			    
   		  			    $totalML = 0;
   		  			    
-  		  			    $this->putText(31.5, mb_convert_encoding($desc, 'UTF-8', 'ISO-8859-1');
+  		  			    $this->putText(31.5, mb_convert_encoding($desc, 'UTF-8', 'ISO-8859-1'));
   		  			    
   		  			    if ($item["proShortUnidad"] == "PZA")
   		  			    {
@@ -1139,7 +1138,7 @@ class PDF extends PDFNerk
   		  			    
   		  			    $totalML = 0;
   		  			    
-  		  			    $this->putText(31.5, mb_convert_encoding($desc, 'UTF-8', 'ISO-8859-1');
+  		  			    $this->putText(31.5, mb_convert_encoding($desc, 'UTF-8', 'ISO-8859-1'));
   		  			    
   		  			    if ($item["proShortUnidad"] == "PZA")
   		  			    {
@@ -1488,11 +1487,11 @@ $pdf->__imprimeTotales = $imprimeTotales;
 
 $pdf->__folio = $idValeSalida;
 $pdf->__idPedido = $pedido->getValeSalidaDato("idPedido");
-$pdf->__nombre =mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("cteNombre", 'ISO-8859-1', 'UTF-8') . " " . $pedido->getValeSalidaDato("cteApellidos")));
-$pdf->__fecha = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("fecha_capturado", 'ISO-8859-1', 'UTF-8')));
-$pdf->__domicilio = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("cteDomicilio1", 'ISO-8859-1', 'UTF-8') . " " . $pedido->getValeSalidaDato("cteDomicilio2") . " " . $pedido->getValeSalidaDato("cteNumero") . " " . $pedido->getValeSalidaDato("cteColonia")));
-$pdf->__ciudad = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("cteCiudad", 'ISO-8859-1', 'UTF-8')));
-$pdf->__rfc = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("cteRfc", 'ISO-8859-1', 'UTF-8')));
+$pdf->__nombre =mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("cteNombre") . " " . $pedido->getValeSalidaDato("cteApellidos")), 'ISO-8859-1', 'UTF-8');
+$pdf->__fecha = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("fecha_capturado")), 'ISO-8859-1', 'UTF-8');
+$pdf->__domicilio = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("cteDomicilio1") . " " . $pedido->getValeSalidaDato("cteDomicilio2") . " " . $pedido->getValeSalidaDato("cteNumero") . " " . $pedido->getValeSalidaDato("cteColonia")), 'ISO-8859-1', 'UTF-8');
+$pdf->__ciudad = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("cteCiudad")), 'ISO-8859-1', 'UTF-8');
+$pdf->__rfc = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("cteRfc")), 'ISO-8859-1', 'UTF-8');
 $pdf->__telefono = $pedido->getValeSalidaDato("cteTelefonos");
 $pdf->__totalTexto = "";
 $pdf->__conceptoAnticipo = "";
@@ -1509,11 +1508,11 @@ $pdf->__fechaCompromiso = $pedido->getValeSalidaDato("fechaCompromiso");
 $pdf->__agente = $pedido->getValeSalidaDato("promoNombre") . " " . $pedido->getValeSalidaDato("promoAPaterno") . " " . $pedido->getValeSalidaDato("promoAMaterno");
 $pdf->__agenteVendedor = $pedido->getValeSalidaDato("vendeNombre") . " " . $pedido->getValeSalidaDato("vendeAPaterno") . " " . $pedido->getValeSalidaDato("vendeAMaterno");
 
-$pdf->_recibePersona = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("personaEntrega", 'ISO-8859-1', 'UTF-8')));
-$pdf->_recibeDomicilio = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("domicilioEntrega", 'ISO-8859-1', 'UTF-8')));
-$pdf->_recibeNumero = mb_convert_encoding(mb_strtoupper( $pedido->getValeSalidaDato("numeroEntrega", 'ISO-8859-1', 'UTF-8')));
-$pdf->_recibeColonia = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("coloniaEntrega", 'ISO-8859-1', 'UTF-8')));
-$pdf->_recibeCiudad =mb_convert_encoding(mb_strtoupper( $pedido->getValeSalidaDato("ciudadEntrega", 'ISO-8859-1', 'UTF-8')));
+$pdf->_recibePersona = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("personaEntrega")), 'ISO-8859-1', 'UTF-8');
+$pdf->_recibeDomicilio = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("domicilioEntrega")), 'ISO-8859-1', 'UTF-8');
+$pdf->_recibeNumero = mb_convert_encoding(mb_strtoupper( $pedido->getValeSalidaDato("numeroEntrega")), 'ISO-8859-1', 'UTF-8');
+$pdf->_recibeColonia = mb_convert_encoding(mb_strtoupper($pedido->getValeSalidaDato("coloniaEntrega")), 'ISO-8859-1', 'UTF-8');
+$pdf->_recibeCiudad =mb_convert_encoding(mb_strtoupper( $pedido->getValeSalidaDato("ciudadEntrega")), 'ISO-8859-1', 'UTF-8');
 
 
 
