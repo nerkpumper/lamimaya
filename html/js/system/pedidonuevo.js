@@ -151,10 +151,12 @@ function updateWithPromiseOut(index) {
 			totalOtrosCargos: 0,
 			
 			// Molduras
-			molPrecioCorteBase: 10,
+			molPrecioCorteBase: 15.0,
+			molPrecioDoblesBase: 15,
 
 			// Maquila
-			molPrecioDoblesBaseMaquila: 15, 
+			molPrecioCorteBaseMaquila: 20, 
+			molPrecioDoblesBaseMaquila: 20, 
 			
 			molIndexMoldura: -1,
 			molIdProducto: 9,
@@ -1841,7 +1843,7 @@ function updateWithPromiseOut(index) {
 				
 	//			console.log("Moldura: " + this.molCostoCorte);
 				
-				this.molCostoCorteMaquila = this.molPrecioCorteBase * ( ( 100 + porcentajeMaquila) / 100 );
+				this.molCostoCorteMaquila = this.molPrecioCorteBaseMaquila * ( ( 100 + porcentajeMaquila) / 100 );
 				this.molCostoDoblesMaquila = this.molPrecioDoblesBaseMaquila * ( ( 100 + porcentajeMaquila) / 100 );
 				
 	//			console.log("Maquila: " + this.molCostoCorteMaquila);
