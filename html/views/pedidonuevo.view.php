@@ -459,7 +459,7 @@ $_isPedidoPage = true;
         								v-model="molMaterialFiltroRollo"
         								 class="form-control">
         								<option value="0">--Seleccione Material--</option>
-        								<option value='5'>GALVANIZADO</option>
+        								<option value='4'>GALVANIZADO</option>
                                         <option value='27'>NEGRA</option>
                                         <option value='13'>PINTRO POLIESTER</option>
                                         <option value='2'>PINTRO SULTANA</option>
@@ -536,11 +536,11 @@ $_isPedidoPage = true;
     								v-model="molIdMaterialV2"
     								 class="form-control">
     								<option value="0">--Seleccione Material--</option>
-    								<option value='5'>GALVANIZADO</option>
+    								<option value='4'>GALVANIZADO</option>
                                     <option value='27'>NEGRA</option>
-                                    <option value='13'>PINTRO POLIESTER</option>
-                                    <option value='2'>PINTRO SULTANA</option>
-                                    <option value='4'>ZINTRO ALUM</option>
+                                    <option value='19'>PINTRO POLIESTER</option>
+                                    <option value='20'>PINTRO SULTANA</option>
+                                    <option value='22'>ZINTRO ALUM</option>
 
 
     								
@@ -639,9 +639,9 @@ $_isPedidoPage = true;
 </div>
 <!-- Fin Agregar Producto MOLDURA VERSION 2 -->
 
-<!-- <pre>{{ $data.rollosExistencias.length }}</pre> -->
-<!-- <br> -->
-<!-- <pre>{{ $data.rollosExistencias }}</pre> -->
+<!-- <pre>{{ $data.rollosExistencias.length }}</pre>
+<br>
+<pre>{{ $data.rollosExistencias }}</pre> -->
 
 <!-- Agregar Producto MOLDURA -->
 <div class="modal inmodal" id="modalAgregarMoldura" tabindex="-1" role="dialog"
@@ -3690,7 +3690,7 @@ if (Permisos::userIsThisRol(Permisos::$idROOTUSER))
 // //     echo "<pre>{{ \$data }}</pre>";
     
     // echo "<pre>{{ \$data.otrosCargos }}</pre>";
-  echo "<pre>{{ \$data.productos }}</pre>";
+//   echo "<pre>{{ \$data.productos }}</pre>";
 //   echo "<pre>{{ \$data.productosNuevoFiltro }}</pre>";
 //  echo "<pre>{{ \$data.productosNuevoFiltroComercializados }}</pre>";
 //  echo "<pre>{{ \$data.productosNuevoFiltroComercializadosAgruped }}</pre>";
@@ -3712,7 +3712,7 @@ if (Permisos::userIsThisRol(Permisos::$idROOTUSER))
     // echo "<pre>{{ \$data.clientes }}</pre>";
 // 	echo "<pre>{{ \$data.piezasExistencias }}</pre>";
 	
-	 echo "<pre>{{ \$data.productos }}</pre>";
+	//  echo "<pre>{{ \$data.productos }}</pre>";
 }
 
 
