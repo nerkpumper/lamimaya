@@ -1895,7 +1895,7 @@
 					app.productos.push({
 
 						idProducto:  '" .$productos->lstProductos[$i]->getIdProducto() . "',
-						codigo:  '".$codigo."',
+						codigo:  '".addslashes($productos->lstProductos[$i]->getCodigo())."',
                         isMoldura: false,
 						longitud:  '" .$productos->lstProductos[$i]->getLongitud() . "',
 						mlpieza:  " .$productos->lstProductos[$i]->getMlpieza() . ",

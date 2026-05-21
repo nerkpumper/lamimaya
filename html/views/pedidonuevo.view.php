@@ -2641,21 +2641,6 @@ $_isPedidoPage = true;
 	</div>
 
 
-	<!-- <div class="row"> -->
-	<!-- 	<div class="col-md-9"> -->
-	<!-- 		<div class="ibox"> -->
-	<!-- 			<div class="ibox-title"> -->
-	<!-- <!-- 				<span class="pull-right">(<strong>5</strong>) items -->
-	<!-- <!-- 				</span> -->
-	<!-- 				<h5>Items in your cart</h5> -->
-	<!-- 			</div> -->
-	<!-- 			<div class="ibox-content"> -->
-	<!-- 			</div> -->
-	<!-- 		</div> -->
-	<!-- 	</div> -->
-	<!-- </div> -->
-
-
 
 
 	<div class="row">
