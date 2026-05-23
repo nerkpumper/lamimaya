@@ -459,11 +459,11 @@ $_isPedidoPage = true;
         								v-model="molMaterialFiltroRollo"
         								 class="form-control">
         								<option value="0">--Seleccione Material--</option>
-        								<option value='4'>GALVANIZADO</option>
-                                        <option value='27'>NEGRA</option>
-                                        <option value='13'>PINTRO POLIESTER</option>
-                                        <option value='2'>PINTRO SULTANA</option>
-                                        <option value='4'>ZINTRO ALUM</option>
+    								<option value='4'>GALVANIZADO</option>
+                                    <option value='27'>NEGRA</option>
+                                    <option value='19'>PINTRO POLIESTER</option>
+                                    <option value='20'>PINTRO SULTANA</option>
+                                    <option value='22'>ZINTRO ALUM</option>
         								<?php 
 //         								    foreach ($lstMateriales as $mat)
 //         								    {
