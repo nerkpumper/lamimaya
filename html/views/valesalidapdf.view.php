@@ -168,7 +168,6 @@ class PDF extends PDFNerk
 		$this->SetFont('Arial','',10);
 		$this->nextRow();
 		$this->nextRow();
-		$this->putTextCenter("RecibÍ de GALVAMEX S.A. de C.V. el siguiente material", -30);
 		
 		if ($this->__pagoVSEntrega == "SI")
 		{
@@ -888,7 +887,6 @@ class PDF extends PDFNerk
   		    $this->setCurrentY($yInicial + 193);
   		    $this->putText(10,"No nos hacemos responsables por los daños sufridos a la mercancía a consecuencia de un mal transporte, almacenaje e instalación.");
   		    $this->nextRow(-1);
-  		    $this->putText(10,"Favor de consultar el FOLLETO GALVAMEX en la sección Manejo de Materiales para ver recomendaciones.");
   		}
 		  
 		  
@@ -1414,7 +1412,6 @@ class PDF extends PDFNerk
   		    $this->setCurrentY($yInicial + 193);
   		    $this->putText(10,"No nos hacemos responsables por los daños sufridos a la mercancía a consecuencia de un mal transporte, almacenaje e instalación.");
   		    $this->nextRow(-1);
-  		    $this->putText(10,"Favor de consultar el FOLLETO GALVAMEX en la sección Manejo de Materiales para ver recomendaciones.");
   		}
 		  
 		  
