@@ -108,7 +108,8 @@ $_addScript = "
 				
  				<?php 
  					
- 					Form::select("tipoRango", "Tipo Rango", $lstListaTipoRango, "0", "", false, $disableSelect);
+ 					 Form::select("tipoRango", "Tipo Rango", $lstListaTipoRango, "0", "", false, $disableSelect, "claveTipoProducto != \"R\"");
+ 					//Form::select("tipoRango", "Tipo Rango", $lstListaTipoRango, "0", "", false, $disableSelect);
  				?>
  				
  				<div v-if="!esRollo && !esAccesorio">

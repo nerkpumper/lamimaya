@@ -11,8 +11,8 @@
 // define('FOLDER_INCLUDE', '/home/galvamex/appgalvamex/include/');
 // define('FOLDER_INCLUDE', '/home/nerkpump/includeappgalvamex/');
 
-define("FOLDER_MODEL_BASE",FOLDER_INCLUDE . "model/base/");
-define("FOLDER_MODEL",FOLDER_INCLUDE . "model/extend/");
+// define("FOLDER_MODEL_BASE",FOLDER_INCLUDE . "model/base/");
+// define("FOLDER_MODEL",FOLDER_INCLUDE . "model/extend/");
 
 // define("URL_JAVASCRIPT_LIB",URL_BASE . "js/lib/");
 
@@ -96,6 +96,7 @@ class PDF extends PDFNerk
 	
 	var $__horaRecibe = "";
 	var $__fechaCompromiso = "";
+	var $__recogeEntrega = "";
 	
 	var $_recibePersona = "";
 	var $_recibeDomicilio = "";
@@ -572,11 +573,11 @@ $pdf->__folio = $idPedido;
 // $pdf->__domicilio = $pedido->getPedidoDato("cteDomicilio1") . " " . $pedido->getPedidoDato("cteDomicilio2");
 // $pdf->__ciudad = $pedido->getPedidoDato("cteCiudad");
 // $pdf->__rfc = $pedido->getPedidoDato("cteRfc");
-$pdf->__nombre =mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("cteNombre", 'ISO-8859-1', 'UTF-8') . " " . $pedido->getPedidoDato("cteApellidos")));
-$pdf->__fecha = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("fecha_capturado", 'ISO-8859-1', 'UTF-8')));
-$pdf->__domicilio = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("cteDomicilio1", 'ISO-8859-1', 'UTF-8') . " " . $pedido->getPedidoDato("cteDomicilio2") . " " . $pedido->getPedidoDato("cteNumero") . " " . $pedido->getPedidoDato("cteColonia")));
-$pdf->__ciudad = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("cteCiudad", 'ISO-8859-1', 'UTF-8')));
-$pdf->__rfc = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("cteRfc", 'ISO-8859-1', 'UTF-8')));
+$pdf->__nombre =mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("cteNombre") . " " . $pedido->getPedidoDato("cteApellidos")), 'ISO-8859-1', 'UTF-8');
+$pdf->__fecha = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("fecha_capturado")), 'ISO-8859-1', 'UTF-8');
+$pdf->__domicilio = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("cteDomicilio1") . " " . $pedido->getPedidoDato("cteDomicilio2") . " " . $pedido->getPedidoDato("cteNumero") . " " . $pedido->getPedidoDato("cteColonia")), 'ISO-8859-1', 'UTF-8');
+$pdf->__ciudad = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("cteCiudad")), 'ISO-8859-1', 'UTF-8');
+$pdf->__rfc = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("cteRfc")), 'ISO-8859-1', 'UTF-8');
 $pdf->__telefono = $pedido->getPedidoDato("cteTelefonos");
 $pdf->__totalTexto = "";
 $pdf->__conceptoAnticipo = "";
@@ -596,11 +597,11 @@ $pdf->__agente = $pedido->getPedidoDato("capturadoNombre") . " " . $pedido->getP
 // $pdf->_recibeNumero = $pedido->getPedidoDato("numeroEntrega");
 // $pdf->_recibeColonia = $pedido->getPedidoDato("coloniaEntrega");
 // $pdf->_recibeCiudad = $pedido->getPedidoDato("ciudadEntrega");
-$pdf->_recibePersona = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("personaEntrega", 'ISO-8859-1', 'UTF-8')));
-$pdf->_recibeDomicilio = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("domicilioEntrega", 'ISO-8859-1', 'UTF-8')));
-$pdf->_recibeNumero = mb_convert_encoding(mb_strtoupper( $pedido->getPedidoDato("numeroEntrega", 'ISO-8859-1', 'UTF-8')));
-$pdf->_recibeColonia = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("coloniaEntrega", 'ISO-8859-1', 'UTF-8')));
-$pdf->_recibeCiudad =mb_convert_encoding(mb_strtoupper( $pedido->getPedidoDato("ciudadEntrega", 'ISO-8859-1', 'UTF-8')));
+$pdf->_recibePersona = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("personaEntrega")), 'ISO-8859-1', 'UTF-8');
+$pdf->_recibeDomicilio = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("domicilioEntrega")), 'ISO-8859-1', 'UTF-8');
+$pdf->_recibeNumero = mb_convert_encoding(mb_strtoupper( $pedido->getPedidoDato("numeroEntrega")), 'ISO-8859-1', 'UTF-8');
+$pdf->_recibeColonia = mb_convert_encoding(mb_strtoupper($pedido->getPedidoDato("coloniaEntrega")), 'ISO-8859-1', 'UTF-8');
+$pdf->_recibeCiudad =mb_convert_encoding(mb_strtoupper( $pedido->getPedidoDato("ciudadEntrega")), 'ISO-8859-1', 'UTF-8');
 
 $pdf->_observacionPedido = $pedido->getPedidoDato("observacionCaptura");
 

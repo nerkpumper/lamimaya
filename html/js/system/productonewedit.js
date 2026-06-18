@@ -110,7 +110,13 @@ var app = new Vue({
 			if (val != "L")
 			{
 				this.aplicacion = '0=>';
-			}			
+			}
+			
+			if (val == "R")
+			{
+				this.tipoRango = 'R';
+			}
+
 		},
 		material: function(val){
 			xajax_obtenerClaveMaterial(val);			
