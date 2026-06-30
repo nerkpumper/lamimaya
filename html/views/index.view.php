@@ -63,7 +63,7 @@ $_addScript = "
 //  ------------------------VENTAS----------------------------
 
 ?>
-
+<h1>Testing new pipeline</h1>
 <?php if (false && Permisos::userIsThisRol(Permisos::$rol_ROOT) || Permisos::userIsThisRol(Permisos::$rol_ADMINISTRADOR) || Permisos::userIsThisRol(Permisos::$rol_CXCVIEW)): ?>
 
 
