@@ -71,65 +71,6 @@
 		$image = URL_BASE.$image;
 		$datosEstatus .= "app.promotorImage = '".$image."';";
 		
-		
-		
-// 		if (file_exists ("img/" . $pedido->getPedidoDato("id_usuario_autorizado") . ".jpg" )) {
-// 		    $image = "img/" . $pedido->getPedidoDato("id_usuario_autorizado") . ".jpg";
-// 		} else {
-// 		    $image = 'img/noimage.png';
-// 		}
-		
-// 		$image = URL_BASE.$image;
-// 		$datosEstatus .= "app.autorizadoImage = '".$image."';";
-// 		$datosEstatus .= "app.autorizadoPor = '".trim($pedido->getPedidoDato("autorizadoNombre")." ".$pedido->getPedidoDato("autorizadoAPaterno")." ".$pedido->getPedidoDato("autorizadoAMaterno"))."';";
-// 		$datosEstatus .= "app.autorizadoFecha = '".$pedido->getPedidoDato("fecha_autorizado")."';";
-// 		$datosEstatus .= "app.autorizadoObservacion = '".$pedido->getPedidoDato("observacionAutoriza")."';";
-		
-		
-// 		if (file_exists ("img/" . $pedido->getPedidoDato("id_usuario_produccion") . ".jpg" )) {
-// 		    $image = "img/" . $pedido->getPedidoDato("id_usuario_produccion") . ".jpg";
-// 		} else {
-// 		    $image = 'img/noimage.png';
-// 		}
-		
-// 		$image = URL_BASE.$image;
-// 		$datosEstatus .= "app.produccionImage = '".$image."';";
-// 		$datosEstatus .= "app.produccionPor = '".trim($pedido->getPedidoDato("produccionNombre")." ".$pedido->getPedidoDato("produccionAPaterno")." ".$pedido->getPedidoDato("produccionAMaterno"))."';";
-// 		$datosEstatus .= "app.produccionFecha = '".$pedido->getPedidoDato("fecha_produccion")."';";
-		
-// 		if (file_exists ("img/" . $pedido->getPedidoDato("id_usuario_terminado") . ".jpg" )) {
-// 		    $image = "img/" . $pedido->getPedidoDato("id_usuario_terminado") . ".jpg";
-// 		} else {
-// 		    $image = 'img/noimage.png';
-// 		}
-		
-// 		$image = URL_BASE.$image;
-// 		$datosEstatus .= "app.terminadoImage = '".$image."';";
-// 		$datosEstatus .= "app.terminadoPor = '".trim($pedido->getPedidoDato("terminadoNombre")." ".$pedido->getPedidoDato("terminadoAPaterno")." ".$pedido->getPedidoDato("terminadoAMaterno"))."';";
-// 		$datosEstatus .= "app.terminadoFecha = '".$pedido->getPedidoDato("fecha_terminado")."';";
-		
-// 		if (file_exists ("img/" . $pedido->getPedidoDato("id_usuario_entregado") . ".jpg" )) {
-// 		    $image = "img/" . $pedido->getPedidoDato("id_usuario_entregado") . ".jpg";
-// 		} else {
-// 		    $image = 'img/noimage.png';
-// 		}
-		
-// 		$image = URL_BASE.$image;
-// 		$datosEstatus .= "app.entregadoImage = '".$image."';";
-// 		$datosEstatus .= "app.entregadoPor = '".trim($pedido->getPedidoDato("entregadoNombre")." ".$pedido->getPedidoDato("entregadoAPaterno")." ".$pedido->getPedidoDato("entregadoAMaterno"))."';";
-// 		$datosEstatus .= "app.entregadoFecha = '".$pedido->getPedidoDato("fecha_entregado")."';";
-		
-// 		if (file_exists ("img/" . $pedido->getPedidoDato("id_usuario_cancelado") . ".jpg" )) {
-// 		    $image = "img/" . $pedido->getPedidoDato("id_usuario_cancelado") . ".jpg";
-// 		} else {
-// 		    $image = 'img/noimage.png';
-// 		}
-		
-// 		$image = URL_BASE.$image;
-// 		$datosEstatus .= "app.canceladoImage = '".$image."';";
-// 		$datosEstatus .= "app.canceladoPor = '".trim($pedido->getPedidoDato("canceladoNombre")." ".$pedido->getPedidoDato("canceladoAPaterno")." ".$pedido->getPedidoDato("canceladoAMaterno"))."';";
-// 		$datosEstatus .= "app.canceladoFecha = '".$pedido->getPedidoDato("fecha_cancelado")."';";
-		
 		$datosEstatus .= "app.estado = '".$pedido->getPedidoDato("estado")."';";
 		
 		$datosCliente = "";
