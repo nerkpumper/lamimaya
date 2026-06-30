@@ -1,7 +1,7 @@
 name: Deploy via FTP
 
 on:
-  init:
+  push:
     branches: [master, develop]
 
 jobs:
