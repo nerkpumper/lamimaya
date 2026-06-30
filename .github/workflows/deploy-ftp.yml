@@ -1,0 +1,34 @@
+name: Deploy via FTP
+
+on:
+  push:
+    branches: [master, develop]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install git-ftp
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git-ftp
+
+      - name: Deploy html/ to app
+        run: |
+          git config git-ftp.syncroot html/
+          git ftp push \
+            --user "${{ secrets.LAMIMAYA_USERNAME }}" \
+            --passwd "${{ secrets.LAMIMAYA_PASSWORD }}" \
+            ftp://ftp.lamimaya.com/public_html/theapp
+
+      - name: Deploy include/ to include
+        run: |
+          git config git-ftp.syncroot include/
+          git ftp push \
+            --user "${{ secrets.LAMIMAYA_USERNAME }}" \
+            --passwd "${{ secrets.LAMIMAYA_PASSWORD }}" \
+            ftp://ftp.lamimaya.com/applamimaya/include
