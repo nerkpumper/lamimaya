@@ -140,7 +140,7 @@ class PDF extends PDFNerk
 		$yInicial = $this->yInicial;
 		
 	    // Logo
-	    $this->Image('img/galvalogo.jpeg',5,$yInicial-10,50);	   
+	    $this->Image('img/Lamimayagoldshort.png',5,$yInicial-10,30);	   
 	  
 	    // Arial bold 15
 	    $this->SetFont('Arial','B',11);
