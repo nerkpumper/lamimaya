@@ -926,8 +926,8 @@
 		
 // 		$r->starDebug();
 		$blnDoCommit=true;
-		$idProductoMoldura = 386;
-		$idProductoMaquila = 394;
+		$idProductoMoldura = 9;
+		$idProductoMaquila = 10;
 		
 		$pedido = new ModeloPedido();
 

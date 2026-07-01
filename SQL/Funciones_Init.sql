@@ -9,14 +9,14 @@ BEGIN
 	FROM cotizaciondetalle cd
 	INNER JOIN cotizacion c ON cd.idcotizacion = c.idcotizacion
 	INNER JOIN producto p ON cd.idproducto = p.idProducto
-	WHERE cd.idproducto NOT IN (386, 394) 
+	WHERE cd.idproducto NOT IN (9, 10) 
 	  AND cd.idcotizacion = pIdCotizacion
 	  AND DATE_FORMAT(p.lastUpdate, '%Y-%m-%d %H:%i') > DATE_FORMAT(c.fecha_capturado, '%Y-%m-%d %H:%i');
 	SELECT COUNT(*) INTO cuantosMoldura
 	FROM cotizaciondetalle cd
 	INNER JOIN cotizacion c ON cd.idcotizacion = c.idcotizacion
 	INNER JOIN rollo r ON cd.idRolloBase = r.idrollo
-	WHERE cd.idproducto = 386
+	WHERE cd.idproducto = 9
 	  AND cd.idcotizacion = pIdCotizacion
 	  AND DATE_FORMAT(r.lastUpdate, '%Y-%m-%d %H:%i') > DATE_FORMAT(c.fecha_capturado, '%Y-%m-%d %H:%i');  
 	IF (cuantosNoMoldura + cuantosMoldura) > 0 THEN
@@ -1531,7 +1531,7 @@ BEGIN
 				(pd.partida * pd.cantidad),
                   IF(pro.producto_tipoProducto_idTipoProducto = 1 AND pro.producto_unidad_idUnidad = 4,
                      pd.partida * pd.cantidad * pro.longitud *IF(pd.pesoKiloML = 0, (SELECT pesokgmt FROM `viewrollos` WHERE idRollo = 2 ), pd.pesoKiloML),
-                     IF(pd.idProducto = 386,
+                     IF(pd.idProducto = 9,
                         IF(pd.pesoKiloML = 0,(SELECT pesokgmt FROM `viewrollos` WHERE idRollo = pd.idRolloBase ), pd.pesoKiloML)*cantidad *      															ceiling((partida/(FLOOR((rollo.pies* 30.5)/pd.desarrollo))))                                                
                         ,(pd.partida *pd.cantidad* IF(pd.pesoKiloML = 0,(SELECT pesokgmt FROM `viewrollos` WHERE idRollo = 2 ), pd.pesoKiloML)))))- 
 					IF(p.recogeentrega = 'OBRA',
@@ -2224,14 +2224,14 @@ BEGIN
 	FROM pedidodetalle pd
 	INNER JOIN pedido p ON pd.idpedido = p.idpedido
 	INNER JOIN producto pr ON pd.idproducto = pr.idProducto
-	WHERE pd.idproducto NOT IN (386, 394) 
+	WHERE pd.idproducto NOT IN (9, 10) 
 	  AND pd.idpedido = pIdPedido
 	  AND DATE_FORMAT(pr.lastUpdate, '%Y-%m-%d %H:%i') > DATE_FORMAT(p.fecha_updateprecios, '%Y-%m-%d %H:%i');
 	SELECT COUNT(*) INTO cuantosMoldura
 	FROM pedidodetalle pd
 	INNER JOIN pedido p ON pd.idpedido = p.idpedido
 	INNER JOIN rollo r ON pd.idRolloBase = r.idrollo
-	WHERE pd.idproducto = 386
+	WHERE pd.idproducto = 9
 	  AND pd.idpedido = pIdPedido
 	  AND DATE_FORMAT(r.lastUpdate, '%Y-%m-%d %H:%i') > DATE_FORMAT(p.fecha_updateprecios, '%Y-%m-%d %H:%i');  
 	IF (cuantosNoMoldura + cuantosMoldura) > 0 THEN

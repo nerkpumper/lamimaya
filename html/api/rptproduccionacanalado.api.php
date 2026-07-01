@@ -53,7 +53,7 @@ public function getProduccionAcanaladoMensual(){
     INNER JOIN producto on pedidodetalle.idProducto = producto.idProducto
     INNER JOIN aplicacion on producto.producto_aplicacion_idAplicacion = aplicacion.idAplicacion
     WHERE  date_format(registroproducciondetalle.fecha_captura, '%Y')= '2022' and registroproducciondetalle.idProducto
-    <> 386 and registroproducciondetalle.idSucursal='".$idSucursal."'
+    <> 9 and registroproducciondetalle.idSucursal='".$idSucursal."'
     GROUP BY mes 
     ORDER BY `mes` ASC";
 
@@ -83,7 +83,7 @@ public function getProduccionAcanaladoMensual(){
         INNER JOIN producto on pedidodetalle.idProducto = producto.idProducto
         INNER JOIN aplicacion on producto.producto_aplicacion_idAplicacion = aplicacion.idAplicacion
         WHERE  date_format(registroproducciondetalle.fecha_captura, '%Y-%m-%d')= curdate() and registroproducciondetalle.idProducto
-        <> 386 and registroproducciondetalle.idSucursal= 1 and aplicacion.nombreAplicacion in('RN-100', 'R-101', 'OG-100', 'R-72', 'LOSACERO')
+        <> 9 and registroproducciondetalle.idSucursal= 1 and aplicacion.nombreAplicacion in('RN-100', 'R-101', 'OG-100', 'R-72', 'LOSACERO')
         
         GROUP BY aplicacion.nombreAplicacion";
     

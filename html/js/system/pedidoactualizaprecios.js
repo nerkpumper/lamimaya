@@ -143,8 +143,8 @@
 			molPrecioCorteBase: 10,
 			
 			molIndexMoldura: -1,
-			molIdProducto: 386,
-			molIdMaquila: 394,
+			molIdProducto: 9,
+			molIdMaquila: 10,
 			molCantidad: 1,
 			molMoldurasXLaminas: 1,
 			molMoldurasXLaminaTodos: 1,
@@ -2356,7 +2356,7 @@
 					for (var indexListado = 0 ; indexListado < this.listadoPedido.length ; indexListado ++)
 					{
 						
-						if (this.listadoPedido[indexListado].idProducto == 394)
+						if (this.listadoPedido[indexListado].idProducto == 10)
 						{
 							auxDesc = this.listadoPedido[indexListado].fullDescripcion;
 						}
@@ -2763,7 +2763,7 @@
 					for (var indexListado = 0 ; indexListado < this.listadoPedido.length ; indexListado ++)
 					{
 						
-						if (this.listadoPedido[indexListado].idProducto == 394)
+						if (this.listadoPedido[indexListado].idProducto == 10)
 						{
 							auxDesc = this.listadoPedido[indexListado].fullDescripcion;
 						}
@@ -4226,7 +4226,7 @@
 					
 					
 					
-					//precio de las molduras 386
+					//precio de las molduras 9
 					if (this.listadoPedido[i].idProducto == this.molIdProducto)
 					{
 	//					this.listadoPedido[i].molLaminasCobrar = Math.ceil(this.listadoPedido[i].cantidad / this.listadoPedido[i].molMoldurasXLamina);

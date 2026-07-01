@@ -49,8 +49,8 @@ class PDF extends PDFNerk
 	var $_rowsByHoja = 25;
 	
 	var $yInicial = 10; 
-	var $idProductoMoldura = 386;
-	var $idProductoMaquila = 394;
+	var $idProductoMoldura = 9;
+	var $idProductoMaquila = 10;
 	
 	
 	var $__recogeEntrega = "";

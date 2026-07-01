@@ -973,8 +973,8 @@
 		
 // 		$r->starDebug();
 		$blnDoCommit=true;
-		$idProductoMoldura = 386;
-		$idProductoMaquila = 394;
+		$idProductoMoldura = 9;
+		$idProductoMaquila = 10;
 		
 // 		$r->mostrarAviso("error line 933"); return $r;
 		

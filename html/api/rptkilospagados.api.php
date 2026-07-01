@@ -20,7 +20,7 @@ class APIvtakilos extends APIBase{
                 SELECT  rollo.idRollo, rollo.codigo, rollo.descripcion,  
                 SUM(if(producto.producto_unidad_idUnidad = 3 ,pedidodetalle.partida,0))as kilosRollo, 
                 SUM(if(producto.producto_unidad_idUnidad = 1 or producto.producto_unidad_idUnidad = 4 ,pedidodetalle.partida * pedidodetalle.cantidad * pedidodetalle.pesoKiloML * if(producto.longitud= 0,1,producto.longitud) ,0))kilosAcanalado,
-                SUM(if(pedidodetalle.idProducto = 386 , rollo.pesokgmt*  pedidodetalle.partida * (pedidodetalle.cantidad/(round((rollo.pies*30.5)/ pedidodetalle.desarrollo))),0))as kilosMoldura
+                SUM(if(pedidodetalle.idProducto = 9 , rollo.pesokgmt*  pedidodetalle.partida * (pedidodetalle.cantidad/(round((rollo.pies*30.5)/ pedidodetalle.desarrollo))),0))as kilosMoldura
                 FROM `pedidodetalle`
                 INNER JOIN producto on producto.idProducto = pedidodetalle.idProducto
                 INNER JOIN rollo on pedidodetalle.idRolloBase = rollo.idRollo

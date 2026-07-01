@@ -392,7 +392,7 @@ src="https://www.google.com/maps/embed?q=LOS OLIVOS LEON GUANAJUATO" width="600"
 									
 							</p>
 							
-							<div v-show="item.molidproductolisa > 0 && item.detIdProducto == 386" class="alert alert-info">
+							<div v-show="item.molidproductolisa > 0 && item.detIdProducto == 9" class="alert alert-info">
 								Para esta Moldura se ocupar&aacute;n 
 								<strong>{{ item.molLaminasATomar }}</strong> 
 								{{ item.molcodigolisa }}<a class="alert-link" href="#"> {{ item.moldescripcionlisa }}</a>.
@@ -416,7 +416,7 @@ src="https://www.google.com/maps/embed?q=LOS OLIVOS LEON GUANAJUATO" width="600"
                                 <div class="clearfix"></div>
                             </div>
                             
-                            <div v-show="item.molidproductolisa == 0 && item.detIdProducto == 386" class="alert alert-warning">
+                            <div v-show="item.molidproductolisa == 0 && item.detIdProducto == 9" class="alert alert-warning">
 								Para esta Moldura no se cuenta con L&aacute;minas Lisas
 								<br>
 								<div v-show="item.inventarioinformativo.length > 0" class="row">
@@ -450,12 +450,12 @@ src="https://www.google.com/maps/embed?q=LOS OLIVOS LEON GUANAJUATO" width="600"
         										<thead>
         											<tr>
         												<th>Sucursal</th>
-        												<th v-show="item.detIdProducto != 386 && item.detIdProducto != 394">
+        												<th v-show="item.detIdProducto != 9 && item.detIdProducto != 10">
         													Existencia
         													<span v-show="item.sesacade == 'INVENTARIO'"> PZAS</span>
         												    <span v-show="item.sesacade == 'ROLLO'"> KG</span>
         												</th>
-        												<th v-show="sePuedeAsignar && item.sesacade == 'INVENTARIO' && item.detIdProducto != 386 && item.detIdProducto != 394">Apartado</th>
+        												<th v-show="sePuedeAsignar && item.sesacade == 'INVENTARIO' && item.detIdProducto != 9 && item.detIdProducto != 10">Apartado</th>
         												<th v-show="sePuedeAsignar">Asignar</th>
         												<th v-show="sePuedeAsignar && item.sesacade == 'ROLLO'">Kilos</th>
         											</tr>
@@ -463,10 +463,10 @@ src="https://www.google.com/maps/embed?q=LOS OLIVOS LEON GUANAJUATO" width="600"
         										<tbody>
         											<tr v-for="(invs, invsindex) in item.inventariosucursal">
         												<td>{{ invs.nombre }}</td>
-        												<td  v-show="item.detIdProducto != 386 && item.detIdProducto != 394">{{ invs.inventarioexistencia }} 
+        												<td  v-show="item.detIdProducto != 9 && item.detIdProducto != 10">{{ invs.inventarioexistencia }} 
         												    
         												</td>
-        												<td v-show="sePuedeAsignar && item.sesacade == 'INVENTARIO'  && item.detIdProducto != 386 && item.detIdProducto != 394">{{ invs.inventarioapartado }}</td>
+        												<td v-show="sePuedeAsignar && item.sesacade == 'INVENTARIO'  && item.detIdProducto != 9 && item.detIdProducto != 10">{{ invs.inventarioapartado }}</td>
         												<td v-show="sePuedeAsignar"><input type="text"
         													v-model="invs.asignar"
         													oninput="this.value = this.value.replace(/[^0-9.\t]/g, '').replace(/(\..*)\./g, '$1'); "

@@ -6,8 +6,8 @@ var app = new Vue({
 		despachandoAlgo: false,
 		
 		//Moldura
-		molIdProductoMoldura: 386,
-		molIdProductoMaquilaMoldura: 394,
+		molIdProductoMoldura: 9,
+		molIdProductoMaquilaMoldura: 10,
 		
 		//para controlar si se despacha el pedido o no
 		seleccionarPedido: true,

@@ -35,8 +35,8 @@
 	function cargarPedido($idPedido)
 	{
 		$r = new xajaxResponse();
-        $idProductoMoldura = 386;
-        $idProductoMaquilaMoldura = 394;
+        $idProductoMoldura = 9;
+        $idProductoMaquilaMoldura = 10;
 		$pedido = new ModeloPedido();
 
 		$pedido->getPedido($idPedido);
@@ -178,8 +178,8 @@
 	function cargarPedidoDetalle($idPedidoDetalle, $cerrarsa = true)
 	{
 		$r = new xajaxResponse();
-		$idProductoMoldura = 386;
-		$idProductoMaquilaMoldura = 394;
+		$idProductoMoldura = 9;
+		$idProductoMaquilaMoldura = 10;
 
 		$pedido = new ModeloPedido();
 
@@ -764,7 +764,7 @@
 	    
 	    if ($pedidoDetalle->getIdPedidoDetalle() <= 0)
 	    {
-	        $r->script("saError(\"No se pudo obtener información del Detalle de Pedido.\");");
+	        $r->script("saError(\"No se pudo obtener informaciï¿½n del Detalle de Pedido.\");");
 	        return $r;
 	    }
 	    
@@ -804,7 +804,7 @@
 
 		if ($producto->getIdProducto() <= 0)
 		{
-			$r->script("saError(\"No se pudo obtener información del Producto.\");");
+			$r->script("saError(\"No se pudo obtener informaciï¿½n del Producto.\");");
 			return $r;
 		}
 
@@ -905,7 +905,7 @@
 	function darSalidaAInventarioFromStockNoRolloScrap($idPedidoDetalle, $idPedido, $cantidad)
 	{
 	    $r = new xajaxResponse();
-	    $idProductoMoldura = 386;
+	    $idProductoMoldura = 9;
 	    
 // 	    $producto = new ModeloProducto();
 	    
@@ -913,7 +913,7 @@
 	    
 // 	    if ($producto->getIdProducto() <= 0)
 // 	    {
-// 	        $r->script("saError(\"No se pudo obtener información del Producto.\");");
+// 	        $r->script("saError(\"No se pudo obtener informaciï¿½n del Producto.\");");
 // 	        return $r;
 // 	    }
 	    
@@ -1000,7 +1000,7 @@
 	function darSalidaAInventarioFromStockNoRolloLaminaYScrap($idPedidoDetalle, $idProducto, $idPedido, $cantidad, $idRemisionRollo, $noMolduras)
 	{
 	    $r = new xajaxResponse();
-	    $idProductoMoldura = 386;
+	    $idProductoMoldura = 9;
 	    
 	    $producto = new ModeloProducto();
 	    
@@ -1008,7 +1008,7 @@
 	    
 	    if ($producto->getIdProducto() <= 0)
 	    {
-	        $r->script("saError(\"No se pudo obtener información del Producto.\");");
+	        $r->script("saError(\"No se pudo obtener informaciï¿½n del Producto.\");");
 	        return $r;
 	    }
 	    
@@ -1030,7 +1030,7 @@
 	    $inv->setMovimientoSALIDA();
 	    $inv->setSalidaDespachoSI();
 	    $inv->setCantidad($cantidad);
-	    $inv->setObservaciones(mb_convert_encoding("Láminas tomadas para desarrollar ".$noMolduras." Molduras", 'UTF-8', 'ISO-8859-1');
+	    $inv->setObservaciones(mb_convert_encoding("Lï¿½minas tomadas para desarrollar ".$noMolduras." Molduras", 'UTF-8', 'ISO-8859-1');
 	    $inv->setIdPedidoDetalle($idPedidoDetalle);
 	    $inv->setDateAndUser("movimiento");
 	    $inv->setIdRemisionRollo($idRemisionRollo);
@@ -1048,7 +1048,7 @@
 	        $invMol->setMovimientoSALIDA();
 	        $invMol->setSalidaDespachoSI();
 	        $invMol->setCantidad($noMolduras);
-	        $invMol->setObservaciones(mb_convert_encoding("Surtido de Pedido Molduras (de Lámina, 'UTF-8', 'ISO-8859-1')"));
+	        $invMol->setObservaciones(mb_convert_encoding("Surtido de Pedido Molduras (de Lï¿½mina, 'UTF-8', 'ISO-8859-1')"));
 	        $invMol->setIdPedidoDetalle($idPedidoDetalle);
 	        $invMol->setDateAndUser("movimiento");
 	        $invMol->setIdRemisionRollo(0);

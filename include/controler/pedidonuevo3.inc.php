@@ -272,8 +272,8 @@
 				$renglon = new ModeloCotizaciondetalle();
 				$renglon = $cotizacion->lstRenglones[$i];
 				
-				$molIdProducto = 386;
-				$molIdMaquila = 394;
+				$molIdProducto = 9;
+				$molIdMaquila = 10;
 				$idProducto = $producto->getIdProducto();
 
 				$rollo = new ModeloRollo();
@@ -2050,8 +2050,8 @@
 		
 		// $r->starDebug();
 		$blnDoCommit=true;
-		$idProductoMoldura = 386;
-		$idProductoMaquila = 394;
+		$idProductoMoldura = 9;
+		$idProductoMaquila = 10;
 		
 		// $r->mostrarAviso("error line " . __LINE__); return $r;
 // 		$r->mostrarAviso("error line 933"); return $r;

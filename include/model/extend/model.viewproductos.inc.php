@@ -363,7 +363,7 @@
 						IFNULL(f.favorito, 'NO') favorito
 					from (select idproducto, count(*) vendidos 
 							from pedidodetalle 
-							where idproducto not in (386, 394)
+							where idproducto not in (9, 10)
 							group by idproducto order by 2 desc limit 50) datos
 					inner join viewproductos v on datos.idproducto = v.idproducto		
 					left join favorito f on v.idproducto = f.idproducto and f.idusuario = ".$idUsuario."	

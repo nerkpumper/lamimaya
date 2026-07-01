@@ -57,7 +57,7 @@
                                        date_format(pedido.fecha_capturado, '%d-%m-%Y') as fecha, pedido.idpedido pedido, 
                                        pedido.estado, pedido.saldada, pedido.total totalpedido, 
                                        pedido.saldo, pd.idproducto, pd.renglon,
-                                	   pd.partida as PZAS, if (pd.idproducto = 386,  concat('MOLDURA ', replace(rollomol.descauto, 'ROLLO ', '')), vp.descauto) as descripcion, 
+                                	   pd.partida as PZAS, if (pd.idproducto = 9,  concat('MOLDURA ', replace(rollomol.descauto, 'ROLLO ', '')), vp.descauto) as descripcion, 
                                        (pd.total / pd.partida) as precioXPieza,
                                        (pd.total / if( vp.mlpieza > 0 , vp.mlpieza * pd.partida, pd.cantidad * pd.partida)) as precioXML,
                                        if( vp.mlpieza > 0 , vp.mlpieza * pd.partida, pd.cantidad * pd.partida) as ML, 
@@ -181,7 +181,7 @@
 
 		if (!$entra)
 		{
-			$r->saInfo("No se encontró información.");
+			$r->saInfo("No se encontrï¿½ informaciï¿½n.");
 		}
 
 		return $r;

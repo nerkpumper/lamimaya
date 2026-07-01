@@ -33,7 +33,7 @@ public function getProduccionMoldura(){
 sum(pedidodetalle.partida) as cant, sum(pedidodetalle.partida * pedidodetalle.cantidad)as totalml,  sum(pedidodetalle.dobleces * pedidodetalle.partida) as totaldobl FROM `pedidodetalle` 
 inner JOIN producto on producto.idProducto = pedidodetalle.idProducto
 inner join pedido on pedido.idPedido = pedidodetalle.IdPedido
-where pedidodetalle.idProducto in(386, 394) and pedido.estado <> 'CANCELADO'  AND  date_format(pedidodetalle.fecha_despachado, '%Y')= date_format(curdate(), '%Y') and pedidodetalle.idSucursalDespachado= ".$idSucursal."  GROUP BY 1
+where pedidodetalle.idProducto in(9, 10) and pedido.estado <> 'CANCELADO'  AND  date_format(pedidodetalle.fecha_despachado, '%Y')= date_format(curdate(), '%Y') and pedidodetalle.idSucursalDespachado= ".$idSucursal."  GROUP BY 1
 ORDER BY `pedidodetalle`.`fecha_despachado`  ASC";
 
     $s = new ModeloRegistroproducciondetalle();

@@ -43,8 +43,8 @@ function myLog($msg = "")
 }
 
 
-$idProductoMoldura = 386;
-$idProductoMaquilaMoldura = 394;
+$idProductoMoldura = 9;
+$idProductoMaquilaMoldura = 10;
 $idProductoISOCOP = 439;
 
 

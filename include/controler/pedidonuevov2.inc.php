@@ -53,7 +53,7 @@
 	        
 	        //         if (in_array($fecha, $festivos))
 	            //         {
-	            //             //echo "<br><br><br>" . $fecha. "    <br><br><br>sflñkjsdakljfjslfjsñd<br><br><br>";
+	            //             //echo "<br><br><br>" . $fecha. "    <br><br><br>sflï¿½kjsdakljfjslfjsï¿½d<br><br><br>";
 	            //             $sumar = false;
 	            //             $tipo = "Festivo";
 	            //         }
@@ -837,8 +837,8 @@
 		global $objSession;
 		$r = new xajaxResponse();
 		$blnDoCommit=true;
-		$idProductoMoldura = 386;
-		$idProductoMaquila = 394;
+		$idProductoMoldura = 9;
+		$idProductoMaquila = 10;
 		$r->mostrarAviso("inicio"); return $r;
 		$pedido = new ModeloPedido();
 

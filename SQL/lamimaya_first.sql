@@ -1209,7 +1209,7 @@ INSERT INTO invzstocknorollo (idRemisionRollo, idProducto, existencia) VALUES ()
 			   AND idSucursal = NEW.idSucursal;
 		ELSE
 			/* Si no es moldura, entonces actualizar las existencias. */
-			IF NEW.idProducto <> 386 THEN
+			IF NEW.idProducto <> 9 THEN
 				UPDATE producto 
 				   SET existencia = existencia - NEW.cantidad, apartado = apartado - NEW.cantidad, apartadoReal = apartadoReal - NEW.cantidad
 				 WHERE idProducto = NEW.idProducto;
@@ -2233,7 +2233,7 @@ CREATE TRIGGER `pedidodetalle_BEFORE_INSERT` BEFORE INSERT ON `pedidodetalle` FO
        vIdUsuarioPromotor = 32 /*Lety*/ THEN	
         SET NEW.comision = 0.5;
     END IF;
-	IF NEW.idProducto = 394 THEN
+	IF NEW.idProducto = 10 THEN
         SET NEW.comision = 2;        
     END IF;
     IF vIdUsuarioPromotor = 10 AND vIdCliente <= 548 AND vIdCliente <> 342 THEN	
@@ -2314,14 +2314,14 @@ CREATE TRIGGER `pedidodetalle_BEFORE_INSERT` BEFORE INSERT ON `pedidodetalle` FO
     IF vIdUsuarioPromotor = 34 /*Oscar Rios, cero comision*/ THEN	
         SET NEW.comision = 0;
     END IF;
-    IF NEW.idProducto <> 386 THEN 
+    IF NEW.idProducto <> 9 THEN 
     SET NEW.costoProducto = (vpesocu * vpesokgmt * 1.16)* NEW.partida * NEW.cantidad;
     END IF;
     SELECT costo, producto_tipoProducto_idTipoProducto INTO vcostoProducto, vtipoProducto FROM producto WHERE idProducto = NEW.idProducto;
     IF NEW.idRolloBase = 1 THEN 
     SET NEW.costoProducto = vcostoProducto * NEW.partida * NEW.cantidad;
     END IF;
-     IF NEW.idProducto = 386 THEN  
+     IF NEW.idProducto = 9 THEN  
 		SET NEW.costoProducto = vpesocu * vpesokgmt* 1.16 * NEW.cantidad * (NEW.partida/(FLOOR((vpies*30.5)/ NEW.desarrollo)));
     END IF;
      IF vtipoProducto = 5 THEN  

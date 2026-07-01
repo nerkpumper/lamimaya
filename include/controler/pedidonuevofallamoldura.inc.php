@@ -56,7 +56,7 @@
 	        
 	        //         if (in_array($fecha, $festivos))
 	            //         {
-	            //             //echo "<br><br><br>" . $fecha. "    <br><br><br>sflñkjsdakljfjslfjsñd<br><br><br>";
+	            //             //echo "<br><br><br>" . $fecha. "    <br><br><br>sflï¿½kjsdakljfjslfjsï¿½d<br><br><br>";
 	            //             $sumar = false;
 	            //             $tipo = "Festivo";
 	            //         }
@@ -894,8 +894,8 @@
 		
 // 		$r->starDebug();
 		$blnDoCommit=true;
-		$idProductoMoldura = 386;
-		$idProductoMaquila = 394;
+		$idProductoMoldura = 9;
+		$idProductoMaquila = 10;
 		
 		$pedido = new ModeloPedido();
 

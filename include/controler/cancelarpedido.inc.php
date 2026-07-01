@@ -223,7 +223,7 @@
 	function cancelarPedido($idPedido, $motivoCancelacion)
 	{
 		$r = new xajaxResponse();
-        $idProductoMoldura = 386;
+        $idProductoMoldura = 9;
 
 		$pedido = new ModeloPedido();
 		

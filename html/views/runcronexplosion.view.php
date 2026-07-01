@@ -141,9 +141,9 @@ $detallesProductosAux = array();
 
 
 
-$idProductoMoldura = 386;
+$idProductoMoldura = 9;
 
-$idProductoMaquilaMoldura = 394;
+$idProductoMaquilaMoldura = 10;
 
 $idProductoISOCOP = 439;
 

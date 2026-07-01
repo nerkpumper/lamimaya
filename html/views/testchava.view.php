@@ -87,10 +87,10 @@ $pedido1 = new ModeloPedido();
            
             
         $lstDetallePedido = $pedido1->getAll("date_format(pedido.fecha_capturado, '%m') as mes,
-        sum(if(pedidodetalle.idRolloBase<>1 AND pedidodetalle.idProducto <>386 AND pedidodetalle.idProducto <>394,pedidodetalle.partida*pedidodetalle.precioUnitario*pedidodetalle.cantidad,0))as ventaDeRollo,
+        sum(if(pedidodetalle.idRolloBase<>1 AND pedidodetalle.idProducto <>9 AND pedidodetalle.idProducto <>10,pedidodetalle.partida*pedidodetalle.precioUnitario*pedidodetalle.cantidad,0))as ventaDeRollo,
         sum(if(pedidodetalle.idRolloBase=1,pedidodetalle.partida*pedidodetalle.precioUnitario*pedidodetalle.cantidad,0))as ventaStock,
-        sum(if(pedidodetalle.idProducto= 386,pedidodetalle.partida*pedidodetalle.precioUnitario,0))as ventaMoldura,
-        sum(if(pedidodetalle.idProducto= 394,pedidodetalle.partida*pedidodetalle.precioUnitario,0))as ventaMaquila
+        sum(if(pedidodetalle.idProducto= 9,pedidodetalle.partida*pedidodetalle.precioUnitario,0))as ventaMoldura,
+        sum(if(pedidodetalle.idProducto= 10,pedidodetalle.partida*pedidodetalle.precioUnitario,0))as ventaMaquila
         ",
         "INNER JOIN pedidodetalle ON pedido.idPedido = pedidodetalle.IdPedido  ",
         "date_format(pedido.fecha_capturado, '%Y') = ".$anio."

@@ -381,9 +381,9 @@ function cargardetalleventas($anio)
     //  IF(date_format(pedido.fecha_capturado, '%m')=11,'Noviembre',
     //  IF(date_format(pedido.fecha_capturado, '%m')=12,'Diciembre',    
     //    date_format(pedido.fecha_capturado, '%m')))))))))))))as mesDes,
-    //      SUM(if(pedidodetalle.idProducto <> 386 ,pedidodetalle.partida * pedidodetalle.cantidad * (rollo.pesocu* rollo.pesokgmt *1.16),0))as costoDerivados, 
+    //      SUM(if(pedidodetalle.idProducto <> 9 ,pedidodetalle.partida * pedidodetalle.cantidad * (rollo.pesocu* rollo.pesokgmt *1.16),0))as costoDerivados, 
     //      SUM(if(pedidodetalle.idRolloBase=1 ,pedidodetalle.partida * pedidodetalle.cantidad * producto.costo,0))as costoStock, 
-    //      SUM(if(pedidodetalle.idProducto = 386 ,rollo.pesocu * rollo.pesokgmt* 1.16 * pedidodetalle.partida * (pedidodetalle.cantidad/(round((rollo.pies*30.5)/ pedidodetalle.desarrollo))),0))as costoMolduras 
+    //      SUM(if(pedidodetalle.idProducto = 9 ,rollo.pesocu * rollo.pesokgmt* 1.16 * pedidodetalle.partida * (pedidodetalle.cantidad/(round((rollo.pies*30.5)/ pedidodetalle.desarrollo))),0))as costoMolduras 
     //       ",
          
     //      "INNER JOIN pedidodetalle ON pedido.idPedido = pedidodetalle.IdPedido 
@@ -416,9 +416,9 @@ function cargardetalleventas($anio)
         IF(date_format(pedido.fecha_capturado, '%m')=12,'Diciembre',    
         date_format(pedido.fecha_capturado, '%m')))))))))))))as mesDes,
          
-         SUM(if(pedidodetalle.idProducto <> 386 AND pedidodetalle.idRolloBase>1 ,pedidodetalle.costoProducto,0))as costoDerivados, 
+         SUM(if(pedidodetalle.idProducto <> 9 AND pedidodetalle.idRolloBase>1 ,pedidodetalle.costoProducto,0))as costoDerivados, 
          SUM(if(pedidodetalle.idRolloBase=1 ,pedidodetalle.costoProducto,0))as costoStock, 
-         SUM(if(pedidodetalle.idProducto = 386 ,pedidodetalle.costoProducto,0))as costoMolduras,
+         SUM(if(pedidodetalle.idProducto = 9 ,pedidodetalle.costoProducto,0))as costoMolduras,
          SUM(pedidodetalle.costoProducto)as totalcosto",
 
          "INNER JOIN pedidodetalle ON pedido.idPedido = pedidodetalle.IdPedido 
@@ -485,10 +485,10 @@ function cargardetalleventas($anio)
      IF(date_format(pedido.fecha_capturado, '%m')=11,'Noviembre',
      IF(date_format(pedido.fecha_capturado, '%m')=12,'Diciembre',    
        date_format(pedido.fecha_capturado, '%m')))))))))))))as mesDes,
-        sum(if(pedidodetalle.idRolloBase<>1 AND pedidodetalle.idProducto <>386 AND pedidodetalle.idProducto <>394,pedidodetalle.partida*pedidodetalle.precioUnitario*pedidodetalle.cantidad,0))as ventaDeRollo,
+        sum(if(pedidodetalle.idRolloBase<>1 AND pedidodetalle.idProducto <>9 AND pedidodetalle.idProducto <>10,pedidodetalle.partida*pedidodetalle.precioUnitario*pedidodetalle.cantidad,0))as ventaDeRollo,
         sum(if(pedidodetalle.idRolloBase=1,pedidodetalle.partida*pedidodetalle.precioUnitario*pedidodetalle.cantidad,0))as ventaStock,
-        sum(if(pedidodetalle.idProducto= 386,pedidodetalle.partida*pedidodetalle.precioUnitario,0))as ventaMoldura,
-        sum(if(pedidodetalle.idProducto= 394,pedidodetalle.partida*pedidodetalle.precioUnitario,0))as ventaMaquila
+        sum(if(pedidodetalle.idProducto= 9,pedidodetalle.partida*pedidodetalle.precioUnitario,0))as ventaMoldura,
+        sum(if(pedidodetalle.idProducto= 10,pedidodetalle.partida*pedidodetalle.precioUnitario,0))as ventaMaquila
         ",
         "INNER JOIN pedidodetalle ON pedido.idPedido = pedidodetalle.IdPedido  ",
         "date_format(pedido.fecha_capturado, '%Y') = ".$anio."

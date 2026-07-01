@@ -277,7 +277,7 @@ var app = new Vue({
             var vm = this;
             axios.get(URL_BASE + 'api/cxccomisionespromotor.api.php?method=getObjetivo&tipo='+tipo+'&mes='+mes+'&anio='+this.anio+'&idPromotor='+this.filtro.promotor, getAxiosHeaders())
             .then(function (response) {
-                // console.log(response.data);
+                console.log(response.data);
                 if (!response.data.error){
                     // console.log("Objetivo " + response.data.objetivo);
                     app.objetivoParaIncentivo = response.data.objetivo; 

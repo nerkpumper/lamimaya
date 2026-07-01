@@ -95,8 +95,8 @@
 	    
 	    
 		$vsd = new ModeloValesalidadetalle();
-		$idProductoMoldura = 386;
-		$idProductoMaquilaMoldura = 394;
+		$idProductoMoldura = 9;
+		$idProductoMaquilaMoldura = 10;
 		
 // 		$lst = $vsd->getAll(" valesalidadetalle.fecha_despacho, valesalidadetalle.idValeSalidaDetalle, valesalidadetalle.cantidad, pd.idProducto, pd.cantidad as mlkg, pd.cantidad as m2inml, pd.explotarUnidad,
 // 							 vp.codigo, vp.tipoProducto, vp.aplicacion, vp.material, vp.shortUnidad, vp.calibre, vp.pies, vp.descripcion, pd.molDescMaquila ",
