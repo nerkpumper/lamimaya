@@ -56,7 +56,7 @@ if ($rollo->getIdRollo() == 0)
 }
 
 $claveRollo = $rollo->getCodigo();
-$descripcionRollo = str_replace("<br />", " ", normaliza (mb_convert_encoding(($rollo->getDescripcion(, 'ISO-8859-1', 'UTF-8')))));
+$descripcionRollo = str_replace("<br />", " ", normaliza (mb_convert_encoding(($rollo->getDescripcion()), 'ISO-8859-1', 'UTF-8')));
 //$descripcionRollo = $rollo->getDescripcion();
 //echo $descripcionRollo;
 //exit;				

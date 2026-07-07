@@ -49,14 +49,14 @@
 		
 		
 		$r->script("
-				    app.nombre = '" . mb_convert_encoding($cliente->getNombre(, 'UTF-8', 'ISO-8859-1')) . "';
-				    app.apellidos = '" . mb_convert_encoding($cliente->getApellidos(, 'UTF-8', 'ISO-8859-1')) . "';
-				    app.empresa = '" . mb_convert_encoding($cliente->getEmpresa(, 'UTF-8', 'ISO-8859-1')) . "';
-				    app.domicilio1 = '" . mb_convert_encoding($cliente->getDomicilio1(, 'UTF-8', 'ISO-8859-1')) . "';
-				    app.domicilio2 = '" . mb_convert_encoding($cliente->getDomicilio2(, 'UTF-8', 'ISO-8859-1')) . "';
-				    app.telefonos = '" . mb_convert_encoding($cliente->getTelefonos(, 'UTF-8', 'ISO-8859-1')) . "';
-                    app.email = '" . mb_convert_encoding($cliente->getEmail(, 'UTF-8', 'ISO-8859-1')) . "';
-				    app.rfc = '" . mb_convert_encoding($cliente->getRfc(, 'UTF-8', 'ISO-8859-1')) . "';                    
+				    app.nombre = '" . mb_convert_encoding($cliente->getNombre(), 'UTF-8', 'ISO-8859-1') . "';
+				    app.apellidos = '" . mb_convert_encoding($cliente->getApellidos(), 'UTF-8', 'ISO-8859-1') . "';
+				    app.empresa = '" . mb_convert_encoding($cliente->getEmpresa(), 'UTF-8', 'ISO-8859-1') . "';
+				    app.domicilio1 = '" . mb_convert_encoding($cliente->getDomicilio1(), 'UTF-8', 'ISO-8859-1') . "';
+				    app.domicilio2 = '" . mb_convert_encoding($cliente->getDomicilio2(), 'UTF-8', 'ISO-8859-1') . "';
+				    app.telefonos = '" . mb_convert_encoding($cliente->getTelefonos(), 'UTF-8', 'ISO-8859-1') . "';
+                    app.email = '" . mb_convert_encoding($cliente->getEmail(), 'UTF-8', 'ISO-8859-1') . "';
+				    app.rfc = '" . mb_convert_encoding($cliente->getRfc(), 'UTF-8', 'ISO-8859-1') . "';                    
                     app.estatus = '" . $cliente->getEstado() . "';
                      
 				  ");

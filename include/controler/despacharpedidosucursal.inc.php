@@ -2194,7 +2194,7 @@
 
 	        $invMol->setCantidad($noMolduras);
 
-	        $invMol->setObservaciones(mb_convert_encoding("Surtido de Pedido Molduras (de Lámina, 'UTF-8', 'ISO-8859-1')"));
+	        $invMol->setObservaciones(mb_convert_encoding("Surtido de Pedido Molduras (de Lámina)", 'UTF-8', 'ISO-8859-1'));
 
 	        $invMol->setIdPedidoDetalle($idPedidoDetalle);
 
@@ -2532,7 +2532,8 @@
 
 	function registrarRPPedido($idRollo, $idRemisionRollo, $idRegistroProduccion, $idPedidoDetalle, $idProducto, $piezas, $ml, $kgml, $totalkg, $idPedidoDetalleColocacion, $idSucursal, $noMolduras, $isMoldura = false)
 	{
-	    $r = new xajaxResponse();
+	$r = new xajaxResponse();
+	try {
 // 	    $r->starDebug();
 		// $r->mostrarAviso($ml); return;
 
@@ -2644,7 +2645,7 @@
 						$invMol->setMovimientoSALIDA();
 						$invMol->setSalidaDespachoSI();
 						$invMol->setCantidad($noMolduras);
-						$invMol->setObservaciones(mb_convert_encoding("Surtido de Pedido Molduras (de Lámina, 'UTF-8', 'ISO-8859-1')"));
+						$invMol->setObservaciones(mb_convert_encoding("Surtido de Pedido Molduras (de Lámina)", 'UTF-8', 'ISO-8859-1'));
 						$invMol->setIdPedidoDetalle($idPedidoDetalle);
 						$invMol->setDateAndUser("movimiento");
 						$invMol->setIdRemisionRollo(0);
@@ -2715,6 +2716,13 @@
 	    
 // 	    $r->endDegug();
 	    return $r;
+	} catch (\Throwable $e) {
+	    if (isset($rpd) && $rpd instanceof ModeloRegistroproducciondetalle) {
+	        try { $rpd->transaccionRollback(); } catch (\Throwable $ignored) {}
+	    }
+	    $r->saError("Error en registrarRPPedido: " . $e->getMessage() . " en " . $e->getFile() . ":" . $e->getLine());
+	    return $r;
+	}
 	}
 	$xajax->registerFunction("registrarRPPedido");
 

@@ -605,7 +605,7 @@ $pdf->__folio = $idTransferencia;
 $pdf->_totalHojas = ceil(count($lst) / $pdf->_rowsByHoja);
 
 $pdf->__nombre =(mb_strtoupper($lst[0]["crea"]));
-$pdf->__fecha = mb_convert_encoding(mb_strtoupper($lst[0]["fecha"], 'ISO-8859-1', 'UTF-8');
+$pdf->__fecha = mb_convert_encoding(mb_strtoupper($lst[0]["fecha"]), 'UTF-8', 'ISO-8859-1');
 
 $pdf->__sucursalOrigen = mb_strtoupper($lst[0]["origen"]);
 $pdf->__sucursalDestino = mb_strtoupper($lst[0]["destino"]);

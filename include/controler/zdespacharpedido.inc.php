@@ -1031,7 +1031,7 @@
 	        $invMol->setMovimientoSALIDA();
 	        $invMol->setSalidaDespachoSI();
 	        $invMol->setCantidad($noMolduras);
-	        $invMol->setObservaciones(mb_convert_encoding("Surtido de Pedido Molduras (de L�mina, 'UTF-8', 'ISO-8859-1')"));
+	        $invMol->setObservaciones(mb_convert_encoding("Surtido de Pedido Molduras (de Lámina)", 'UTF-8', 'ISO-8859-1'));
 	        $invMol->setIdPedidoDetalle($idPedidoDetalle);
 	        $invMol->setDateAndUser("movimiento");
 	        $invMol->setIdRemisionRollo(0);

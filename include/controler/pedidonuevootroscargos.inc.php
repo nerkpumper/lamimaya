@@ -828,7 +828,7 @@ function levantarPedido($idClienteSeleccionado, $subtotalPedido, $ivaPedido, $de
             
             if ($existencia < $cantidadSolicitada)
             {
-                $strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding("No hay suficiente Stock ( ".$existencia." , 'ISO-8859-1', 'UTF-8') para el Producto ".$item["fullDescripcion"].".");
+                $strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding("No hay suficiente Stock ( ".$existencia." ) para el Producto ".$item["fullDescripcion"].".", 'ISO-8859-1', 'UTF-8');
                 $blnDoCommit = false;
                 $blnStockInsuficiente = true;
                 // 					$r->mostrarAviso("commit false no sufi " .($blnDoCommit ? "docommit" : "no commit") . " " . $strErrores);
@@ -910,7 +910,7 @@ function levantarPedido($idClienteSeleccionado, $subtotalPedido, $ivaPedido, $de
                     // 						if ($existencia < $cantidadSolicitada)
                         // 						{
                     
-                        // 							$strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding("No hay suficiente Stock (~".$existencia.", 'ISO-8859-1', 'UTF-8') para el Producto ".$item["fullDescripcion"].". ");
+                        // 							$strErrores .= ($strErrores == "" ? "" : "<br>") . mb_convert_encoding("No hay suficiente Stock (~".$existencia.") para el Producto ".$item["fullDescripcion"].". ", 'ISO-8859-1', 'UTF-8');
                         // 							$blnDoCommit = false;
                         // 							// 						$r->mostrarAviso("commit false no sufi " .$blnDoCommit);
                     

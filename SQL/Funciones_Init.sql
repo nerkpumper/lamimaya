@@ -2270,6 +2270,7 @@ BEGIN
        AND idValeSalida = 0;
 	IF vregistros > 0 THEN
 		SET vrespuesta = 'NO';
+		
     ELSE
 		SET vrespuesta = 'SI';
     END IF;
