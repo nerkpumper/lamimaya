@@ -95,7 +95,7 @@ class clsReporteador extends clsBasicCommon
 			
 		if(!$result)
 		{
-			return $this->setSystemError("Ocurrio  un error en la obtencion de Dataset.", "[ln51][" . $query . "][" . mysqli_error() . "]");
+			return $this->setSystemError("Ocurrio  un error en la obtencion de Dataset.", "[ln51][" . $query . "][" . mysqli_error($this->dbLink) . "]");
 		}
 			
 		while($row=mysqli_fetch_assoc($result))

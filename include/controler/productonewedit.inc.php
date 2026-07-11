@@ -166,9 +166,9 @@
 		//  		ob_start();
 		
 		//$r->mostrarAviso($producto->Guardar() . __LINE__); return $r;	
-		//$rr = $producto->Guardar();
+		// $rr = $producto->Guardar();
 		$producto->Guardar();
-		//$r->mostrarExito($rr); return $r;
+		// $r->mostrarExito($rr); return $r;
   		// $debug = ob_get_clean();
   		// $r->mostrarAviso($debug); return $r;
 		if ($producto->getError())
