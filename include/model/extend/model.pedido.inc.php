@@ -3093,8 +3093,23 @@ $criterioSaldoAprobado = true;
 				{   
 					$this->logDebug("Cliente Existente"); 
 					
-					if ($credito > 0) 
-					{
+					if (round($porcentaje, 2) >= 100 || $saldoPedido <= 0) {
+						$pedido->setEstadoAUTORIZADO();
+						$pedido->setTipoAutorizacionAUTOMATICO();
+						$pedido->setFecha_autorizado(date("Y-m-d H:i:s"));
+						$pedido->setId_usuario_autorizado(2);
+						$pedido->setObservacionAutoriza("El pedido se Pago en su totalidad. Total del pedido $ ".$pedido->getTotal().", abonado $ ".$pagado." (". number_format($porcentaje, 2) ."%).");
+						$pedido->setLiberaValesSI();
+						$pedido->setFecha_libera_vales(date("Y-m-d H:i:s"));
+						$pedido->setId_usuario_libera_vales(2);
+						$pedido->setObservacionLiberaVales("Pedido pagado en su totalidad: " . $pagado . " (" . number_format($porcentaje, 2) . "%). Vales liberados automáticamente.");
+						if (!$simulacion) PedidoTrackingManager::logSuccess($idPedido, 90, $myJSON, false);
+						if (!$simulacion) PedidoTrackingManager::logSuccess($idPedido, 76, $myJSON);
+						$this->logDebug("<span class='h3 text-navy'>SUCCESS => </span> El pedido se pagó en su totalidad. Total del pedido $ ".$pedido->getTotal().", abonado $ ".$pagado." (". number_format($porcentaje, 2) ."%). Se ha autorizado de manera automática.");
+					} else {
+						/* ********** VALIDACIONES DESACTIVADAS (pedido saldado) **********
+						if ($credito > 0) 
+						{
 						$this->logDebug("Con Crédito"); 
 
 						if ($necesitaSurtir) 
@@ -3196,7 +3211,9 @@ $criterioSaldoAprobado = true;
 								}	
 							}
 						}
-					}		
+					}
+					/* ********** FIN VALIDACIONES DESACTIVADAS ********** */
+					}
 				} 
 			else
 			{
@@ -3345,8 +3362,15 @@ $criterioSaldoAprobado = true;
 				{  
 					$this->logDebug("Cliente Existente");
 					
-					if ($credito > 0)
-					{
+					if (round($porcentaje, 2) >= 100 || $saldoPedido <= 0) {
+						$this->logDebug("EL PEDIDO SE ABONÓ EN SU TOTALIDAD, VALE DE SALIDA LIBERADO");
+						$pedido->setLiberaValesSI();
+						$pedido->setFecha_libera_vales(date("Y-m-d H:i:s"));
+						$pedido->setId_usuario_libera_vales(2);
+						$pedido->setObservacionLiberaVales("Pedido pagado en su totalidad: " . $pagado . " (" . number_format($porcentaje, 2) . "%). Vales liberados automáticamente.");
+						if (!$simulacion) PedidoTrackingManager::logSuccess($idPedido, 90, $myJSON, false);
+					} else {
+						/* ********** VALIDACIONES DESACTIVADAS (pedido saldado) **********
 						$this->logDebug("Con Crédito");
 						if ($necesitaSurtir)
 						{						
@@ -3436,7 +3460,8 @@ $criterioSaldoAprobado = true;
 								}			
 							} // fin abono al 100 %	
 						} // fin necesita surtir
-					} // fin Sin credito 			
+					/* ********** FIN VALIDACIONES DESACTIVADAS ********** */
+					}
 				} // fin cliente existente
 				else
 				{     
