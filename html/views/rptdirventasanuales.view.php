@@ -99,11 +99,11 @@ $anioActual = date("Y");
 						<td class="text-center " style="width:50px">{{ mov.mes }}</td>
 						<td class="text-center " style="width:90px">{{ mov.mesDes}}</td>
 						<td class="text-center " >${{ formatNumber(mov.costoDerivados) }}</td>
-						<td class="text-center " style="width:50px"><strong>{{ formatNumber(parseFloat(mov.costoDerivados)/(parseFloat(mov.costoDerivados)+parseFloat(mov.costoStock)+parseFloat(mov.costoMolduras))* 100) }}%</td>
+						<td class="text-center " style="width:50px"><strong>{{ formatNumber((parseFloat(mov.costoDerivados)||0)/((parseFloat(mov.costoDerivados)||0)+(parseFloat(mov.costoStock)||0)+(parseFloat(mov.costoMolduras)||0)||1)* 100) }}%</td>
 						<td class="text-center " >${{ formatNumber(mov.costoStock) }}</td>
-						<td class="text-center " style="width:50px"><strong>{{ formatNumber(parseFloat(mov.costoStock)/(parseFloat(mov.costoDerivados)+parseFloat(mov.costoStock)+parseFloat(mov.costoMolduras))* 100) }}%</td>
+						<td class="text-center " style="width:50px"><strong>{{ formatNumber((parseFloat(mov.costoStock)||0)/((parseFloat(mov.costoDerivados)||0)+(parseFloat(mov.costoStock)||0)+(parseFloat(mov.costoMolduras)||0)||1)* 100) }}%</td>
 						<td class="text-center ">${{ formatNumber(mov.costoMolduras) }}</td>
-						<td class="text-center " style="width:50px"><strong>{{ formatNumber(parseFloat(mov.costoMolduras)/(parseFloat(mov.costoDerivados)+parseFloat(mov.costoStock)+parseFloat(mov.costoMolduras))* 100) }}%</td>
+						<td class="text-center " style="width:50px"><strong>{{ formatNumber((parseFloat(mov.costoMolduras)||0)/((parseFloat(mov.costoDerivados)||0)+(parseFloat(mov.costoStock)||0)+(parseFloat(mov.costoMolduras)||0)||1)* 100) }}%</td>
 						<td class="text-center "><strong>${{ formatNumber(mov.costoTotal) }}</td>				
 					</tr>
 				</tbody>
@@ -136,15 +136,15 @@ $anioActual = date("Y");
 						<td class="text-center " style="width:50px">{{ mov.mes }}</td>
 						<td class="text-center " style="width:90px">{{ mov.mesDes }}</td>
 						<td class="text-center " >${{ formatNumber(mov.ventaDeRollo) }}</td>
-						<td class="text-center " style="width:50px"><strong>{{ formatNumber(parseFloat(mov.ventaDeRollo)/(parseFloat(mov.ventaDeRollo)+parseFloat(mov.ventaStock)+parseFloat(mov.ventaMoldura)+parseFloat(mov.ventaMaquila)+parseFloat(mov.ventaOtrosCargos))* 100) }}%</td>
+						<td class="text-center " style="width:50px"><strong>{{ formatNumber((parseFloat(mov.ventaDeRollo)||0)/((parseFloat(mov.ventaDeRollo)||0)+(parseFloat(mov.ventaStock)||0)+(parseFloat(mov.ventaMoldura)||0)+(parseFloat(mov.ventaMaquila)||0)+(parseFloat(mov.ventaOtrosCargos)||0)||1)* 100) }}%</td>
 						<td class="text-center " >${{ formatNumber(mov.ventaStock) }}</td>
-						<td class="text-center " style="width:50px"><strong>{{ formatNumber(parseFloat(mov.ventaStock)/(parseFloat(mov.ventaDeRollo)+parseFloat(mov.ventaStock)+parseFloat(mov.ventaMoldura)+parseFloat(mov.ventaMaquila)+parseFloat(mov.ventaOtrosCargos))* 100) }}%</td>
+						<td class="text-center " style="width:50px"><strong>{{ formatNumber((parseFloat(mov.ventaStock)||0)/((parseFloat(mov.ventaDeRollo)||0)+(parseFloat(mov.ventaStock)||0)+(parseFloat(mov.ventaMoldura)||0)+(parseFloat(mov.ventaMaquila)||0)+(parseFloat(mov.ventaOtrosCargos)||0)||1)* 100) }}%</td>
 						<td class="text-center " >${{ formatNumber(mov.ventaMoldura) }}</td>
-						<td class="text-center " style="width:50px"><strong>{{ formatNumber(parseFloat(mov.ventaMoldura)/(parseFloat(mov.ventaDeRollo)+parseFloat(mov.ventaStock)+parseFloat(mov.ventaMoldura)+parseFloat(mov.ventaMaquila)+parseFloat(mov.ventaOtrosCargos))* 100) }}%</td>
+						<td class="text-center " style="width:50px"><strong>{{ formatNumber((parseFloat(mov.ventaMoldura)||0)/((parseFloat(mov.ventaDeRollo)||0)+(parseFloat(mov.ventaStock)||0)+(parseFloat(mov.ventaMoldura)||0)+(parseFloat(mov.ventaMaquila)||0)+(parseFloat(mov.ventaOtrosCargos)||0)||1)* 100) }}%</td>
 						<td class="text-center ">${{ formatNumber(mov.ventaMaquila) }}</td>
-						<td class="text-center " style="width:50px"><strong>{{ formatNumber(parseFloat(mov.ventaMaquila)/(parseFloat(mov.ventaDeRollo)+parseFloat(mov.ventaStock)+parseFloat(mov.ventaMoldura)+parseFloat(mov.ventaMaquila)+parseFloat(mov.ventaOtrosCargos))* 100) }}%</td>
+						<td class="text-center " style="width:50px"><strong>{{ formatNumber((parseFloat(mov.ventaMaquila)||0)/((parseFloat(mov.ventaDeRollo)||0)+(parseFloat(mov.ventaStock)||0)+(parseFloat(mov.ventaMoldura)||0)+(parseFloat(mov.ventaMaquila)||0)+(parseFloat(mov.ventaOtrosCargos)||0)||1)* 100) }}%</td>
 						<td class="text-center ">${{ formatNumber(mov.ventaOtrosCargos) }}</td>
-						<td class="text-center " style="width:50px"><strong>{{ formatNumber(parseFloat(mov.ventaOtrosCargos)/(parseFloat(mov.ventaDeRollo)+parseFloat(mov.ventaStock)+parseFloat(mov.ventaMoldura)+parseFloat(mov.ventaMaquila)+parseFloat(mov.ventaOtrosCargos))* 100) }}%</td>
+						<td class="text-center " style="width:50px"><strong>{{ formatNumber((parseFloat(mov.ventaOtrosCargos)||0)/((parseFloat(mov.ventaDeRollo)||0)+(parseFloat(mov.ventaStock)||0)+(parseFloat(mov.ventaMoldura)||0)+(parseFloat(mov.ventaMaquila)||0)+(parseFloat(mov.ventaOtrosCargos)||0)||1)* 100) }}%</td>
 						<td class="text-center ">${{ formatNumber(mov.descuento) }}</td>
 						<td class="text-center "><strong>${{ formatNumber(mov.ventaTotal) }}</td>				
 					</tr>

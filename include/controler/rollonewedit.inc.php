@@ -26,7 +26,7 @@
 // 	$debug = ob_get_clean();
 // 	$r->mostrarMsgs($debug);
 
-	function guardarRollo($idRollo, $codigo, $idMaterial, $calibre, $pies, $origen, $idProveedor, $idColor, $grado, $descripcion, $observaciones, $precio1, $precio2, $precio3, $precio4, $preciokg1, $preciokg2, $preciokg3, $preciokg4)
+	function guardarRollo($idRollo, $codigo, $idMaterial, $calibre, $pies, $origen, $idProveedor, $idColor, $grado, $descripcion, $observaciones, $precio1, $precio2, $precio3, $precio4, $preciokg1, $preciokg2, $preciokg3, $preciokg4, $pesokgmt, $pesocu)
 	{
 		$r = new xajaxResponse();
 		$rollo = new ModeloRollo();
@@ -79,6 +79,8 @@
 		
 		$rollo->setDescripcion(nl2br($descripcion));
 		$rollo->setObservaciones(nl2br($observaciones));
+		$rollo->setPesokgmt($pesokgmt);
+		$rollo->setPesocu($pesocu);
 		 $rollo->Guardar();
 // $r->mostrarAviso($rr); return $r;
 		if ($rollo->getError())
@@ -170,6 +172,8 @@
 					app.preciokg4 = '" . $rollo->getPreciogk4() . "';
 					app.precioMendez = '" . $rollo->getTotalpreciomendez() . "';
 					app.costo = '" . $rollo->getCostokg() . "';
+					app.pesokgmt = '" . $rollo->getPesokgmt() . "';
+					app.pesocu = '" . $rollo->getPesocu() . "';
 				  ");
 
 

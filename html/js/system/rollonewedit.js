@@ -46,6 +46,8 @@ var app = new Vue({
 		precioMendez: 0,
 		precioRangoMendez: 0,
 		costo: 0,
+		pesokgmt: 0,
+		pesocu: 0,
 		
 		
 		rangoPrecio1: 'Rango 1',
@@ -199,7 +201,9 @@ var app = new Vue({
 								   this.preciokg1,
 						           this.preciokg2,
 						           this.preciokg3,
-								   this.preciokg4
+								   this.preciokg4,
+								   this.pesokgmt,
+								   this.pesocu
 								   );
 			}
 			

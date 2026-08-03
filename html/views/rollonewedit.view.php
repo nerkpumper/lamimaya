@@ -171,6 +171,39 @@ $_lugar = LUGAR_PRODUCTOS_ROLLO;
 					</div>
 										
 				</div>
+				<div  class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<h2>Costo del Rollo</h2>
+						<div class="form-group">
+							<label class="col-lg-2 col-md-2 col-sm-12 col-xs-12 control-label">Peso (kg/mt)</label>
+							<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+								
+								<div class="input-group">
+									<input type="text" v-model="pesokgmt"
+										oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+										maxlength="8"
+										class="form-control text-right">
+										
+								</div>
+								
+							</div>
+							<label class="col-lg-2 col-md-2 col-sm-12 col-xs-12 control-label">Costo Unitario (con IVA)</label>
+							<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+								
+								<div class="input-group">
+									<span class="input-group-addon">$</span> <input type="text" v-model="pesocu"
+										oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+										maxlength="8"
+										class="form-control text-right">
+										
+								</div>
+								<span class="help-block m-b-lg">Costo unitario del rollo con IVA</span>
+								
+							</div>
+						</div>
+					</div>
+										
+				</div>
 				<?php
 										
 					//Form::buttonPrimary("Guardar", "guardarRollo", "showSave");
