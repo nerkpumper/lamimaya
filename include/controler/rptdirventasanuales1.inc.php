@@ -506,20 +506,19 @@ function cargardetalleventas($anio)
         }
         
         $movimientos1 = "";
-        for($i=1;$i<count($lst2)+1;$i++){
-        $x=0;
-        if($i<10){$x=$x.$i;}else{$x=$i;        
-         }
-         $lst2[$x]["otrosCargos"]=$lst1[$x]["otrosCargos"];
-         $lst2[$x]["descuento"]=$lst1[$x]["descuento"];
-         $lst2[$x]["totalPedidos"]=$lst1[$x]["totalPedidos"];
+        $meses = array_keys($lst2);
+        sort($meses);
+        foreach($meses as $x){
+         $lst2[$x]["otrosCargos"]=isset($lst1[$x]["otrosCargos"])?$lst1[$x]["otrosCargos"]:0;
+         $lst2[$x]["descuento"]=isset($lst1[$x]["descuento"])?$lst1[$x]["descuento"]:0;
+         $lst2[$x]["totalPedidos"]=isset($lst1[$x]["totalPedidos"])?$lst1[$x]["totalPedidos"]:0;
          $lst2[$x]["totaldetalle"]=$lst2[$x]["ventaDeRollo"]+$lst2[$x]["ventaStock"]+$lst2[$x]["ventaMoldura"]+$lst2[$x]["ventaMaquila"]+$lst2[$x]["otrosCargos"]-$lst2[$x]["descuento"];
          $lst2[$x]["dif"]=$lst2[$x]["totalPedidos"]-$lst2[$x]["totaldetalle"];
-         $lst2[$x]["porcentajeRollo"]=$lst2[$x]["ventaDeRollo"]/$lst2[$x]["totaldetalle"];
-         $lst2[$x]["porcentajeStock"]=$lst2[$x]["ventaStock"]/$lst2[$x]["totaldetalle"];
-         $lst2[$x]["porcentajeMoldura"]=$lst2[$x]["ventaMoldura"]/$lst2[$x]["totaldetalle"];
-         $lst2[$x]["porcentajeMaquila"]=$lst2[$x]["ventaMaquila"]/$lst2[$x]["totaldetalle"];
-         $lst2[$x]["porcentajeOtrosCargos"]=$lst2[$x]["otrosCargos"]/$lst2[$x]["totaldetalle"];
+         $lst2[$x]["porcentajeRollo"]=$lst2[$x]["totaldetalle"]>0?$lst2[$x]["ventaDeRollo"]/$lst2[$x]["totaldetalle"]:0;
+         $lst2[$x]["porcentajeStock"]=$lst2[$x]["totaldetalle"]>0?$lst2[$x]["ventaStock"]/$lst2[$x]["totaldetalle"]:0;
+         $lst2[$x]["porcentajeMoldura"]=$lst2[$x]["totaldetalle"]>0?$lst2[$x]["ventaMoldura"]/$lst2[$x]["totaldetalle"]:0;
+         $lst2[$x]["porcentajeMaquila"]=$lst2[$x]["totaldetalle"]>0?$lst2[$x]["ventaMaquila"]/$lst2[$x]["totaldetalle"]:0;
+         $lst2[$x]["porcentajeOtrosCargos"]=$lst2[$x]["totaldetalle"]>0?$lst2[$x]["otrosCargos"]/$lst2[$x]["totaldetalle"]:0;
          //$lst2[$x]["porcentajeTotal"]=$lst2[$x]["porcentaje1"]+$lst2[$x]["porcentaje2"]+$lst2[$x]["porcentaje3"]+$lst2[$x]["porcentaje4"]+$lst2[$x]["porcentaje5"];
          $lst2[$x]["agregarRollo"]=$lst2[$x]["dif"]*$lst2[$x]["porcentajeRollo"];
          $lst2[$x]["agregarStock"]=$lst2[$x]["dif"]*$lst2[$x]["porcentajeStock"];
