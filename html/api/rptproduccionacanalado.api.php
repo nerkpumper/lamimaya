@@ -52,7 +52,7 @@ public function getProduccionAcanaladoMensual(){
     INNER JOIN remisionrollo on remisionrollo.idRemisionRollo = registroproduccion.idRemisionRollo
     INNER JOIN producto on pedidodetalle.idProducto = producto.idProducto
     INNER JOIN aplicacion on producto.producto_aplicacion_idAplicacion = aplicacion.idAplicacion
-    WHERE  date_format(registroproducciondetalle.fecha_captura, '%Y')= '2022' and registroproducciondetalle.idProducto
+    WHERE  date_format(registroproducciondetalle.fecha_captura, '%Y')= '2026' and registroproducciondetalle.idProducto
     <> 9 and registroproducciondetalle.idSucursal='".$idSucursal."'
     GROUP BY mes 
     ORDER BY `mes` ASC";
