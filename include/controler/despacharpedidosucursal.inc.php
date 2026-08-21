@@ -57,6 +57,10 @@
 
 	$xajax = new xajax();
 
+// [DESPACHO-DEBUG] Descomenta la siguiente linea para abrir la ventana de debug de xajax
+// en el navegador (muestra el XML crudo de cada peticion/respuesta)
+// $xajax->setFlag("debug", true);
+
 // 	$xajax->setCharEncoding('ISO-8859-1');
 
 	//$xajax->de decodeUTF8InputOn();
@@ -85,6 +89,8 @@
 
 		$idSucursal = $objSession->getIdSucursal();
 
+		error_log("[DESPACHO-DEBUG] cargarPedido INICIO idPedido={$idPedido} idSucursal={$idSucursal}");
+
 		
 
         $idProductoMoldura = 9;
@@ -96,6 +102,8 @@
 
 
 		$pedido->getPedidoParaSurtir($idPedido, $idSucursal	);
+
+		error_log("[DESPACHO-DEBUG] getPedidoParaSurtir filas=" . count($pedido->__rsPedidoWDetalle));
 
 
 
@@ -114,6 +122,8 @@
 
 
 		$estado = $pedido->getPedidoDato("estado");
+
+		error_log("[DESPACHO-DEBUG] estado={$estado}");
 
 
 
@@ -375,7 +385,9 @@
 
 
 
-		$r->script(" app.pedidoProduccion = true; app.pedidoDetalle.splice(0, app.pedidoDetalle.length); " . $pedidoDetalle);
+		error_log("[DESPACHO-DEBUG] JS generado para el navegador:\n" . $pedidoDetalle);
+
+		$r->script(" app.pedidoProduccion = true; app.pedidoDetalle.splice(0, app.pedidoDetalle.length); " . $pedidoDetalle . " console.log('[DESPACHO-DEBUG] Respuesta ejecutada OK, partidas=' + app.pedidoDetalle.length); ");
 
 
 

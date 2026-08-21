@@ -1,6 +1,10 @@
 //  console.log(" __DEVELOPERMODE " + __DEVELOPERMODE);
 //  console.log("url_api_file: " + URL_API_FILE);
 
+window.addEventListener("error", function(e){
+	console.error("[DESPACHO-DEBUG] ERROR JS:", e.message, "(linea " + e.lineno + ")");
+});
+
 var app = new Vue({
 	el: '#app',
 	data: {
@@ -269,8 +273,10 @@ var app = new Vue({
 			this.despachandoAlgo = false;	
 			this.indexDespachando = -1;
 			
+			console.log("[DESPACHO-DEBUG] Enviando xajax_cargarPedido, idPedido=" + this.idPedido);
 			xajax_cargarPedido(this.idPedido);	
 			this.seleccionarPedido = false;
+			console.log("[DESPACHO-DEBUG] Input oculto; esperando respuesta del servidor...");
 //			this.pedidoProduccion = true;			
 		},
 		seleccionarOtroPedido: function(){
