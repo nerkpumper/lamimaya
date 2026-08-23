@@ -13,7 +13,7 @@ class APICotizacion extends APIBase{
 
         $query = "SELECT cotizacion.idCotizacion, concat(cliente.nombre,' ',cliente.apellidos)as cliente , cotizacion.total, cotizacion.fecha_capturado, cotizacion.estado FROM `cotizacion`
          INNER JOIN cliente on cotizacion.idCliente = cliente.idCliente
-         where cotizacion.idCotizacion > 17052 and  cotizacion.fecha_capturado > '2022-06-01'and cotizacion.estado='CAPTURADO'and cotizacion.idPedido=0 and cotizacion.id_Usuario_Capturado =".$id_Usuario_Capturado;
+         where cotizacion.estado='CAPTURADO'and cotizacion.idPedido=0 and cotizacion.id_Usuario_Capturado =".$id_Usuario_Capturado;
 
         $cotizacion = new ModeloCotizacion();
 
