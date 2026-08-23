@@ -63,10 +63,10 @@ $_addScript = "
 //  ------------------------VENTAS----------------------------
 
 ?>
-<?php if (false && Permisos::userIsThisRol(Permisos::$rol_ROOT) || Permisos::userIsThisRol(Permisos::$rol_ADMINISTRADOR) || Permisos::userIsThisRol(Permisos::$rol_CXCVIEW)): ?>
-
-
-<div class="wrapper wrapper-content">
+<?php if (true && Permisos::userIsThisRol(Permisos::$rol_ROOT) || Permisos::userIsThisRol(Permisos::$rol_ADMINISTRADOR) || Permisos::userIsThisRol(Permisos::$rol_CXCVIEW)): ?>
+	
+	
+	<div class="wrapper wrapper-content">
 <?php else: return;?>
 
 	<div class="row">
@@ -294,6 +294,8 @@ $_addScript = "
 										<th scope="col">OG-100</th>
 										<th scope="col">LOSACERO</th>
 										<th scope="col">R-72</th>
+										<th scope="col">KR 18</th>
+										<th scope="col">GALVATEJA</th>
 										<th scope="col">TOTAL</th>
 									</tr>
 								</thead>
@@ -301,7 +303,7 @@ $_addScript = "
 									<tr>
 										<td scope="row">{{lst.mesDes}}</td>
 										<td>{{lst.R_101}}</td>
-										<td>{{lst.RN_100}}</td> 
+										<td>{{lst.RN_100}}</td> 	
 										<td>{{lst.OG_100}}</td>
 										<td>{{lst.LOSACERO}}</td>
 										<td >{{lst.R_72}}</td>
