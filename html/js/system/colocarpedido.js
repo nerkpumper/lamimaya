@@ -400,6 +400,58 @@ var app = new Vue ({
 			this.idPedido = idped;
 			this.cargarDatosPedido();
 		},
+		reintentarExplosion: function(idped){
+			swal({
+				title: "¿Revisar existencias?",
+				text: "Se volverá a checar si el Pedido " + idped + " ya tiene material suficiente para producirse.",
+				type: "warning",
+				showCancelButton: true,
+				cancelButtonText: "NO",
+				cancelButtonColor: "#ed5565",
+				confirmButtonColor: "#1c84c6",
+				confirmButtonText: "¡Adelante! REVISAR",
+				closeOnConfirm: true },
+
+				function(){
+					swal.close();
+					mdlShowWait("Revisando existencias.");
+					axios.get(URL_BASE + 'api/colocarpedido.api.php?method=reintentarExplosion&idPedido=' + idped, getAxiosHeaders())
+						.then(function (response) {
+							var d = response.data;
+							mdlExitWait();
+							if (d.error) {
+								swal("Aviso", d.msg, "error");
+								return;
+							}
+							app.cargarPedidosAutorizados();
+							if (d.yaExplotado) {
+								swal("Listo", d.msg, "info");
+								return;
+							}
+							app.mostrarLogReintento(idped, d.commit, d.lineas);
+						})
+						.catch(function (error) {
+							mdlExitWait();
+							console.log(error);
+							swal("Error", "No se pudo completar la revisión.", "error");
+						});
+			});
+		},
+		mostrarLogReintento: function(idped, commit, lineas){
+			var cuerpo = '<div style="text-align:left; font-family:monospace; font-size:12px; line-height:1.5; max-height:55vh; overflow:auto; background:#f7f7f7; border:1px solid #e3e3e3; border-radius:4px; padding:10px;">'
+			           + lineas.map(function(l){ return $('<div/>').text(l).html(); }).join('<br>')
+			           + '</div>';
+			setTimeout(function(){
+				swal({
+					title: (commit ? "Pedido " + idped + ": LISTO PARA PRODUCIR" : "Pedido " + idped + ": aún sin material"),
+					text: cuerpo,
+					html: true,
+					type: (commit ? "success" : "warning"),
+					confirmButtonText: "Entendido",
+					confirmButtonColor: "#1c84c6"
+				});
+			}, 300);
+		},
 		reAsignarPedidoAutomatico: function(idped, index){
 			this.idPedidoReasignar = idped;
 			

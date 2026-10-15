@@ -147,6 +147,8 @@ src="https://www.google.com/maps/embed?q=LOS OLIVOS LEON GUANAJUATO" width="600"
                 								<button                								 
                 								 class="pull-right btn btn-xs btn-primary"
                 								 @click.prevent="cargarPedidoSoloMostrar(item.idPedido)"><i class="fa fa-eye"></i></button>
+                								<button class="pull-right btn btn-xs btn-info m-r-xs"
+                									@click.prevent="reintentarExplosion(item.idPedido)"><i class="fa fa-refresh"></i></button>
                 								<i class="fa fa-tag"></i> {{ item.idPedido }} 
                 							</div>
                 						</li>

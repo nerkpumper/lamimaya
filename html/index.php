@@ -442,7 +442,7 @@ if (Routes::getTemplate($__FILE_NAME__) == "masterTemplate.inc.php")
 
 
 //se carga el js, en caso de existir, sino solo el default	
-$versionjs = "202210070103";
+$versionjs = "202610150001";
 if (is_file(FOLDER_JS . $__FILE_NAME__ . ".js"))
 
 	$_JAVASCRIPT_CSS .= '<script type="text/javascript" src="' . URL_JAVASCRIPT_SYSTEM .
