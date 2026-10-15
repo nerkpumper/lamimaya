@@ -8,7 +8,7 @@ class PDF extends PDFNerk
 function Header()
 {
     // Logo
-    $this->Image('img/galvalogo.jpeg',10,8,50);
+    $this->Image('img/lamimayalogo.png',10,8,50);
     // Arial bold 15
     $this->SetFont('Arial','B',15);
     // Movernos a la derecha

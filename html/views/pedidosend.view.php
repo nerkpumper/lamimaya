@@ -114,7 +114,7 @@ class PDF extends PDFNerk
 		$yInicial = $this->yInicial;
 		
 		// Logo
-		$this->Image('img/galvalogo.jpeg',5,$yInicial-10,50);
+		$this->Image('img/lamimayalogo.png',5,$yInicial-10,50);
 		// Arial bold 15
 		$this->SetFont('Arial','B',11);
 		 
@@ -905,7 +905,7 @@ a {
                             <table width='100%' cellpadding='0' cellspacing='0'>
 								<tr>
 									<td>
-										<img src='http://app.galvamex.com.mx/img/galvalogo.jpeg'/>
+										<img src='http://app.galvamex.com.mx/img/lamimayalogo.png'/>
 									</td>									
 								</tr>
                                 <tr>

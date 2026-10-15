@@ -1,60 +1,65 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
+use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 if (PHP_SAPI == 'cli')
 	die('Este archivo solo se puede ver desde un navegador web');
 
 require_once LIB_CONEXION_MYSQL;
-require_once __DIR__ . '/xlsxgen.inc.php';
+require_once FOLDER_INCLUDE . 'lib/phpspreadsheet/autoload.php';
+require_once FOLDER_INCLUDE . 'lib/phpspreadsheet/class.celdaautobinder.inc.php';
 
 // --- Build the report ---
-$obj = new XlsxGen();
+$spreadsheet = new Spreadsheet();
+$spreadsheet->getProperties()->setCreator('Galvamex App')->setLastModifiedBy('Galvamex App');
 
-$obj->setOrientation('landscape');
-$obj->setPaperSize('A4');
+$sheet = $spreadsheet->getActiveSheet();
+$sheet->setTitle('Recepcion Material');
+$sheet->getPageSetup()->setOrientation(PageSetup::ORIENTATION_LANDSCAPE);
+$sheet->getPageSetup()->setPaperSize(PageSetup::PAPERSIZE_A4);
 
 // Styles
-$styleTitle = $obj->addStyle([
+$styleTitle = [
 	'font' => ['name' => 'Arial', 'bold' => true, 'size' => 16, 'color' => ['rgb' => '000000']],
-	'alignment' => ['horizontal' => 'center', 'vertical' => 'center', 'wrap' => true],
-]);
+	'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER, 'wrapText' => true],
+	'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'FFFFFFFF']],
+];
 
-$styleHeader = $obj->addStyle([
+$styleHeader = [
 	'font' => ['name' => 'Arial', 'bold' => true, 'size' => 10, 'color' => ['rgb' => '000000']],
-	'alignment' => ['horizontal' => 'center', 'vertical' => 'center', 'wrap' => true],
-	'fill' => ['rgb' => 'FFE0E0E0'],
-	'border' => ['left' => 'thin', 'right' => 'thin', 'top' => 'thin', 'bottom' => 'thin'],
-]);
+	'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER, 'wrapText' => true],
+	'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'FFE0E0E0']],
+	'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
+];
 
-$styleLabel = $obj->addStyle([
-	'font' => ['name' => 'Arial', 'bold' => true, 'size' => 10, 'color' => ['rgb' => '000000']],
-	'alignment' => ['horizontal' => 'center', 'vertical' => 'center', 'wrap' => true],
-]);
+$styleBorder = [
+	'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
+	'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER, 'wrapText' => true],
+];
 
-$styleData = $obj->addStyle([
-	'font' => ['name' => 'Arial', 'bold' => false, 'size' => 10, 'color' => ['rgb' => '000000']],
-	'alignment' => ['horizontal' => 'center', 'vertical' => 'center', 'wrap' => true],
-]);
+$styleTotal = [
+	'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
+	'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'FFC0C0C0']],
+	'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER, 'wrapText' => true],
+];
 
-$styleBorder = $obj->addStyle([
-	'border' => ['left' => 'thin', 'right' => 'thin', 'top' => 'thin', 'bottom' => 'thin'],
-	'alignment' => ['horizontal' => 'center', 'vertical' => 'center', 'wrap' => true],
-]);
+$sheet->mergeCells('A1:F1');
 
-$styleTotal = $obj->addStyle([
-	'border' => ['left' => 'thin', 'right' => 'thin', 'top' => 'thin', 'bottom' => 'thin'],
-	'fill' => ['rgb' => 'FFC0C0C0'],
-	'alignment' => ['horizontal' => 'center', 'vertical' => 'center', 'wrap' => true],
-]);
+$sheet->setCellValue('A1', "REPORTE DE RECEPCIÓN DE MATERIALES X REMISIÓN");
+$sheet->getStyle('A1:F1')->applyFromArray($styleTitle);
 
-$obj->mergeCells('A1:F1');
-
-$obj->setCellValue('A1', "REPORTE DE RECEPCI\u00d3N DE MATERIALES X REMISI\u00d3N", $styleTitle);
-
-$titulosColumnas = ['FECHA', 'PROVEEDOR', 'REMISI\u00d3N', 'NUM. ROLLO', 'ALMACEN', 'PRODUCTO', 'KILOS RECIB.'];
+$titulosColumnas = ['FECHA', 'PROVEEDOR', 'REMISIÓN', 'NUM. ROLLO', 'ALMACEN', 'PRODUCTO', 'KILOS RECIB.'];
 $cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 foreach ($titulosColumnas as $i => $t) {
-	$obj->setCellValue($cols[$i] . '5', $t, $styleHeader);
+	$sheet->setCellValue($cols[$i] . '5', $t);
 }
+$sheet->getStyle('A5:G5')->applyFromArray($styleHeader);
 
 // Data
 $query = "SELECT fecha, p.nombre as proveedor, remision, noRollo, almacen, r.descripcion as producto, kilos, ts
@@ -70,58 +75,89 @@ $cnn = new clsConexionMySQL();
 $datos = $cnn->getDataSet($query);
 
 $row = 6;
-$ts = "";
 $totalKilos = 0;
 $remisionAnterior = "";
 $remisionActual = "";
+
+// Los estilos se aplican por rangos, pero solo sobre las filas de datos
+// escritas (para no marcar las filas en blanco que separan remisiones).
+$ranurasDatos = [];
+$filasTotales = [];
+$inicioRanura = null;
 
 foreach ($datos as $item) {
 	$remisionActual = $item["remision"];
 
 	if ($remisionAnterior != $remisionActual) {
 		if ($remisionAnterior != "") {
-			$obj->setCellValue('B' . $row, "REMISI\u00d3N", $styleTotal);
-			$obj->setCellValue('C' . $row, $remisionActual, $styleTotal);
-			$obj->setCellValue('G' . $row, (float)$totalKilos, $styleTotal);
+			if ($inicioRanura !== null) {
+				$ranurasDatos[] = 'A' . $inicioRanura . ':G' . ($row - 1);
+				$inicioRanura = null;
+			}
+			$sheet->setCellValue('B' . $row, "REMISIÓN");
+			$sheet->setCellValue('C' . $row, $remisionActual);
+			$sheet->setCellValue('G' . $row, (float)$totalKilos);
+			$filasTotales[] = $row;
 			$totalKilos = 0;
 			$row += 2;
 		}
 		$remisionAnterior = $remisionActual;
 	}
 
-	$obj->setCellValue('A' . $row, $item["fecha"], $styleBorder);
-	$obj->setCellValue('B' . $row, $item["proveedor"], $styleBorder);
-	$obj->setCellValue('C' . $row, $item["remision"], $styleBorder);
-	$obj->setCellValue('D' . $row, $item["noRollo"], $styleBorder);
-	$obj->setCellValue('E' . $row, $item["almacen"], $styleBorder);
-	$obj->setCellValue('F' . $row, $item["producto"], $styleBorder);
-	$obj->setCellValue('G' . $row, (float)$item["kilos"], $styleBorder);
+	$sheet->setCellValue('A' . $row, $item["fecha"]);
+	$sheet->setCellValue('B' . $row, $item["proveedor"]);
+	$sheet->setCellValue('C' . $row, $item["remision"]);
+	$sheet->setCellValue('D' . $row, $item["noRollo"]);
+	$sheet->setCellValue('E' . $row, $item["almacen"]);
+	$sheet->setCellValue('F' . $row, $item["producto"]);
+	$sheet->setCellValue('G' . $row, (float)$item["kilos"]);
 
+	$inicioRanura = $inicioRanura ?? $row;
 	$totalKilos += (float)$item["kilos"];
-	$ts = $item["ts"];
 	$row++;
 }
 
 // Last remision total
-$obj->setCellValue('B' . $row, "REMISI\u00d3N", $styleTotal);
-$obj->setCellValue('C' . $row, $remisionActual, $styleTotal);
-$obj->setCellValue('G' . $row, (float)$totalKilos, $styleTotal);
+if ($inicioRanura !== null) {
+	$ranurasDatos[] = 'A' . $inicioRanura . ':G' . ($row - 1);
+}
+$sheet->setCellValue('B' . $row, "REMISIÓN");
+$sheet->setCellValue('C' . $row, $remisionActual);
+$sheet->setCellValue('G' . $row, (float)$totalKilos);
+$filasTotales[] = $row;
+
+foreach ($ranurasDatos as $rango) {
+	$sheet->getStyle($rango)->applyFromArray($styleBorder);
+}
+foreach ($filasTotales as $fila) {
+	$sheet->getStyle('B' . $fila . ':C' . $fila)->applyFromArray($styleTotal);
+	$sheet->getStyle('G' . $fila)->applyFromArray($styleTotal);
+}
 
 // Column widths
-$obj->setColumnWidth('A', 12);
-$obj->setColumnWidth('B', 16);
-$obj->setColumnWidth('C', 13);
-$obj->setColumnWidth('D', 15);
-$obj->setColumnWidth('E', 15);
-$obj->setColumnWidth('F', 48);
-$obj->setColumnWidth('G', 10);
+$sheet->getColumnDimension('A')->setWidth(12);
+$sheet->getColumnDimension('B')->setWidth(16);
+$sheet->getColumnDimension('C')->setWidth(13);
+$sheet->getColumnDimension('D')->setWidth(15);
+$sheet->getColumnDimension('E')->setWidth(15);
+$sheet->getColumnDimension('F')->setWidth(48);
+$sheet->getColumnDimension('G')->setWidth(10);
 
-$obj->setRowHeight(3, 26);
+$sheet->getRowDimension(3)->setRowHeight(26);
 
 // Logo
-$obj->setImage('img/galvalogo.jpeg', 'A1', 5, 5, 380, 90);
-
-$obj->setSheetTitle('Recepcion Material');
+$rutaLogo = __DIR__ . '/../img/lamimayalogo.png';
+if (file_exists($rutaLogo)) {
+	$drawing = new Drawing();
+	$drawing->setPath($rutaLogo);
+	$drawing->setName('Logo');
+	$drawing->setCoordinates('A1');
+	$drawing->setOffsetX(5);
+	$drawing->setOffsetY(5);
+	$drawing->setWidth(380);
+	$drawing->setHeight(90);
+	$drawing->setWorksheet($sheet);
+}
 
 // Output
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=utf-8');
@@ -129,7 +165,7 @@ header('Content-Disposition: attachment;filename="reporteNoRollos_' . date('YmdH
 header('Cache-Control: max-age=0');
 
 $tmpFile = tempnam(sys_get_temp_dir(), 'xlsx');
-$obj->save($tmpFile);
+(new Xlsx($spreadsheet))->save($tmpFile);
 readfile($tmpFile);
 unlink($tmpFile);
 exit;

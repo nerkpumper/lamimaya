@@ -577,9 +577,9 @@ and vp.existencia > 0;";
     $objDrawing = new PHPExcel_Worksheet_Drawing();
     $objDrawing->setName('test_img');
     $objDrawing->setDescription('test_img');
-    //$objDrawing->setPath('C:\\xampp\\htdocs\\galvamex\\codigogalvamex\\html\\img\\galvalogo.jpeg');
-    // $objDrawing->setPath('../img/galvalogo.jpeg');
-    $objDrawing->setPath('img/galvalogo.jpeg');
+    //$objDrawing->setPath('C:\\xampp\\htdocs\\galvamex\\codigogalvamex\\html\\img\\lamimayalogo.png');
+    // $objDrawing->setPath('../img/lamimayalogo.png');
+    $objDrawing->setPath('img/lamimayalogo.png');
     $objDrawing->setCoordinates('A1');
     //setOffsetX works properly
     $objDrawing->setOffsetX(2);

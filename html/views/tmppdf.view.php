@@ -62,7 +62,7 @@ class PDF extends PDFNerk
 	private function printHeader($yInicial)
 	{		
 		// Logo
-		$this->Image('img/galvalogo.jpeg',5,$yInicial-11,50);
+		$this->Image('img/lamimayalogo.png',5,$yInicial-11,50);
 		// Arial bold 15
 		$this->SetFont('Arial','B',11);
 		 

@@ -1,5 +1,14 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
+use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 function salir()
 {
 	echo "<script>
@@ -65,52 +74,64 @@ $_cuerpo = $cuerpo;
 if (PHP_SAPI == 'cli')
 	die('Este archivo solo se puede ver desde un navegador web');
 
-require_once __DIR__ . '/xlsxgen.inc.php';
+require_once FOLDER_INCLUDE . 'lib/phpspreadsheet/autoload.php';
+require_once FOLDER_INCLUDE . 'lib/phpspreadsheet/class.celdaautobinder.inc.php';
 
-$obj = new XlsxGen();
+$spreadsheet = new Spreadsheet();
+$spreadsheet->getProperties()->setCreator('Galvamex App')->setLastModifiedBy('Galvamex App');
 
-$obj->setOrientation('portrait');
-$obj->setPaperSize('A4');
+$sheet = $spreadsheet->getActiveSheet();
+$sheet->setTitle('Reporte');
+$sheet->getPageSetup()->setOrientation(PageSetup::ORIENTATION_PORTRAIT);
+$sheet->getPageSetup()->setPaperSize(PageSetup::PAPERSIZE_A4);
 
-$styleTitle = $obj->addStyle([
+$styleTitle = [
 	'font' => ['name' => 'Arial', 'bold' => true, 'size' => 12, 'color' => ['rgb' => '000000']],
-	'alignment' => ['horizontal' => 'left', 'vertical' => 'center', 'wrap' => false],
-]);
+	'alignment' => ['horizontal' => Alignment::HORIZONTAL_LEFT, 'vertical' => Alignment::VERTICAL_CENTER, 'wrapText' => false],
+	'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'FFFFFFFF']],
+];
 
-$styleHeader = $obj->addStyle([
+$styleHeader = [
 	'font' => ['name' => 'Arial', 'bold' => true, 'size' => 9, 'color' => ['rgb' => '000000']],
-	'alignment' => ['horizontal' => 'center', 'vertical' => 'center', 'wrap' => false],
-	'fill' => ['rgb' => 'FFE0E0E0'],
-	'border' => ['left' => 'thin', 'right' => 'thin', 'top' => 'thin', 'bottom' => 'thin'],
-]);
+	'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER, 'wrapText' => false],
+	'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'FFE0E0E0']],
+	'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
+];
 
-$styleBorder = $obj->addStyle([
-	'border' => ['left' => 'thin', 'right' => 'thin', 'top' => 'thin', 'bottom' => 'thin'],
-	'alignment' => ['horizontal' => 'center', 'vertical' => 'center', 'wrap' => true],
-]);
+$styleBorder = [
+	'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
+	'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER, 'wrapText' => true],
+];
+
+$styleBold = [
+	'font' => ['name' => 'Arial', 'bold' => true, 'size' => 9, 'color' => ['rgb' => '000000']],
+];
 
 $numCols = count($_campos) - $_itemsAExcluir;
-$lastCol = chr(64 + $numCols);
+$lastCol = Coordinate::stringFromColumnIndex($numCols);
 
-$obj->setCellValue('D1', $_tituloReporte, $styleTitle);
-$obj->setCellValue('D2', $_subtituloReporte, $styleTitle);
+$sheet->setCellValue('D1', $_tituloReporte);
+$sheet->setCellValue('D2', $_subtituloReporte);
+$sheet->getStyle('D1:D2')->applyFromArray($styleTitle);
 
-$col = 0;
+$col = 1;
 foreach ($_campos as $colTitle)
 {
-	if ($col >= $numCols) break;
-	$obj->setCellValueByColumnAndRow($col++, 5, $colTitle, $styleHeader);
+	if ($col > $numCols) break;
+	$sheet->setCellValue(Coordinate::stringFromColumnIndex($col) . '5', $colTitle);
+	$col++;
 }
+$sheet->getStyle('A5:' . $lastCol . '5')->applyFromArray($styleHeader);
 
 $rowInicial = 6;
 $row = $rowInicial;
 foreach ($_cuerpo as $renglon)
 {
-	$col = 0;
+	$col = 1;
 	$items = explode("|", $renglon);
 	foreach ($items as $cell)
 	{
-		if ($col >= $numCols) break;
+		if ($col > $numCols) break;
 
 		$fc = substr($cell, 0, 1);
 		if ($fc == "$")
@@ -120,9 +141,15 @@ foreach ($_cuerpo as $renglon)
 			$cell = str_replace(",", "", $cell);
 		}
 
-		$obj->setCellValueByColumnAndRow($col++, $row, $cell, $styleBorder);
+		$sheet->setCellValue(Coordinate::stringFromColumnIndex($col) . $row, $cell);
+		$col++;
 	}
 	$row++;
+}
+
+if ($row > $rowInicial)
+{
+	$sheet->getStyle('A' . $rowInicial . ':' . $lastCol . ($row - 1))->applyFromArray($styleBorder);
 }
 
 if (trim($_formulaTotales) != "")
@@ -131,24 +158,31 @@ if (trim($_formulaTotales) != "")
 	foreach ($lstFormulasTotales as $colFT)
 	{
 		$formula = "=SUM(" . $colFT . $rowInicial . ":" . $colFT . ($row - 1) . ")";
-		$obj->setCellFormula($colFT . $row, $formula, $styleBold);
+		$sheet->setCellValue($colFT . $row, $formula);
+		$sheet->getStyle($colFT . $row)->applyFromArray($styleBold);
 	}
 }
 
-$styleBold = $obj->addStyle([
-	'font' => ['name' => 'Arial', 'bold' => true, 'size' => 9, 'color' => ['rgb' => '000000']],
-]);
-
-$obj->setImage('img/galvalogo.jpeg', 'A1', 2, 2, 170, 75);
-
-$obj->setSheetTitle('Reporte');
+$rutaLogo = __DIR__ . '/../img/lamimayalogo.png';
+if (file_exists($rutaLogo))
+{
+	$drawing = new Drawing();
+	$drawing->setPath($rutaLogo);
+	$drawing->setName('Logo');
+	$drawing->setCoordinates('A1');
+	$drawing->setOffsetX(2);
+	$drawing->setOffsetY(2);
+	$drawing->setWidth(170);
+	$drawing->setHeight(75);
+	$drawing->setWorksheet($sheet);
+}
 
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=utf-8');
 header('Content-Disposition: attachment;filename="' . $_reportName . '_' . date('YmdHis') . '.xlsx"');
 header('Cache-Control: max-age=0');
 
 $tmpFile = tempnam(sys_get_temp_dir(), 'xlsx');
-$obj->save($tmpFile);
+(new Xlsx($spreadsheet))->save($tmpFile);
 readfile($tmpFile);
 unlink($tmpFile);
 exit;
