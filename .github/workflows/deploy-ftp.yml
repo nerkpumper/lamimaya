@@ -12,10 +12,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install git-ftp
+      - name: Install git-ftp and lftp
         run: |
           sudo apt-get update
-          sudo apt-get install -y git-ftp
+          sudo apt-get install -y git-ftp lftp
 
       - name: Deploy html/ to app
         run: |
@@ -24,6 +24,23 @@ jobs:
             --user "${{ secrets.LAMIMAYA_USERNAME }}" \
             --passwd "${{ secrets.LAMIMAYA_PASSWORD }}" \
             ftp://ftp.lamimaya.com/public_html/theapp
+
+      - name: Sync PhpSpreadsheet library (lftp, single connection)
+        env:
+          FTP_USERNAME: ${{ secrets.LAMIMAYA_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.LAMIMAYA_PASSWORD }}
+        run: |
+          lftp -c "
+            set cmd:fail-exit yes;
+            set ftp:ssl-allow no;
+            set net:max-retries 5;
+            set net:timeout 30;
+            set net:reconnect-interval-base 5;
+            set net:reconnect-interval-multiplier 1;
+            set mirror:parallel-transfer-count 1;
+            open -u '$FTP_USERNAME','$FTP_PASSWORD' ftp://ftp.lamimaya.com;
+            mirror -R --no-perms --verbose ./include/lib/phpspreadsheet /applamimaya/include/lib/phpspreadsheet;
+          "
 
       - name: Deploy include/ to include
         run: |

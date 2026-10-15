@@ -5,6 +5,11 @@ include/cron/configinclude.cron.php
 html/configinclude.inc.php
 html/api/apiconfiginclude.inc.php
 
+# Librería PhpSpreadsheet (666 archivos vendor): git-ftp abre 1 conexión FTP
+# por archivo y el hosting corta la subida masiva. Se sincroniza aparte con
+# lftp (una sola conexión) desde el workflow deploy-ftp.yml.
+include/lib/phpspreadsheet/*
+
 # Archivos temporales y logs
 include/cron/*.log
 include/logs/*.log
