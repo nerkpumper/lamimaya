@@ -288,7 +288,7 @@ $breadCum = "Pedidos/Cancelar";
 
 					<div class="row">
 						<div v-show="estatusIncorrecto">
-							<div class="alert alert-warning text-center">Para cancelar un Pedido, su estatus debe ser CAPTURADO o AUTORIZADO CXC</div>
+							<div class="alert alert-warning text-center">Para cancelar un Pedido, su estatus debe ser CAPTURADO, AUTORIZADO CXC o PRODUCCI&Oacute;N (sin renglones surtidos)</div>
 						</div>
 						<div v-show="puedeCancelarse">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

@@ -12,6 +12,7 @@
 	require_once FOLDER_MODEL. "model.rollo.inc.php";
 	require_once FOLDER_MODEL. "model.producto.inc.php";
 	require_once FOLDER_MODEL. "model.cxc.inc.php";
+	require_once FOLDER_MODEL. "model.pedidodetallecolocacion.inc.php";
 
 	// ----------------------------------------------------------------------------------------------------------------------#
 	// -------------------------------------------------------Funciones------------------------------------------------------#
@@ -191,7 +192,7 @@
 		$totales .= "app.total = '".$pedido->getPedidoDato("total")."';";
 
 
-		if($pedido->getPedidoDato("estado") != "CAPTURADO" &&  $pedido->getPedidoDato("estado") != "AUTORIZADO" && $pedido->getPedidoDato("estado") != "CANCELADO")
+		if($pedido->getPedidoDato("estado") != "CAPTURADO" &&  $pedido->getPedidoDato("estado") != "AUTORIZADO" && $pedido->getPedidoDato("estado") != "PRODUCCION" && $pedido->getPedidoDato("estado") != "CANCELADO")
 		{
 			$r->script(" app.estatusIncorrecto = true; ");
 		}
@@ -626,6 +627,189 @@
 
 
 
+		}
+		else if ($pedido->getEstado() == "PRODUCCION")
+		{
+			// Solo se permite cancelar si el pedido NO tiene ningun renglon surtido
+			// (ni despachado, ni partida surtida, ni kilos explotados/despachados).
+
+			$det = new ModeloPedidodetalle();
+
+			$lstDetalle = $det->getAll("idPedidoDetalle, despachado, explotadoReal, partidadespachada", "", " idPedido = " . $idPedido);
+
+			foreach ($lstDetalle as $rowDetalle)
+			{
+				if ($rowDetalle["despachado"] == "SI" || $rowDetalle["partidadespachada"] > 0 || $rowDetalle["explotadoReal"] > 0)
+				{
+					$errores .= "(P1) No se puede cancelar el Pedido: ya cuenta con renglones surtidos. ";
+					$blnDoCommit = false;
+					break;
+				}
+			}
+
+			if ($blnDoCommit)
+			{
+				$pedido->setEstadoCANCELADO();
+				$pedido->setDateAndUser("cancelado");
+				$pedido->setObservacionCancela($motivoCancelacion);
+				$pedido->setSaldo(0);
+				$pedido->setSaldopromotor(0);
+				$pedido->setExplotadoNO();
+				$pedido->setExplotadookNO();
+				$pedido->setColocadoNO();
+
+				$pedido->Guardar();
+
+				if ($pedido->getError())
+				{
+					$errores .= "(P2)".$pedido->getStrError() . ". ";
+					$blnDoCommit = false;
+				}
+				else
+				{
+					$cxc = new ModeloCxc();
+
+					$lstCXC = $cxc->getAll("idCxc", "", "idPedido = " . $idPedido );
+
+					foreach ($lstCXC as $itemcxc)
+					{
+						$delCXC = new ModeloCxc();
+
+						$delCXC->setIdCxc($itemcxc["idCxc"]);
+
+						$delCXC->Borrar();
+
+						if ($delCXC->getError())
+						{
+							$errores .= "(P3)".$delCXC->getStrError() . ". ";
+							$blnDoCommit = false;
+						}
+					}
+
+					if ($blnDoCommit)
+					{
+						$pd = new ModeloPedidodetalle();
+
+						$lst = $pd->getAll("idPedidoDetalle", "", " idPedido = " . $idPedido);
+
+						foreach ($lst as $objpd)
+						{
+							$vp = new ModeloViewproductos();
+							$pedidoDetalle = new ModeloPedidodetalle();
+
+							$pedidoDetalle->setIdPedidoDetalle($objpd["idPedidoDetalle"]);
+
+							$vp->getView($pedidoDetalle->getIdProducto());
+
+							if($pedidoDetalle->getListo_para_producir() == "SI")
+							{
+								if ($vp->getIdUnidad() == 4)
+								{
+									// Des apartar de producto (piezas)
+									$producto = new ModeloProducto();
+
+									$producto->setIdProducto($vp->getIdProducto());
+
+									if ($producto->getIdProducto() <= 0)
+									{
+										$errores .= "(P4)"."No se pudo obtener Producto" . ". ";
+										$blnDoCommit = false;
+										break;
+									}
+
+									$producto->desApartar($pedidoDetalle->getTotalExplotar());
+									$producto->desApartarReal($pedidoDetalle->getTotalExplotar());
+									$pedidoDetalle->setListo_para_producirNO();
+
+									$pedidoDetalle->Guardar();
+
+									if ($pedidoDetalle->getError())
+									{
+										$errores .= "(P5)".$pedidoDetalle->getStrError() . ". ";
+										$blnDoCommit = false;
+										break;
+									}
+
+									$producto->Guardar();
+
+									if ($producto->getError())
+									{
+										$errores .= "(P6)".$producto->getStrError() . ". ";
+										$blnDoCommit = false;
+										break;
+									}
+								}
+								else
+								{
+									if ($vp->getIdRollo() ==  "1"  && $vp->getIdProducto() != $idProductoMoldura)
+									{
+										$errores .= "(P7)"."No se puede descontar de rollo. Falta informacion de rollo (Prod: ".$vp->getIdProducto().")". ". ";
+										$blnDoCommit = false;
+										break;
+									}
+
+									// Des apartar de rollo (kilos)
+									$rollo = new ModeloRollo();
+
+									$rollo->setIdRollo($vp->getIdRollo());
+
+									if ($rollo->getIdRollo() <= 0)
+									{
+										$errores .= "(P8)"."No se pudo obtener la informacion del rollo". ". ";
+										$blnDoCommit = false;
+										break;
+									}
+
+									$rollo->desApartar($pedidoDetalle->getTotalExplotar());
+									$pedidoDetalle->setListo_para_producirNO();
+
+									$rollo->Guardar();
+
+									if ($rollo->getError())
+									{
+										$errores .= "(P9)".$rollo->getStrError() . ". ";
+										$blnDoCommit = false;
+										break;
+									}
+
+									$pedidoDetalle->Guardar();
+
+									if ($pedidoDetalle->getError())
+									{
+										$errores .= "(P10)".$pedidoDetalle->getStrError() . ". ";
+										$blnDoCommit = false;
+										break;
+									}
+								}
+							}
+
+							// Liberar la colocacion del renglon. El borrado dispara el trigger
+							// pedidodetallecolocacion_AFTER_DELETE que libera inventariosucursal.apartado.
+							$col = new ModeloPedidodetallecolocacion();
+
+							$lstCol = $col->getAll("idPedidoDetalleColocacion", "", " idPedidoDetalle = " . $objpd["idPedidoDetalle"]);
+
+							foreach ($lstCol as $itemCol)
+							{
+								$delCol = new ModeloPedidodetallecolocacion();
+
+								$delCol->setIdPedidoDetalleColocacion($itemCol["idPedidoDetalleColocacion"]);
+
+								$delCol->Borrar();
+
+								if ($delCol->getError())
+								{
+									$errores .= "(P11)".$delCol->getStrError() . ". ";
+									$blnDoCommit = false;
+								}
+							}
+
+							if (!$blnDoCommit)
+								break;
+						}
+					}
+				}
+			}
 		}
 		else if ($pedido->getEstado() == "CANCELADO")
 		{
