@@ -380,7 +380,7 @@ var app = new Vue({
 					
 					this.codigo = $("#productoRollo option:selected").text();
 					this.rollo = this.productoRollo;
-					this.idMaterial = 1;
+					//this.idMaterial = 1;
 					this.idAplicacion = 1;				
 				}
 				else

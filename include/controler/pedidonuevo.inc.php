@@ -1496,14 +1496,14 @@
                         app.". ($isLaminaMetalica ? 'productosNuevoFiltro' : ($isComercializado ? 'productosNuevoFiltroComercializados' : 'productosNuevoFiltroAccesorios') ) .".push({
                             idProducto:  '" .$productos->lstProductos[$i]->getIdProducto() . "',
                             codigo:  '".$codigo."',
-                            
+                             
                             longitud:  '" .$productos->lstProductos[$i]->getLongitud() . "',
                             mlpieza:  " .$productos->lstProductos[$i]->getMlpieza() . ",
                             idTipoProducto:  '" .$productos->lstProductos[$i]->getIdTipoProducto() . "',
-                            
+                             
                             idAplicacion:  '" .$productos->lstProductos[$i]->getIdAplicacion() . "',
-                            
-                            idMaterial:  '" .$productos->lstProductos[$i]->getIdMaterial() . "',
+                             
+                            idMaterial:  '" . ($isLaminaMetalica ? $productos->lstProductos[$i]->getRolloIdMaterial() : $productos->lstProductos[$i]->getIdMaterial()) . "',
                             
                             idRollo:  '" .$productos->lstProductos[$i]->getIdRollo() . "',
                             
@@ -1519,7 +1519,7 @@
                             unidad:  '" .$productos->lstProductos[$i]->getUnidad() . "',
                             shortUnidad:  '" .$productos->lstProductos[$i]->getShortUnidad() . "',
                             
-                            descripcion:  '" . $descProducto . "',
+                            descripcion:  '" . $descAuto . "',
                             existencia:  '" .$productos->lstProductos[$i]->getExistencia() . "',
                             
                             isRango:  '" .$productos->lstProductos[$i]->getIsRango() . "',
