@@ -1,5 +1,13 @@
 	<?php
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
+use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 function salir()
 {
 	echo "<script>
@@ -52,14 +60,15 @@ $descripcionRollo = str_replace("<br />", " ", normaliza (mb_convert_encoding(($
 if (PHP_SAPI == 'cli')
 	die('Este archivo solo se puede ver desde un navegador web');
 
-/** Se agrega la libreria PHPExcel */
-require_once FOLDER_INCLUDE . 'lib/PHPExcel/PHPExcel.php';
 
-// Se crea el objeto PHPExcel
-$objPHPExcel = new PHPExcel();
+require_once FOLDER_INCLUDE . 'lib/phpspreadsheet/autoload.php';
+require_once FOLDER_INCLUDE . 'lib/phpspreadsheet/class.celdaautobinder.inc.php';
+
+
+$spreadsheet = new Spreadsheet();
 
 		// Se asignan las propiedades del libro
-$objPHPExcel->getProperties()->setCreator("Codedrinks") //Autor
+$spreadsheet->getProperties()->setCreator("Codedrinks") //Autor
 					 ->setLastModifiedBy("Codedrinks") //Ultimo usuario que lo modificÃƒÂ³
 					 ->setTitle("Reporte Excel con PHP y MySQL")
 					 ->setSubject("Reporte Excel con PHP y MySQL")
@@ -67,29 +76,29 @@ $objPHPExcel->getProperties()->setCreator("Codedrinks") //Autor
 					 ->setKeywords("reporte alumnos carreras")
 					 ->setCategory("Reporte excel");
 
-$objPHPExcel->getActiveSheet()
+$spreadsheet->getActiveSheet()
 				 ->getPageSetup()
-				 ->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
+				 ->setOrientation(PageSetup::ORIENTATION_LANDSCAPE);
 
-$objPHPExcel->getActiveSheet()
+$spreadsheet->getActiveSheet()
 				 ->getPageSetup()
-				 ->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);					 
+				 ->setPaperSize(PageSetup::PAPERSIZE_A4);					 
 
 $tituloReporte = "Hoja de InspecciÃ³n";
 $titulosColumnas = array('# Rollo', 'D. Interior', 'D. Exterior', 'Ancho', 'Observaciones');
 
 		
-$objPHPExcel->setActiveSheetIndex(0)
+$spreadsheet->setActiveSheetIndex(0)
       		    ->mergeCells('A1:E1');
 
-$objPHPExcel->setActiveSheetIndex(0)
+$spreadsheet->setActiveSheetIndex(0)
       		    ->mergeCells('D3:E3');      		    
 
-$objPHPExcel->setActiveSheetIndex(0)
+$spreadsheet->setActiveSheetIndex(0)
       		    ->mergeCells('B32:C32');      		    
 						
 // Se agregan los titulos del reporte
-$objPHPExcel->setActiveSheetIndex(0)
+$spreadsheet->setActiveSheetIndex(0)
 			->setCellValue('A1',$tituloReporte)
    		    ->setCellValue('A5',  $titulosColumnas[0])
             ->setCellValue('B5',  $titulosColumnas[1])
@@ -97,25 +106,25 @@ $objPHPExcel->setActiveSheetIndex(0)
        		->setCellValue('D5',  $titulosColumnas[3])
        		->setCellValue('E5',  $titulosColumnas[4]);
 
-$objPHPExcel->setActiveSheetIndex(0)
+$spreadsheet->setActiveSheetIndex(0)
        		->setCellValue('A3','CÃ³digo Rollo');       		
 
-$objPHPExcel->setActiveSheetIndex(0)
+$spreadsheet->setActiveSheetIndex(0)
        		->setCellValue('B3',$claveRollo);       		
 
-$objPHPExcel->setActiveSheetIndex(0)
+$spreadsheet->setActiveSheetIndex(0)
        		->setCellValue('C3','DescripciÃ³n');       		
 
-$objPHPExcel->setActiveSheetIndex(0)
+$spreadsheet->setActiveSheetIndex(0)
        		->setCellValue('D3',$descripcionRollo);       		
 
-$objPHPExcel->setActiveSheetIndex(0)
+$spreadsheet->setActiveSheetIndex(0)
        		->setCellValue('B32','Responsable');       		
 		
 // //Se agregan los datos de los alumnos
 // $i = 4;
 // 		while ($fila = $resultado->fetch_array()) {
-// 			$objPHPExcel->setActiveSheetIndex(0)
+// 			$spreadsheet->setActiveSheetIndex(0)
 //         		    ->setCellValue('A'.$i,  $fila['alumno'])
 // 		            ->setCellValue('B'.$i,  $fila['username'])
 //         		    ->setCellValue('C'.$i,  $fila['estatus'])
@@ -135,10 +144,10 @@ $objPHPExcel->setActiveSheetIndex(0)
         	       	)
             ), 
             'alignment' =>  array(
-        			'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
-        			'vertical'   => PHPExcel_Style_Alignment::VERTICAL_CENTER,
+        			'horizontal' => Alignment::HORIZONTAL_CENTER,
+        			'vertical'   => Alignment::VERTICAL_CENTER,
         			'rotation'   => 0,
-        			'wrap'          => TRUE
+        			'wrapText' => true
     		)
         );
 		
@@ -154,10 +163,10 @@ $objPHPExcel->setActiveSheetIndex(0)
 						)
 				),				
 				'alignment' =>  array(
-						'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
-						'vertical'   => PHPExcel_Style_Alignment::VERTICAL_CENTER,
+						'horizontal' => Alignment::HORIZONTAL_CENTER,
+						'vertical'   => Alignment::VERTICAL_CENTER,
 						'rotation'   => 0,
-						'wrap'          => TRUE
+						'wrapText' => true
 				)
 		);		
 		
@@ -173,10 +182,10 @@ $objPHPExcel->setActiveSheetIndex(0)
 						)
 				),
 				'alignment' =>  array(
-						'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
-						'vertical'   => PHPExcel_Style_Alignment::VERTICAL_CENTER,
+						'horizontal' => Alignment::HORIZONTAL_CENTER,
+						'vertical'   => Alignment::VERTICAL_CENTER,
 						'rotation'   => 0,
-						'wrap'          => TRUE
+						'wrapText' => true
 				)
 		);
 		
@@ -192,10 +201,10 @@ $objPHPExcel->setActiveSheetIndex(0)
 						)
 				),
 				'alignment' =>  array(
-						'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
-						'vertical'   => PHPExcel_Style_Alignment::VERTICAL_CENTER,
+						'horizontal' => Alignment::HORIZONTAL_CENTER,
+						'vertical'   => Alignment::VERTICAL_CENTER,
 						'rotation'   => 0,
-						'wrap'          => TRUE
+						'wrapText' => true
 				)
 		);
 
@@ -203,7 +212,7 @@ $objPHPExcel->setActiveSheetIndex(0)
        	$styleArray = array(
        				'borders' => array(
        						'allborders' => array(
-       								'style' => PHPExcel_Style_Border::BORDER_THIN,
+       								'style' => Border::BORDER_THIN,
        								'color' => array('argb' => 'FF000000'),
        						),
        				)
@@ -212,69 +221,69 @@ $objPHPExcel->setActiveSheetIndex(0)
        	$estiloFirma = array(
        			'borders' => array(
        					'top' => array(
-       							'style' => PHPExcel_Style_Border::BORDER_THIN,
+       							'style' => Border::BORDER_THIN,
        							'color' => array('argb' => 'FF000000'),
        					),
        			),
        			'alignment' =>  array(
-       					'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
-       					'vertical'   => PHPExcel_Style_Alignment::VERTICAL_CENTER,
+       					'horizontal' => Alignment::HORIZONTAL_CENTER,
+       					'vertical'   => Alignment::VERTICAL_CENTER,
        					'rotation'   => 0,
-       					'wrap'          => TRUE
+       					'wrapText' => true
        			)
        	);
        			 
-$objPHPExcel->getActiveSheet()->getStyle('A5:E28')->applyFromArray($styleArray);       		
+$spreadsheet->getActiveSheet()->getStyle('A5:E28')->applyFromArray($styleArray);       		
 
 //Firma
-$objPHPExcel->getActiveSheet()->getStyle('B32:C32')->applyFromArray($estiloFirma);
+$spreadsheet->getActiveSheet()->getStyle('B32:C32')->applyFromArray($estiloFirma);
        		
-$objPHPExcel->getActiveSheet()->getStyle('A1:E1')->applyFromArray($estiloTituloReporte);
+$spreadsheet->getActiveSheet()->getStyle('A1:E1')->applyFromArray($estiloTituloReporte);
 
-$objPHPExcel->getActiveSheet()->getStyle('A3')->applyFromArray($estiloDatosLabelRollo);
-$objPHPExcel->getActiveSheet()->getStyle('B3')->applyFromArray($estiloDatosRollo);
-$objPHPExcel->getActiveSheet()->getStyle('C3')->applyFromArray($estiloDatosLabelRollo);
-$objPHPExcel->getActiveSheet()->getStyle('D3')->applyFromArray($estiloDatosRollo);
+$spreadsheet->getActiveSheet()->getStyle('A3')->applyFromArray($estiloDatosLabelRollo);
+$spreadsheet->getActiveSheet()->getStyle('B3')->applyFromArray($estiloDatosRollo);
+$spreadsheet->getActiveSheet()->getStyle('C3')->applyFromArray($estiloDatosLabelRollo);
+$spreadsheet->getActiveSheet()->getStyle('D3')->applyFromArray($estiloDatosRollo);
 
-$objPHPExcel->getActiveSheet()->getStyle('A5:E5')->applyFromArray($estiloHeader);
-//$objPHPExcel->getActiveSheet()->getStyle('A3:D3')->applyFromArray($estiloTituloColumnas);		
-//$objPHPExcel->getActiveSheet()->setSharedStyle($estiloInformacion, "A4:D5");
+$spreadsheet->getActiveSheet()->getStyle('A5:E5')->applyFromArray($estiloHeader);
+//$spreadsheet->getActiveSheet()->getStyle('A3:D3')->applyFromArray($estiloTituloColumnas);		
+//$spreadsheet->getActiveSheet()->setSharedStyle($estiloInformacion, "A4:D5");
 
-$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(false);
-$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth('15');
+$spreadsheet->getActiveSheet()->getColumnDimension('A')->setAutoSize(false);
+$spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth('15');
 
-$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(false);
-$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth('15');
+$spreadsheet->getActiveSheet()->getColumnDimension('B')->setAutoSize(false);
+$spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth('15');
 
-$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(false);
-$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth('15');
+$spreadsheet->getActiveSheet()->getColumnDimension('C')->setAutoSize(false);
+$spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth('15');
 
-$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(false);
-$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth('10');
+$spreadsheet->getActiveSheet()->getColumnDimension('D')->setAutoSize(false);
+$spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth('10');
 
-$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(false);
-$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth('60');
+$spreadsheet->getActiveSheet()->getColumnDimension('E')->setAutoSize(false);
+$spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth('60');
 				
 // for($i = 'A'; $i <= 'E'; $i++){
-// 	$objPHPExcel->setActiveSheetIndex(0)			
+// 	$spreadsheet->setActiveSheetIndex(0)			
 // 		->getColumnDimension($i)->setAutoSize(TRUE);
 // }
 		
 // Se asigna el nombre a la hoja
-$objPHPExcel->getActiveSheet()->setTitle('Hoja InspecciÃ³n');
+$spreadsheet->getActiveSheet()->setTitle('Hoja InspecciÃ³n');
 
 // Se activa la hoja para que sea la que se muestre cuando el archivo se abre
-$objPHPExcel->setActiveSheetIndex(0);
+$spreadsheet->setActiveSheetIndex(0);
 // Inmovilizar paneles 
-//$objPHPExcel->getActiveSheet(0)->freezePane('A4');
-$objPHPExcel->getActiveSheet(0)->freezePaneByColumnAndRow(0,4);
+//$spreadsheet->getActiveSheet(0)->freezePane('A4');
+$spreadsheet->getActiveSheet(0)->freezePaneByColumnAndRow(0,4);
 
 // Se manda el archivo al navegador web, con el nombre que se indica (Excel2007)
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 header('Content-Disposition: attachment;filename="HojaInspeccion.xlsx"');
 header('Cache-Control: max-age=0');
 
-$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+$objWriter = new Xlsx($spreadsheet);
 $objWriter->save('php://output');
 		exit;
 		

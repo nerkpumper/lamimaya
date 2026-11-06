@@ -30,6 +30,10 @@ $debugRenglones = true;
 				<h4 class="modal-title">Selecci&oacute;n de Registros de Producci&oacute;n</h4>				
 			</div>
 			<div class="modal-body">
+				<div class="input-group m-b">
+					<span class="input-group-addon"><i class="fa fa-search"></i></span>
+					<input type="text" placeholder="Filtrar por # Rollo" v-model="rpFiltroNoRollo" class="form-control">
+				</div>
 				<div class="table-responsive">
 					<table class="table table-stripped toggle-arrow-tiny" data-page-size="5">
 						<thead>
@@ -43,13 +47,13 @@ $debugRenglones = true;
 							</tr>
 						</thead>
 						<tbody >
-							<tr v-for="(rp, index) in rpRegistrosDeProduccion">
+							<tr v-for="(rp, index) in rpRegistrosDeProduccionFiltered">
 								<td><h3>{{rp.rollo}}</h3></td>
 								<td><h3>{{rp.noRollo}}</h3></td>
 								<td>{{rp.kilos}}</td>
 								<td>{{rp.kilosMaquilados}}</td>
 								<td>{{rp.almacen}}</td>
-<td><button v-show="rp.almacen != 'OBRA' && rp.idSucursal == idSucursal" @click.prevent="seleccionarRegistroProduccion(rp.idRegistroProduccion, rp.rpIdRemisionRollo, index)" class="btn btn-primary btn-xs">Seleccionar<?php if ($debugRenglones && Permisos::userIsThisRol(Permisos::$rol_ROOT)): ?> {{rp.idRegistroProduccion}} <?php endif; ?></button></td>
+<td><button v-show="rp.almacen != 'OBRA' && rp.idSucursal == idSucursal" @click.prevent="seleccionarRegistroProduccion(rp.idRegistroProduccion, rp.rpIdRemisionRollo, rp)" class="btn btn-primary btn-xs">Seleccionar<?php if ($debugRenglones && Permisos::userIsThisRol(Permisos::$rol_ROOT)): ?> {{rp.idRegistroProduccion}} <?php endif; ?></button></td>
 							</tr>
 
 						</tbody>
@@ -666,7 +670,10 @@ $debugRenglones = true;
 
 									<div class="col-lg12 col-md-12 col-sm-12 col-xs-12">
                                 			<?php if ($debugRenglones && Permisos::userIsThisRol(Permisos::$rol_ROOT))  echo "row: {".__LINE__."}"; ?>
-                                		<button class="btn btn-primary pull-right" @click.prevent="registrarProduccionYDescontarMolduras">Registrar Producci&oacute;n y Surtir Molduras</button>
+                                		<button class="btn btn-primary pull-right" :disabled="surtidoEnProceso" @click.prevent="registrarProduccionYDescontarMolduras">
+                                			<span v-if="surtidoEnProceso">Registrando...</span>
+                                			<span v-else>Registrar Producci&oacute;n y Surtir Molduras</span>
+                                		</button>
                                 	</div>
 								</div>
 								
@@ -677,11 +684,11 @@ $debugRenglones = true;
 						
 <!-- 						O P C I O N   S U R T I R -->		
 
-						<div v-show="isMoldura || (isMaquilaMoldura && !molIsScrap)" class="panel panel-info">
+						<div v-show="isMoldura || isMaquilaMoldura" class="panel panel-info">
                         	<div class="panel-heading">
                         		<?php if ($debugRenglones && Permisos::userIsThisRol(Permisos::$rol_ROOT))  echo "row: {".__LINE__."}"; ?>
-                            	<h3 v-show="!(isMaquilaMoldura && !molIsScrap)">Surtir Mercancia de Scrap <span class="pull-right">No se toma mercancia de Stock</span></h3>
-								<h3 v-show="(isMaquilaMoldura && !molIsScrap)">Maquilas <span></h3>
+                            	<h3 v-show="!isMaquilaMoldura">Surtir Mercancia de Scrap <span class="pull-right">No se toma mercancia de Stock</span></h3>
+								<h3 v-show="isMaquilaMoldura">Maquilas <span></h3>
                             	
                             </div>
                             <div class="panel-body">
@@ -719,7 +726,7 @@ $debugRenglones = true;
                                 
                                 <!-- 						O P C I O N   S U R T I R -->                        
         <!--                         INC.PHP solo se marca en pedidodetalle -->
-                                <div v-if="isMaquilaMoldura && !molIsScrap" class="row">
+                                <div v-if="isMaquilaMoldura" class="row">
                                 		<?php if ($debugRenglones && Permisos::userIsThisRol(Permisos::$rol_ROOT))  echo "row: {".__LINE__."}"; ?>
                                 	<div class="col-lg12 col-md-12 col-sm-12 col-xs-12">
                                 			<?php if ($debugRenglones && Permisos::userIsThisRol(Permisos::$rol_ROOT))  echo "row: {".__LINE__."}"; ?>
@@ -729,7 +736,7 @@ $debugRenglones = true;
         	    			</div>
                             </div>
                         </div>				
-							
+						
 						
 						
 

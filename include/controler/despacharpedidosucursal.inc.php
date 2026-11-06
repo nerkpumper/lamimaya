@@ -30,6 +30,7 @@
 	require_once FOLDER_MODEL. "model.registroproduccion.inc.php";
 	require_once FOLDER_MODEL. "model.registroproducciondetalle.inc.php";
 	require_once FOLDER_MODEL. "model.pesomt.inc.php";
+	require_once FOLDER_INCLUDE. "lib/surtido_rp_duplicado.inc.php";
 
 	
 
@@ -56,10 +57,6 @@
 	// ----------------------------------------------------------------------------------------------------------------------#
 
 	$xajax = new xajax();
-
-// [DESPACHO-DEBUG] Descomenta la siguiente linea para abrir la ventana de debug de xajax
-// en el navegador (muestra el XML crudo de cada peticion/respuesta)
-// $xajax->setFlag("debug", true);
 
 // 	$xajax->setCharEncoding('ISO-8859-1');
 
@@ -89,8 +86,6 @@
 
 		$idSucursal = $objSession->getIdSucursal();
 
-		error_log("[DESPACHO-DEBUG] cargarPedido INICIO idPedido={$idPedido} idSucursal={$idSucursal}");
-
 		
 
         $idProductoMoldura = 9;
@@ -102,8 +97,6 @@
 
 
 		$pedido->getPedidoParaSurtir($idPedido, $idSucursal	);
-
-		error_log("[DESPACHO-DEBUG] getPedidoParaSurtir filas=" . count($pedido->__rsPedidoWDetalle));
 
 
 
@@ -122,8 +115,6 @@
 
 
 		$estado = $pedido->getPedidoDato("estado");
-
-		error_log("[DESPACHO-DEBUG] estado={$estado}");
 
 
 
@@ -319,23 +310,23 @@
 
 					$desc = str_replace("--NO APLICA--", "", $desc);
 
-// 					$desc = mb_convert_encoding($desc, 'ISO-8859-1', 'UTF-8');
+// 					$desc = utf8_decode($desc);
 
 
 
 // 			$pedidoDetalle .= "this.pedidoDetalle.push({
 
-// 								idPedidoDetalle: ".mb_convert_encoding($row["idPedidoDetalle"], 'ISO-8859-1', 'UTF-8').",
+// 								idPedidoDetalle: ".utf8_decode($row["idPedidoDetalle"]).",
 
-// 								codigo: \"".mb_convert_encoding($row["proCodigo"], 'ISO-8859-1', 'UTF-8')."\",
+// 								codigo: \"".utf8_decode($row["proCodigo"])."\",
 
 // 								fullName: \"".$desc."\",
 
-// 								partida: ".mb_convert_encoding($row["detPartida"], 'ISO-8859-1', 'UTF-8').",
+// 								partida: ".utf8_decode($row["detPartida"]).",
 
-// 								listoDespachar: \"".mb_convert_encoding($row["listo_para_producir"], 'ISO-8859-1', 'UTF-8')."\",
+// 								listoDespachar: \"".utf8_decode($row["listo_para_producir"])."\",
 
-// 								despachado: \"".mb_convert_encoding($row["despachado"], 'ISO-8859-1', 'UTF-8')."\"
+// 								despachado: \"".utf8_decode($row["despachado"])."\"
 
 // 							});";
 
@@ -343,29 +334,29 @@
 
 					$pedidoDetalle .= "app.pedidoDetalle.push({
 
-								idPedidoDetalle: ".mb_convert_encoding($row["idPedidoDetalle"], 'ISO-8859-1', 'UTF-8').",
+								idPedidoDetalle: ".utf8_decode($row["idPedidoDetalle"]).",
 
                                 idProducto: ".$row["detIdProducto"].",
 
                                 idrollo: ".$row["proIdRollo"].",
 
-								codigo: \"".mb_convert_encoding($row["proCodigo"], 'ISO-8859-1', 'UTF-8')."\",
+								codigo: \"".utf8_decode($row["proCodigo"])."\",
 
-								shortTipoProducto: \"".mb_convert_encoding($row["proShortTipoProducto"], 'ISO-8859-1', 'UTF-8')."\",
+								shortTipoProducto: \"".utf8_decode($row["proShortTipoProducto"])."\",
 
 								fullName: \"".$desc."\",
 
-								unidad: \"".mb_convert_encoding($row["proUnidad"], 'ISO-8859-1', 'UTF-8')."\",
+								unidad: \"".utf8_decode($row["proUnidad"])."\",
 
-								shortUnidad: \"".mb_convert_encoding($row["proShortUnidad"], 'ISO-8859-1', 'UTF-8')."\",
+								shortUnidad: \"".utf8_decode($row["proShortUnidad"])."\",
 
-								partida: ".mb_convert_encoding($row["detPartida"], 'ISO-8859-1', 'UTF-8').",
+								partida: ".utf8_decode($row["detPartida"]).",
 
-                                ml: ".mb_convert_encoding($row["detCantidadReal"], 'ISO-8859-1', 'UTF-8').",    
+                                ml: ".utf8_decode($row["detCantidadReal"]).",    
 
-								listoDespachar: \"".mb_convert_encoding($row["listo_para_producir"], 'ISO-8859-1', 'UTF-8')."\",
+								listoDespachar: \"".utf8_decode($row["listo_para_producir"])."\",
 
-								despachado: \"".mb_convert_encoding($row["despachado"], 'ISO-8859-1', 'UTF-8')."\",
+								despachado: \"".utf8_decode($row["despachado"])."\",
 
 								despachando: false,
 
@@ -385,9 +376,7 @@
 
 
 
-		error_log("[DESPACHO-DEBUG] JS generado para el navegador:\n" . $pedidoDetalle);
-
-		$r->script(" app.pedidoProduccion = true; app.pedidoDetalle.splice(0, app.pedidoDetalle.length); " . $pedidoDetalle . " console.log('[DESPACHO-DEBUG] Respuesta ejecutada OK, partidas=' + app.pedidoDetalle.length); ");
+		$r->script(" app.pedidoProduccion = true; app.pedidoDetalle.splice(0, app.pedidoDetalle.length); " . $pedidoDetalle);
 
 
 
@@ -900,7 +889,7 @@
 
 		{
 
-			$r->script("saError(\"No se pudo obtener informaci�n del Producto.\");");
+			$r->script("saError(\"No se pudo obtener informaciï¿½n del Producto.\");");
 
 			return $r;
 
@@ -1232,7 +1221,7 @@
 
 		{
 
-			$r->script("saError(\"No se pudo obtener informaci�n del Rollo.\");");
+			$r->script("saError(\"No se pudo obtener informaciï¿½n del Rollo.\");");
 
 			return $r;
 
@@ -1298,7 +1287,7 @@
 
 		{
 
-			$r->script("saError(\"No se pudo obtener informaci�n del Stock de No Rollo.\");");
+			$r->script("saError(\"No se pudo obtener informaciï¿½n del Stock de No Rollo.\");");
 
 			return $r;
 
@@ -1366,7 +1355,7 @@
 
 		{
 
-			$r->script("saError(\"No se pudo obtener informaci�n del Rollo.\");");
+			$r->script("saError(\"No se pudo obtener informaciï¿½n del Rollo.\");");
 
 			return $r;
 
@@ -1554,7 +1543,7 @@
 
 		{
 
-			$r->script("saError(\"No se pudo obtener informaci�n del Detalle de Pedido.\");");
+			$r->script("saError(\"No se pudo obtener informaciï¿½n del Detalle de Pedido.\");");
 
 			return $r;
 
@@ -1634,7 +1623,7 @@
 
 	    {
 
-	        $r->script("saError(\"No se pudo obtener informaci�n del Detalle de Pedido.\");");
+	        $r->script("saError(\"No se pudo obtener informaciï¿½n del Detalle de Pedido.\");");
 
 	        return $r;
 
@@ -1716,7 +1705,7 @@
 
 		{
 
-			$r->script("saError(\"No se pudo obtener informaci�n del Producto.\");");
+			$r->script("saError(\"No se pudo obtener informaciï¿½n del Producto.\");");
 
 			return $r;
 
@@ -1914,7 +1903,7 @@
 
 	    $r = new xajaxResponse();
 
-	    $idProductoMoldura = 9;
+	    $idProductoMoldura = 386;
 
 	    
 
@@ -1930,7 +1919,7 @@
 
 // 	    {
 
-// 	        $r->script("saError(\"No se pudo obtener informaci�n del Producto.\");");
+// 	        $r->script("saError(\"No se pudo obtener informaciï¿½n del Producto.\");");
 
 // 	        return $r;
 
@@ -2108,7 +2097,7 @@
 
 	    $r = new xajaxResponse();
 
-	    $idProductoMoldura = 9;
+	    $idProductoMoldura = 386;
 
 	    
 
@@ -2124,7 +2113,7 @@
 
 	    {
 
-	        $r->script("saError(\"No se pudo obtener informaci�n del Producto.\");");
+	        $r->script("saError(\"No se pudo obtener informaciï¿½n del Producto.\");");
 
 	        return $r;
 
@@ -2168,7 +2157,7 @@
 
 	    $inv->setCantidad($cantidad);
 
-	    $inv->setObservaciones(mb_convert_encoding("L�minas tomadas para desarrollar ".$noMolduras." Molduras", 'UTF-8', 'ISO-8859-1'));
+	    $inv->setObservaciones(utf8_encode("Lï¿½minas tomadas para desarrollar ".$noMolduras." Molduras"));
 
 	    $inv->setIdPedidoDetalle($idPedidoDetalle);
 
@@ -2206,7 +2195,7 @@
 
 	        $invMol->setCantidad($noMolduras);
 
-	        $invMol->setObservaciones(mb_convert_encoding("Surtido de Pedido Molduras (de Lámina)", 'UTF-8', 'ISO-8859-1'));
+	        $invMol->setObservaciones(utf8_encode("Surtido de Pedido Molduras (de LÃ¡mina)"));
 
 	        $invMol->setIdPedidoDetalle($idPedidoDetalle);
 
@@ -2341,7 +2330,7 @@
 	$xajax->registerFunction("darSalidaAInventarioFromStockNoRolloLaminaYScrap");
 
 
-	function cargarRegistrosProduccion($idRollo)
+	function cargarRegistrosProduccion($idRollo, $idSucursal)
 
 	{
 
@@ -2364,22 +2353,24 @@
 		// 		AND rr.estado <> 'BAJA'";
 
 		$sql = "
-		SELECT DISTINCT rp.idRegistroProduccion, rp.idRemisionRollo, r.idRollo, r.codigo, rr.noRollo, rp.kilos, rp.kilosMaquilados, rp.terminado,
+		SELECT rp.idRegistroProduccion, rp.idRemisionRollo, r.idRollo, r.codigo, rr.noRollo, rp.kilos, rp.kilosMaquilados, rp.terminado,
 				rr.almacen, if(rr.almacen = 'LAGOS', 3, if(rr.almacen = 'DELTA', 2, if(rr.almacen = 'OBRA', 0, 1))) idSucursal
 		FROM registroproduccion rp
 		INNER JOIN remisionrollo rr	
 		ON rr.idRemisionRollo = rp.idRemisionRollo
+		INNER JOIN rollo r
+		ON r.idRollo = rr.remisionRollo_rollo_idRollo
 		INNER JOIN rollo rgetcal
 		ON rgetcal.idRollo = ".$idRollo."
-		INNER JOIN rollo r
-		ON  r.rollo_material_idMaterial = rgetcal.rollo_material_idMaterial 
-		AND r.pies = rgetcal.pies
-		AND r.rollo_proveedor_idProveedor = rgetcal.rollo_proveedor_idProveedor
-		AND r.grado = rgetcal.grado
-		AND r.estado = 'ACTIVO'
+		WHERE (
+			r.rollo_material_idMaterial = rgetcal.rollo_material_idMaterial
+			OR (r.rollo_material_idMaterial IN (19, 20) AND rgetcal.rollo_material_idMaterial IN (19, 20))
+		)
 		AND r.rollo_color_idColor = rgetcal.rollo_color_idColor
+		AND r.estado = 'ACTIVO'
 		AND rp.terminado = 'NO'
 		AND rr.estado <> 'BAJA' 
+		AND if(rr.almacen = 'LAGOS', 3, if(rr.almacen = 'DELTA', 2, if(rr.almacen = 'OBRA', 0, 1))) = ".$idSucursal."
 		ORDER BY r.codigo";
 
 		// $r->mostrarAviso($sql);	 return $r;
@@ -2433,7 +2424,7 @@
 	
 		if($idRegistroProduccion <= 0)
 		{
-			$r->saError("No se ha especificado datos para cargar la informaci�n del Registro de Producci�n.");
+			$r->saError("No se ha especificado datos para cargar la informaciï¿½n del Registro de Producciï¿½n.");
 			return $r;
 		}
 		
@@ -2445,7 +2436,7 @@
 		
 		if ($rp->getIdRegistroProduccion() <= 0)
 		{
-			$r->saError("No se ha especificado datos para cargar la informaci�n del Registro de Producci�n.");
+			$r->saError("No se ha especificado datos para cargar la informaciï¿½n del Registro de Producciï¿½n.");
 			return $r;
 		}
 		
@@ -2544,8 +2535,7 @@
 
 	function registrarRPPedido($idRollo, $idRemisionRollo, $idRegistroProduccion, $idPedidoDetalle, $idProducto, $piezas, $ml, $kgml, $totalkg, $idPedidoDetalleColocacion, $idSucursal, $noMolduras, $isMoldura = false)
 	{
-	$r = new xajaxResponse();
-	try {
+	    $r = new xajaxResponse();
 // 	    $r->starDebug();
 		// $r->mostrarAviso($ml); return;
 
@@ -2554,13 +2544,89 @@
 	    if ($totalkg <= 0)
 	    {
 	        $r->saError("El total de kg del registro debe ser mayor a cero.");
-	        return $r;
+	        return responderLiberarSurtidoRP($r);
 	    }
 	    
 	    $blnDoCommit = true;
 	    $strErrores = "";
+
+		if (!obtenerLockSurtidoRP($rpd, $idPedidoDetalle))
+		{
+			$r->saError("Otro surtido estÃ¡ en proceso en este renglÃ³n. Intente de nuevo.");
+			return responderLiberarSurtidoRP($r);
+		}
 	    
-	    $rpd->transaccionIniciar();
+	    if (!$rpd->transaccionIniciar())
+	    {
+			liberarLockSurtidoRP($rpd, $idPedidoDetalle);
+	        $r->saError("No se pudo iniciar la transacciÃ³n.");
+	        return responderLiberarSurtidoRP($r);
+	    }
+
+		$idUsuarioCaptura = idUsuarioCapturaRP();
+
+		$lstLock = $rpd->getDataSet("SELECT idPedidoDetalle FROM pedidodetalle WHERE idPedidoDetalle = ".(int) $idPedidoDetalle." FOR UPDATE");
+		if (!is_array($lstLock) || count($lstLock) <= 0)
+		{
+			$rpd->transaccionRollback();
+			liberarLockSurtidoRP($rpd, $idPedidoDetalle);
+			$r->saError("No se pudo bloquear el renglÃ³n del pedido.");
+			return responderLiberarSurtidoRP($r);
+		}
+
+		$pdTope = new ModeloPedidodetalle();
+		$pdTope->setIdPedidoDetalle($idPedidoDetalle);
+		if ($pdTope->getIdPedidoDetalle() <= 0)
+		{
+			$rpd->transaccionRollback();
+			liberarLockSurtidoRP($rpd, $idPedidoDetalle);
+			$r->saError("No se pudo obtener el renglÃ³n del pedido.");
+			return responderLiberarSurtidoRP($r);
+		}
+
+		$hayDuplicado = hayCapturaRPDuplicadaReciente($rpd, $idPedidoDetalle, $idRegistroProduccion, $piezas, $totalkg, $idUsuarioCaptura);
+		if ($rpd->getError())
+		{
+			$rpd->transaccionRollback();
+			liberarLockSurtidoRP($rpd, $idPedidoDetalle);
+			$r->saError("No se pudo validar un surtido duplicado.");
+			return responderLiberarSurtidoRP($r);
+		}
+		if ($hayDuplicado)
+		{
+			$rpd->transaccionRollback();
+			liberarLockSurtidoRP($rpd, $idPedidoDetalle);
+			$r->saError("Este surtido ya se registrÃ³ hace un momento. No se guardÃ³ un duplicado.");
+			return responderLiberarSurtidoRP($r);
+		}
+
+		if ($isMoldura)
+		{
+			$lstYa = $rpd->getDataSet(
+				"SELECT IFNULL(SUM(cantidad),0) AS ya
+				FROM invzmov
+				WHERE idPedidoDetalle = ".(int) $idPedidoDetalle."
+				  AND idProducto = 386
+				  AND documento = 'PEDIDO'
+				  AND movimiento = 'SALIDA'"
+			);
+			$yaSurtido = (is_array($lstYa) && count($lstYa) > 0) ? (float) $lstYa[0]["ya"] : 0;
+			$intento = (float) $noMolduras;
+		}
+		else
+		{
+			$yaSurtido = (float) $pdTope->getPartidaDespachada();
+			$intento = (float) $piezas;
+		}
+
+		$limitePedido = (float) $pdTope->getPartida();
+		if ($limitePedido > 0 && ($yaSurtido + $intento) > ($limitePedido + 0.0001))
+		{
+			$rpd->transaccionRollback();
+			liberarLockSurtidoRP($rpd, $idPedidoDetalle);
+			$r->saError("La cantidad a surtir supera lo pedido en este renglÃ³n. Pedido: ".$limitePedido." Ya surtido: ".$yaSurtido." Intento: ".$intento);
+			return responderLiberarSurtidoRP($r);
+		}
 		
 	    $rpd->setIdRegistroProduccion($idRegistroProduccion);
 	    $rpd->setTipoPEDIDO();
@@ -2657,7 +2723,7 @@
 						$invMol->setMovimientoSALIDA();
 						$invMol->setSalidaDespachoSI();
 						$invMol->setCantidad($noMolduras);
-						$invMol->setObservaciones(mb_convert_encoding("Surtido de Pedido Molduras (de Lámina)", 'UTF-8', 'ISO-8859-1'));
+						$invMol->setObservaciones(utf8_encode("Surtido de Pedido Molduras (de LÃ¡mina)"));
 						$invMol->setIdPedidoDetalle($idPedidoDetalle);
 						$invMol->setDateAndUser("movimiento");
 						$invMol->setIdRemisionRollo(0);
@@ -2713,28 +2779,24 @@
 	    if ($blnDoCommit)
 	    {
 	        $rpd->transaccionCommit();
+			liberarLockSurtidoRP($rpd, $idPedidoDetalle);
 	        // 			$r->script("app.pedidoNoDespachar(); app.cancelarIngresoRegistro(); xajax_cargarDatosRegistroProduccionAbierto(app.idRegistroProduccion);");
 	        $r->script(" mdlExitWait();  setTimeout(function() {xajax_cargarPedidoDetalle(".$idPedidoDetalle.", ".$idSucursal." , false);}, 10);  setTimeout(function () { app.seleccionarRegistroProduccion(app.rpIdRegistroProduccion, app.rpIdRemisionRollo, app.rpIndex);}, 1000); ");
-	        $r->saSuccess("Se ha registrado la producción satisfactoriamente.");
+			responderLiberarSurtidoRP($r, 2500);
+	        $r->saSuccess("Se ha registrado la producciÃ³n satisfactoriamente.");
 	        $r->saClose(2);
 	        
 	    }
 	    else
 	    {
 	        $rpd->transaccionRollback();
+			liberarLockSurtidoRP($rpd, $idPedidoDetalle);
 	        $r->saError("Ha ocurrido un error. " . $strErrores );
-// 	        $r->script(" app.showButtonRegistrarRPPedido = true;");
+			responderLiberarSurtidoRP($r);
 	    }
 	    
 // 	    $r->endDegug();
 	    return $r;
-	} catch (\Throwable $e) {
-	    if (isset($rpd) && $rpd instanceof ModeloRegistroproducciondetalle) {
-	        try { $rpd->transaccionRollback(); } catch (\Throwable $ignored) {}
-	    }
-	    $r->saError("Error en registrarRPPedido: " . $e->getMessage() . " en " . $e->getFile() . ":" . $e->getLine());
-	    return $r;
-	}
 	}
 	$xajax->registerFunction("registrarRPPedido");
 
@@ -2767,4 +2829,3 @@
 	#-------------------------------------------------Salida de Javascript-------------------------------------------------#
 
 	#----------------------------------------------------------------------------------------------------------------------#
-

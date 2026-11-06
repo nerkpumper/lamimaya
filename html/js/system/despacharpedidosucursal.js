@@ -1,10 +1,6 @@
 //  console.log(" __DEVELOPERMODE " + __DEVELOPERMODE);
 //  console.log("url_api_file: " + URL_API_FILE);
 
-window.addEventListener("error", function(e){
-	console.error("[DESPACHO-DEBUG] ERROR JS:", e.message, "(linea " + e.lineno + ")");
-});
-
 var app = new Vue({
 	el: '#app',
 	data: {
@@ -17,6 +13,7 @@ var app = new Vue({
 		rpKilos: 0,
 		rpKilosMaquilados: 0,
 		rpRegistrosDeProduccion: [],
+		rpFiltroNoRollo: '',
 		rpRegistroProduccionDetalle: [],
 		rpPesoEstimadoXKiloRolloSeleccionado: 0,
 		rpSucursalCantidadSacar: 0,
@@ -24,6 +21,8 @@ var app = new Vue({
 		rpIndex: -1,
 		
 		errRpSucursalCantidad: '',
+		surtidoEnProceso: false,
+		showButtonRegistrarRPPedido: true,
 
 		//Moldura
 		molIdProductoMoldura: 9,
@@ -42,7 +41,7 @@ var app = new Vue({
 		
 		indexDespachando: 0,
 		
-		//de donde sacar mercancía remisionRollo
+		//de donde sacar mercancÃ­a remisionRollo
 		remisionIdRemisionRollo: 0,
 		remisionRemision: 0,
 		remisionNoRollo: '',
@@ -50,7 +49,7 @@ var app = new Vue({
 		remisionCantidadSacar: 0,
 		remisionHistorial: '',
 		
-		//de donde sacar mercancía remisionRollo
+		//de donde sacar mercancÃ­a remisionRollo
 		stockIdInvzStockNoRollo: 0,
 		stockIdRemisionRollo: 0,		
 		stockNoRollo: '',
@@ -103,8 +102,8 @@ var app = new Vue({
 		proLongitud: '',
 		
 		detPartida: 0,      //Numero de Piezas
-		detCantidad: 0,     //Longitud de láminas
-		detCantidadReal: 0, //Longitud en ML, diferirá de M2
+		detCantidad: 0,     //Longitud de lÃ¡minas
+		detCantidadReal: 0, //Longitud en ML, diferirÃ¡ de M2
 		detDesarrollo: '',  //Desarrollo
 		detDobleces: 0,     //Dobleces
 		
@@ -129,7 +128,7 @@ var app = new Vue({
 	},
 	watch: {
 		rpSucursalCantidadSacar: function(val){
-			if (this.rpSucursalCantidadSacar > this.totalPorDespachar)
+			if (parseFloat(this.rpSucursalCantidadSacar) > parseFloat(this.totalPorDespachar))
 			{
 				this.errRpSucursalCantidad = "La cantidad a fabricar excede lo solicitado.";
 			}	
@@ -140,6 +139,19 @@ var app = new Vue({
 		}
 	},
 	computed:{	
+		rpRegistrosDeProduccionFiltered: function(){
+			var self = this;
+			var find = this.rpFiltroNoRollo.toUpperCase().trim();
+
+			if (find == "")
+			{
+				return this.rpRegistrosDeProduccion;
+			}
+
+			return this.rpRegistrosDeProduccion.filter(function(rp){
+				return String(rp.noRollo).toUpperCase().includes(find);
+			});
+		},
 		descripcionRollo: function(){			
 			
 			var des = this.rolloCodigo + '  ' + 
@@ -185,10 +197,10 @@ var app = new Vue({
 		},	
 		totalPorDespachar: function(){
 //			var porDespachar = this.totalExplotar - this.explotadoReal ;
-			var porDespachar = this.colocaCantidad - this.colocaCantidadSurtida;
+			var porDespachar = parseFloat(this.colocaCantidad) - parseFloat(this.colocaCantidadSurtida);
 			
 //			console.log("Por Despachar: " + porDespachar);
-			porDespachar = parseFloat(Math.round(porDespachar * 100) / 100).toFixed(2);
+			porDespachar = Math.round(porDespachar * 100) / 100;
 //			console.log("Por Despachar(2): " + porDespachar);
 	
 			
@@ -257,14 +269,14 @@ var app = new Vue({
 			
 			if (this.idPedido == "")
 			{
-				saTexto("Indique el Número de Pedido");
+				saTexto("Indique el NÃºmero de Pedido");
 				return;
 			}
 			
 
 			if (this.idPedido == 0)
 			{
-				saTexto("Indique el Número de Pedido");
+				saTexto("Indique el NÃºmero de Pedido");
 				return;
 			}
 			
@@ -273,10 +285,8 @@ var app = new Vue({
 			this.despachandoAlgo = false;	
 			this.indexDespachando = -1;
 			
-			console.log("[DESPACHO-DEBUG] Enviando xajax_cargarPedido, idPedido=" + this.idPedido);
 			xajax_cargarPedido(this.idPedido);	
 			this.seleccionarPedido = false;
-			console.log("[DESPACHO-DEBUG] Input oculto; esperando respuesta del servidor...");
 //			this.pedidoProduccion = true;			
 		},
 		seleccionarOtroPedido: function(){
@@ -314,7 +324,7 @@ var app = new Vue({
 			{
 				swal({
 			        title: "Confirme",
-			        text: "Se relizará el movimiento en el Inventario",
+			        text: "Se relizarÃ¡ el movimiento en el Inventario",
 			        type: "warning",
 			        showCancelButton: true,
 			        confirmButtonColor: "#DD6B55",
@@ -354,13 +364,13 @@ var app = new Vue({
 		marcarComoDespachado: function(){			
 			if (this.totalExplotar > this.explotadoReal)
 			{
-				mostrarAviso("No se puede realizar la petición. La Cantidad Despachada es menos al Total a Despachar.");
+				mostrarAviso("No se puede realizar la peticiÃ³n. La Cantidad Despachada es menos al Total a Despachar.");
 			}
 			else
 			{
 				swal({
-			        title: "¿Desea continuar?",
-			        text: "Ya no podrá hacer movimientos con este renglon de Pedido.",
+			        title: "Â¿Desea continuar?",
+			        text: "Ya no podrÃ¡ hacer movimientos con este renglon de Pedido.",
 			        type: "warning",
 			        showCancelButton: true,
 			        confirmButtonColor: "#DD6B55",
@@ -375,7 +385,7 @@ var app = new Vue({
 		marcarMaquilaRealizada: function(){			
 			
 				swal({
-			        title: "¿Desea continuar?",
+			        title: "Â¿Desea continuar?",
 			        text: "Se marcara como Productos Realizados.",
 			        type: "warning",
 			        showCancelButton: true,
@@ -392,7 +402,7 @@ var app = new Vue({
 			
 			swal({
 		        title: "Confirme",
-		        text: "Se relizará el movimiento en el Inventario",
+		        text: "Se relizarÃ¡ el movimiento en el Inventario",
 		        type: "warning",
 		        showCancelButton: true,
 		        confirmButtonColor: "#DD6B55",
@@ -408,7 +418,7 @@ var app = new Vue({
 		viewDespachoPedidoDetalle: function(index){
 			
 //			swal({
-//				title: "Cargando Información",
+//				title: "Cargando InformaciÃ³n",
 //				text: "Por favor espere.",				
 //				showConfirmButton: false
 //				});
@@ -460,7 +470,7 @@ var app = new Vue({
 			
 			
 //			swal({
-//				title: "Cargando Información",
+//				title: "Cargando InformaciÃ³n",
 //				text: "Por favor espere.",				
 //				showConfirmButton: false
 //				});
@@ -499,13 +509,13 @@ var app = new Vue({
 			
 		},
 		showModalStockNoRollos: function(){	
-//			saInfo("Este producto se saca en automático de inventario");
+//			saInfo("Este producto se saca en automÃ¡tico de inventario");
 			
 			xajax_cargarStockNoRollos(this.detIdProducto);
 			$('#modalStockNoRollos').modal('show');
 		},
 		showModalStockNoRollosParaMoldura: function(){	
-//			saInfo("Este producto se saca en automático de inventario");
+//			saInfo("Este producto se saca en automÃ¡tico de inventario");
 			
 			xajax_cargarStockNoRollos(this.molIdProductoLisa);
 			$('#modalStockNoRollos').modal('show');
@@ -546,7 +556,7 @@ var app = new Vue({
 			{
 				swal({
 			        title: "Confirme",
-			        text: "Se relizará el movimiento en el Inventario",
+			        text: "Se relizarÃ¡ el movimiento en el Inventario",
 			        type: "warning",
 			        showCancelButton: true,
 			        confirmButtonColor: "#DD6B55",
@@ -573,7 +583,7 @@ var app = new Vue({
 			
 			if (this.molCantidadSurtirScrap <= 0)
 			{
-				saInfo("Debe indicar el número de Molduras a Surtir.");
+				saInfo("Debe indicar el nÃºmero de Molduras a Surtir.");
 				seguir = false;
 			}
 			
@@ -589,7 +599,7 @@ var app = new Vue({
 			{
 				swal({
 			        title: "Confirme",
-			        text: "Se relizará el movimiento en el Inventario",
+			        text: "Se relizarÃ¡ el movimiento en el Inventario",
 			        type: "warning",
 			        showCancelButton: true,
 			        confirmButtonColor: "#DD6B55",
@@ -615,7 +625,7 @@ var app = new Vue({
 			console.log("descontarDeStockNoRolloLaminaYScrap");
 			if (parseFloat(this.sucursalCantidadSacar) <= 0)
 			{
-				saInfo("Debe indicar el número de Láminas que utilizará para Surtir las Molduras.");
+				saInfo("Debe indicar el nÃºmero de LÃ¡minas que utilizarÃ¡ para Surtir las Molduras.");
 				seguir = false;
 			}
 			
@@ -627,7 +637,7 @@ var app = new Vue({
 			
 			if (parseFloat(this.molCantidadSurtir) <= 0)
 			{
-				saInfo("Debe indicar el número de Molduras a Surtir.");
+				saInfo("Debe indicar el nÃºmero de Molduras a Surtir.");
 				seguir = false;
 			}
 			
@@ -643,7 +653,7 @@ var app = new Vue({
 //				alert("a guardar");
 				swal({
 			        title: "Confirme",
-			        text: "Se relizará el movimiento en el Inventario",
+			        text: "Se relizarÃ¡ el movimiento en el Inventario",
 			        type: "warning",
 			        showCancelButton: true,
 			        confirmButtonColor: "#DD6B55",
@@ -665,88 +675,135 @@ var app = new Vue({
 			this.rpSucursalCantidadSacar = 0;
 			this.rpmolCantidadSurtir = 0;
 			this.rpIndex = -1;
+			this.rpFiltroNoRollo = '';
 			
-			xajax_cargarRegistrosProduccion(this.molIdRollo);
+			xajax_cargarRegistrosProduccion(this.molIdRollo, this.idSucursal);
 			$('#modalRegistrosProduccion').modal('show');
 		},
-		seleccionarRegistroProduccion: function(idrp, idrr, index){
+		seleccionarRegistroProduccion: function(idrp, idrr, rp){
 			
+			var registro = null;
+
+			if (typeof rp === 'object' && rp !== null)
+			{
+				registro = rp;
+			}
+			else if (typeof rp === 'number' && rp >= 0)
+			{
+				registro = this.rpRegistrosDeProduccion[rp];
+			}
+
+			if (!registro)
+			{
+				for (var i = 0; i < this.rpRegistrosDeProduccion.length; i++)
+				{
+					if (this.rpRegistrosDeProduccion[i].idRegistroProduccion == idrp)
+					{
+						registro = this.rpRegistrosDeProduccion[i];
+						break;
+					}
+				}
+			}
+
 			this.rpIdRegistroProduccion = idrp;		
 			this.rpIdRemisionRollo = idrr;
-			this.rpKilos = this.rpRegistrosDeProduccion[index].kilos;
-			this.rpKilosMaquilados = this.rpRegistrosDeProduccion[index].kilosMaquilados;
+			this.rpKilos = registro ? registro.kilos : 0;
+			this.rpKilosMaquilados = registro ? registro.kilosMaquilados : 0;
 			this.rpSucursalCantidadSacar = 0;
 			this.rpmolCantidadSurtir = 0;
-			this.rpIndex = index;
+			this.rpIndex = registro ? this.rpRegistrosDeProduccion.indexOf(registro) : -1;
 
 			setTimeout(function () { xajax_cargarDetalleRegistroProduccion(app.rpIdRegistroProduccion);}, 1000);
 
 			$('#modalRegistrosProduccion').modal('hide');
 		},
+		marcarSurtidoRPEnProceso: function(){
+			this.surtidoEnProceso = true;
+			this.showButtonRegistrarRPPedido = false;
+		},
+		liberarSurtidoRP: function(){
+			this.surtidoEnProceso = false;
+			this.showButtonRegistrarRPPedido = true;
+		},
 		registrarProduccionYDescontarMolduras: function(){
-			
+			if (this.surtidoEnProceso)
+			{
+				return;
+			}
+			this.marcarSurtidoRPEnProceso();
 
 			var totalML = 0;
 			var totalKG = 0;
 			var ml = 0;
+			var laminasFabricar = parseFloat(this.rpSucursalCantidadSacar) || 0;
+			var moldurasSurtir = parseFloat(this.rpmolCantidadSurtir) || 0;
+			var porDespachar = parseFloat(this.totalPorDespachar) || 0;
+			var kilos = parseFloat(this.rpKilos) || 0;
+			var kilosMaquilados = parseFloat(this.rpKilosMaquilados) || 0;
+			var pesoXMl = parseFloat(this.rpPesoEstimadoXKiloRolloSeleccionado) || 0;
+			var detCantidadReal = parseFloat(this.detCantidadReal) || 0;
+			var proLongitud = parseFloat(this.proLongitud) || 0;
 			
 			if (this.isMoldura)			
 			{
-				totalML = this.rpSucursalCantidadSacar*this.detCantidadReal;							
+				totalML = laminasFabricar * detCantidadReal;							
 				ml = this.detCantidad;
 			}
 			else
 			{
-				totalML = this.rpSucursalCantidadSacar*this.proLongitud;
+				totalML = laminasFabricar * proLongitud;
 				ml = this.proLongitud;
 
-				if (this.rpSucursalCantidadSacar > this.totalPorDespachar)
+				if (laminasFabricar > porDespachar)
 				{
-					this.errRpSucursalCantidad = "Láminas a fabricar excede lo solicitado.";
-					saInfo("Las Láminas que indica a fabricar, supera la cantidad pedida. Favor de verificar.");
+					this.errRpSucursalCantidad = "LÃ¡minas a fabricar excede lo solicitado.";
+					this.liberarSurtidoRP();
+					saInfo("Las LÃ¡minas que indica a fabricar, supera la cantidad pedida. Favor de verificar.");
 					return;
 				}
 			}
 			
-			totalKG = totalML * this.rpPesoEstimadoXKiloRolloSeleccionado;
+			totalKG = totalML * pesoXMl;
 
-			if (this.rpSucursalCantidadSacar > 0)
+			if (laminasFabricar > 0)
 			{
 
-				if ((this.rpKilosMaquilados + totalKG) < (this.rpKilos * 1.1))
+				if ((kilosMaquilados + totalKG) < (kilos * 1.1))
 				{
 					if (this.isMoldura)			
 					{
-						if (this.rpmolCantidadSurtir > 0)
+						if (moldurasSurtir > 0)
 						{
-							if (this.rpmolCantidadSurtir <= this.totalPorDespachar)
+							if (moldurasSurtir <= porDespachar)
 							{
 								swal({
 									title: "Confirme",
-									text: "Se ingresará la información indicada y se harán movimientos en inventario sobre el Número de Rollo y el Rollo en General",
+									text: "Se ingresarÃ¡ la informaciÃ³n indicada y se harÃ¡n movimientos en inventario sobre el NÃºmero de Rollo y el Rollo en General",
 									type: "warning",
 									showCancelButton: true,
 									confirmButtonColor: "#DD6B55",
 									confirmButtonText: "Si",
 									cancelButtonText: "No",
 									closeOnConfirm: true
-									}, function () {
-										app.showButtonRegistrarRPPedido = false;
-										// console.log ("registrar rp Pedido");
+									}, function (isConfirm) {
+										if (isConfirm === false)
+										{
+											app.liberarSurtidoRP();
+											return;
+										}
 										mdlShowWait();
-										// console.log("RegistrarRPPedido L 731")
 										xajax_registrarRPPedido(app.molIdRollo, 
 																app.rpIdRemisionRollo,  
 																app.rpIdRegistroProduccion, 
 																app.idPedidoDetalle, 
 																app.detIdProducto , 
-																app.rpSucursalCantidadSacar, 
+																laminasFabricar, 
 																ml,  //ml
-																app.rpPesoEstimadoXKiloRolloSeleccionado, 
+																pesoXMl, 
 																totalKG, 
 																0, 
 																app.idSucursal,
-																app.rpmolCantidadSurtir,
+																moldurasSurtir,
 																app.isMoldura);
 			
 								});		
@@ -754,11 +811,13 @@ var app = new Vue({
 							}
 							else
 							{
-								saInfo("La Cantidad que desea Ingresar superará la Cantidad total de Láminas a Surtir.");
+								this.liberarSurtidoRP();
+								saInfo("La Cantidad que desea Ingresar superarÃ¡ la Cantidad total de Molduras a Surtir.");
 							}
 						}
 						else
 						{
+							this.liberarSurtidoRP();
 							saInfo("Ingrese los datos necesarios. Molduras a surtir.");
 						}
 
@@ -769,26 +828,28 @@ var app = new Vue({
 				
 						swal({
 							title: "Confirme",
-							text: "Se ingresará la información indicada y se harán movimientos en inventario sobre el Número de Rollo y el Rollo en General",
+							text: "Se ingresarÃ¡ la informaciÃ³n indicada y se harÃ¡n movimientos en inventario sobre el NÃºmero de Rollo y el Rollo en General",
 							type: "warning",
 							showCancelButton: true,
 							confirmButtonColor: "#DD6B55",
 							confirmButtonText: "Si",
 							cancelButtonText: "No",
 							closeOnConfirm: true
-							}, function () {
-								app.showButtonRegistrarRPPedido = false;
-								// console.log ("registrar rp Pedido");
+							}, function (isConfirm) {
+								if (isConfirm === false)
+								{
+									app.liberarSurtidoRP();
+									return;
+								}
 								mdlShowWait();
-								// console.log("RegistrarRPPedido L 777")
 								xajax_registrarRPPedido(app.molIdRollo, 
 														app.rpIdRemisionRollo,  
 														app.rpIdRegistroProduccion, 
 														app.idPedidoDetalle, 
 														app.detIdProducto , 
-														app.rpSucursalCantidadSacar, 
+														laminasFabricar, 
 														ml,  //ml
-														app.rpPesoEstimadoXKiloRolloSeleccionado, 
+														pesoXMl, 
 														totalKG, 
 														0, 
 														app.idSucursal,
@@ -802,13 +863,15 @@ var app = new Vue({
 				}
 				else
 				{
-					saInfo("La Cantidad que desea Ingresar superará la Cantidad total del Rollo(+10%).");
+					this.liberarSurtidoRP();
+					saInfo("La Cantidad que desea Ingresar superarÃ¡ la Cantidad total del Rollo(+10%).");
 				}
 				
 			}
 			else
 			{
-				saInfo("Ingrese los datos necesarios. Láminas a fabricar.");
+				this.liberarSurtidoRP();
+				saInfo("Ingrese los datos necesarios. LÃ¡minas a fabricar.");
 			}
 				
 		},

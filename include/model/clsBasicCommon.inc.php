@@ -93,6 +93,12 @@ class clsBasicCommon
 
 	}
 
+	public function setErrorCatch($e)
+	{
+		$msg = is_object($e) && method_exists($e, 'getMessage') ? $e->getMessage() : (string)$e;
+		return $this->setSystemError("Error en el sistema.", $msg);
+	}
+
 	public function getError()
 	{
 		return $this->error;
@@ -771,7 +777,7 @@ class clsBasicCommon
 			$r=mysqli_query($this->dbLink, $query);
 		}
 		if(!$r)
-			return $this->setSystemError("Error en la BD", mysql_error());
+			return $this->setSystemError("Error en la BD", mysqli_error($this->dbLink));
 		return true;
 	}
 
@@ -787,7 +793,7 @@ class clsBasicCommon
 			$r=mysqli_query($this->dbLink, $query);
 		}
 		if(!$r)
-			return $this->setSystemError("Error en la BD", mysql_error());
+			return $this->setSystemError("Error en la BD", mysqli_error($this->dbLink));
 		return true;
 
 	}
@@ -804,7 +810,7 @@ class clsBasicCommon
 			$r=mysqli_query($this->dbLink, $query);
 		}
 		if(!$r)
-			return $this->setSystemError("Error en la BD", mysql_error());
+			return $this->setSystemError("Error en la BD", mysqli_error($this->dbLink));
 		return true;
 	}
 

@@ -1,4 +1,12 @@
 <?php
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
+use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 require_once FOLDER_INCLUDE . 'lib/fpdf/fpdfnerk.php';
 require_once FOLDER_MODEL. "model.registroproduccion.inc.php";
 
@@ -54,15 +62,16 @@ function normaliza ($cadena){
 if (PHP_SAPI == 'cli')
 	die('Este archivo solo se puede ver desde un navegador web');
 
-	/** Se agrega la libreria PHPExcel */
-	require_once FOLDER_INCLUDE . 'lib/PHPExcel/PHPExcel.php';
+	
+	require_once FOLDER_INCLUDE . 'lib/phpspreadsheet/autoload.php';
+require_once FOLDER_INCLUDE . 'lib/phpspreadsheet/class.celdaautobinder.inc.php';
 	// require_once LIB_CONEXION_MYSQL;
 
-	// Se crea el objeto PHPExcel
-	$objPHPExcel = new PHPExcel();
+	
+	$spreadsheet = new Spreadsheet();
 
 	// Se asignan las propiedades del libro
-	$objPHPExcel->getProperties()->setCreator("Galvamex App") //Autor
+	$spreadsheet->getProperties()->setCreator("Galvamex App") //Autor
 	->setLastModifiedBy("Galvamex App") //Ultimo usuario que lo modificÃƒÂ³
 	->setTitle("Reporte")
 	->setSubject("Reporte")
@@ -71,43 +80,43 @@ if (PHP_SAPI == 'cli')
 	->setCategory("Reporte Galvamex");
 
 	//Landscape
-	// $objPHPExcel->getActiveSheet()
+	// $spreadsheet->getActiveSheet()
 	// 				 ->getPageSetup()
-	// 				 ->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
+	// 				 ->setOrientation(PageSetup::ORIENTATION_LANDSCAPE);
 
-	$objPHPExcel->getActiveSheet()
+	$spreadsheet->getActiveSheet()
 	->getPageSetup()
-	->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_PORTRAIT);
+	->setOrientation(PageSetup::ORIENTATION_PORTRAIT);
 
-	$objPHPExcel->getActiveSheet()
+	$spreadsheet->getActiveSheet()
 	->getPageSetup()
-	->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
+	->setPaperSize(PageSetup::PAPERSIZE_A4);
 
 	// $tituloReporte = "REPORTE DE RECEPCIÓN DE MATERIALES";
 	// $titulosColumnas = array('FECHA', 'PROVEEDOR', 'REMISIÓN', 'NUM. ROLLO', 'PRODUCTO', 'KILOS RECIB.', 'Hora', 'ts');
 
 	//LANDSCAPE
 	//Titulo
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->mergeCells('C1:G1');
 	//Subtitulo
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->mergeCells('C2:G2');
 
 	// //PORTRAIT
 	// // //Titulo
-	//  $objPHPExcel->setActiveSheetIndex(0)
+	//  $spreadsheet->setActiveSheetIndex(0)
 	//        		    ->mergeCells('D1:I1');
 	// // //Subtitulo
-	//  $objPHPExcel->setActiveSheetIndex(0)
+	//  $spreadsheet->setActiveSheetIndex(0)
 	//        		    ->mergeCells('D2:I2');
 
 	 
 
 	// Se agregan los titulos del reporte
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValue('C1',$_tituloReporte);
-// 	$objPHPExcel->setActiveSheetIndex(0)
+// 	$spreadsheet->setActiveSheetIndex(0)
 // 	->setCellValue('D2',$_subtituloReporte);
 
 		
@@ -124,8 +133,8 @@ if (PHP_SAPI == 'cli')
 					)
 			),
 			'alignment' =>  array(
-					'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
-					'vertical'   => PHPExcel_Style_Alignment::VERTICAL_CENTER,
+					'horizontal' => Alignment::HORIZONTAL_CENTER,
+					'vertical'   => Alignment::VERTICAL_CENTER,
 					'rotation'   => 0,
 					'wrap'          => FALSE
 			)
@@ -143,8 +152,8 @@ if (PHP_SAPI == 'cli')
 					)
 			),
 			'alignment' =>  array(
-					'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
-					'vertical'   => PHPExcel_Style_Alignment::VERTICAL_CENTER,
+					'horizontal' => Alignment::HORIZONTAL_CENTER,
+					'vertical'   => Alignment::VERTICAL_CENTER,
 					'rotation'   => 0,
 					'wrap'          => FALSE
 			)
@@ -154,7 +163,7 @@ if (PHP_SAPI == 'cli')
 	$styleArray = array(
 			'borders' => array(
 					'allborders' => array(
-							'style' => PHPExcel_Style_Border::BORDER_THIN,
+							'style' => Border::BORDER_THIN,
 							'color' => array('argb' => 'FF000000'),
 					),
 			)
@@ -163,21 +172,21 @@ if (PHP_SAPI == 'cli')
 	$col = 0;
 	foreach ($_campos as $colTitle)
 	{
-		$objPHPExcel->setActiveSheetIndex(0)
+		$spreadsheet->setActiveSheetIndex(0)
 		->setCellValueByColumnAndRow($col++, 14, $colTitle);
 	}
 
-	$objPHPExcel->getActiveSheet()->getStyle('F4:'. 'G14')->applyFromArray($styleArray);
+	$spreadsheet->getActiveSheet()->getStyle('F4:'. 'G14')->applyFromArray($styleArray);
 	
 	
 	// //Headers
-	// $objPHPExcel->getActiveSheet()->getStyle('A5:H5')->applyFromArray($styleArray);
-	$objPHPExcel->getActiveSheet()->getStyle(chr(65) . '14:'. chr(64 + count($_campos)).'14')->applyFromArray($styleArray);
-	$objPHPExcel
+	// $spreadsheet->getActiveSheet()->getStyle('A5:H5')->applyFromArray($styleArray);
+	$spreadsheet->getActiveSheet()->getStyle(chr(65) . '14:'. chr(64 + count($_campos)).'14')->applyFromArray($styleArray);
+	$spreadsheet
 	->getActiveSheet()
 	->getStyle(chr(65) . '14:'. chr(64 + count($_campos)).'14')
 	->getFill()
-	->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
+	->setFillType(Fill::FILL_SOLID)
 	->getStartColor()
 	->setRGB('E0E0E0');
 
@@ -209,25 +218,25 @@ if (PHP_SAPI == 'cli')
 // 		$col = 0;
 // 		foreach ($item as $cell)
 // 		{
-// 			$objPHPExcel->setActiveSheetIndex(0)
+// 			$spreadsheet->setActiveSheetIndex(0)
 // 			->setCellValueByColumnAndRow($col++, $row, $cell);
 
 // 		}
-		$objPHPExcel->setActiveSheetIndex(0)
+		$spreadsheet->setActiveSheetIndex(0)
 		->setCellValueByColumnAndRow(0, $row, $item["nopedido"]);
-		$objPHPExcel->setActiveSheetIndex(0)
+		$spreadsheet->setActiveSheetIndex(0)
 		->setCellValueByColumnAndRow(1, $row, $item["nombrecliente"]);
-		$objPHPExcel->setActiveSheetIndex(0)
+		$spreadsheet->setActiveSheetIndex(0)
 		->setCellValueByColumnAndRow(2, $row, $item["partida"]);
-		$objPHPExcel->setActiveSheetIndex(0)
+		$spreadsheet->setActiveSheetIndex(0)
 		->setCellValueByColumnAndRow(3, $row, $item["longitud"]);
-		$objPHPExcel->setActiveSheetIndex(0)
+		$spreadsheet->setActiveSheetIndex(0)
 		->setCellValueByColumnAndRow(4, $row, $item["totalml"]);
-		$objPHPExcel->setActiveSheetIndex(0)
+		$spreadsheet->setActiveSheetIndex(0)
 		->setCellValueByColumnAndRow(5, $row, $item["totalkg"]);
-		$objPHPExcel->setActiveSheetIndex(0)
+		$spreadsheet->setActiveSheetIndex(0)
 		->setCellValueByColumnAndRow(6, $row, $item["totalreal"]);
-		$objPHPExcel->setActiveSheetIndex(0)
+		$spreadsheet->setActiveSheetIndex(0)
 		->setCellValueByColumnAndRow(7, $row, $item["espesor"]);
 		
 		
@@ -238,7 +247,7 @@ if (PHP_SAPI == 'cli')
 	
 // 	$_subtituloReporte = $rp->getRegitroProduccionDato("norollo");
 	
-// 	$objPHPExcel->setActiveSheetIndex(0)
+// 	$spreadsheet->setActiveSheetIndex(0)
 // 	->setCellValue('C2',$_subtituloReporte);
 	
 // 	$row++;
@@ -246,98 +255,98 @@ if (PHP_SAPI == 'cli')
 	$row = 4;
 	$colDatosRP = 5;
 	
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP, $row, "FECHA DE PRODUCCION");
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP + 1, $row++, $rp->getRegitroProduccionDato("fecha_creacion"));
 	
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP, $row, "NUMERO DE ROLLO");
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP + 1, $row++, $rp->getRegitroProduccionDato("norollo"));
 	
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP, $row, "KILOS DE ROLLO");
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP + 1, $row++, $rp->getRegitroProduccionDato("kilos"));
 	
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP, $row, "KILOS MAQUILADOS");
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP + 1, $row++, $rp->getRegitroProduccionDato("kilosmaquilados"));
 	
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP, $row, "KILOS FALTANTES");
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP + 1, $row++, $rp->getRegitroProduccionDato("kilosfaltantes"));
 	
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP, $row, "TOTAL DE ML");
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP + 1, $row++, $rp->getRegitroProduccionDato("totalml"));
 	
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP, $row, "FACTOR");
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP + 1, $row++, $rp->getRegitroProduccionDato("factor"));
 	
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP, $row, "RENDIMIENTO");
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP + 1, $row++, $rp->getRegitroProduccionDato("rendimiento"));
 
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP, $row, "LARGO DE ROLLO");
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP + 1, $row++, $rp->getRegitroProduccionDato("largoRollo"));
 
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP, $row, "ESPESOR");
-	$objPHPExcel->setActiveSheetIndex(0)
+	$spreadsheet->setActiveSheetIndex(0)
 	->setCellValueByColumnAndRow($colDatosRP + 1, $row++, $rp->getRegitroProduccionDato("espesor"));
 	
 	for($i = 'A'; $i <= chr(64 + count($_campos)); $i++){
-		$objPHPExcel->setActiveSheetIndex(0)
+		$spreadsheet->setActiveSheetIndex(0)
 		->getColumnDimension($i)->setAutoSize(TRUE);
 
 	}
 
 	 
-	$objPHPExcel->getActiveSheet()->getStyle('C1:G1')->applyFromArray($estiloTituloReporte);
+	$spreadsheet->getActiveSheet()->getStyle('C1:G1')->applyFromArray($estiloTituloReporte);
 
-	// $objPHPExcel->getActiveSheet()->getStyle('A3')->applyFromArray($estiloDatosLabelRollo);
-	// $objPHPExcel->getActiveSheet()->getStyle('B3')->applyFromArray($estiloDatosRollo);
-	// $objPHPExcel->getActiveSheet()->getStyle('C3')->applyFromArray($estiloDatosLabelRollo);
-	// $objPHPExcel->getActiveSheet()->getStyle('D3')->applyFromArray($estiloDatosRollo);
+	// $spreadsheet->getActiveSheet()->getStyle('A3')->applyFromArray($estiloDatosLabelRollo);
+	// $spreadsheet->getActiveSheet()->getStyle('B3')->applyFromArray($estiloDatosRollo);
+	// $spreadsheet->getActiveSheet()->getStyle('C3')->applyFromArray($estiloDatosLabelRollo);
+	// $spreadsheet->getActiveSheet()->getStyle('D3')->applyFromArray($estiloDatosRollo);
 
-	$objPHPExcel->getActiveSheet()->getStyle('A14:'.chr(64 + count($_campos)).'14')->applyFromArray($estiloHeader);
+	$spreadsheet->getActiveSheet()->getStyle('A14:'.chr(64 + count($_campos)).'14')->applyFromArray($estiloHeader);
 
-	//$objPHPExcel->getActiveSheet()->getStyle('A3:D3')->applyFromArray($estiloTituloColumnas);
-	//$objPHPExcel->getActiveSheet()->setSharedStyle($estiloInformacion, "A4:D5");
+	//$spreadsheet->getActiveSheet()->getStyle('A3:D3')->applyFromArray($estiloTituloColumnas);
+	//$spreadsheet->getActiveSheet()->setSharedStyle($estiloInformacion, "A4:D5");
 
-	// $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(false);
-	// $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth('12');
+	// $spreadsheet->getActiveSheet()->getColumnDimension('A')->setAutoSize(false);
+	// $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth('12');
 
-	// $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(false);
-	// $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth('20');
+	// $spreadsheet->getActiveSheet()->getColumnDimension('B')->setAutoSize(false);
+	// $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth('20');
 
-	// $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(false);
-	// $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth('13');
+	// $spreadsheet->getActiveSheet()->getColumnDimension('C')->setAutoSize(false);
+	// $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth('13');
 
-	// $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(false);
-	// $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth('15');
+	// $spreadsheet->getActiveSheet()->getColumnDimension('D')->setAutoSize(false);
+	// $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth('15');
 
-	// $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(false);
-	// $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth('58');
+	// $spreadsheet->getActiveSheet()->getColumnDimension('E')->setAutoSize(false);
+	// $spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth('58');
 
-	// $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setAutoSize(false);
-	// $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth('10');
+	// $spreadsheet->getActiveSheet()->getColumnDimension('F')->setAutoSize(false);
+	// $spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth('10');
 
-	// $objPHPExcel->getActiveSheet()->getRowDimension('3')->setRowHeight('26');
+	// $spreadsheet->getActiveSheet()->getRowDimension('3')->setRowHeight('26');
 
 
 
-	$objDrawing = new PHPExcel_Worksheet_Drawing();
+	$objDrawing = new Drawing();
 	$objDrawing->setName('test_img');
 	$objDrawing->setDescription('test_img');
 	//$objDrawing->setPath('C:\\xampp\\htdocs\\galvamex\\codigogalvamex\\html\\img\\lamimayalogo.png');
@@ -351,16 +360,16 @@ if (PHP_SAPI == 'cli')
 	$objDrawing->setResizeProportional(false);
 	$objDrawing->setWidth(170);
 	$objDrawing->setHeight(75);
-	$objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
+	$objDrawing->setWorksheet($spreadsheet->getActiveSheet());
 
 	// Se asigna el nombre a la hoja
-	$objPHPExcel->getActiveSheet()->setTitle('Reporte');
+	$spreadsheet->getActiveSheet()->setTitle('Reporte');
 
 	// Se activa la hoja para que sea la que se muestre cuando el archivo se abre
-	$objPHPExcel->setActiveSheetIndex(0);
+	$spreadsheet->setActiveSheetIndex(0);
 	// Inmovilizar paneles
-	//$objPHPExcel->getActiveSheet(0)->freezePane('A4');
-	//$objPHPExcel->getActiveSheet(0)->freezePaneByColumnAndRow(0,4);
+	//$spreadsheet->getActiveSheet(0)->freezePane('A4');
+	//$spreadsheet->getActiveSheet(0)->freezePaneByColumnAndRow(0,4);
 
 	//header("Content-Type:   application/vnd.ms-excel; charset=utf-8");
 	// Se manda el archivo al navegador web, con el nombre que se indica (Excel2007)
@@ -369,7 +378,7 @@ if (PHP_SAPI == 'cli')
 	header('Cache-Control: max-age=0');
 // 	$fileName = "Reporte_".date('YmdHis').".xlsx";
 // 	$path = "../reportes/";
-	$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+	$objWriter = new Xlsx($spreadsheet);
 	// $objWriter->save($path.$fileName);
 	$objWriter->save('php://output');
 	// echo $fileName;

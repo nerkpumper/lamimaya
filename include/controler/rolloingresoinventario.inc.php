@@ -36,7 +36,7 @@
 		
 // 		if ($rollo->existeField("codigo", $codigo, $idRollo))
 // 		{
-// 			$r->script("app.errCodigo = \"Este Código ya está siendo utilizado. Se debe armar uno diferente.\"; ");
+// 			$r->script("app.errCodigo = \"Este Cï¿½digo ya estï¿½ siendo utilizado. Se debe armar uno diferente.\"; ");
 // 			$regresar = true;
 // 		}		
 		
@@ -89,7 +89,7 @@
 	{
 		$r = new xajaxResponse();
 		
-// 		$r->starDebug();
+		// $r->starDebug();	
 		if ($idRollo <= 0)
 		{
 			$r->saError("No se han podido cargar los datos del rollo.");
@@ -99,7 +99,9 @@
 		
 // 		$r->mostrarAviso("Remision: " . $remision);
 		
-		$idUsuario = ModeloUsuario::getObjSession()->getIdUsuario();
+		$u = ModeloUsuario::getObjSession();
+		if (!$u) { $r->saError("SesiÃ³n expirada. Inicia sesiÃ³n nuevamente."); return $r; }
+		$idUsuario = $u->getIdUsuario();
 		
 		
 		
@@ -127,7 +129,7 @@
 // 				{
 // 					$blnHayRepetidos = true;
 // 					$blnListoParaGuardar = false;
-// 					$strLabelRepetidos .= "app.ingresos[" . $key . "].estatusLabel = \"<span class='label label-warning'>" . mb_convert_encoding("Número de rollo repetido en lista.", 'UTF-8', 'ISO-8859-1') . "</span>\";";
+// 					$strLabelRepetidos .= "app.ingresos[" . $key . "].estatusLabel = \"<span class='label label-warning'>" . mb_convert_encoding("Nï¿½mero de rollo repetido en lista.", 'UTF-8', 'ISO-8859-1') . "</span>\";";
 // 				}	
 // 			} 			
 // 		}
@@ -144,7 +146,7 @@
 // 			{
 // 				$blnHayRepetidos = true;
 // 				$blnListoParaGuardar = false;
-// 				$strLabelRepetidos .= "app.ingresos[" . $key . "].estatusLabel = \"<span class='label label-danger'>" . mb_convert_encoding("Número de rollo ya ha sido ingresado previamente.", 'UTF-8', 'ISO-8859-1') . "</span>\";";
+// 				$strLabelRepetidos .= "app.ingresos[" . $key . "].estatusLabel = \"<span class='label label-danger'>" . mb_convert_encoding("Nï¿½mero de rollo ya ha sido ingresado previamente.", 'UTF-8', 'ISO-8859-1') . "</span>\";";
 // 			}
 // 		}
 		
@@ -160,7 +162,7 @@
 // 		}
 		
     
-		//comenzamos la transacción para meter toda la lista
+		//comenzamos la transacciï¿½n para meter toda la lista
 		$remision->transaccionIniciar();
 		
 		$doCommit = true;
@@ -215,7 +217,7 @@
 			$r->mostrarError("No se han podido registrar los ingresos.");
 		}
 		
-// 		$r->endDegug();
+		// $r->endDegug();
 		return $r;
 	}
 	$xajax->registerFunction("registrarIngresos");
